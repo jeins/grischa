@@ -1,0 +1,12 @@
+bin/
+*.class
+*.jar
+.settings/
+.classpath
+.project
+*.log
+*.debug
+.DS_Store
+*.iml
+*.ipr
+*.iws

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="de.htw.grischa">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../Applications/eclipse/juno"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="de.htw.grischa.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="libs/commons-cli-1.2.jar"/>
+        <pathelement location="libs/commons-pool2-2.0.jar"/>
+        <pathelement location="libs/log4j-1.2.15.jar"/>
+        <pathelement location="libs/smack.jar"/>
+        <pathelement location="libs/smackx-debug.jar"/>
+        <pathelement location="libs/smackx.jar"/>
+        <pathelement location="libs/junit-4.11.jar"/>
+        <pathelement location="libs/jedis-2.4.2.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+        <delete>
+            <fileset dir="." includes="**/*.log"/>
+            <fileset dir="." includes="**/*.debug"/>
+            <fileset dir="." excludes="libs/*.jar" includes="**/*.jar"/>
+        </delete>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}"
+               target="${target}">
+            <src path="src"/>
+            <classpath refid="de.htw.grischa.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes."
+            name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="GClient">
+        <java classname="de.htw.grischa.client.GClient" failonerror="true" fork="yes">
+            <classpath refid="de.htw.grischa.classpath"/>
+        </java>
+    </target>
+    <target name="GNode">
+        <java classname="de.htw.grischa.node.GNode" failonerror="true" fork="yes">
+            <classpath refid="de.htw.grischa.classpath"/>
+        </java>
+    </target>
+    <target name="gnode" depends="build">
+        <jar destfile="gnode.jar" basedir="bin">
+            <zipgroupfileset dir="libs" includes="**/*.jar"/>
+            <manifest>
+                <attribute name="Main-Class" value="de.htw.grischa.node.GNode"/>
+            </manifest>
+        </jar>
+    </target>
+    <target name="gclient" depends="build">
+        <jar destfile="gclient.jar" basedir="bin">
+            <zipgroupfileset dir="libs" includes="**/*.jar"/>
+            <manifest>
+                <attribute name="Main-Class" value="de.htw.grischa.client.GClient"/>
+            </manifest>
+        </jar>
+    </target>
+    <target name="gdb" depends="build">
+        <jar destfile="gdb.jar" basedir="bin">
+            <zipgroupfileset dir="libs" includes="**/*.jar"/>
+            <manifest>
+                <attribute name="Main-Class" value="de.htw.grischa.chess.database.GDBRunner"/>
+            </manifest>
+        </jar>
+    </target>
+    <target name="grischa" depends="gclient, gnode, gdb"/>
+</project>
