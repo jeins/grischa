@@ -1,0 +1,27 @@
+\begin{thebibliography}{BBKS15}
+
+\bibitem[BBKS15]{Bengel2015}
+Bengel Bengel, Baun Baun, Kunze Kunze, and Stucky Stucky.
+\newblock {\em Masterkurs Parallele und Verteilte Systeme - Grundlagen und
+  Programmierung von Multicore-Prozessoren, Multiprozessoren, Cluster, Grid und
+  Cloud}.
+\newblock Springer-Verlag, Berlin Heidelberg New York, 2. aufl. edition, 2015.
+
+\bibitem[Fos02]{Foster02}
+Ian Foster.
+\newblock What is the grid? a three point checklist.
+\newblock {\em Argonne National Laboratory \& University of Chicag}, 2002.
+
+\bibitem[He{\ss}13]{Hessling2013}
+Hermann He{\ss}ling.
+\newblock Big data and real-time computing (keynote).
+\newblock In {\em IEEE 15. International Conference on Modelling and
+  Simulation}, 2013.
+
+\bibitem[Ste14]{Stewart}
+Philip Stewart.
+\newblock Message-based communication in real-time grid computing.
+\newblock Master's thesis, Hochschule f\"ur Technik und Wirtschaft Berlin,
+  Dezember 2014.
+
+\end{thebibliography}

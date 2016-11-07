@@ -1,0 +1,317 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%LaTeX template for papers && theses									%%
+%%Done by the incredible ||Z01db3rg||									%%
+%%Under the do what ever you want license								%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%start preamble
+\documentclass[paper=a4,fontsize=11pt,DIV14]{scrartcl}%kind of doc, font size, paper size
+\usepackage[ngerman]{babel}%for special german letters etc			
+%\usepackage{t1enc} obsolete, but some day we go back in time and could use this again
+\usepackage[T1]{fontenc}%same as t1enc but better						
+%\usepackage[utf8]{inputenc}%utf-8 encoding, other systems could use others encoding
+\usepackage[latin9]{inputenc}			
+\usepackage{amsmath}%get math done
+\usepackage{amsthm}%get theorems and proofs done
+\usepackage{graphicx}%get pictures & graphics done
+\graphicspath{{pictures/}}%folder to stash all kind of pictures etc
+\usepackage[pdftex,hidelinks]{hyperref}%for links to web
+\usepackage{amssymb}%symbolics for math
+\usepackage{amsfonts}%extra fonts
+\usepackage []{natbib}%citation style
+\usepackage{caption}%captions under everything
+\usepackage{listings}
+\usepackage[titletoc]{appendix}
+\numberwithin{equation}{section} 
+\usepackage[printonlyused,withpage]{acronym}%how to handle acronyms
+\usepackage{float}%for garphics and how to let them floating around in the doc
+\usepackage{cclicenses}%license!
+\usepackage{xcolor}%nicer colors, here used for links
+\usepackage{wrapfig}%making graphics floated by text and not done by minipage
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{subfigure}
+
+\pdfpkresolution=2400%higher resolution
+
+%settings colors for links
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!50!black},
+    citecolor={blue},
+    urlcolor={blue!80!black}
+}
+
+\lstdefinestyle{basic}{  
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true
+  numbers=left,
+  numberstyle=\tiny\color{gray}\ttfamily,
+  numbersep=5pt,
+  backgroundcolor=\color{white},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  rulecolor=\color{black},
+  captionpos=b,
+  keywordstyle=\color{blue}\bf,
+  commentstyle=\color{gray},
+  stringstyle=\color{green},
+  keywordstyle={[2]\color{red}\bf},
+}
+
+
+\lstdefinelanguage{custom}
+{
+morekeywords={public, void},
+sensitive=false,
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]",
+}
+
+%\usepackage[pagetracker=true]{biblatex}
+
+%%here begins the actual document%%
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+
+\DeclareMathOperator{\id}{id}
+
+\title{	
+\normalfont \normalsize 
+\textsc{\Huge{GriScha}} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\textbf{\huge Dokumentation} \\
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+\author{BT} % Your name
+
+\begin{document}
+
+\maketitle % Print the title
+\tableofcontents
+
+\section{Einführung}
+\begin{abstract}
+GriScha ist eine Schachsoftware der HTW-Berlin, die ihre Leistungsstärke aus den Verteilungsaspekten des Grid-Computing bezieht. Dabei wird das Problem, möglichst guter Schachzüge zu finden, auf viele unabhängige Nodes im Grid verteilt. Jeder dieser unabhängigen Nodes hat eine einfache Schachlogik, die Folgezüge berechnet, ohne dabei mit anderen Worker Nodes zu kommunizieren. Aus der Menge an berechneter Zugmöglichkeiten wird der Beste Zug gewählt. Aus den vorgegangen Schilderung folgt die These, dass viele schlechte Schachspieler eine gute Chance gegen einen guten Spieler haben. Darüber hinaus soll durch GriScha die Kommunikation von Echtzeitanwendungen im Grid analysiert werden können.
+\end{abstract}
+
+\subsection{GriScha in a nutshell}
+Der grundlegende Algorithmus für die Schachengine ist der Alpha-Beta-Algorithmus, ein Algorithmus für Null-Summen-Spiele. Dieser Ansatz ermöglicht es eine Schachpartie als Baum aufzuspannen, sodass es ein großes Problem, gute Züge unter vielen Möglichkeiten, in kleinere Teilprobleme zu zerlegen.\\
+Grundlegend kann GriScha in drei Teile aufgegliedert werden:
+\begin{itemize}
+	\item Grid-Infrastruktur 
+	\begin{itemize}
+		\item Gatekeeper -- alloziert Worker Nodes \& legt die Pilot Jobs auf Worker Nodes fest
+		\item Workernodes -- hier laufen die Pilot Jobs, nach außen gekapselt
+		\item Pilot Job -- GriScha, Java-App die auf der WN ausgeführt wird, hier wird die Schachlogik aus dem Alpha-Beta-Algorithmus angewandt
+	\end{itemize}		
+	\item Master Node -- Server außerhalb des Grid
+	\begin{itemize}
+		\item evaluiert und steuert Engineverhalten
+		\item verteilt aktuelle Stellung des Schachbretts zu WN
+		\item Schnittstelle an User-Interface
+	\end{itemize}	
+\end{itemize}
+Vereinfacht kann GriScha wie folgt beschrieben werden:\\
+Der Master Node wird als Server-Instanz außerhalb des Grids gestartet und bekommt einen dedizierten Socket durch den er kommunizieren darf. Die Master Node fungiert als Ansprechpartner aller Worker Nodes aus dem Grid und entscheidet welche Züge gewählt werden. Um den Verteilungsaspekt anwenden zu können wird eine Grid-Infrastruktur benötigt, die es erlaubt Anwendungen/ Jobs in die Grid zu versenden. Die HTW-Berlin gehört zum DECH-Verband, d.h. stellt selber Ressourcen zur Verfügung und kann Resources aus dem DECH-Verbund nutzen. Mittels einer Middleware können Anwendungen (meist als Pilot Job, oder nur Job bezeichnet) in das Grid geschickt werden. Dies geschieht nicht direkt sondern durch die Middleware gLite (Lightweight Middleware for Grid Computing), dabei erhalten die Jobs beim Submit in die Grid die Adresse und den Port der Master Node, sodass diese Pilot Jobs von den Worker Nodes aus mit der Master Node kommunizieren können. Wie die einzelnen Pilot Jobs verteilt ist für den Anwender dabei vollständig transparent, die Middleware setzt, nach Möglichkeiten, das um, was der User in seiner Job Discription gefordert hat. Wenn die Jobs erfolgreich durch den Gatekeeper der Grid-Middleware auf die Worker Nodes verteilt worden sind wird auf der Worker Node die beschriebene Instanz, also der Pilot Job, gestartet. Anschließend melden sich die laufenden Instanzen bei der Master Node. Der Master Node verwaltet die ihn bekannten Worker Nodes, sodass er sowohl eingehende Ergebnisse als auch die aktuelle Stellung des Schachbretts in die Grid kommunizieren kann. Weiterhin sorgt der Master Node dafür, dass die eingehenden Ergebnisse evaluiert werden und das jeweils beste, vorliegende Ergebnis als Zug angenommen wird. Daher muss der Master Node auch mit dem User-Interface kommunizieren, sodass die evaluierten Züge für den Nutzer sichtbar werden. Für das User-Interface können Xboard oder PyChess verwendet werden, da beide Anwendungen über das Winboard-Protokoll angesprochen werden können.
+\begin{figure}[ht]
+	\centering
+  \includegraphics[scale=0.5]{GriScha_nutshell}
+	\caption{allgemeiner Aufbau GriScha}
+	\label{fig1}
+\end{figure}
+ 
+\subsection{Ziel}
+Ziel ist zu zeigen, ob eine einfache Schachengine durch den Verteilungsaspekt auf viele Rechner, trotzdem gut spielen kann. Um dies zu zeigen wird GriSchas Kommunikation als Echtzeitanwendung untersucht und optimiert, sodass durch die verbesserte Kommunikation, mehr verfügbare Ressource verfügbar sind. Das wiederum soll laut These die Spielstärke verbessern. 
+
+\section{Installation \& Setup}
+GriScha kann als git Repository bezogen werden:
+\begin{lstlisting}[style=basic, language=bash]
+git clone git@grischa.f4.htw-berlin.de:repositories/grischa.git
+\end{lstlisting}
+Das Passwort gibt es auf Anfrage. Im Repository sind folgende Branches gelistet:
+\begin{itemize}
+	\item origin/master
+	\item origin/xmpp
+	\item origin/redis
+	\item origin/kk-database
+	\item origin/socketio
+	\item origin/monte-carlo
+\end{itemize}
+Alle hier gelisteten Branches benötigt grundlegend Java (ab JDK6), darüber hinaus werden keine Abhängigkeiten der Branches mitgeliefert. Die einzelnen Branches wurden mit unterschiedlichen IDE und Build Tools entwickelt, Hinweise darauf gibt es zumeist in der jeweiligen README.md.
+\subsection{Master Branch}
+Der Master Branch nutzt das Protokoll Simon um zwischen Worker Nodes und Master Node zu kommunizieren. Der Build erfoglt wie folgt:
+\begin{lstlisting}[language=bash,caption={Build mit Make}]
+% make clean 
+% make jar  
+\end{lstlisting}
+Dabei wird ein JAR-Archiv erstellt, dies kann lokal wie folgt deployed wird:
+\begin{lstlisting}[language=bash,caption={Deploy SIMON}]
+% cd >>path_to_GriScha<<
+% mkdir -p bench/version_1 bench/version_2 \
+&& echo bench/version_1 bench/version_2 | xargs -n 1 cp GriScha.jar
+
+% java -jar bench/version_1/GriScha.jar server -p 4711 #master node
+% java -jar bench/version_2/GriScha.jar wn -s 127.0.0.1 -p 4711 #worder node
+% >>path_to_xboard<< -tc 15 \
+-fcp "java -jar "path_to_grischa"/bench/version_1/GriScha.jar xboard \
+-s 127.0.0.1 -p 4711" 
+\ -fd >>path_to_GriScha<</bench/version_1
+\end{lstlisting}
+
+Für die Ausführung im Grid:
+
+\subsection{Redis Branch}
+Folgendes sollte vorher auf dem System verfügbar sein:
+\begin{itemize}
+	\item Ant -- Build Tool
+	\item Redis
+	\item folgende Abhängigkeiten müssen aufgelöst werden:
+	\begin{itemize}
+		\item commons-cli-1.2.jar
+		\item commons-pool2-2.0.jar
+		\item jedis-2.1.0-sources.jar 
+		\item junit-4.11.jar
+		\item log4j-1.2.15.jar
+		\item smack.jar
+		\item smackx.jar
+		\item smackx-debug.jar
+		\item smackx-jingle.jar
+	\end{itemize}
+	\item die in org.json vorhandenen Klassen müssen ebenfalls kompiliert werden
+\end{itemize}
+Die zusätzlichen Bibliotheken müssen im Verzeichnis \glqq libs\grqq~ abgelegt werden. 
+\begin{lstlisting}[language=bash,caption={JSON Build}]
+% git submodule update --init
+\end{lstlisting}
+Mit Ant kann GriScha gebaut werden:
+\begin{lstlisting}[language=bash,caption={Build}]
+% ant gnode gclient # or
+% ant grischa #  to build all at once
+\end{lstlisting}
+Es werden zwei JAR-Archive erstellt, eines gnode.jar für die Pilot Jobs in der Grid und ein Client für das User-Interface zu Xboard.
+Der Deploy erfoglt folgendermaßen:
+\begin{lstlisting}[language=bash,caption={Deploy}]
+% java -jar gnode.jar --user username@example.org --password password
+% xboard -fcp "java -jar gclient.jar"
+\end{lstlisting}					
+
+\subsection{XMPP Branch}
+
+\subsection{ZMQ}
+
+\section{Grid-Computing}
+\begin{quotation}
+Per Definition ist das Grid-Computing eine Technik zur Integration und gemeinsamen, institutionsübergreifenden, ortsunabhängigen Nutzung verteilter Ressourcen auf Basis bestehender Kommunikationsinfrastrukturen wie z.?B. dem Internet.\cite{Bengel2015}[S. 447] \end{quotation}
+Die nutzbaren Ressourcen werden durch VO (Virtuelle Organisationen) bereitgestellt, sodass diese den Nutzern dynamisch zur Verfügung stehen. Die Verfügbaren Ressourcen sind im Grid verschiedenen Einrichtungen zuzuordnen, die unabhängig voneinander administriert werden.\\
+Nach Foster muss ein Grid folgende drei Kriterien erfüllen:
+\begin{enumerate}
+	\item Ein Grid koordiniert unterschiedlichste Arten von dezentralen Ressourcen. Dazu gehören Standard-PCs, Workstations, Großrechner, Cluster, usw. Benutzergruppen sind in sog. Virtuellen Organisationen zusammengefasst.
+	\item Grids verwenden offene, standardisierte Protokolle und Schnittstellen. Da in einem Grid wichtige Punkte wie Authentifikation , Autorisierung und das Auffinden und Anfordern von Diensten eine fundamentale Rolle spielen, müssen die verwendeten Protokolle und Schnittstellen offen und standardisiert sein. Ansonsten handelt es sich um ein applikationsspezifisches System und nicht um ein Grid.
+	\item Grids bieten unterschiedliche, nicht-triviale Dienstqualitäten an. Die verschiedenen Ressourcen eines Grids offerieren zusammen genommen eine Vielzahl von Möglichkeiten im Bezug auf Durchsatz, Sicherheit, Verfügbarkeit und Rechenleistung. Der Nutzen der zu einem Grid zusammengeschlossenen Systeme ist größer als die Summe der einzelnen Teile.
+	(\cite{Foster02})
+\end{enumerate}
+
+In Abbildung \ref{grid_overwiev} kann der Aufbau einer Grid-Infrastruktur nachvollzogen werden.
+\begin{figure}[h]
+	\centering
+  \includegraphics[scale=0.5]{grid}
+	\caption{ Aufbau eines Grid \cite{Hessling2013}}
+	\label{grid_overwiev}
+\end{figure}
+
+\subsection{Grid Middleware gLite}
+--TODO
+
+\section{Schachlogik}
+--TODO
+\subsection{Mini-Max}
+\subsection{Alpha-Beta-Algorithmus}
+
+\section{Architektur}
+Abbildung \ref{general_arch} zeigt die generelle Architektur GriSchas, wobei die als Comm bezeichnete Komponente durch die jeweils eingesetzte Lösung für den Nachrichtenaustausch auszutauschen ist.\\
+GriSchas Architektur lässt sich auf folgende Komponenten runterbrechen:
+\begin{itemize}
+	\item \textbf{GriScha}
+	\begin{itemize}
+		\item \textbf{master} Master Node -- Hauptprgramm interagiert mit dem User Interface
+		\item \textbf{worerk} Worker Node -- Programm das in der Grid auf den Worker Nodes als Pilot Job ausgeführt wird
+	\end{itemize}
+	\item \textbf{Kommunikation}
+	\begin{itemize}
+		\item \textbf{server} verteilt Nachrichten an Clients \& verarbeitet Antworten
+		\item \textbf{client} erhält Nachrichten des Servers \& verarbeitet Aufgaben aus Nachrichten
+	\end{itemize}
+	\citep{Stewart}[S. 20]
+\end{itemize}
+Die Master Node (GMaster) ist die zentrale Ansprechstelle zwischen User Interface und der Kommunikation. Hauptaufgabe des Masters ist es, die aktuelle Stellung der Schachpartie festzustellen und mittels der Comm Servers die daraus abgeleitet Aufgaben an die Worker Nodes zu senden. Die Worker Nodes evaluieren ankommende Anfrage der Master Node und berechnen jeweils mögliche Folgezüge. Diese werden wiederum via der Comm Servers an die Master Node geschickt. Nun hat die Master Node die Aufgabe alle einkommenden Nachrichten zu evaluieren und das beste Ergebnis an das User Interface zu geben.
+\begin{figure}[h]
+	\centering
+  \includegraphics[scale=0.3]{comm}
+	\caption{allgemeine Architektur \cite{Stewart}[S. 21]}
+	\label{general_arch}
+\end{figure}
+
+\subsection{Kommunikationsablauf}
+Abbildung \ref{comm_seq} legt den Ablauf einer Kommunikation zwischen den beteiligten Komponenten dar. Es kann wie folgt beschrieben werden:
+\begin{enumerate}
+	\item Node1 registriet sich beim Communication Server und ist anschließend verfügbar
+	\item Node2 registriet sich beim Communication Server und ist anschließend verfügbar
+	\item der Master Node fragt nach allen verfügbaren Nodes
+	\item der Cmmunication server sendet alle verfügbaren Nodes
+	\item der Master Node sendet eine anfrage an mit dem Payload 1 für Node1 and den Communication Server
+	\item der Master Node sendet eine anfrage an mit dem Payload 2 für Node2 and den communication server
+	\item der Communication server sendet die Anfrage mit Payload 1 an Node 1
+	\item der Communication server sendet die Anfrage mit Payload 2 an Node 2
+	\item Node2 sendet Ergebnis 2 an den Communication Server
+	\item der Communication Server sendet das Ergebnis 2 zum Master Node.
+	\item Node1 sendet Ergebnis 1 an den Communication Server
+\end{enumerate}
+
+\begin{figure}[h]
+	\centering
+  \includegraphics[scale=0.5]{comm_seq}
+	\caption{Ablaufdiagramm der Kommunikation nach \cite{Stewart}}
+	\label{comm_seq}
+\end{figure}
+
+
+\subsection{Simon}
+--TODO
+Abbildung \ref{simon_arch} zeigt die Architektur mit Simon als Kommunikationsschicht, wobei
+\begin{figure}[h]
+	\centering
+  \includegraphics[scale=0.3]{simon_arch}
+	\caption{allgemeine Architektur \cite{Stewart}[S. 19]}
+	\label{simon_arch}
+\end{figure}
+
+\subsection{XMPP}
+--TODO
+
+\subsection{Redis}
+Redis ist eine Open Source Key-Value Datenbank, die \glqq in-memory\grqq~ betrieben wird. D.h. alle Daten sind im RAM persistiert und haben dadurch eine sehr hohe Performance.
+\subsubsection{Jedis}
+Jedis ist eine Open Source Bibliothek, die es erlaubt sich mit Redis zu verbinden und kann mit dem Publish-Subscribe Nachrichten Muster umgehen.
+\subsection{Publish-Subscribe via JedisPool}
+\begin{figure}[h]
+    \subfigure[UML]{\includegraphics[scale=0.5]{gclient_uml}}
+    \subfigure[Klasse GclientConnection]{\includegraphics[scale=0.54]{gclient_uml2}}
+\caption{Singleton GclientConnection die den Pool für Redis-Verbindugen bereitstellt}
+\end{figure}
+
+
+\subsection{ZMQ}
+--TODO
+
+\bibliographystyle{alpha}
+\bibliography{sources}
+%\addcontentsline{toc}{}{}
+
+
+\end{document}

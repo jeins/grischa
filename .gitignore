@@ -10,3 +10,9 @@ bin/
 *.iml
 *.ipr
 *.iws
+*.out
+*.bak
+*.aux
+*.blg
+*.toc
+
