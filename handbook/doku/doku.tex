@@ -73,6 +73,20 @@ morecomment=[s]{/*}{*/},
 morestring=[b]",
 }
 
+
+\lstdefinestyle{BashInputStyle}{
+  language=bash,
+  showstringspaces=false,
+  basicstyle=\small\sffamily,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=3pt,
+  frame=trlb,
+  columns=fullflexible,
+  backgroundcolor=\color{gray!20},
+  linewidth=0.9\linewidth,
+  xleftmargin=0.1\linewidth
+}
 %\usepackage[pagetracker=true]{biblatex}
 
 %%here begins the actual document%%
@@ -97,12 +111,13 @@ morestring=[b]",
 
 \section{Einführung}
 \begin{abstract}
-GriScha ist eine Schachsoftware der HTW-Berlin, die ihre Leistungsstärke aus den Verteilungsaspekten des Grid-Computing bezieht. Dabei wird das Problem, möglichst guter Schachzüge zu finden, auf viele unabhängige Nodes im Grid verteilt. Jeder dieser unabhängigen Nodes hat eine einfache Schachlogik, die Folgezüge berechnet, ohne dabei mit anderen Worker Nodes zu kommunizieren. Aus der Menge an berechneter Zugmöglichkeiten wird der Beste Zug gewählt. Aus den vorgegangen Schilderung folgt die These, dass viele schlechte Schachspieler eine gute Chance gegen einen guten Spieler haben. Darüber hinaus soll durch GriScha die Kommunikation von Echtzeitanwendungen im Grid analysiert werden können.
+GriScha ist eine Schachsoftware der HTW-Berlin, die ihre Leistungsstärke aus den Verteilungsaspekten des Grid-Computing bezieht. Dabei wird das Problem, möglichst gute Schachzüge zu finden, auf viele unabhängige Nodes im Grid verteilt. Jeder dieser unabhängigen Nodes hat eine einfache Schachlogik, die nur erlaubte Züge betrachtet und diese anhand ihrer Stellung bewertet. D.h. es wird nur die zu ziehende Figur betrachtet und wie ein möglicher Zug sich auswirken würde. Ob dadurch beispielsweise andere Figuren bedroht werden und wie weit die Figuren im gegnerische Feld stehen. Die Folgezüge die daraus berechnet werden erfolgen unabhängig von den anderen Worker Nodes, es findet innerhalb der Worker Nodes keine Kommunikation statt. Aus der Menge der hieraus  entstehenden Zugmöglichkeiten wird der Beste Zug gewählt und als Antwort auf dem Schachbrett umgesetzt.\\
+Aus den vorgegangen Schilderung folgt die These, dass viele schlechte Schachspieler eine gute Chance gegen einen guten Spieler haben. Darüber hinaus soll durch GriScha die Kommunikation von Echtzeitanwendungen im Grid analysiert werden können.
 \end{abstract}
 
 \subsection{GriScha in a nutshell}
-Der grundlegende Algorithmus für die Schachengine ist der Alpha-Beta-Algorithmus, ein Algorithmus für Null-Summen-Spiele. Dieser Ansatz ermöglicht es eine Schachpartie als Baum aufzuspannen, sodass es ein großes Problem, gute Züge unter vielen Möglichkeiten, in kleinere Teilprobleme zu zerlegen.\\
-Grundlegend kann GriScha in drei Teile aufgegliedert werden:
+Der grundlegende Algorithmus für die Schachengine ist der Alpha-Beta-Algorithmus, ein Algorithmus für Null-Summen-Spiele. Dieser Ansatz ermöglicht es eine Schachpartie als Baum aufzuspannen, sodass es ein großes Problem, gute Züge unter vieler möglichen Zügen zu finden, in kleinere Teilprobleme zerlegt werden kann.\\
+Grundlegend kann GriScha in wie folgt aufgegliedert werden:
 \begin{itemize}
 	\item Grid-Infrastruktur 
 	\begin{itemize}
@@ -127,14 +142,18 @@ Der Master Node wird als Server-Instanz außerhalb des Grids gestartet und bekomm
 \end{figure}
  
 \subsection{Ziel}
-Ziel ist zu zeigen, ob eine einfache Schachengine durch den Verteilungsaspekt auf viele Rechner, trotzdem gut spielen kann. Um dies zu zeigen wird GriSchas Kommunikation als Echtzeitanwendung untersucht und optimiert, sodass durch die verbesserte Kommunikation, mehr verfügbare Ressource verfügbar sind. Das wiederum soll laut These die Spielstärke verbessern. 
+Ziel ist zu zeigen, ob eine einfache Schachengine durch den Verteilungsaspekt auf viele Rechner, trotzdem gut spielen kann. Um dies zu zeigen wird GriSchas Kommunikation als Grid-Echtzeitanwendung untersucht und optimiert, sodass durch die verbesserte Kommunikation, mehr Ressource nutzbar sind und somit die Spielstärker erhöht. Durch die Mehrnutzung der Worker Nodes aus dem Grid kann wiederum geschlossen werden, wie leistungsfähig Kommunikationsprotokolle sind und ob Optimierungsmöglich?eiten bestehen.
 
-\section{Installation \& Setup}
-GriScha kann als git Repository bezogen werden:
-\begin{lstlisting}[style=basic, language=bash]
-git clone git@grischa.f4.htw-berlin.de:repositories/grischa.git
+\section{Quelltexte \& Setup}
+GriScha kann als git Repository von Grischa-Server bezogen werden. Die aktuelle Version, sowie die Dokumentation ist hier zu finden \footnote{Das Passwort gibt es auf Anfrage}:
+\begin{lstlisting}[style=BashInputStyle, language=bash]
+git clone git@grischa.f4.htw-berlin.de:/grischa.git
 \end{lstlisting}
-Das Passwort gibt es auf Anfrage. Im Repository sind folgende Branches gelistet:
+Neben diesen aktuellen Branch dessen Kommunikation mittels Redis realisiert wurde gibt es noch den Legacy branch:
+\begin{lstlisting}[style=BashInputStyle, language=bash]
+git clone git@grischa.f4.htw-berlin.de:/grischa_legacy.git
+\end{lstlisting}
+In diesem Repository sind folgende Branches gelistet, sowie die gesamte History der Entwicklung:
 \begin{itemize}
 	\item origin/master
 	\item origin/xmpp
@@ -143,27 +162,34 @@ Das Passwort gibt es auf Anfrage. Im Repository sind folgende Branches gelistet:
 	\item origin/socketio
 	\item origin/monte-carlo
 \end{itemize}
-Alle hier gelisteten Branches benötigt grundlegend Java (ab JDK6), darüber hinaus werden keine Abhängigkeiten der Branches mitgeliefert. Die einzelnen Branches wurden mit unterschiedlichen IDE und Build Tools entwickelt, Hinweise darauf gibt es zumeist in der jeweiligen README.md.
-\subsection{Master Branch}
-Der Master Branch nutzt das Protokoll Simon um zwischen Worker Nodes und Master Node zu kommunizieren. Der Build erfoglt wie folgt:
-\begin{lstlisting}[language=bash,caption={Build mit Make}]
+
+Alle hier gelisteten Branches benötigt grundlegend Java (ab JDK6), darüber hinaus werden keine Abhängigkeiten der Branches mitgeliefert. Die einzelnen Branches wurden mit unterschiedlichen IDE und Build Tools entwickelt, Hinweise darauf gibt es zumeist in der jeweiligen README.md bzw hier.
+
+\subsection{Grischa Legacy}
+Der Master Branch des Legacy Repositories nutzt das Protokoll Simon, um zwischen Worker Nodes und Master Node zu kommunizieren. Der Build erfoglt wie folgt:
+\begin{lstlisting}[style=BashInputStyle, language=bash, caption={Build mit Make}]
+% cd grischa_legacy
 % make clean 
 % make jar  
 \end{lstlisting}
 Dabei wird ein JAR-Archiv erstellt, dies kann lokal wie folgt deployed wird:
-\begin{lstlisting}[language=bash,caption={Deploy SIMON}]
-% cd >>path_to_GriScha<<
+\begin{lstlisting}[style=BashInputStyle, language=bash, caption={Deploy SIMON Teil 1}]
 % mkdir -p bench/version_1 bench/version_2 \
 && echo bench/version_1 bench/version_2 | xargs -n 1 cp GriScha.jar
-
-% java -jar bench/version_1/GriScha.jar server -p 4711 #master node
-% java -jar bench/version_2/GriScha.jar wn -s 127.0.0.1 -p 4711 #worder node
-% >>path_to_xboard<< -tc 15 \
--fcp "java -jar "path_to_grischa"/bench/version_1/GriScha.jar xboard \
--s 127.0.0.1 -p 4711" 
-\ -fd >>path_to_GriScha<</bench/version_1
 \end{lstlisting}
+\begin{lstlisting}[style=BashInputStyle, language=bash, caption={Deploy SIMON Teil 2}]
+% java -jar bench/version_1/GriScha.jar server -p 4711
+% java -jar bench/version_2/GriScha.jar wn -s 127.0.0.1 -p 4711
+% >>path_to_xboard<< -tc 15 \
+-fcp "java -jar "pathToGriScha"/bench/version_1/GriScha.jar xboard \
+-s 127.0.0.1 -p 4711" 
+\ -fd "pathToGriScha"/bench/version_1
+\end{lstlisting}
+Im zweiten Teil wird Grischa als Server, also als Master Node aufgesetzt und einmal als Worker Node, die mit dem Master kommuniziert. Schließlich muss Xboard noch gestartet werden mit den Parameter, die notwendig für die das Ansprechen der Master Node notwendig sind.
 
+\subsubsection{SIMON im Mobile Computing Labor}
+
+\subsubsection{SIMON im Grid}
 Für die Ausführung im Grid:
 
 \subsection{Redis Branch}
@@ -171,7 +197,7 @@ Folgendes sollte vorher auf dem System verfügbar sein:
 \begin{itemize}
 	\item Ant -- Build Tool
 	\item Redis
-	\item folgende Abhängigkeiten müssen aufgelöst werden:
+	\item folgende Abhängigkeiten müssen aufgelöst werden \footnote{wird demnächst auf Maven geändert, hat aber noch Migrationsschwierigkeiten}. 	
 	\begin{itemize}
 		\item commons-cli-1.2.jar
 		\item commons-pool2-2.0.jar
@@ -185,25 +211,33 @@ Folgendes sollte vorher auf dem System verfügbar sein:
 	\end{itemize}
 	\item die in org.json vorhandenen Klassen müssen ebenfalls kompiliert werden
 \end{itemize}
+Diese Abhängigkeiten können so lange die Migration von Ant auf Maven nicht abgeschlossen ist auch hier bezogen werden können:
+\begin{lstlisting}[style=BashInputStyle, language=bash, caption={Redis Abhängigkeiten}]
+% git clone git@grischa.f4.htw-berlin.de:grisha_dependencies
+\end{lstlisting}
 Die zusätzlichen Bibliotheken müssen im Verzeichnis \glqq libs\grqq~ abgelegt werden. 
-\begin{lstlisting}[language=bash,caption={JSON Build}]
+\begin{lstlisting}[style=BashInputStyle, language=bash, caption={Redis Build}]
 % git submodule update --init
 \end{lstlisting}
 Mit Ant kann GriScha gebaut werden:
-\begin{lstlisting}[language=bash,caption={Build}]
-% ant gnode gclient # or
-% ant grischa #  to build all at once
+\begin{lstlisting}[style=BashInputStyle, language=bash, caption={Build}]
+% ant gnode gclient
+% ant grischa
 \end{lstlisting}
-Es werden zwei JAR-Archive erstellt, eines gnode.jar für die Pilot Jobs in der Grid und ein Client für das User-Interface zu Xboard.
+Das erste baut nur die gnode und den gclient, das zweitere baut alle Targets.\\
+Es werden zwei bzw drei JAR-Archive erstellt, eines gnode.jar für die Pilot Jobs in der Grid und ein Client für das User-Interface zu Xboard.
 Der Deploy erfoglt folgendermaßen:
-\begin{lstlisting}[language=bash,caption={Deploy}]
-% java -jar gnode.jar --user username@example.org --password password
+\begin{lstlisting}[style=BashInputStyle, language=bash,caption={Deploy}]
+% java -jar gnode.jar 
 % xboard -fcp "java -jar gclient.jar"
 \end{lstlisting}					
 
-\subsection{XMPP Branch}
-
-\subsection{ZMQ}
+\subsubsection{Redis im Mobile Computing Labor}
+TODO
+\subsubsection{Redis im Grid}
+TODO
+\subsection{XMPP Branch}TODO
+\subsection{ZMQ}TODO
 
 \section{Grid-Computing}
 \begin{quotation}
@@ -220,8 +254,8 @@ Nach Foster muss ein Grid folgende drei Kriterien erfüllen:
 In Abbildung \ref{grid_overwiev} kann der Aufbau einer Grid-Infrastruktur nachvollzogen werden.
 \begin{figure}[h]
 	\centering
-  \includegraphics[scale=0.5]{grid}
-	\caption{ Aufbau eines Grid \cite{Hessling2013}}
+  \includegraphics[scale=0.3]{grid}
+	\caption{Aufbau eines Grid \cite{Hessling2013}}
 	\label{grid_overwiev}
 \end{figure}
 
@@ -239,8 +273,8 @@ GriSchas Architektur lässt sich auf folgende Komponenten runterbrechen:
 \begin{itemize}
 	\item \textbf{GriScha}
 	\begin{itemize}
-		\item \textbf{master} Master Node -- Hauptprgramm interagiert mit dem User Interface
-		\item \textbf{worerk} Worker Node -- Programm das in der Grid auf den Worker Nodes als Pilot Job ausgeführt wird
+		\item \textbf{master} Master Node -- Hauptprogramm, interagiert mit dem User Interface
+		\item \textbf{worerk} Worker Node -- Programm das in der Grid auf den Worker Nodes, als Pilot Job ausgeführt wird
 	\end{itemize}
 	\item \textbf{Kommunikation}
 	\begin{itemize}
@@ -249,7 +283,7 @@ GriSchas Architektur lässt sich auf folgende Komponenten runterbrechen:
 	\end{itemize}
 	\citep{Stewart}[S. 20]
 \end{itemize}
-Die Master Node (GMaster) ist die zentrale Ansprechstelle zwischen User Interface und der Kommunikation. Hauptaufgabe des Masters ist es, die aktuelle Stellung der Schachpartie festzustellen und mittels der Comm Servers die daraus abgeleitet Aufgaben an die Worker Nodes zu senden. Die Worker Nodes evaluieren ankommende Anfrage der Master Node und berechnen jeweils mögliche Folgezüge. Diese werden wiederum via der Comm Servers an die Master Node geschickt. Nun hat die Master Node die Aufgabe alle einkommenden Nachrichten zu evaluieren und das beste Ergebnis an das User Interface zu geben.
+Die Master Node (GMaster) ist die zentrale Ansprechstelle zwischen User Interface und der Kommunikation. Hauptaufgabe des Masters ist es, die aktuelle Stellung der Schachpartie festzustellen und mittels der Comm Servers die daraus abgeleitet Aufgaben an die Worker Nodes zu senden. Die Worker Nodes evaluieren ankommende Anfrage der Master Node und berechnen jeweils mögliche Folgezüge. Diese werden wiederum via der Comm Servers an die Master Node geschickt. Nun hat die Master Node die Aufgabe alle ankommenden Nachrichten zu evaluieren und das beste Ergebnis an das User Interface zu geben.
 \begin{figure}[h]
 	\centering
   \includegraphics[scale=0.3]{comm}
@@ -282,8 +316,8 @@ Abbildung \ref{comm_seq} legt den Ablauf einer Kommunikation zwischen den beteil
 
 
 \subsection{Simon}
---TODO
-Abbildung \ref{simon_arch} zeigt die Architektur mit Simon als Kommunikationsschicht, wobei
+--TODO -- soll das hier noch erwähnt werden?
+Abbildung \ref{simon_arch} zeigt die Architektur mit Simon als Kommunikationsschicht.
 \begin{figure}[h]
 	\centering
   \includegraphics[scale=0.3]{simon_arch}
@@ -309,9 +343,12 @@ Jedis ist eine Open Source Bibliothek, die es erlaubt sich mit Redis zu verbinde
 \subsection{ZMQ}
 --TODO
 
+\section{UML}
+Alle Klassen können als UML-Diagramme im git Repository im Ordner handbook gefunden werden. Die wichtigsten Komponenten werden im Folgenden hier beschrieben, sodass die Architektur etwas konkreter nachvollzogen werden kann.
+\subsection{Redis UML}
+
 \bibliographystyle{alpha}
 \bibliography{sources}
 %\addcontentsline{toc}{}{}
-
 
 \end{document}
