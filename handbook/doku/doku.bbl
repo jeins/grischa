@@ -18,10 +18,20 @@ Hermann He{\ss}ling.
 \newblock In {\em IEEE 15. International Conference on Modelling and
   Simulation}, 2013.
 
+\bibitem[HI13]{Holler2013}
+Manfred~J. Holler and Gerhard Illing.
+\newblock {\em Einführung in die Spieltheorie -}.
+\newblock Springer-Verlag, Berlin Heidelberg New York, 2013.
+
 \bibitem[Ste14]{Stewart}
 Philip Stewart.
 \newblock Message-based communication in real-time grid computing.
 \newblock Master's thesis, Hochschule f\"ur Technik und Wirtschaft Berlin,
   Dezember 2014.
+
+\bibitem[TS13]{TanenbaumDS13}
+Andrew~S. Tanenbaum and Maarten~van Steen.
+\newblock {\em Distributed Systems: Principles and Paradigms}.
+\newblock Prentice-Hall, Inc., Upper Saddle River, NJ, USA, 2013.
 
 \end{thebibliography}
