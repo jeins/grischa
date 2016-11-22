@@ -51,7 +51,7 @@
 \definecolor{pred}{rgb}{0.9,0,0}
 \definecolor{pgrey}{rgb}{0.46,0.45,0.48}
 
-\lstset{language=Java,
+\lstdefinestyle{Java}{
   showspaces=false,
   showtabs=false,
   breaklines=true,
@@ -175,7 +175,7 @@ Durch Erhöhung der genutzten Ressourcen aus dem Grid kann wiederum geschlossen w
 
 \newpage
 \section{Quelltexte \& Setup}
-GriScha kann als Git-Repository von Grischa-Server bezogen werden. Die aktuelle Version, sowie die Dokumentation unter folgender Adresse zu finden \footnote{Das Passwort gibt es auf Anfrage}:
+GriScha kann als Git-Repository von Grischa-Server bezogen werden. Die aktuelle Version, sowie die Dokumentation ist unter folgender Adresse zu finden \footnote{Das Passwort gibt es auf Anfrage}:
 \begin{lstlisting}[style=BashInputStyle, language=bash]
 git clone git@grischa.f4.htw-berlin.de:/grischa.git
 \end{lstlisting}
@@ -449,7 +449,7 @@ Jedis ist eine Open Source Bibliothek, die es erlaubt sich mit Redis zu verbinde
 Alle Klassen können als UML-Diagramme im Git-Repository im Ordner \path{grischa/handbook/uml} gefunden werden. Die wichtigsten Komponenten werden im Folgenden hier beschrieben, sodass die Architektur etwas konkreter nachvollzogen werden kann.
 \subsection{Redis UML}\label{redis_uml}
 Der GClient ist eine der Klassen, die am wichtigsten ist. In dessen Konstruktor folgendes initialisiert wird: 
-\begin{lstlisting}
+\begin{lstlisting}[style=Java, language=java]
 public class GClient implements Runnable {
     public GClient() {
     }

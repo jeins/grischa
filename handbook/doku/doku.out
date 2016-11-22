@@ -1,0 +1,36 @@
+\BOOKMARK [1][-]{section.1}{Einf\374hrung}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{GriScha in a nutshell}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Ziel}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Quelltexte \046 Setup}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Grischa}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Redis im Mobile Computing Labor}{subsection.2.1}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Redis im Grid}{subsection.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Grischa Legacy}{section.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.1}{SIMON im Mobile Computing Labor}{subsection.2.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.2.2}{SIMON im Grid}{subsection.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{XMPP Branch}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.4}{ZMQ}{section.2}% 12
+\BOOKMARK [1][-]{section.3}{Grid-Computing}{}% 13
+\BOOKMARK [2][-]{subsection.3.1}{Grid Architektur}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.2}{Grid Computing}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.3}{Grid-Middleware \205 EMI}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Schachlogik}{}% 17
+\BOOKMARK [2][-]{subsection.4.1}{Nullsummenspiele}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.2}{Zuggeneratoren \046 Spielbaum}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.3}{Minimax-Algorithmus}{section.4}% 20
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Bewertungsfunktionen}{subsection.4.3}% 21
+\BOOKMARK [2][-]{subsection.4.4}{Alpha-Beta-Algorithmus}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.5}{Alpha-Beta-Algorithmus Implementation}{section.4}% 23
+\BOOKMARK [1][-]{section.5}{Architektur}{}% 24
+\BOOKMARK [2][-]{subsection.5.1}{Kommunikationsablauf}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.2}{Simon}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.3}{XMPP}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.4}{Redis}{section.5}% 28
+\BOOKMARK [3][-]{subsubsection.5.4.1}{Jedis}{subsection.5.4}% 29
+\BOOKMARK [2][-]{subsection.5.5}{Publish-Subscribe via JedisPool}{section.5}% 30
+\BOOKMARK [2][-]{subsection.5.6}{ZMQ}{section.5}% 31
+\BOOKMARK [1][-]{section.6}{UML}{}% 32
+\BOOKMARK [2][-]{subsection.6.1}{Redis UML}{section.6}% 33
+\BOOKMARK [1][-]{Anhang.1.A}{Anhang UML}{}% 34
+\BOOKMARK [1][-]{Anhang.1.B}{Anhang Ablaufdiagramme}{}% 35
+\BOOKMARK [1][-]{Anhang.1.C}{Anhang Literatur}{}% 36

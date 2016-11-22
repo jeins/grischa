@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%LaTeX template for papers && theses									%%
+%%Done by the incredible ||Z01db3rg||									%%
+%%Under the do what ever you want license								%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%start preamble
+\documentclass[paper=a4,fontsize=11pt,DIV14]{scrartcl}%kind of doc, font size, paper size
+\usepackage[ngerman]{babel}%for special german letters etc			
+%\usepackage{t1enc} obsolete, but some day we go back in time and could use this again
+\usepackage[T1]{fontenc}%same as t1enc but better						
+%\usepackage[utf8]{inputenc}%utf-8 encoding, other systems could use others encoding
+\usepackage[latin9]{inputenc}			
+\usepackage{amsmath}%get math done
+\usepackage{amsthm}%get theorems and proofs done
+\usepackage{graphicx}%get pictures & graphics done
+\graphicspath{{pictures/}}%folder to stash all kind of pictures etc
+\usepackage[pdftex,hidelinks]{hyperref}%for links to web
+\usepackage{amssymb}%symbolics for math
+\usepackage{amsfonts}%extra fonts
+\usepackage []{natbib}%citation style
+\usepackage{caption}%captions under everything
+\usepackage{listings}
+\usepackage[titletoc]{appendix}
+\numberwithin{equation}{section} 
+\usepackage[printonlyused,withpage]{acronym}%how to handle acronyms
+\usepackage{float}%for garphics and how to let them floating around in the doc
+\usepackage{cclicenses}%license!
+\usepackage{xcolor}%nicer colors, here used for links
+\usepackage{wrapfig}%making graphics floated by text and not done by minipage
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\pdfpkresolution=2400%higher resolution
+
+%settings colors for links
+\hypersetup{
+    colorlinks,
+    linkcolor={blue!50!black},
+    citecolor={blue},
+    urlcolor={blue!80!black}
+}
+
+%\usepackage[pagetracker=true]{biblatex}
+
+%%here begins the actual document%%
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+
+\DeclareMathOperator{\id}{id}
+
+\title{	
+\normalfont \normalsize 
+\textsc{\Huge{GriScha}} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\textbf{\huge Dokumentation} \\
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+\author{BT} % Your name
+
+\begin{document}
+
+\maketitle % Print the title
+
+\section{Einführung}
+\paragraph{Zusammenfassung}
+GriScha ist eine Schachsoftware der HTW-Berlin, die ihre Leistungsstärke aus den Verteilungsaspekten des Grid-Computing bezieht. Dabei wird das Problem möglichst guter Schachzüge zu finden auf viele unabhängige Nodes im Grid verteilt und der jeweils beste Zug gewählt. Daher ist die These, dass viele dumme Schachspieler eine gute Chance gegen einen guten Spieler haben.
+\subsection{GriScha in a nutshell}
+GriScha ist eine Schachengine die ihre Leistungsstärke aus dem Verteilungsaspekt eines verteilten Systems bezieht, dem Grid. Der grundlegende Algorithmus für die Schachengine ist der Alpha-Beta-Algorithmus, ein Algorithmus für Null-Summen-Spiele, der es ermöglicht eine Schachpartie als Baum aufzuspannen. ZUSAMMENFASSUNG A-B\\
+Grundlegend arbeitet GriScha wie folgt:\\
+\begin{itemize}
+	\item mehrere Worker-Nodes auf denen Instanzen von Grischa als Client laufen
+	\item eine Master-Node die zentral als Instanz zwischen Grid-Nodes und blah laufen
+\end{itemize}
+\subsection{Ziel}
+
+\section{Installation \& Setup}
+
+\section{Grid-Computing}
+
+\section{Schachlogik}
+
+\section{Architektur}
+
+\subsection{Simon}
+
+\subsection{XMPP}
+
+\subsection{Redis \& socket.io}
+
+\subsection{zeroMQ}
+
+ 
+
+
+
+
+\end{document}
