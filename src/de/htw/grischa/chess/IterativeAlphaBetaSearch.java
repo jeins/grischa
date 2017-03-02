@@ -20,42 +20,27 @@ import java.util.concurrent.LinkedBlockingQueue;
  * </p>
  * <h3>Version History</h3>
  * <ul>
- * <li> 1.0 - 04/10 - Heim - Initial Version </li>
- * <li> 1.? - 06/10 - Neumann - ??? </li>
- * <li> 1.? - 07/11 - Laurence Bortfeld - ??? </li>
- * <li> 1.3 - 04/14 - Karsten Kochan - Integration of database, typo/language, documentation </li>
- * <li> 1.4 - 07/14 - Karsten Kochan - Added properties based variant to use or not use the database</li>
- * <li> 1.5 - 09/14 - Karsten Kochan - Fallback for missing property or missing db file</li>
+ * <li> 0.1 - 04/10 - Heim - Initial Version </li>
+ * <li> 0.2 - 06/10 - Neumann - ??? </li>
+ * <li> 0.3 - 07/11 - Laurence Bortfeld - ??? </li>
+ * <li> 0.4 - 04/14 - Karsten Kochan - Integration of database, typo/language, documentation </li>
+ * <li> 0.5 - 07/14 - Karsten Kochan - Added properties based variant to use or not use the database</li>
+ * <li> 0.6 - 09/14 - Karsten Kochan - Fallback for missing property or missing db file</li>
+ * <li> 0.7 - 02/17 - Benjamin Troester - internship -> cleanup & research</li>
+ * <li> 0.8 - 02/17 - Benjamin Troester - research & preparation for Monte Carlo implementation</li>
  * </ul>
- *
- * @author Heim
- * @version 1.5
+ * @version 0.6
  */
 public class IterativeAlphaBetaSearch implements Runnable {
-
-    /**
-     * Logger
-     */
+    //looger
     private final static Logger log = Logger.getLogger(IterativeAlphaBetaSearch.class);
-
-    /**
-     * Current game (board) to search the best move for
-     */
+    // Current game (board) to search the best move for
     private final IChessGame game;
-
-    /**
-     * Player to be maximized
-     */
+    // Player to be maximized
     private final Player maximizingPlayer;
-
-    /**
-     * Best turn calculated by Alpha-Beta-Search
-     */
+    // Best turn calculated by Alpha-Beta-Search
     public IChessGame bestTurn;
-
-    /**
-     * Current value of the board calculated
-     */
+    //Current value of the board calculated
     private int value;
 
     /**
@@ -89,7 +74,10 @@ public class IterativeAlphaBetaSearch implements Runnable {
     }
 
     /**
-     * Run method containing breadth-first-search
+     * threading through runnable interface
+     * run method containing breadth-first-search
+     *
+     * Contains database usage, alpha beta search
      */
     public void run() {
         Properties database = new Properties();
@@ -145,14 +133,18 @@ public class IterativeAlphaBetaSearch implements Runnable {
                 abp.setQueue(queue);
                 abp.setFileSearch(fileSearch);
             }
+            long startTime = System.nanoTime();
             value = abp.getAlphaBetaTurn(depth, game, fileSearch);
+            long endTime = System.nanoTime();
             //Mark best move
             bestTurn = abp.nextGame;
+            long duration = ((endTime - startTime) / 1000000 );
             //Search two plies deeper
             depth += 2;
-            log.info("Breadth-first search at " + depth + ". Value is " + value);
-            if (depth > 40) {
-                log.info("Breadth-first search terminated due to maximum depth of 40");
+            log.info("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
+            // original value 40
+            if (depth > 5) {
+                log.info("Breadth-first search terminated due to maximum depth of 5");
                 break;
             }
         }

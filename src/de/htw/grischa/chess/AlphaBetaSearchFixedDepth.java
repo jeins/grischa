@@ -11,7 +11,7 @@ public class AlphaBetaSearchFixedDepth extends AlphaBetaSearch {
         return q.getPositionQuality(maximizingPlayer, game.getTurnsMade());
     }
 
-    protected boolean isLeave(IChessGame game, int depth) {
+    protected boolean isLeaf(IChessGame game, int depth) {
         return depth >= maxSearchDepth;
     }
 }

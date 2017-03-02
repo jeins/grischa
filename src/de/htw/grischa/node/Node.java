@@ -6,25 +6,31 @@ import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
+/**
+ * Abstract node class, implementing basic features of a node
+ *
+ */
+
 public abstract class Node implements Runnable {
+    // logging for nodes
     private final static Logger LOG = Logger.getLogger(Node.class);
+    // bool status master node runs
     protected Boolean mIsRunning = true;
+    // access credentials for xmpp stuff - TODO can be deleted?
     private String mServer = "grischa.f4.htw-berlin.de";
     private String mUser = "grid-xmpp-user-001";
     private String mPassword = "node-001";
     private Jedis RedisSubscriber;
     private Jedis RedisPublisher;
 
+    // default constructor
+    Node() {}
 
-    Node() {
-//        mXmppConnection = new XMPPConnection(mServer);
-//        Runtime.getRuntime().addShutdownHook(new ShutdownHook());
-    }
-
+    /**
+     * implementation of the runnable interface
+     * implements RediS registration
+     */
     protected void login() {
-//        try {
-        // TODO - laurence: check if the jid is already in user
-
         RedisSubscriber = GClientConnection.getInstance().getRedis();
         register();
         RedisSubscriber.subscribe(new JedisPubSub() {
@@ -36,54 +42,40 @@ public abstract class Node implements Runnable {
                     stopNode();
                 } else if (body.compareTo("results") == 0) {
                     stopTask();
-                    sendResulstBack();
+                    sendResultsBack();
                 } else {
                     runTask(body);
                 }
-
             }
 
             @Override
-            public void onPMessage(String s, String s2, String s3) {
-
-            }
+            public void onPMessage(String s, String s2, String s3) { }
 
             @Override
             public void onSubscribe(String s, int i) {
-
                 LOG.debug("i got subscribed");
-
             }
 
             @Override
             public void onUnsubscribe(String s, int i) {
-
-
                 LOG.debug("i got unsubscribed");
-
             }
 
             @Override
-            public void onPUnsubscribe(String s, int i) {
-
-            }
+            public void onPUnsubscribe(String s, int i) { }
 
             @Override
-            public void onPSubscribe(String s, int i) {
-
-            }
+            public void onPSubscribe(String s, int i) { }
         }, "move:" + mUser);
     }
 
     public void stopNode() {
-
-
         LOG.debug("i stop node");
         this.mIsRunning = false;
         System.exit(98);
     }
 
-    public void sendResulstBack() {
+    public void sendResultsBack() {
         LOG.debug("i send results back");
         String result = getResult().toString();
         RedisPublisher = GClientConnection.getInstance().getRedis();
@@ -93,7 +85,6 @@ public abstract class Node implements Runnable {
 
     @SuppressWarnings("static-access")
     public void parseArgs(String[] args) {
-
         Options options = new Options();
         CommandLineParser parser = new BasicParser();
 
@@ -152,20 +143,6 @@ public abstract class Node implements Runnable {
         RedisPublisher = GClientConnection.getInstance().getRedis();
         RedisPublisher.lpush("gregistered", mUser);
         GClientConnection.getInstance().realeaseRedis(RedisPublisher);
-//        String registryUser = GWorkerNodeRegistry.USERNAME;
-//        String jid = new StringBuilder(registryUser).append('@').append(mServer).toString();
-//
-//        Chat chat = mChatManager.createChat(jid, "Reistration", mMessageListener);
-//
-//        try {
-//            chat.sendMessage(new StringBuilder("registration:").append(mUser).toString());
-//        } catch (XMPPException e) {
-//            LOG.error(new StringBuilder("Can not register: ").append(e.getMessage()).toString());
-//        }
-//
-//        // Remove listener and remove reference to chat. Until now both is not needed here any more
-//        chat.removeMessageListener(mMessageListener);
-//        chat = null;
     }
 
     protected abstract void runTask(String taskString);

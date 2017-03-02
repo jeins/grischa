@@ -34,7 +34,7 @@ public interface IChessGame extends Comparable<IChessGame> {
     public void loadFromString(String board);
 
     /**
-     * Return ste standard string representation of the current game
+     * Returns standard string representation of the current game
      *
      * @return String with standard string representation
      */

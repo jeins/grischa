@@ -2,6 +2,7 @@ package de.htw.grischa.chess;
 
 import de.htw.grischa.chess.database.client.DatabaseEntry;
 import de.htw.grischa.chess.database.client.FileSearch;
+
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -16,40 +17,19 @@ import java.util.concurrent.BlockingQueue;
  * <li> 1.2 - 04/14 - Karsten Kochan - First database implementation</li>
  * <li> 1.3 - 07/14 - Karsten Kochan - Cleanup, check for db usage via properties file, documentation</li>
  * </ul>
- *
- * @author Heim
- * @version 1.3
  */
 public abstract class AlphaBetaSearch {
-
-    /**
-     * Logger
-     */
+     //Logger
     private final static Logger log = Logger.getLogger(AlphaBetaSearch.class);
-
-    /**
-     * Minimum integer used for check mate
-     */
+     //Minimum integer used for check mate
     private final static int MIN_INT = -10000000;
-
-    /**
-     * Maximum integer used for check mate
-     */
+    // Maximum integer used for check mate
     private final static int MAX_INT = +10000000;
-
-    /**
-     * Successor
-     */
+    // successor
     public IChessGame nextGame;
-
-    /**
-     * Current player to calculate for
-     */
+    // Current player to calculate for
     protected Player maximizingPlayer;
-
-    /**
-     * Maximum depth to search for
-     */
+    // Maximum depth to search for
     protected int maxSearchDepth;
 
     int count = 0;
@@ -150,7 +130,7 @@ public abstract class AlphaBetaSearch {
                 return MIN_INT + depth;
             }
         }
-        if (this.isLeave(game, depth)) {
+        if (this.isLeaf(game, depth)) {
             //			saveGameToList(game, depth, this.getPosQuality(game));
             return (int) this.getPosQuality(game);
         } else {
@@ -233,7 +213,7 @@ public abstract class AlphaBetaSearch {
                 return MIN_INT + depth;
             }
         }
-        if (this.isLeave(game, depth)) {
+        if (this.isLeaf(game, depth)) {
             //			saveGameToList(game, depth, this.getPosQuality(game));
             return (int) this.getPosQuality(game);
         } else {
@@ -255,7 +235,7 @@ public abstract class AlphaBetaSearch {
         }
     }
 
-    protected abstract boolean isLeave(IChessGame game, int depth);
+    protected abstract boolean isLeaf(IChessGame game, int depth);
 
     protected abstract int getQuality(IChessGame game);
 

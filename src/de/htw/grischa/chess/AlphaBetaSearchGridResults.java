@@ -45,7 +45,7 @@ public class AlphaBetaSearchGridResults extends AlphaBetaSearch
 	}
 
 	@Override
-	protected boolean isLeave(IChessGame game, int depth) 
+	protected boolean isLeaf(IChessGame game, int depth)
 	{
 		if(sendedGames.contains(game.getStringRepresentation())) 
 		{

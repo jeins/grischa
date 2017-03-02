@@ -93,7 +93,6 @@ public class Quality {
         int white_Bishops = 0;
         ArrayList<Point> blackPawns = new ArrayList<Point>();
         ArrayList<Point> whitePawns = new ArrayList<Point>();
-        // System.out.println(player);
 
         // *** Fuer alle legalen Felder ****************************************************
         for (int y = 2; y < 10; y++)
@@ -230,8 +229,9 @@ public class Quality {
             quality *= -1;
 
         // System.out.println(board.getReadableString()+" "+quality+"\n\n");
+        // qualtity * 1000 -> Matt wird nicht erkannt!?!?
         // *** Wert zurueckgeben **********************************************************
-        return quality * 1000;
+        return quality * 10000;
     }
 
     private double threatenedQuality(int field) {

@@ -6,10 +6,13 @@ import de.htw.grischa.chess.IChessGame;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
+ *
+ * *  <h3>Version History</h3>
+ * <ul>
+ * <li> 0.1 07/14 - Karsten Kochan - first implementation </li>
+ * </ul>
  * Author: Karsten Kochan
  * Date: 31.07.14
- * Time: 11:15
  */
 public class BoardCalculator {
 
