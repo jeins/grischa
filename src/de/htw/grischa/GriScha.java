@@ -1,4 +1,5 @@
 package de.htw.grischa;
+
 import de.htw.grischa.chess.GridGameManager;
 import de.htw.grischa.chess.IChessGame;
 import de.htw.grischa.client.GClientConnection;

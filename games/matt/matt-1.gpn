@@ -1,0 +1,22 @@
+[Event "Edited position"]
+[Site "lotta-N150-N210-N220"]
+[Date "2015.08.31"]
+[Round "-"]
+[White "-"]
+[Black "-"]
+[Result "*"]
+[FEN "k4r2/Pb5r/1P1p4/1Q1q1p2/6p1/8/4BB1R/6K1 b - - 0 1"]
+[SetUp "1"]
+
+{--------------
+k . . . . r . .
+P b . . . . . r
+. P . p . . . .
+. Q . q . p . .
+. . . . . . p .
+. . . . . . . .
+. . . . B B . R
+. . . . . . K .
+black to play
+--------------}
+*

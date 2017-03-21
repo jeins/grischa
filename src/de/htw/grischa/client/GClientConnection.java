@@ -27,6 +27,7 @@ public class GClientConnection {
         poolConfig.setMaxTotal(100);
         poolConfig.setMaxIdle(100);
         try {
+            System.out.println("Database Input File found!");
             FileInputStream propertiesFile = new FileInputStream(GDBRunner.properties);
             database.load(propertiesFile);
             propertiesFile.close();
@@ -34,6 +35,7 @@ public class GClientConnection {
             redisPort = Integer.valueOf(database.getProperty("grischa.redis.port"));
             pool = new JedisPool(poolConfig,redisHost, redisPort);
         } catch (Exception e) {
+            System.out.println("Database not found!");
             pool = new JedisPool(poolConfig,"46.38.241.128", 6379);
         }
     }

@@ -657,7 +657,7 @@ public class ChessBoard implements IChessGame, Serializable {
             followMoves.add(board);
 
         }
-        //*** Liste zur�ckgeben **********************************************************
+        //*** Liste zurueckgeben **********************************************************
         return followMoves;
     }
 

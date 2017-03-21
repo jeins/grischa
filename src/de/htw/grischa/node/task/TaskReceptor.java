@@ -75,7 +75,7 @@ public class TaskReceptor implements Runnable {
             LOG.debug("task receptor subscriber i get redis");
             RedisSubscriber = gcon.getRedis();
 
-            //            waitUntilDone();
+            //waitUntilDone();
 //
             RedisSubscriber.subscribe(jedisPubSub, "result:" + mUser);
         } finally {

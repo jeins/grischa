@@ -109,7 +109,7 @@ public class IterativeAlphaBetaSearch implements Runnable {
             depth = 1;
         }
         if (useDB) {
-            log.trace("This is a database based search run");
+            log.info("This is a database based search run");
             RandomAccessFile memoryMappedFile = null;
             try {
                 memoryMappedFile = new RandomAccessFile(databaseFilePath, "r");
@@ -124,7 +124,7 @@ public class IterativeAlphaBetaSearch implements Runnable {
                 worker.start();
             }
         } else {
-            log.trace("This is a non databased search run");
+            log.info("This is a non databased search run");
         }
         while (true) {
             abp = new AlphaBetaSearchFixedDepth();
@@ -140,13 +140,15 @@ public class IterativeAlphaBetaSearch implements Runnable {
             bestTurn = abp.nextGame;
             long duration = ((endTime - startTime) / 1000000 );
             //Search two plies deeper
-            depth += 2;
+            //depth += 2;
+            log.debug("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
             log.info("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
             // original value 40
-            if (depth > 5) {
-                log.info("Breadth-first search terminated due to maximum depth of 5");
+            if (depth > 8) {
+                log.debug("Breadth-first search terminated due to maximum depth of 8");
                 break;
             }
+            depth += 2;
         }
     }
 }

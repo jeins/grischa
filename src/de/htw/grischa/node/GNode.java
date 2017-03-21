@@ -23,14 +23,14 @@ public class GNode extends Node {
         login();
         while (mIsRunning) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1000);//sleeps for 1.0 sec
             } catch (InterruptedException e) {
                 LOG.error("Shutdown node: " + e.getMessage());
             }
         }
     }
 
-    public void runTask(String taskString) {
+    public synchronized void runTask(String taskString) {
         mTask = new GTask(taskString);
 
         Thread t = new Thread(mTask);

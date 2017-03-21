@@ -21,10 +21,10 @@ import java.util.concurrent.BlockingQueue;
 public abstract class AlphaBetaSearch {
      //Logger
     private final static Logger log = Logger.getLogger(AlphaBetaSearch.class);
-     //Minimum integer used for check mate
-    private final static int MIN_INT = -10000000;
+     //Minimum integer used for check mate 10000000 originally
+    private final static int MIN_INT = Integer.MIN_VALUE;
     // Maximum integer used for check mate
-    private final static int MAX_INT = +10000000;
+    private final static int MAX_INT = Integer.MAX_VALUE;
     // successor
     public IChessGame nextGame;
     // Current player to calculate for
@@ -103,7 +103,7 @@ public abstract class AlphaBetaSearch {
     private void saveGameToList(IChessGame game, int depth, double quality) {
         if (depth > 5) {
             clientGameList.setGame(game, depth, quality);
-            log.debug("Depth  " + depth + " " + game.getStringRepresentation() + " count=" + count++);
+            log.debug("Depth  " + depth + " " + game.getStringRepresentation() + " Quality= " + quality + " count=" + count++);
         }
     }
 

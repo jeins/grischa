@@ -27,7 +27,9 @@ public class TaskDispatcher implements Runnable {
 
         try {
             LOG.debug("task dispatcher i publish");
+            System.out.println("task dispatcher i publish");
 
+            System.out.println("move: " + mUser + mTask.toString());
             j.publish("move:"+ mUser, mTask.toString());
 
         } catch (Exception e) {

@@ -23,13 +23,13 @@ public class AlphaBetaSearchGridResults extends AlphaBetaSearch
 	{
 		if(results.containsKey(game.getStringRepresentation())) 
 		{
-			_log.debug("berechnetes spiel: "+game.getStringRepresentation()+" " +
-					   "errechnete qualit??t: "+results.get(game.getStringRepresentation()));
+			_log.debug("calculating game: "+game.getStringRepresentation()+" " +
+					   "calculated quality: "+results.get(game.getStringRepresentation()));
 			return results.get(game.getStringRepresentation());
 		}
 		else
 		{
-			_log.debug("Node Ergebnis nicht vorhanden! -rechne lokal. Spiel: "+game.getStringRepresentation());
+			_log.debug("Node result not existing! Calculating locally. Game: "+game.getStringRepresentation());
 			AlphaBetaSearchFixedDepth abs=new AlphaBetaSearchFixedDepth();
 			if(game.getPlayerToMakeTurn()==maximizingPlayer)
 			{

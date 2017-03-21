@@ -35,7 +35,7 @@ public class Quality {
     // private static int points_pawn_in_middle = 2;
     private static int points_castle = 5;
     private static double KING_THREATENED_FACTOR = 0.992;
-    private static double THREATENED_FACTOR = 0.91;
+    private static double THREATENED_FACTOR = 0.87;//0.87 -> Simon 0.91 -> Redis
     public byte[] fields;
     private Player player = null;
     private ChessBoard board = null;
@@ -94,10 +94,10 @@ public class Quality {
         ArrayList<Point> blackPawns = new ArrayList<Point>();
         ArrayList<Point> whitePawns = new ArrayList<Point>();
 
-        // *** Fuer alle legalen Felder ****************************************************
+        // *** For all legal fields ****************************************************
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                // *** Feldindex bestimmen ****************************************************
+                // *** ascertain field index ****************************************************
                 field = y * 10 + x;
                 temp_quality = 0;
 
@@ -231,7 +231,7 @@ public class Quality {
         // System.out.println(board.getReadableString()+" "+quality+"\n\n");
         // qualtity * 1000 -> Matt wird nicht erkannt!?!?
         // *** Wert zurueckgeben **********************************************************
-        return quality * 10000;
+        return quality * 1000;
     }
 
     private double threatenedQuality(int field) {

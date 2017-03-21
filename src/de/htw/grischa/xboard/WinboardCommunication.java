@@ -28,7 +28,7 @@ public class WinboardCommunication {
     //Loger for everything concerning communication with WinBoard
     private final static Logger LOG = Logger.getLogger(WinboardCommunication.class);
     // time how long GriScha has time to calculate it's move
-    private static int time = 20000;
+    private static int time = 15000;
 
     public void run() {
 
@@ -59,8 +59,7 @@ public class WinboardCommunication {
                             out = "result 1-0 {White mates}";
                         isGo = false;
                         System.out.println(out);
-                        LOG.debug("Schach Matt!" + out);
-                        // okDialog("Schach Matt!\n"+out);
+                        LOG.info("Check Mate" + out);
                     }
                     // read input from cmd
                     cmd = bin.readLine();
@@ -147,17 +146,6 @@ public class WinboardCommunication {
 
                     else if (cmd.equalsIgnoreCase("force"))
                         isGo = false;
-
-                    // setboard rn1qkbnr/pp1p1ppp/1bp1p3/8/4P3/3B4/PPPP1PPP/RNBQK1NR w KQkq - 0 1
-                    // setboard rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 1
-                    // setboard rnb1kbnr/pp1ppppp/3q4/2p5/2P5/5N2/PP1PPPPP/RNBQKB1R b KQkq - 0 1
-                    // setboard r3k3/8/8/8/8/8/8/1R2K3 w q - 0 1
-                    // Forsythe-Edwards Notation, as defined in the PGN standard
-                    // FEN := Position " " Spieler " " Rochade " " en-passant " " Halbz??ge " "
-                    // Zugnummer
-                    // p=pawn, r=rook, n=knight, b=bishop, q=queen, k=king, /=next row, int=count of
-                    // empty fields, w=white next, KQkq=something with castling
-                    // bauer turm springer l??ufer dame k??nig
 
                     // Setup of non standard board
                     else if (cmd.startsWith("setboard")) {
@@ -378,7 +366,7 @@ public class WinboardCommunication {
 
                     // output of calculated move or other
                     if (!out.equals("")) {
-                        LOG.debug("Output: " + out);
+                        LOG.info("Output: " + out);
                         System.out.println(out);
                     }
                     out = "";

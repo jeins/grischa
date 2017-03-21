@@ -28,7 +28,7 @@ public abstract class Node implements Runnable {
 
     /**
      * implementation of the runnable interface
-     * implements RediS registration
+     * implements Redis registration
      */
     protected void login() {
         RedisSubscriber = GClientConnection.getInstance().getRedis();
@@ -58,7 +58,7 @@ public abstract class Node implements Runnable {
 
             @Override
             public void onUnsubscribe(String s, int i) {
-                LOG.debug("i got unsubscribed");
+                LOG.debug("i got un-subscribed");
             }
 
             @Override
@@ -75,7 +75,7 @@ public abstract class Node implements Runnable {
         System.exit(98);
     }
 
-    public void sendResultsBack() {
+    public synchronized void sendResultsBack() {
         LOG.debug("i send results back");
         String result = getResult().toString();
         RedisPublisher = GClientConnection.getInstance().getRedis();

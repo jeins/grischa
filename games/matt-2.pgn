@@ -1,0 +1,15 @@
+[Event "Local Event"]
+[Site "Local Site"]
+[Date "2017.03.02"]
+[Round "1"]
+[White "PyChess.py"]
+[Black "PyChess.py"]
+[Result "0-1"]
+[ECO ""]
+[Time "15:33:00"]
+[SetUp "1"]
+[FEN "k4r2/Pb5r/1P1p4/1Q1q1p2/6p1/8/4BB1R/6K1 b - - 0 1"]
+[PlyCount "3"]
+
+1... Qh1+ 2. Rxh1 Rxh1# 0-1
+

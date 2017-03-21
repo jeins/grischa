@@ -1,5 +1,7 @@
 package de.htw.grischa.chess;
 
+//import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 
 /*
@@ -10,7 +12,6 @@ import java.util.ArrayList;
  *
  */
 public class GameList {
-
 	private ArrayList<ComputedGame> computedGames;
 	private int found=0;
 	
@@ -48,6 +49,7 @@ public class GameList {
 	 * @return double
 	 */
 	public double getGameValue(IChessGame game, int depth){
+		//log.debug("getGameValue@ " + computedGames.get(found).getQuality());
 		return computedGames.get(found).getQuality();
 	}
 	
