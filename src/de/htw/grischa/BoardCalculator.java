@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  *
- * *  <h3>Version History</h3>
+ * <h3>Version History</h3>
  * <ul>
  * <li> 0.1 07/14 - Karsten Kochan - first implementation </li>
  * </ul>

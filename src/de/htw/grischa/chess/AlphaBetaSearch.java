@@ -12,7 +12,9 @@ import java.util.ArrayList;
  * <li> 0.0.? - 12/10 - Rossius - ??? </li>
  * <li> 0.0.2 - 04/14 - Karsten Kochan - First database implementation</li>
  * <li> 0.0.3 - 07/14 - Karsten Kochan - Cleanup, check for db usage via properties file, documentation</li>
- * <li> 0.0.3 - 02/17 - Benjamin Troester - Cleanup, research chess algorithm</li>
+ * <li> 0.0.3 - 02/17 - Benjamin Troester - Remove shared memory related stuff, due no database usage
+ * and memory errors</li>
+ * <li> 0.0.3 - 03/17 - Benjamin Troester - Cleanup, research chess algorithm</li>
  * <li> 0.0.3 - 05/17 - Benjamin Troester - Monte Carlo methods</li>
  * </ul>
  */

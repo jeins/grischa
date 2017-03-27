@@ -6,11 +6,17 @@ import java.util.ArrayList;
 
 /**
  * Chessboard implementation, implements IChessGame
+ * If you have no idea what ent passent, castling and stuff like that is, here
+ * you go: <a href="http://www.schach-tipps.de/schachregeln-schach-lernen">Schachregeln</a>
+ *
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.0.1 - 12/09 - Heim - Initial Version</li>
- * <li> 0.0.? - 05/10 - Heim - ???</li>
+ * <li> 0.0.1 - 12/09 - Daniel Heim - Initial Version</li>
+ * <li> 0.0.? - 05/10 - Daniel Heim - ???</li>
  * <li> 0.0.3 - 06/14 - Karsten Kochan - Added toDatabase method, added parent</li>
+ * <li> 0.0.3 - 02/17 - Benjamin Troester - Removing toDatabase method and parent,
+ * due no longer need</li>
+ * * <li> 0.0.3 - 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
  * </ul>
  *
  * @author Heim
@@ -19,8 +25,9 @@ import java.util.ArrayList;
  */
 
 public class ChessBoard implements IChessGame, Serializable {
+    // values for chess pieces in byte style
     public static final byte EMPTY_FIELD = 0;
-    public static final byte ILLEGAL_FIELD = -1;
+    public static final byte ILLEGAL_FIELD = -1;//means out of chessboard range
     public static final byte BLACK_PAWN = 2;
     public static final byte BLACK_ROOK = 5;
     public static final byte BLACK_KNIGHT = 3;
@@ -37,7 +44,8 @@ public class ChessBoard implements IChessGame, Serializable {
     private final static Logger log = Logger.getLogger(ChessBoard.class);
     private static final String[] NAMES = {"x", "", "B", "S", "L", "T", "D", "K", "", "", "", "",
             "b", "s", "l", "t", "d", "k"};
-    private static final short[] QUALITIES = {0, 0, -1, -3, -3, -5, -9, -100, 0, 0, 0, 0, 1, 3, 3, 5, 9, 100};
+    private static final short[] QUALITIES = {0, 0, -1, -3, -3, -5, -9, -100,
+            0, 0, 0, 0, 1, 3, 3, 5, 9, 100};
     private static final int[] ROOK_DIRECTIONS = {-10, -1, 1, 10};
     private static final int[] KNIGHT_DIRECTIONS = {-21, -19, -8, 12, 21, 19, 8, -12};
     private static final int[] BISHOP_DIRECTIONS = {-11, -9, 9, 11};
@@ -58,7 +66,13 @@ public class ChessBoard implements IChessGame, Serializable {
     private IChessGame parent;
 
     /**
-     * Constructor
+     * Constructor for a chess board, default chessboard!
+     * This means that this constructor gets the initial position
+     * of a chess game, where white makes the first move. The
+     * chessboards is byte array with 120 fields, left and right
+     * of the chessboard are each one row and to columns at the
+     * top and bottom of the board. This is done so, because the
+     * check easily for illegal moves of the knight.
      */
     public ChessBoard() {
         fields = new byte[120];
@@ -72,38 +86,45 @@ public class ChessBoard implements IChessGame, Serializable {
         BlackCanLongRochade = true;
         BlackCanShortRochade = true;
 
-        entPassent = new ArrayList<IChessGame>();
-        //BlackCanRochade=true;
-        //WhiteCanRochade=true;
+        //ent passent move are possible
+        entPassent = new ArrayList<>();
     }
 
     /**
-     * Constructor from existing board
-     *
-     * @param oldBoard Chessboard to clone
+     * Constructor for already existing boards.
+     * Takes a given board and sets it to current board
+     * used.
+     * @param   oldBoard    Chessboard to clone
      */
     private ChessBoard(ChessBoard oldBoard) {
+        //actual cloning operation
         this.fields = oldBoard.fields.clone();
-        entPassent = new ArrayList<IChessGame>();
 
+        entPassent = new ArrayList<>();
+
+        //copies castling options of the given board
         this.BlackCanLongRochade = oldBoard.BlackCanLongRochade;
         this.BlackCanShortRochade = oldBoard.BlackCanShortRochade;
         this.WhiteCanLongRochade = oldBoard.WhiteCanLongRochade;
         this.WhiteCanShortRochade = oldBoard.WhiteCanShortRochade;
 
+        //counts the moves of both players in this match
         this.round_counter = oldBoard.round_counter + 1;
 
+        //sets bool if game state is lost
         this.BlackLost = oldBoard.BlackLost;
         this.WhiteLost = oldBoard.WhiteLost;
 
-        if (oldBoard.playerToMakeTurn == Player.BLACK) playerToMakeTurn = Player.WHITE;
-        else playerToMakeTurn = Player.BLACK;
+        //decision who is on the move
+        if (oldBoard.playerToMakeTurn == Player.BLACK)
+            playerToMakeTurn = Player.WHITE;
+        else
+            playerToMakeTurn = Player.BLACK;
     }
 
     /**
-     * Provides the standard starting position as Chessboard
-     *
-     * @return ChessBoard with starting position
+     * Provides the standard starting position of a chessboard
+     * @return  ChessBoard  with starting position
      */
     public static ChessBoard getStandardChessBoard() {
         ChessBoard board = new ChessBoard();
@@ -135,9 +156,8 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Convert String representation of field into int value
-     *
-     * @param in String to convert
-     * @return int representation
+     * @param   in      String to convert
+     * @return  int     representation
      * @throws java.lang.IllegalArgumentException if input String is invalid
      */
     public static int fieldNameToIndex(String in) throws IllegalArgumentException {
@@ -217,13 +237,15 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
 
-    /************************************************************************************/
-    /************************* Prozedur: initializeFields *******************************/
+    /**********************************************************************************/
+    /************************* Method: initializeFields *******************************/
+    /**********************************************************************************/
 
     /**
-     * ********************************************************************************
+     *
+     * @param position
+     * @return
      */
-
     public int parseField(int position) {
         //*** linken und rechten rand beruecksichtigen ***********************************
         int realPosition = position / 8 * 10;
@@ -236,31 +258,39 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
 
-    /************************************************************************************/
-    /************************** Funktion: getNextTurns **********************************/
+    /**********************************************************************************/
+    /************************** Method: getNextTurns **********************************/
+    /**********************************************************************************/
 
     /**
-     * Gibt ein halbwegs lesbares Brett zur�ck schwarze Figuren sind gro�, wei�e
-     * klein geschrieben
+     * Getter method, that provides a readable version of the current board.
+     * White pieces have lower case letters and black pieces have capital letters.
+     * Every chessboard starts with an empyth string and at the coordinates A1
+     * on the chessboard. In our byte array it means at field[10].
+     * This getter is very slow, due the double for loop (quadratic runtime), it has to
+     * iterate through the field array and check for the possible piece on each field.
      */
     public String getReadableString() {
-        //*** Variablen-Deklaration ******************************************************
+        //declare variables
         String s = "";
         int i = 0;
 
+        //start outer loop
         for (int dy = 10; dy > 1; dy--) {
-            if (dy == 10) s += "  ";
-            else s += dy - 1 + " ";
+            if (dy == 10)
+                s += "  ";
+            else
+                s += dy - 1 + " ";
+
+            //start inner loop
             for (int dx = 1; dx < 9; dx++) {
                 if (dy == 10) s += (char) ('A' + dx - 1) + " ";
-
                 i = dy * 10 + dx;
-                //*** Figuren eintragen ******************************************************
+                //"pattern matching" for the pieces to put in String
                 switch (fields[i]) {
                     case (EMPTY_FIELD):
                         s += "  ";
                         break;
-
                     case (BLACK_PAWN):
                         s += "B ";
                         break;
@@ -279,7 +309,6 @@ public class ChessBoard implements IChessGame, Serializable {
                     case (BLACK_KING):
                         s += "K ";
                         break;
-
                     case (WHITE_PAWN):
                         s += "b ";
                         break;
@@ -302,19 +331,17 @@ public class ChessBoard implements IChessGame, Serializable {
             }
             s += "\n";
         }
-
-        //*** String zurueckgeben ********************************************************
         return s;
     }
 
 
     /************************************************************************************/
-    /************************** Funktion: makeBlackMoves ********************************/
+    /************************** Method: makeBlackMoves ********************************/
+    /************************************************************************************/
 
     /**
-     * ********************************************************************************
+     * Method to initialize the Fields
      */
-
     private void initializeFields() {
         //*** Einzelne Felder initializieren *********************************************
 
@@ -334,13 +361,10 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
 
-    /************************************************************************************/
-    /************************** Funktion: makeWhiteMoves ********************************/
-
     /**
-     * ********************************************************************************
+     * Getter method for the next turns
+     * @return
      */
-
     public ArrayList<IChessGame> getNextTurns() {
         //	if(nextTurns!=null) return nextTurns;
         if (playerToMakeTurn == Player.WHITE) {
@@ -350,14 +374,10 @@ public class ChessBoard implements IChessGame, Serializable {
         }
     }
 
-
-    /************************************************************************************/
-    /************************ Funktion: makeBlackPawnMove *******************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @return
      */
-
     private ArrayList<IChessGame> makeWhiteMoves() {
         //*** Variablen-Deklaration ******************************************************
         int field;
@@ -424,14 +444,10 @@ public class ChessBoard implements IChessGame, Serializable {
         return moves;
     }
 
-
-    /************************************************************************************/
-    /************************ Funktion: makeWhitePawnMove *******************************/
-
     /**
-     * ********************************************************************************
+     * Method
+     * @return  ArrayList<IChessGame>
      */
-
     private ArrayList<IChessGame> makeBlackMoves() {
         //*** Variablen-Deklaration ******************************************************
         int field;
@@ -500,14 +516,11 @@ public class ChessBoard implements IChessGame, Serializable {
         return moves;
     }
 
-
-    /************************************************************************************/
-    /************************* Funktion: genericWhiteMoves ******************************/
-
     /**
-     * ********************************************************************************
+     * Method that handles the black pawn moves.
+     * @param field
+     * @return
      */
-
     private ArrayList<ChessBoard> makeBlackPawnMove(int field) {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<ChessBoard> followMoves;
@@ -656,14 +669,11 @@ public class ChessBoard implements IChessGame, Serializable {
         return followMoves;
     }
 
-
-    /************************************************************************************/
-    /************************* Funktion: genericBlackMoves ******************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param field
+     * @return
      */
-
     private ArrayList<ChessBoard> makeWhitePawnMove(int field) {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<ChessBoard> followMoves;
@@ -805,14 +815,13 @@ public class ChessBoard implements IChessGame, Serializable {
         return followMoves;
     }
 
-
-    /************************************************************************************/
-    /************************** Funktion: whiteSingleMove *******************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param field
+     * @param directions
+     * @param piece
+     * @return
      */
-
     private ArrayList<ChessBoard> genericWhiteMoves(int field, int[] directions, byte piece) {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<ChessBoard> followMoves;
@@ -851,14 +860,13 @@ public class ChessBoard implements IChessGame, Serializable {
         return followMoves;
     }
 
-
-    /************************************************************************************/
-    /************************* Funktion: blackSingleMove ********************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param field
+     * @param directions
+     * @param piece
+     * @return
      */
-
     private ArrayList<ChessBoard> genericBlackMoves(int field, int[] directions, byte piece) {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<ChessBoard> followMoves;
@@ -897,14 +905,13 @@ public class ChessBoard implements IChessGame, Serializable {
         return followMoves;
     }
 
-
-    /************************************************************************************/
-    /*************************** Funktion: executeMove **********************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param field
+     * @param directions
+     * @param piece
+     * @return
      */
-
     private ArrayList<ChessBoard> whiteSingleMove(int field, int[] directions, byte piece) {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<ChessBoard> followMoves;
@@ -934,14 +941,13 @@ public class ChessBoard implements IChessGame, Serializable {
         return followMoves;
     }
 
-
-    /************************************************************************************/
-    /*************************** Funktion: getQuality ***********************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param field
+     * @param directions
+     * @param piece
+     * @return
      */
-
     private ArrayList<ChessBoard> blackSingleMove(int field, int[] directions, byte piece) {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<ChessBoard> followMoves;
@@ -971,14 +977,13 @@ public class ChessBoard implements IChessGame, Serializable {
         return followMoves;
     }
 
-
-    /************************************************************************************/
-    /********************** Funktion: getStringRepresentation ***************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param oldField
+     * @param newField
+     * @param piece
+     * @return
      */
-
     private ChessBoard executeMove(int oldField, int newField, byte piece) {
         //*** Variablen-Deklaration ******************************************************
         ChessBoard board;
@@ -1014,14 +1019,11 @@ public class ChessBoard implements IChessGame, Serializable {
         return board;
     }
 
-
-    /************************************************************************************/
-    /************************** Funktion: loadFromString ********************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param   player      to calculated the quality for
+     * @return
      */
-
     public int getQuality(Player player) {
         //*** Variablen-Deklaration ******************************************************
         int field;
@@ -1047,14 +1049,10 @@ public class ChessBoard implements IChessGame, Serializable {
         return quality;
     }
 
-
-    /************************************************************************************/
-    /********************** Funktion: getHash *******************************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @return
      */
-
     public String getStringRepresentation() {
         String game = "";
         int field;
@@ -1072,14 +1070,10 @@ public class ChessBoard implements IChessGame, Serializable {
         return game;
     }
 
-
-    /************************************************************************************/
-    /****************************** Funktion: makeTurn **********************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param s
      */
-
     public void loadFromString(String s) {
         char[] c = new char[65];
         c = s.toCharArray();
@@ -1154,14 +1148,10 @@ public class ChessBoard implements IChessGame, Serializable {
         }
     }
 
-
-    /************************************************************************************/
-    /*************************** Funktion: isLegalMove **********************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @return
      */
-
     public String getHash() {
         //*** Variablen-Deklaration ******************************************************
         String hash = "";
@@ -1188,32 +1178,26 @@ public class ChessBoard implements IChessGame, Serializable {
         return hash;
     }
 
-
-    /************************************************************************************/
-    /****************************** Funktion: equals ************************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param   turn        String as turn to do
+     * @return
+     * @throws Exception
      */
-
     public IChessGame makeTurn(String turn) throws Exception {
         ArrayList<IChessGame> nextTurns = this.getNextTurns();
         for (int i = 0; i < nextTurns.size(); i++) {
-            if (turn.equals(nextTurns.get(i).getTurnNotation())) {
+            if (turn.equals(nextTurns.get(i).getTurnNotation()))
                 return nextTurns.get(i);
-            }
         }
         throw new Exception(turn + " :Zug nicht in Liste legaler Z�ge gefunden;");
     }
 
-
-    /************************************************************************************/
-    /****************************** Funktion: fieldNameToIndex **************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param   board
+     * @return
      */
-
     public boolean isLegalMove(ChessBoard board) {
         //*** Variablen Deklaration ******************************************************
         ArrayList<IChessGame> nextBoards;
@@ -1229,14 +1213,11 @@ public class ChessBoard implements IChessGame, Serializable {
         return false;
     }
 
-
-    /************************************************************************************/
-    /****************************** Funktion: indexToFieldName ***************************/
-
     /**
-     * ********************************************************************************
+     *
+     * @param board
+     * @return
      */
-
     public boolean equals(ChessBoard board) {
         for (int i = 0; i < this.fields.length; i++) {
             if (board.fields[i] != this.fields[i]) return false;
@@ -1246,14 +1227,14 @@ public class ChessBoard implements IChessGame, Serializable {
         return true;
     }
 
-
-    /************************************************************************************/
-    /******************************* Funktion: Clone ************************************/
-
     /**
-     * ********************************************************************************
+     * Method for cloning a board - will create a new
+     * ChessBoard object and clone it`s settings to the
+     * new one. The returned ChessBoard is equal but note the same
+     * as the original one.
+     * @return      CheesBoard  same as the current board, but put into
+     * a new object.
      */
-
     private ChessBoard Clone() {
         ChessBoard board = new ChessBoard();
         board.fields = this.fields.clone();
@@ -1269,13 +1250,10 @@ public class ChessBoard implements IChessGame, Serializable {
         return board;
     }
 
-
-    /************************************************************************************/
-    /************************** Funktion: getWhiteRochade *******************************/
     /**
-     * ********************************************************************************
+     *
+     * @return
      */
-
     ArrayList<IChessGame> getWhiteRochade() {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<IChessGame> rochadeList;
@@ -1339,56 +1317,10 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
 
-    /************************************************************************************/
-    /*********************** Funktion: IsFieldAttackedByBlack ***************************/
     /**
-     * ********************************************************************************
+     * Getter
+     * @return
      */
-
-    public boolean IsFieldAttackedByBlack(int field) {
-        //*** Variablen-Deklaration ******************************************************
-        byte piece;
-        int u;
-
-        //*** Testen ob Bauer werfen kann ************************************************
-        if (fields[field + 9] == BLACK_PAWN || fields[field + 11] == BLACK_PAWN) return true;
-
-        //*** Testen ob Springer werfen kann *********************************************
-        for (int i = 0; i < KNIGHT_DIRECTIONS.length; i++) {
-            if (fields[field + KNIGHT_DIRECTIONS[i]] == BLACK_KNIGHT) return true;
-        }
-
-        //*** Turm Richtungen testen *****************************************************
-        for (int i = 0; i < ROOK_DIRECTIONS.length; i++) {
-            u = 1;
-            while ((piece = fields[field + ROOK_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
-            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
-            if (piece == BLACK_QUEEN || piece == BLACK_ROOK) return true;
-            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
-            if (piece == BLACK_KING && u == 1) return true;
-        }
-
-        //*** Turm Richtungen testen *****************************************************
-        for (int i = 0; i < ChessBoard.BISHOP_DIRECTIONS.length; i++) {
-            u = 1;
-            while ((piece = fields[field + BISHOP_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
-            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
-            if (piece == BLACK_QUEEN || piece == BLACK_BISHOP) return true;
-            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
-            if (piece == BLACK_KING && u == 1) return true;
-        }
-
-        //*** Default: false *************************************************************
-        return false;
-    }
-
-
-    /************************************************************************************/
-    /************************** Funktion: getBlackRochade *******************************/
-    /**
-     * ********************************************************************************
-     */
-
     ArrayList<IChessGame> getBlackRochade() {
         //*** Variablen-Deklaration ******************************************************
         ArrayList<IChessGame> rochadeList;
@@ -1452,13 +1384,54 @@ public class ChessBoard implements IChessGame, Serializable {
         return rochadeList;
     }
 
-
-    /************************************************************************************/
-    /*********************** Funktion: IsFieldAttackedByWhite ***************************/
     /**
-     * ********************************************************************************
+     * Method that checks if a certain field is attacked by the black opponent.
+     * @param field
+     * @return
      */
+    public boolean IsFieldAttackedByBlack(int field) {
+        //*** Variablen-Deklaration ******************************************************
+        byte piece;
+        int u;
 
+        //*** Testen ob Bauer werfen kann ************************************************
+        if (fields[field + 9] == BLACK_PAWN || fields[field + 11] == BLACK_PAWN) return true;
+
+        //*** Testen ob Springer werfen kann *********************************************
+        for (int i = 0; i < KNIGHT_DIRECTIONS.length; i++) {
+            if (fields[field + KNIGHT_DIRECTIONS[i]] == BLACK_KNIGHT) return true;
+        }
+
+        //*** Turm Richtungen testen *****************************************************
+        for (int i = 0; i < ROOK_DIRECTIONS.length; i++) {
+            u = 1;
+            while ((piece = fields[field + ROOK_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
+            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
+            if (piece == BLACK_QUEEN || piece == BLACK_ROOK) return true;
+            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
+            if (piece == BLACK_KING && u == 1) return true;
+        }
+
+        //*** Turm Richtungen testen *****************************************************
+        for (int i = 0; i < ChessBoard.BISHOP_DIRECTIONS.length; i++) {
+            u = 1;
+            while ((piece = fields[field + BISHOP_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
+            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
+            if (piece == BLACK_QUEEN || piece == BLACK_BISHOP) return true;
+            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
+            if (piece == BLACK_KING && u == 1) return true;
+        }
+
+        //*** Default: false *************************************************************
+        return false;
+    }
+
+
+    /**
+     * Method that checks if a certain field is attacked by the white opponent.
+     * @param field
+     * @return
+     */
     public boolean IsFieldAttackedByWhite(int field) {
         //*** Variablen-Deklaration ******************************************************
         byte piece;
@@ -1496,20 +1469,11 @@ public class ChessBoard implements IChessGame, Serializable {
         return false;
     }
 
-
-//	private ArrayList<ChessBoard> makePawnMove(int field, Player owner)
-//	{
-//		//*** Variablen-Deklaration ******************************************************
-//		ArrayList<ChessBoard> followMoves;
-//		
-//		//*** Liste initialisieren *******************************************************
-//		followMoves=new ArrayList<ChessBoard>();
-//		
-//		//*** Liste zur�ckgeben **********************************************************
-//		return followMoves;
-//	}
-
-    public String ToDebug() {
+    /**
+     *
+     * @return
+     */
+    public String toDebug() {
         String s = "";
 
         for (int y = 0; y < 10; y++) {
@@ -1522,12 +1486,19 @@ public class ChessBoard implements IChessGame, Serializable {
         return s;
     }
 
-
+    /**
+     *
+     * @param o
+     * @return
+     */
     public int compareTo(IChessGame o) {
         return this.heuristicValue - o.getHeuristicValue();
     }
 
-
+    /**
+     *
+     * @return
+     */
     public int getHeuristicValue() {
         return heuristicValue;
     }
@@ -1537,12 +1508,17 @@ public class ChessBoard implements IChessGame, Serializable {
         return this.TurnNotation;
     }
 
-
+    /**
+     *
+     */
     public void addRound() {
         this.round_counter++;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public int getRound() {
         return round_counter;
     }
@@ -1559,7 +1535,10 @@ public class ChessBoard implements IChessGame, Serializable {
         return -1;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public GameState getGameState() {
         //*** variablen initialisieren *****************************************
         int kingsField;
@@ -1615,7 +1594,10 @@ public class ChessBoard implements IChessGame, Serializable {
         return GameState.LEGAL;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public boolean isLegalBoard() {
         int kingsField;
 
@@ -1637,7 +1619,13 @@ public class ChessBoard implements IChessGame, Serializable {
         return true;
     }
 
-
+    /**
+     *
+     * @param   k_Castling  boolean if white king side castling (short castling) can be done
+     * @param   q_Castling  boolean if white queen side castling (long castling) can be done
+     * @param   K_Castling  boolean if black king side castling (short castling) can be done
+     * @param   Q_Castling  boolean if black queen side castling (long castling) can be done
+     */
     public void setRochade(boolean k_Castling, boolean q_Castling, boolean K_Castling, boolean Q_Castling) {
         BlackCanLongRochade = Q_Castling;
         BlackCanShortRochade = K_Castling;
@@ -1645,7 +1633,10 @@ public class ChessBoard implements IChessGame, Serializable {
         WhiteCanShortRochade = k_Castling;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public int getQ() {
         int q = 0;
         int field;
@@ -1662,6 +1653,10 @@ public class ChessBoard implements IChessGame, Serializable {
         return q;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTurnsMade() {
         return round_counter;
     }
