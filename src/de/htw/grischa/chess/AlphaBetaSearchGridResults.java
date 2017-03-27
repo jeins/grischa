@@ -10,8 +10,7 @@ import org.apache.log4j.Logger;
  *
  */
 
-public class AlphaBetaSearchGridResults extends AlphaBetaSearch
-{
+public class AlphaBetaSearchGridResults extends AlphaBetaSearch {
 	private final static Logger _log = Logger.getLogger(AlphaBetaSearch.class);
 	private ArrayList<String> sendedGames;//List of all games
 	private TreeMap<String, Integer> results;//red-black tree with key value
