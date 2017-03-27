@@ -1,16 +1,3 @@
-package de.htw.grischa.xboard;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import org.apache.log4j.Logger;
-
-import de.htw.grischa.GriScha;
-import de.htw.grischa.chess.GameState;
-import de.htw.grischa.chess.GridGameManager;
-import de.htw.grischa.chess.Player;
-
 /**
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * This class provides the communication interface to Xboard
@@ -23,6 +10,18 @@ import de.htw.grischa.chess.Player;
  */
 
 
+package de.htw.grischa.xboard;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.apache.log4j.Logger;
+
+import de.htw.grischa.GriScha;
+import de.htw.grischa.chess.GameState;
+import de.htw.grischa.chess.GridGameManager;
+import de.htw.grischa.chess.Player;
 
 public class WinboardCommunication {
     //Loger for everything concerning communication with WinBoard

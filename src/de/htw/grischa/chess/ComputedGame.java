@@ -1,29 +1,35 @@
+/**
+ * Class for the storing a given game
+ * In the tree alpha-beta is calculating the certain check positions,
+ * this class stores the chessboard representation, depth and quality given
+ *
+ * TODO: same game + depth with different qualities are not allowed to be contained
+ */
 package de.htw.grischa.chess;
 
-
 public class ComputedGame {
+	private IChessGame game;//chessboard representation
+	private int depth;//depth in game tree
+	private double quality;//quality of the chessboard/check position
 
-	private IChessGame game;
-	private int depth;
-	private double quality;
-	
-	// TODO: Game + Tiefe d??rfen nicht zweimal mit unterschiedlicher Qualit??t enthalten sein
-	
-	/*
-	 * Funktion public ComputedGame(IChessGame game, int depth, Double quality)
-	 * Konstruktor f??r ComputedGame
-	 */	
+	/**
+	 * Constructor for ComputedGame
+ 	 * @param	game	current game/chessboard
+	 * @param	depth	depth of game in game tree
+	 * @param 	quality	calculated quality of given game and depth
+	 */
 	public ComputedGame(IChessGame game, int depth, Double quality){
 		this.game = game;
 		this.depth = depth;
 		this.quality = quality;
 	}
-	
-	/*
-	 * Funktion public boolean equals(IChessGame game, int depth)
-	 * Zum ??berpr??fen ob das Spiel mit entsprechender Tiefe bereits enthalten ist, um sp??ter die entsprechende Qualit??t ausgegeb zu k??nnen.
-	 * @return boolean
-	 */	
+
+	/**
+	 * Methods checks if given game with given depth is already contained
+	 * @param 	game	current game/chessboard
+	 * @param 	depth	depth of game in the game tree
+	 * @return	boolean	is game with this check position and depth already enlisted
+	 */
 	public boolean equals(IChessGame game, int depth){
 		
 		if(this.game.equals(game) && this.depth==depth)
@@ -31,12 +37,13 @@ public class ComputedGame {
 		else
 			return false;
 	}
-	
-	/*
-	 * Funktion public boolean equals(IChessGame game, int depth, Double quality)
-	 * Zum ??berpr??fen ob das Spiel mit entsprechender Tiefe und Qualit??t bereits enthalten ist..
-	 * @return boolean
-	 */	
+
+	/**
+	 * Methods checks if given game with given depth and quality is already contained
+	 * @param 	game	current game/chessboard
+	 * @param 	depth	depth of game in the game tree
+	 * @return	boolean	is game with this check position and depth already enlisted
+	 */
 	public boolean equals(IChessGame game, int depth, Double quality){
 		
 		if(this.game.equals(game) && this.depth==depth && this.quality ==quality)
@@ -44,11 +51,10 @@ public class ComputedGame {
 		else
 			return false;
 	}
-	
-	/*
-	 * Funktion public double getQuality()
-	 * Gibt die Qualit??t des gespeicherten Spiels zur??ck
-	 * @return double 
+
+	/**
+	 * Getter for quality in a computed game
+	 * @return	double	returns double value for the chessboard
 	 */
 	public double getQuality() {
 		return quality;

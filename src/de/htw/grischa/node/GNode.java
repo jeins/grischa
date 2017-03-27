@@ -3,6 +3,10 @@ package de.htw.grischa.node;
 import de.htw.grischa.node.task.GTask;
 import org.apache.log4j.Logger;
 
+/**
+ * Extended Node implements how to run certain Nodes
+ */
+
 public class GNode extends Node {
     private final static Logger LOG = Logger.getLogger(Node.class);
     private GTask mTask = null;

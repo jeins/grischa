@@ -8,7 +8,12 @@ import redis.clients.jedis.JedisPubSub;
 
 /**
  * Abstract node class, implementing basic features of a node
- *
+ * Contains everything that is needed for communication with Redis server,
+ * push and pull messages, starting tasks for calculation
+ * abstract methods:
+ *  runTask(String taskString);
+ *  stopTask();
+ *  getResult();
  */
 
 public abstract class Node implements Runnable {
@@ -16,7 +21,7 @@ public abstract class Node implements Runnable {
     private final static Logger LOG = Logger.getLogger(Node.class);
     // bool status master node runs
     protected Boolean mIsRunning = true;
-    // access credentials for xmpp stuff - TODO can be deleted?
+    // access credentials for com server - Names for Server, Nodes etc
     private String mServer = "grischa.f4.htw-berlin.de";
     private String mUser = "grid-xmpp-user-001";
     private String mPassword = "node-001";
@@ -80,7 +85,7 @@ public abstract class Node implements Runnable {
         String result = getResult().toString();
         RedisPublisher = GClientConnection.getInstance().getRedis();
         RedisPublisher.publish("result:" + mUser, result);
-        GClientConnection.getInstance().realeaseRedis(RedisPublisher);
+        GClientConnection.getInstance().releaseRedis(RedisPublisher);
     }
 
     @SuppressWarnings("static-access")
@@ -142,7 +147,7 @@ public abstract class Node implements Runnable {
         LOG.debug("i register");
         RedisPublisher = GClientConnection.getInstance().getRedis();
         RedisPublisher.lpush("gregistered", mUser);
-        GClientConnection.getInstance().realeaseRedis(RedisPublisher);
+        GClientConnection.getInstance().releaseRedis(RedisPublisher);
     }
 
     protected abstract void runTask(String taskString);

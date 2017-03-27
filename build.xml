@@ -89,13 +89,5 @@
             </manifest>
         </jar>
     </target>
-    <target name="gdb" depends="build">
-        <jar destfile="gdb.jar" basedir="bin">
-            <zipgroupfileset dir="libs" includes="**/*.jar"/>
-            <manifest>
-                <attribute name="Main-Class" value="de.htw.grischa.chess.database.GDBRunner"/>
-            </manifest>
-        </jar>
-    </target>
-    <target name="grischa" depends="gclient, gnode, gdb"/>
+    <target name="grischa" depends="gclient, gnode"/>
 </project>

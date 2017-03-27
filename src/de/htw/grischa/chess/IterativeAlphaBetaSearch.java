@@ -1,18 +1,3 @@
-package de.htw.grischa.chess;
-
-import de.htw.grischa.chess.database.GDBRunner;
-import de.htw.grischa.chess.database.client.CommitThread;
-import de.htw.grischa.chess.database.client.DatabaseEntry;
-import de.htw.grischa.chess.database.client.FileSearch;
-import org.apache.log4j.Logger;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.Properties;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-
 /**
  * Iterative Alpha-Beta-search for moving down inside breadth-first search
  * <p>
@@ -31,6 +16,11 @@ import java.util.concurrent.LinkedBlockingQueue;
  * </ul>
  * @version 0.6
  */
+
+package de.htw.grischa.chess;
+
+import org.apache.log4j.Logger;
+
 public class IterativeAlphaBetaSearch implements Runnable {
     //looger
     private final static Logger log = Logger.getLogger(IterativeAlphaBetaSearch.class);
@@ -77,64 +67,20 @@ public class IterativeAlphaBetaSearch implements Runnable {
      * threading through runnable interface
      * run method containing breadth-first-search
      *
-     * Contains database usage, alpha beta search
      */
     public void run() {
-        Properties database = new Properties();
-        String host = null;
-        int port = 0;
-        String databaseFilePath = null;
-        boolean useDB;
-        FileSearch fileSearch = null;
-        BlockingQueue<DatabaseEntry> queue = null;
-        CommitThread worker;
         int depth;
         AlphaBetaSearchFixedDepth abp;
-
-        try {
-            FileInputStream propertiesFile = new FileInputStream(GDBRunner.properties);
-            database.load(propertiesFile);
-            propertiesFile.close();
-            host = database.getProperty("grischa.DBHost");
-            port = Integer.valueOf(database.getProperty("grischa.DBPort"));
-            useDB = database.getProperty("grischa.useDB").equals("true");
-            databaseFilePath = database.getProperty("grischa.DBPath");
-        } catch (Exception e) {
-            log.error("Could not detect database settings from properties file");
-            useDB = false;
-        }
         if (this.maximizingPlayer == game.getPlayerToMakeTurn()) {
             depth = 0;
-        } else {
-            depth = 1;
         }
-        if (useDB) {
-            log.info("This is a database based search run");
-            RandomAccessFile memoryMappedFile = null;
-            try {
-                memoryMappedFile = new RandomAccessFile(databaseFilePath, "r");
-                fileSearch = new FileSearch(memoryMappedFile, false);
-                queue = new LinkedBlockingQueue<DatabaseEntry>();
-            } catch (Exception e) {
-                log.error("Could not create memory mapped file");
-                useDB = false;
-            }
-            if (useDB) {
-                worker = new CommitThread(queue, port, host);
-                worker.start();
-            }
-        } else {
-            log.info("This is a non databased search run");
+        else {
+            depth = 1;
         }
         while (true) {
             abp = new AlphaBetaSearchFixedDepth();
-            abp.setUseDB(useDB);
-            if (depth > 3 && useDB) {
-                abp.setQueue(queue);
-                abp.setFileSearch(fileSearch);
-            }
             long startTime = System.nanoTime();
-            value = abp.getAlphaBetaTurn(depth, game, fileSearch);
+            value = abp.getAlphaBetaTurn(depth, game);
             long endTime = System.nanoTime();
             //Mark best move
             bestTurn = abp.nextGame;
@@ -143,8 +89,7 @@ public class IterativeAlphaBetaSearch implements Runnable {
             //depth += 2;
             log.debug("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
             log.info("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
-            // original value 40
-            if (depth > 8) {
+            if (depth > 8) {// original value 40
                 log.debug("Breadth-first search terminated due to maximum depth of 8");
                 break;
             }

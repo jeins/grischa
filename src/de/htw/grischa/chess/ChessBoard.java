@@ -1,26 +1,24 @@
-package de.htw.grischa.chess;
-
-import de.htw.grischa.chess.database.client.DatabaseEntry;
-import org.apache.log4j.Logger;
-
-import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-
 /**
  * Chessboard implementation, implements IChessGame
  * <h3>Version History</h3>
  * <ul>
- * <li> 1.0 - 12/09 - Heim - Initial Version</li>
- * <li> 1.? - 05/10 - Heim - ???</li>
- * <li> 1.3 - 06/14 - Karsten Kochan - Added toDatabase method, added parent</li>
+ * <li> 0.0.1 - 12/09 - Heim - Initial Version</li>
+ * <li> 0.0.? - 05/10 - Heim - ???</li>
+ * <li> 0.0.3 - 06/14 - Karsten Kochan - Added toDatabase method, added parent</li>
  * </ul>
  *
  * @author Heim
  * @version 1.3
  * @see de.htw.grischa.chess.IChessGame
  */
+
+package de.htw.grischa.chess;
+
+import org.apache.log4j.Logger;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class ChessBoard implements IChessGame, Serializable {
     public static final byte EMPTY_FIELD = 0;
     public static final byte ILLEGAL_FIELD = -1;
@@ -36,9 +34,7 @@ public class ChessBoard implements IChessGame, Serializable {
     public static final byte WHITE_BISHOP = 14;
     public static final byte WHITE_QUEEN = 16;
     public static final byte WHITE_KING = 17;
-    /**
-     * Logger
-     */
+    //Logger
     private final static Logger log = Logger.getLogger(ChessBoard.class);
     private static final String[] NAMES = {"x", "", "B", "S", "L", "T", "D", "K", "", "", "", "",
             "b", "s", "l", "t", "d", "k"};
@@ -1688,55 +1684,6 @@ public class ChessBoard implements IChessGame, Serializable {
      */
     public boolean hasWhiteLost() {
         return WhiteLost;
-    }
-
-    /**
-     * Generates database-String for current board including hash, depth and value
-     * <p>
-     * Syntax: Hash#Depth#Value
-     * </p>
-     *
-     * @return Hashed Chessboard String with depth and value, null if MD5 missing
-     * http://www.avajava.com/tutorials/lessons/how-do-i-generate-an-md5-digest-for-a-string.html</a>
-     */
-    public String toDatabase(Player current, int depth) {
-        String hash = this.getMD5Hash();
-        if (hash == null || hash.length() == 0) {
-            return null;
-        }
-        return hash + DatabaseEntry.SEGMENTS_DELIMITER + DatabaseEntry.convert(depth, 4) +
-                DatabaseEntry.SEGMENTS_DELIMITER + DatabaseEntry.convert(this.getQuality(current), 4);
-    }
-
-    /**
-     * Convert the chessboard to a database string containing figures, player and castling
-     * <p>
-     * MD5(Board+Active Player+WSR+WLR+BSR+BLR)
-     * </p>
-     *
-     * @return String representation of MD5-Hash from Board
-     * @see de.htw.grischa.chess.database.client.DatabaseEntry#DatabaseEntry(String)
-     * @see <a href="http://www.avajava.com/tutorials/lessons/how-do-i-generate-an-md5-digest-for-a-string.html">
-     */
-    public String getMD5Hash() {
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            log.fatal("MD5 not available");
-            return null;
-        }
-        String original = this.getStringRepresentation() + String.valueOf(this.WhiteCanShortRochade) +
-                String.valueOf(this.WhiteCanLongRochade) + String.valueOf(this.BlackCanShortRochade) +
-                String.valueOf(this.BlackCanLongRochade);
-        md.update(original.getBytes());
-        byte[] digest = md.digest();
-        StringBuilder sb = new StringBuilder();
-        for (byte b : digest) {
-            String temp = Integer.toHexString((b & 0xff));
-            sb.append(temp.length() == 1 ? DatabaseEntry.convert(0, 2 - temp.length()) + temp : temp);
-        }
-        return sb.toString();
     }
 
     /**

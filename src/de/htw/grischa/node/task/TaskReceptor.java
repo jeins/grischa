@@ -81,7 +81,7 @@ public class TaskReceptor implements Runnable {
         } finally {
             LOG.debug("task receptor subscriber i release redis");
             RedisSubscriber.close();
-            GClientConnection.getInstance().realeaseRedis(RedisSubscriber);
+            GClientConnection.getInstance().releaseRedis(RedisSubscriber);
         }
     }
 
@@ -96,7 +96,7 @@ public class TaskReceptor implements Runnable {
         } finally {
             LOG.debug("task receptor publisher i release redis");
             RedisPublisher.close();
-            GClientConnection.getInstance().realeaseRedis(RedisPublisher);
+            GClientConnection.getInstance().releaseRedis(RedisPublisher);
         }
     }
 

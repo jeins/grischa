@@ -1,63 +1,69 @@
-package de.htw.grischa.chess;
+/**
+ * This class holds the already calculated boards, with their given depth.
+ * Available through getter/setter methods.
+ * Boards are stored with possible castling, which colours move/turn it is.
+ * If there is positive request, the calculated value will be returned,
+ * so that the node don`t have to calculated this chessboard in the game tree.
+ */
 
-//import org.apache.log4j.Logger;
+package de.htw.grischa.chess;
 
 import java.util.ArrayList;
 
-/*
- * In der Klasse GameList werden die schon berechneten Bretter mit der jeweils genutzten Tiefe gespeichert und k??nnen wieder ausgelesen werden.
- * Es werden die Brettstellungen mit m??glicher Rochade und welche Farbe als n??chstes dran ist gespeichert.
- * Bei einer positiven Anfrage wird der Wert der Bewertungsfunktion zur??ckgegeben um so dem Node das erneute auswerten des Suchbaums unter dieser Brettstellung zu ersparen. 
- * @author Thor
- *
- */
 public class GameList {
 	private ArrayList<ComputedGame> computedGames;
 	private int found=0;
-	
-	
+
+	/**
+	 * Constructor with empty game list
+ 	 */
 	public GameList(){
-		this.computedGames = new ArrayList<ComputedGame>();
+		this.computedGames = new ArrayList<>();
 	}
-	
+
+	/**
+	 * Constructor with given games
+	 * @param gameList
+	 */
 	public GameList(ArrayList<ComputedGame> gameList){
-		this.computedGames = new ArrayList<ComputedGame>();
+		this.computedGames = new ArrayList<>();
 		this.computedGames.addAll(gameList);
 	}
-	
-	/*
-	 * Funktion public boolean isInList(IChessGame game, Integer depth)
-	 * Pr??ft ob das gesuchte Spiel mit entsprechender Tiefe in der Liste ArrayList<ComputedGame> computedGames enthalten ist.
-	 * @return boolean
-	 */
+
+    /**
+     * Method checks if a searched game, with given depth, is already enlisted in computedGames
+     * @param   game    chessboard to be compared
+     * @param   depth   given depth in the tree
+     * @return  boolean
+     */
 	public boolean isInList(IChessGame game, int depth) {
-		for (int i=0;i<computedGames.size();i++)
-		{
-			// Wenn das game vorhanden ist und entsprechende depth hat true zur??ckgeben
-			if (computedGames.get(i).equals(game, depth))
-			{
-				found = i;
-				return true;
-			}
-		}
-		return false;
+	    for(ComputedGame cg : computedGames) {
+	        if(cg.equals(game, depth)) {
+	            found = computedGames.indexOf(cg);
+	            return true;
+            }
+        }
+        return false;
 	}
-	
-	/*
-	 * Funktion public double getGameValue(IChessGame game, int depth)
-	 * Holt die Qualit??t des Spiels. Erst verwenden NACH aufruf von isInList!
-	 * @return double
-	 */
+
+    /**
+     * Returns quality of a given chessboard and depth,
+     * only allowed to be called after isInList!
+     * @param   game    chessboard to return quality
+     * @param   depth   depth in tree with this chessboard
+     * @return  double
+     */
 	public double getGameValue(IChessGame game, int depth){
-		//log.debug("getGameValue@ " + computedGames.get(found).getQuality());
 		return computedGames.get(found).getQuality();
 	}
-	
-	/*
-	 * Funktion public void setGame(IChessGame game, int depth, double Quality)
-	 * Erzeugt ein Objekt ComputedGame und f??llt es mit Werten und f??gt diese Objekt der Liste computedGames hinzu.
-	 * @return void
-	 */
+
+    /**
+     * Setter for adding calculated boards to the game list.
+     * Creates new ComputedGame in the ArrayList
+     * @param   game    the to insert game
+     * @param   depth   depth in the tree
+     * @param   Quality quality of the given board, depth
+     */
 	public void setGame(IChessGame game, int depth, double Quality){
 		computedGames.add(new ComputedGame(game, depth, Quality));
 	}

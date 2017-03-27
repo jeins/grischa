@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 package de.htw.grischa.chess;
 
 import java.util.ArrayList;

@@ -10,14 +10,10 @@ import redis.clients.jedis.Jedis;
 public class GWorkerNodeRegistry {
     private static GWorkerNodeRegistry mInstance = null;
     private final static Logger LOG = Logger.getLogger(GNode.class);
-    private final static String SERVERNAME = "grischa.f4.htw-berlin.de";
-    public final static String USERNAME = "registry";
-    private final static String PASSWORD = "grischa-registry";
-    private final static String GRID_GROUP = "grid";
-    
+
     /**
      * Returns an started instance of the registry
-     * @return Running registry or null if can not be stared
+     * @return Running registry or null if can not be started
      */
     public static GWorkerNodeRegistry getInstance() {
         if (mInstance == null) {
@@ -47,12 +43,10 @@ public class GWorkerNodeRegistry {
     public ArrayList<String> getOnlineWorkerNodes() {
         Jedis j = GClientConnection.getInstance().getRedis();
         List<String> res = j.lrange("gregistered", 0, -1);
-//        res.add("fooc");
         j.close();
 
         ArrayList<String> onlineNodes = new ArrayList<String>();
-        
-        // TODO - laurence: Remove admin form grid group
+
         for (String entry : res) {
             LOG.debug(res);
 

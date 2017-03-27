@@ -1,3 +1,9 @@
+/**
+ * Entry point for communication between Xboard and Comm-Server
+ * Class that takes care of bootstrapping worker node registration,
+ * connection to the client
+ */
+
 package de.htw.grischa.client;
 
 import de.htw.grischa.registry.GWorkerNodeRegistry;
@@ -14,13 +20,14 @@ public class GClient implements Runnable {
         // Boot registry and client
         GWorkerNodeRegistry.getInstance();
         GClientConnection.getInstance();
-        
+        //Command line interface between Xboard and GClient
         WinboardCommunication cli = new WinboardCommunication();
         cli.run();
     }
 
     /**
-     * @param args
+     * Entry point for the Client
+     * @param   args
      */
     public static void main(String[] args) {
         GClient client = new GClient();

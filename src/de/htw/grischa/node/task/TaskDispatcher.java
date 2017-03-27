@@ -1,6 +1,5 @@
 package de.htw.grischa.node.task;
 
-import de.htw.grischa.client.GClient;
 import org.apache.log4j.Logger;
 
 import de.htw.grischa.client.GClientConnection;
@@ -37,7 +36,7 @@ public class TaskDispatcher implements Runnable {
         } finally {
             LOG.debug("task dispatcher i release redis");
             j.close();
-            GClientConnection.getInstance().realeaseRedis(j);
+            GClientConnection.getInstance().releaseRedis(j);
         }
     }
     

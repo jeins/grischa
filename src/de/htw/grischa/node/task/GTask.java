@@ -1,3 +1,6 @@
+/**
+ *
+ */
 package de.htw.grischa.node.task;
 
 import org.apache.log4j.Logger;
@@ -11,8 +14,8 @@ import de.htw.grischa.chess.Player;
 
 public class GTask implements Task {
     private final static Logger LOG = Logger.getLogger(GTask.class);
-    private final static String JSON_GAME_KEY = "game";
-    private final static String JSON_MAXPLAYER_KEY = "maxplayer";
+    private final static String JSON_GAME_KEY = "game";//JSON version of
+    private final static String JSON_MAXPLAYER_KEY = "maxplayer";//player to maximize
     
     private Boolean mIsRunning = true;
     private IChessGame mChessGame = null;

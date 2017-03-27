@@ -1,6 +1,8 @@
 package de.htw.grischa.chess;
 
-
+/**
+ * GridGameManager takes care of games to distribute it to nodes
+ */
 public class GridGameManager {
     private IChessGame board;
     private DistributedSearch abps;
@@ -28,7 +30,7 @@ public class GridGameManager {
         this.board = new ChessBoard();
         this.board.loadFromString(board);
 
-        // Rochade noch moeglich oder nicht
+        // is castling still achievable
         this.board.setRochade(k_Castling, q_Castling, K_Castling, Q_Castling);
     }
 

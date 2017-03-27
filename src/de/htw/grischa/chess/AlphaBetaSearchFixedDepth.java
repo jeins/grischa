@@ -1,3 +1,9 @@
+/**
+ * Abstract alpha-beta-search implementing the most important methods for searching tree
+ * Alpha-Beta pruning a game tree to optimize speed, memory, cpu, network usage
+ * Fixed the problem of depth
+ *
+ */
 package de.htw.grischa.chess;
 
 public class AlphaBetaSearchFixedDepth extends AlphaBetaSearch {

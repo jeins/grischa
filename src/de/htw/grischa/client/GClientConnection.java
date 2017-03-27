@@ -1,13 +1,14 @@
+/**
+ * Class that takes care of communication between redis and GClient
+ * TODO: catch block in constructor to alternative redis server/ instance
+ */
+
 package de.htw.grischa.client;
 
-import de.htw.grischa.chess.database.GDBRunner;
 import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-
-import java.io.FileInputStream;
-import java.util.Properties;
 
 public class GClientConnection {
 
@@ -20,22 +21,17 @@ public class GClientConnection {
     private JedisPool pool;
 
     private GClientConnection() {
-        Properties database = new Properties();
         String redisHost;
         int redisPort;
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         poolConfig.setMaxTotal(100);
         poolConfig.setMaxIdle(100);
         try {
-            System.out.println("Database Input File found!");
-            FileInputStream propertiesFile = new FileInputStream(GDBRunner.properties);
-            database.load(propertiesFile);
-            propertiesFile.close();
-            redisHost = database.getProperty("grischa.redis.host");
-            redisPort = Integer.valueOf(database.getProperty("grischa.redis.port"));
+            redisHost = "localhost";
+            redisPort = 6379;
             pool = new JedisPool(poolConfig,redisHost, redisPort);
-        } catch (Exception e) {
-            System.out.println("Database not found!");
+        } catch (Exception e) {//setting
+            System.out.println("Local Redis server not found!");
             pool = new JedisPool(poolConfig,"46.38.241.128", 6379);
         }
     }
@@ -51,14 +47,14 @@ public class GClientConnection {
     }
 
     private void login() {
-        LOG.debug("logging in");
+        LOG.debug("logging in to: ");
     }
 
     public Jedis getRedis() {
         return pool.getResource();
     }
 
-    public void realeaseRedis(Jedis j) {
+    public void releaseRedis(Jedis j) {
         pool.returnResource(j);
     }
 }

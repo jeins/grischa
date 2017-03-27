@@ -231,7 +231,7 @@ public class Quality {
         // System.out.println(board.getReadableString()+" "+quality+"\n\n");
         // qualtity * 1000 -> Matt wird nicht erkannt!?!?
         // *** Wert zurueckgeben **********************************************************
-        return quality * 1000;
+        return quality * 10000;
     }
 
     private double threatenedQuality(int field) {

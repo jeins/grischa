@@ -1,23 +1,23 @@
-package de.htw.grischa.chess;
+/**
+ * Abstract alpha-beta-search implementing the most important methods for searching tree
+ * Alpha-Beta pruning a game tree to optimize speed, memory, cpu, network usage
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 0.0.1 - 05/10 - Heim - Initial Version </li>
+ * <li> 0.0.? - 12/10 - Rossius - ??? </li>
+ * <li> 0.0.2 - 04/14 - Karsten Kochan - First database implementation</li>
+ * <li> 0.0.3 - 07/14 - Karsten Kochan - Cleanup, check for db usage via properties file, documentation</li>
+ * <li> 0.0.3 - 02/17 - Benjamin Troester - Cleanup, research chess algorithm</li>
+ * <li> 0.0.3 - 05/17 - Benjamin Troester - Monte Carlo methods</li>
+ * </ul>
+ */
 
-import de.htw.grischa.chess.database.client.DatabaseEntry;
-import de.htw.grischa.chess.database.client.FileSearch;
+package de.htw.grischa.chess;
 
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.concurrent.BlockingQueue;
 
-/**
- * Abstract alpha-beta-search implementing the most important methods
- * <h3>Version History</h3>
- * <ul>
- * <li> 1.0 - 05/10 - Heim - Initial Version </li>
- * <li> 1.? - 12/10 - Rossius - ??? </li>
- * <li> 1.2 - 04/14 - Karsten Kochan - First database implementation</li>
- * <li> 1.3 - 07/14 - Karsten Kochan - Cleanup, check for db usage via properties file, documentation</li>
- * </ul>
- */
 public abstract class AlphaBetaSearch {
      //Logger
     private final static Logger log = Logger.getLogger(AlphaBetaSearch.class);
@@ -36,57 +36,16 @@ public abstract class AlphaBetaSearch {
 
     private GameList clientGameList;
 
-    private BlockingQueue<DatabaseEntry> queue;
-
-    private FileSearch fileSearch;
-
-    private boolean useDB = false;
-
-    public void setQueue(BlockingQueue<DatabaseEntry> queue) {
-        this.queue = queue;
-    }
-
-    public void setFileSearch(FileSearch fileSearch) {
-        this.fileSearch = fileSearch;
-    }
-
-    public void setUseDB(boolean useDB) {
-        this.useDB = useDB;
-    }
-
     /**
-     * Use {@link #getAlphaBetaTurn(int, IChessGame, de.htw.grischa.chess.database.client.FileSearch)} instead
      *
-     * @param maxSearchDepth int, maximum searching depth
-     * @param game           IChessGame to calculate for
-     * @return int, quality
+     * @param   maxSearchDepth  int, maximum searching depth
+     * @param   game            IChessGame to calculate for
+     * @return  int             calculated quality of move - casted originally double!
      */
-    @Deprecated
     public int getAlphaBetaTurn(int maxSearchDepth, IChessGame game) {
         clientGameList = new GameList();
         this.maximizingPlayer = game.getPlayerToMakeTurn();
         this.maxSearchDepth = maxSearchDepth;
-        return maxValue(game, 0, MIN_INT, MAX_INT);
-    }
-
-    /**
-     * If database is in use, this method will check the database and calculates the result itself if not available
-     *
-     * @param maxSearchDepth How deep to search
-     * @param game           Current board
-     * @param fileSearch     FileSearch to use for file access
-     * @return Game value
-     */
-    public int getAlphaBetaTurn(int maxSearchDepth, IChessGame game, FileSearch fileSearch) {
-        clientGameList = new GameList();
-        this.maximizingPlayer = game.getPlayerToMakeTurn();
-        this.maxSearchDepth = maxSearchDepth;
-        if (this.useDB) {
-            DatabaseEntry existing = fileSearch.search(game.getMD5Hash());
-            if (existing != null && existing.getDepth() >= maxSearchDepth) {
-                return existing.getValue();
-            }
-        }
         return maxValue(game, 0, MIN_INT, MAX_INT);
     }
 
@@ -101,12 +60,21 @@ public abstract class AlphaBetaSearch {
      * @param quality double, game quality
      */
     private void saveGameToList(IChessGame game, int depth, double quality) {
-        if (depth > 5) {
+        if (depth > 2) {
             clientGameList.setGame(game, depth, quality);
-            log.debug("Depth  " + depth + " " + game.getStringRepresentation() + " Quality= " + quality + " count=" + count++);
+            log.debug("Saving  " + depth + " " + game.getStringRepresentation() + " Quality= " + quality + " count=" + count++);
         }
     }
 
+    /**
+     * Mehtod part of Alpha-Beta
+     * This part calculates the maximizing part in a given tree with given depth
+     * @param   game    chessboard/check position
+     * @param   depth   depth in the tree
+     * @param   alpha   upper bound
+     * @param   beta    lower bound
+     * @return  int     returns the quality of the maximized branch in the tree
+     */
     private int maxValue(IChessGame game, int depth, int alpha, int beta) {
         ArrayList<IChessGame> successorList;
         int minimumValueOfSuccessor;
@@ -137,20 +105,9 @@ public abstract class AlphaBetaSearch {
             successorList = game.getNextTurns();
             for (IChessGame successor : successorList) {
                 successor.setParent(game);
-                if (this.useDB) {
-                    if (depth >= 3) {
-                        DatabaseEntry temp = fileSearch.search(successor.getMD5Hash());
-                        if (temp != null && temp.getDepth() > depth) {
-                            return temp.getValue();
-                        } else {
-                            this.familyPublish(successor, depth, successor.getQuality(maximizingPlayer));
-                        }
-                    }
-                }
                 //Ignore illegal turns
                 if (depth == 0 && !successor.isLegalBoard()) {
                     minimumValueOfSuccessor = MIN_INT;
-                    //this.log.debug("Brett wurde als ungültig erkannt:\n" + successor.getReadableString());
                 } else {
                     minimumValueOfSuccessor = minValue(successor, depth + 1, alpha, beta);
                 }
@@ -173,23 +130,14 @@ public abstract class AlphaBetaSearch {
     }
 
     /**
-     * Publish calculating result to parent objects
-     *
-     * @param child IChessGame, should have parents to publish
-     * @param depth int, current calculating depth
-     * @param value int, calculated value to publish
+     * Mehtod part of Alpha-Beta
+     * This part calculates the minimizing part in a given tree with given depth
+     * @param   game    chessboard/check position
+     * @param   depth   depth in the tree
+     * @param   alpha   upper bound
+     * @param   beta    lower bound
+     * @return  int     returns the quality of the maximized branch in the tree
      */
-    private void familyPublish(IChessGame child, int depth, int value) {
-        if (child != null && child.getParent() != null) {
-            DatabaseEntry parent = new DatabaseEntry(child.getMD5Hash(), depth, value);
-            DatabaseEntry existing = this.fileSearch.search(child.getMD5Hash());
-            if (existing == null || existing.getDepth() < depth) {
-                this.queue.add(parent);
-            }
-            familyPublish(child.getParent(), depth - 2, value);
-        }
-    }
-
     private int minValue(IChessGame game, int depth, int alpha, int beta) {
         ArrayList<IChessGame> successorList;
         int maximumValueOfSuccessor;
@@ -235,9 +183,26 @@ public abstract class AlphaBetaSearch {
         }
     }
 
+    /**
+     * Checking if this part of the game tree is a leaf - either check mate or depth at maximum
+     * @param   game    current chessboard with
+     * @param   depth   the depth in the game tree
+     * @return boolean
+     */
     protected abstract boolean isLeaf(IChessGame game, int depth);
 
+    /**
+     * Returns the calculated quality for a given chessboard/check position
+     * @param   game    current chessboard to calculate
+     * @return  int     value for the given chessboard, originally double
+     * @see     Quality
+     */
     protected abstract int getQuality(IChessGame game);
 
+    /**
+     * Returns the calculated quality for a given chessboard/check position
+     * @param   game    current chessboard to calculate
+     * @return  double  value for the given chessboard as double
+     */
     protected abstract double getPosQuality(IChessGame game);
 }
