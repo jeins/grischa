@@ -1,9 +1,14 @@
+package de.htw.grischa.chess;
+
+import org.apache.log4j.Logger;
+import java.util.ArrayList;
+
 /**
  * Abstract alpha-beta-search implementing the most important methods for searching tree
  * Alpha-Beta pruning a game tree to optimize speed, memory, cpu, network usage
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.0.1 - 05/10 - Heim - Initial Version </li>
+ * <li> 0.0.1 - 05/10 - Daniel Heim - Initial Version </li>
  * <li> 0.0.? - 12/10 - Rossius - ??? </li>
  * <li> 0.0.2 - 04/14 - Karsten Kochan - First database implementation</li>
  * <li> 0.0.3 - 07/14 - Karsten Kochan - Cleanup, check for db usage via properties file, documentation</li>
@@ -11,12 +16,6 @@
  * <li> 0.0.3 - 05/17 - Benjamin Troester - Monte Carlo methods</li>
  * </ul>
  */
-
-package de.htw.grischa.chess;
-
-import org.apache.log4j.Logger;
-
-import java.util.ArrayList;
 
 public abstract class AlphaBetaSearch {
      //Logger

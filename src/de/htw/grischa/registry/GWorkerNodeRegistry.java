@@ -7,14 +7,15 @@ import org.apache.log4j.Logger;
 import de.htw.grischa.node.GNode;
 import redis.clients.jedis.Jedis;
 
+/**
+ * Returns an started instance of the registry
+ * @return Running registry or null if can not be started
+ */
+
 public class GWorkerNodeRegistry {
     private static GWorkerNodeRegistry mInstance = null;
     private final static Logger LOG = Logger.getLogger(GNode.class);
 
-    /**
-     * Returns an started instance of the registry
-     * @return Running registry or null if can not be started
-     */
     public static GWorkerNodeRegistry getInstance() {
         if (mInstance == null) {
             mInstance = new GWorkerNodeRegistry();

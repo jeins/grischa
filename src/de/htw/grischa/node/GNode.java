@@ -15,10 +15,13 @@ public class GNode extends Node {
         super();
     }
 
+    /**
+     * Entry point for grid node
+     * @param args
+     */
     public static void main(String[] args) {
         Node node = new GNode();
         node.parseArgs(args);
-
         new Thread(node).start();
     }
 

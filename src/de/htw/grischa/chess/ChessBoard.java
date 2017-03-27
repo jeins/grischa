@@ -1,3 +1,9 @@
+package de.htw.grischa.chess;
+
+import org.apache.log4j.Logger;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * Chessboard implementation, implements IChessGame
  * <h3>Version History</h3>
@@ -11,13 +17,6 @@
  * @version 1.3
  * @see de.htw.grischa.chess.IChessGame
  */
-
-package de.htw.grischa.chess;
-
-import org.apache.log4j.Logger;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 public class ChessBoard implements IChessGame, Serializable {
     public static final byte EMPTY_FIELD = 0;

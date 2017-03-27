@@ -1,3 +1,5 @@
+package de.htw.grischa.chess;
+
 /**
  * Class for the storing a given game
  * In the tree alpha-beta is calculating the certain check positions,
@@ -5,7 +7,6 @@
  *
  * TODO: same game + depth with different qualities are not allowed to be contained
  */
-package de.htw.grischa.chess;
 
 public class ComputedGame {
 	private IChessGame game;//chessboard representation

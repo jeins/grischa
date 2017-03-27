@@ -1,3 +1,7 @@
+package de.htw.grischa.chess;
+
+import java.util.ArrayList;
+
 /**
  * This class holds the already calculated boards, with their given depth.
  * Available through getter/setter methods.
@@ -5,10 +9,6 @@
  * If there is positive request, the calculated value will be returned,
  * so that the node don`t have to calculated this chessboard in the game tree.
  */
-
-package de.htw.grischa.chess;
-
-import java.util.ArrayList;
 
 public class GameList {
 	private ArrayList<ComputedGame> computedGames;

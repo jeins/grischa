@@ -2,7 +2,6 @@ package de.htw.grischa;
 
 import de.htw.grischa.chess.ChessBoard;
 import de.htw.grischa.chess.IChessGame;
-
 import java.util.ArrayList;
 
 /**
@@ -14,6 +13,7 @@ import java.util.ArrayList;
  * Author: Karsten Kochan
  * Date: 31.07.14
  */
+
 public class BoardCalculator {
 
     public static void main(String[] args) {

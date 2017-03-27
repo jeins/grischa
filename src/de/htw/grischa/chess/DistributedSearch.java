@@ -1,7 +1,3 @@
-/**
- *
- */
-
 package de.htw.grischa.chess;
 
 import java.util.ArrayList;
@@ -9,14 +5,16 @@ import java.util.TreeMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import org.apache.log4j.Logger;
-
 import de.htw.grischa.node.task.GTask;
 import de.htw.grischa.node.task.Task;
 import de.htw.grischa.node.task.TaskDispatcher;
 import de.htw.grischa.node.task.TaskReceptor;
 import de.htw.grischa.registry.GWorkerNodeRegistry;
+
+/**
+ *
+ */
 
 public class DistributedSearch {
     private final static Logger LOG = Logger.getLogger(DistributedSearch.class);

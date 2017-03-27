@@ -1,14 +1,14 @@
-/**
- * Class that takes care of communication between redis and GClient
- * TODO: catch block in constructor to alternative redis server/ instance
- */
-
 package de.htw.grischa.client;
 
 import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+
+/**
+ * Class that takes care of communication between redis and GClient
+ * TODO: catch block in constructor to alternative redis server/ instance
+ */
 
 public class GClientConnection {
 

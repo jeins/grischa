@@ -7,7 +7,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
 /**
- * Abstract node class, implementing basic features of a node
+ * Abstract node class, implementing basic features of a node.
  * Contains everything that is needed for communication with Redis server,
  * push and pull messages, starting tasks for calculation
  * abstract methods:
@@ -20,7 +20,7 @@ public abstract class Node implements Runnable {
     // logging for nodes
     private final static Logger LOG = Logger.getLogger(Node.class);
     // bool status master node runs
-    protected Boolean mIsRunning = true;
+    protected Boolean mIsRunning = true;//master node is running
     // access credentials for com server - Names for Server, Nodes etc
     private String mServer = "grischa.f4.htw-berlin.de";
     private String mUser = "grid-xmpp-user-001";
@@ -32,8 +32,7 @@ public abstract class Node implements Runnable {
     Node() {}
 
     /**
-     * implementation of the runnable interface
-     * implements Redis registration
+     * Bootstraps the Redis registration process via Jedis publish-subscribe pattern
      */
     protected void login() {
         RedisSubscriber = GClientConnection.getInstance().getRedis();
@@ -74,12 +73,19 @@ public abstract class Node implements Runnable {
         }, "move:" + mUser);
     }
 
+    /**
+     * Method for stopping node by system exit
+     * @see System
+     */
     public void stopNode() {
         LOG.debug("i stop node");
         this.mIsRunning = false;
         System.exit(98);
     }
 
+    /**
+     * Method for messaging results to redis via result channel
+     */
     public synchronized void sendResultsBack() {
         LOG.debug("i send results back");
         String result = getResult().toString();
@@ -142,6 +148,7 @@ public abstract class Node implements Runnable {
 
     /**
      * Register the node to the registry roster.
+     * key value for redis-cli monintor is gregistered
      */
     public void register() {
         LOG.debug("i register");
@@ -150,6 +157,9 @@ public abstract class Node implements Runnable {
         GClientConnection.getInstance().releaseRedis(RedisPublisher);
     }
 
+    //-------------------------------
+    //just the abstract methods here:
+    //-------------------------------
     protected abstract void runTask(String taskString);
 
     protected abstract void stopTask();

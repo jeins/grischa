@@ -1,16 +1,16 @@
-/**
- *
- */
 package de.htw.grischa.node.task;
 
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
 import de.htw.grischa.chess.ChessBoard;
 import de.htw.grischa.chess.IChessGame;
 import de.htw.grischa.chess.IterativeAlphaBetaSearch;
 import de.htw.grischa.chess.Player;
+
+/**
+ *
+ */
 
 public class GTask implements Task {
     private final static Logger LOG = Logger.getLogger(GTask.class);

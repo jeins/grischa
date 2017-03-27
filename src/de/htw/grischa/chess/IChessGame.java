@@ -1,3 +1,7 @@
+package de.htw.grischa.chess;
+
+import java.util.ArrayList;
+
 /**
  * Interface for chessboard
  * Provides requirements to the chessboard representation
@@ -11,10 +15,6 @@
  * translation, added parent getter and setter</li>
  * </ul>
  */
-
-package de.htw.grischa.chess;
-
-import java.util.ArrayList;
 
 public interface IChessGame extends Comparable<IChessGame> {
     /*

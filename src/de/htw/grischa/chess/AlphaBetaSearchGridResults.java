@@ -1,14 +1,14 @@
-/**
- * Holds the results of the game tree
- *
- */
-
 package de.htw.grischa.chess;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
+
+/**
+ * Holds the results of the game tree
+ *
+ */
 
 public class AlphaBetaSearchGridResults extends AlphaBetaSearch
 {

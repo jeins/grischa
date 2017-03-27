@@ -1,14 +1,13 @@
-/**
- * Entry point for communication between Xboard and Comm-Server
- * Class that takes care of bootstrapping worker node registration,
- * connection to the client
- */
-
 package de.htw.grischa.client;
 
 import de.htw.grischa.registry.GWorkerNodeRegistry;
 import de.htw.grischa.xboard.WinboardCommunication;
 
+/**
+ * Entry point for communication between Xboard and Comm-Server
+ * Class that takes care of bootstrapping worker node registration,
+ * connection to the client
+ */
 
 public class GClient implements Runnable {
 

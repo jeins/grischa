@@ -3,6 +3,10 @@ package de.htw.grischa.chess;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Player Quality
+ */
+
 public class Quality {
 
     private static final short[] POS_QUALITIES = {0, 0, -10, -30, -32, -55, -98, -1000, 0, 0, 0,

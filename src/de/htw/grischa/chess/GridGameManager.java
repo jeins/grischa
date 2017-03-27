@@ -3,6 +3,7 @@ package de.htw.grischa.chess;
 /**
  * GridGameManager takes care of games to distribute it to nodes
  */
+
 public class GridGameManager {
     private IChessGame board;
     private DistributedSearch abps;

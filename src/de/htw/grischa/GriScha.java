@@ -5,6 +5,10 @@ import de.htw.grischa.chess.IChessGame;
 import de.htw.grischa.client.GClientConnection;
 import de.htw.grischa.registry.GWorkerNodeRegistry;
 
+/**
+ * Class GriScha
+ */
+
 public class GriScha {
     // Version shown in Xboard
     public final static String VERSION = "Redis.0.0.1";

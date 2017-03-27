@@ -1,3 +1,7 @@
+package de.htw.grischa.chess;
+
+import org.apache.log4j.Logger;
+
 /**
  * Iterative Alpha-Beta-search for moving down inside breadth-first search
  * <p>
@@ -16,10 +20,6 @@
  * </ul>
  * @version 0.6
  */
-
-package de.htw.grischa.chess;
-
-import org.apache.log4j.Logger;
 
 public class IterativeAlphaBetaSearch implements Runnable {
     //looger
