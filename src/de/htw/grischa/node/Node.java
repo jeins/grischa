@@ -41,15 +41,15 @@ public abstract class Node implements Runnable {
             @Override
             public void onMessage(String s, String body) {
                 LOG.debug("i got message");
-
-                if (body.compareTo("stop") == 0) {
+                //checking message body
+                if (body.compareTo("stop") == 0)
                     stopNode();
-                } else if (body.compareTo("results") == 0) {
+                else if (body.compareTo("results") == 0) {
                     stopTask();
                     sendResultsBack();
-                } else {
-                    runTask(body);
                 }
+                else
+                    runTask(body);
             }
 
             @Override
@@ -157,9 +157,11 @@ public abstract class Node implements Runnable {
         GClientConnection.getInstance().releaseRedis(RedisPublisher);
     }
 
-    //-------------------------------
-    //just the abstract methods here:
-    //-------------------------------
+    /*
+    * -------------------------------
+    * just the abstract methods here:
+    * -------------------------------
+    */
     protected abstract void runTask(String taskString);
 
     protected abstract void stopTask();

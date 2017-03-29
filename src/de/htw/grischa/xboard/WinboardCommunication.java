@@ -25,15 +25,16 @@ public class WinboardCommunication {
     private static int time = 15000;
 
     public void run() {
-
         GridGameManager game;
         try {
             game = new GridGameManager();//get instance of GridGameManager
-            String cmd = "";
-            String out = "";
+            String cmd = "";//command string
+            String out = "";// output string
             BufferedReader bin = new BufferedReader(new InputStreamReader(System.in));
             String protocol = "";
-            boolean isGo = false;//whose turn is it - default white-> false GriScha is the black opponent
+            boolean isGo = false;//whose turn is it - default white-> GriScha is the black opponent, so false
+            //because white has the initial move
+
             //game loop
             while (true) {
                 try {
@@ -45,8 +46,8 @@ public class WinboardCommunication {
                         // okDialog("Patt! " + out);
                     }
                     // check if mate is given - who check mates
-                    else if (game.getCurrentGame() != null && isGo
-                            && game.getCurrentGame().getGameState() == GameState.MATT) {
+                    else if (game.getCurrentGame() != null && isGo &&
+                            game.getCurrentGame().getGameState() == GameState.MATT) {
                         if (game.getCurrentGame().getPlayerToMakeTurn() == Player.WHITE)
                             out = "result 0-1 {Black mates}";
                         else
@@ -62,7 +63,7 @@ public class WinboardCommunication {
                     String message = "Error while reading from STDIN";
                     LOG.error(message);
                 }
-                /**
+                /*
                  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
                  * Command line output
                  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -70,7 +71,7 @@ public class WinboardCommunication {
 
                 // close/exit program
                 if (cmd.equalsIgnoreCase("q") || cmd.equalsIgnoreCase("exit")) {
-                    System.err.println("exiting GriScha-Chess");
+                    System.out.println("exiting GriScha-Chess");
                     System.exit(0);
                 }
                 // Xboard is the used protocol
@@ -86,7 +87,7 @@ public class WinboardCommunication {
                 }
                 // process XBoard instructions
                 else if (protocol.equalsIgnoreCase("xboard")) {
-                    //
+                    //new game - initial std board
                     if (cmd.equalsIgnoreCase("new")) {
                         game.init();
                         isGo = false;
@@ -126,16 +127,15 @@ public class WinboardCommunication {
                                 message = message.substring(0, message.length() - 1);
                             }
                         }
-                        if (fen[1].equals("*")) {
-                            LOG.debug("Xboard exited " + message);
-                        } else if (!fen[1].equals("0") && !fen[2].equals("0")) { // Draw
-                            // okDialog("Draw\n"+message);
-                        } else if (!fen[1].equals("0") && fen[2].equals("0")) { // White wins
-
-                            // okDialog("White wins\n"+message);
-                        } else if (fen[1].equals("0") && !fen[2].equals("0")) {// Black wins
-                            // okDialog("Black wins\n"+message);
-                        }
+                        //State -> draw, check mate
+                        if (fen[1].equals("*"))
+                            LOG.debug("Xboard exited " + message);//exited
+                        else if (!fen[1].equals("0") && !fen[2].equals("0")) // Draw
+                            LOG.info("Draw");
+                        else if (!fen[1].equals("0") && fen[2].equals("0")) // White wins
+                            LOG.info("white wins");
+                        else if (fen[1].equals("0") && !fen[2].equals("0"))// Black wins
+                            LOG.info("black wins");
                     }
 
                     else if (cmd.equalsIgnoreCase("force"))
@@ -239,7 +239,7 @@ public class WinboardCommunication {
                             invert_y_pos += "B";
                         }
 
-                        /**
+                        /*
                          * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
                          * Checking for castling
                          * KQkq = castling still possible at king(K)/ queen(Q) flank
@@ -261,20 +261,17 @@ public class WinboardCommunication {
                             isGo = false;
                             LOG.info("The chessboard " + invert_y_pos + " was generated!");
                         }
-                    /**
+                    /*
                     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
                     * Whose turn is it?
                     * Computer vs. Human
                     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
                     */
-                    } else if (cmd.equalsIgnoreCase("computer")) // der andere Computer soll als
-                                                                 // erstes ziehen
+                    } else if (cmd.equalsIgnoreCase("computer")) // opponent machine should start
                         isGo = false;
-                    else if (cmd.equalsIgnoreCase("easy")) // Spiel gegen Mensch: easy =
-                                                           // Startkommando
+                    else if (cmd.equalsIgnoreCase("easy")) // game vs human: easy =
                         isGo = true;
-                    else if (cmd.equalsIgnoreCase("hard")) // Spiel gegen Mensch: hard =
-                                                           // Startkommando f??r xboard
+                    else if (cmd.equalsIgnoreCase("hard")) // game vs human: hard =
                         isGo = true;
                     else if (cmd.equalsIgnoreCase("stop"))
                         isGo = false;
@@ -283,17 +280,14 @@ public class WinboardCommunication {
                     else if (cmd.equalsIgnoreCase("go")) {
                         try {
                             // check if game is draw
-                            if (game.getCurrentGame().getGameState() == GameState.DRAW) {
-                                // out = "offer draw";
+                            if (game.getCurrentGame().getGameState() == GameState.DRAW)
                                 out = "result 1/2-1/2 {Stalemate}";
-                                // okDialog("Patt!\nStalemate");
-                            }
                             // if is not mate
                             else if (game.getCurrentGame().getGameState() != GameState.MATT) {
                                 out = "move " + game.getTurn(time);
                                 isGo = true;
                             }
-                            /**
+                            /*
                              * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
                              * 0-1 {Black mates}
                              * 1-0 {White mates}
@@ -309,24 +303,20 @@ public class WinboardCommunication {
                                 else
                                     out = "result 1-0 {White mates}";
                                 isGo = false;
-                                LOG.debug("Schach Matt!\n" + out);
-                                // okDialog("Schach Matt!\n"+out);
+                                LOG.info("Check Mate\n" + out);
                             }
                         } catch (Exception e) {
                             String message = "Error during invoke of getTurn() method!";
                             LOG.error(message);
                         }
-                    } else if (cmd.matches("([a-hA-H])+([1-8])+([a-hA-H])+([1-8])")
-                            || cmd.matches("([a-hA-H])+([1-8])+([a-hA-H])+([1-8])+(.)")) {
+                    } else if (cmd.matches("([a-hA-H])+([1-8])+([a-hA-H])+([1-8])") ||
+                            cmd.matches("([a-hA-H])+([1-8])+([a-hA-H])+([1-8])+(.)")) {
                         // perform opponent move on chessboard
                         try {
                             if (game.opponentTurn(cmd)) {
                                 // check if state is draw
-                                if (game.getCurrentGame().getGameState() == GameState.DRAW) {
-                                    // out = "offer draw";
+                                if (game.getCurrentGame().getGameState() == GameState.DRAW)
                                     out = "result 1/2-1/2 {Stalemate}";
-                                    // okDialog("Patt!\nStalemate");
-                                }
                                 // if not mate
                                 else if (game.getCurrentGame().getGameState() != GameState.MATT) {
                                     // AI calculates next move und prints out
@@ -348,7 +338,8 @@ public class WinboardCommunication {
                             String message = "Error during invoke of opponentTurn(" + cmd + ") method";
                             LOG.error(message);
                         }
-                    } else if (cmd.equalsIgnoreCase("protover 2"))
+                    }
+                    else if (cmd.equalsIgnoreCase("protover 2"))
                         out = "feature usermove=0 " + "setboard=1 " + "time=0 " + "sigint=0 "
                                 + "sigterm=0 " + "draw=1 " + "reuse=1 " + "analyze=0 "
                                 + "myname=\"GriScha" + GriScha.VERSION + "\" "
@@ -364,14 +355,6 @@ public class WinboardCommunication {
                         System.out.println(out);
                     }
                     out = "";
-
-                    // Output for TESTING via STDOUT
-                    // try {
-                    // System.out.println(game.getCurrentGame().getReadableString());
-                    // }
-                    // catch (Exception e){
-                    //
-                    // }
                 }
                 // proceed UCI commands
                 else if (protocol.equalsIgnoreCase("uci")

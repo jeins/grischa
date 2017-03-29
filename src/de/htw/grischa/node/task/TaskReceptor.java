@@ -8,6 +8,10 @@ import de.htw.grischa.client.GClientConnection;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
+/**
+ *
+ */
+
 public class TaskReceptor implements Runnable {
     private final static Logger LOG = Logger.getLogger(TaskReceptor.class);
     private final String mJid;
@@ -20,6 +24,11 @@ public class TaskReceptor implements Runnable {
     private Jedis RedisPublisher;
     private JedisPubSub jedisPubSub;
 
+    /**
+     * Constructor
+     * @param dispatcher
+     * @param doneSignal
+     */
     public TaskReceptor(TaskDispatcher dispatcher, CountDownLatch doneSignal) {
         mDispatcher = dispatcher;
         mJid = dispatcher.getJid();
@@ -32,20 +41,16 @@ public class TaskReceptor implements Runnable {
                 LOG.debug("task receptor subscriber i get message");
                 mTaskResult = s2;
                 setDone();
-
             }
 
             @Override
             public void onPMessage(String s, String s2, String s3) {
-
             }
 
             @Override
             public void onSubscribe(String s, int i) {
                 LOG.debug("task receptor subscriber i subscribed");
-                askForResutlts();
-
-
+                askForResults();
             }
 
             @Override
@@ -55,12 +60,10 @@ public class TaskReceptor implements Runnable {
 
             @Override
             public void onPUnsubscribe(String s, int i) {
-
             }
 
             @Override
             public void onPSubscribe(String s, int i) {
-
             }
         };
     }
@@ -74,9 +77,7 @@ public class TaskReceptor implements Runnable {
             final GClientConnection gcon = GClientConnection.getInstance();
             LOG.debug("task receptor subscriber i get redis");
             RedisSubscriber = gcon.getRedis();
-
             //waitUntilDone();
-//
             RedisSubscriber.subscribe(jedisPubSub, "result:" + mUser);
         } finally {
             LOG.debug("task receptor subscriber i release redis");
@@ -85,7 +86,7 @@ public class TaskReceptor implements Runnable {
         }
     }
 
-    private void askForResutlts() {
+    private void askForResults() {
         try {
             LOG.debug("task receptor publisher i get connection");
             final GClientConnection gcon = GClientConnection.getInstance();
@@ -125,10 +126,18 @@ public class TaskReceptor implements Runnable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Object getTaskResult() {
         return mTaskResult;
     }
 
+    /**
+     *
+     * @return
+     */
     public Task getTask() {
         return mDispatcher.getTask();
     }

@@ -29,17 +29,17 @@ public class DistributedSearch {
     }
 
     public void getAlphaBetaTurn(IChessGame game, long wait) {
-        mResultset = new TreeMap<String, Integer>();
+        mResultset = new TreeMap<>();
         mMaxPlayer = game.getPlayerToMakeTurn();
         mGame = game; // Assign the game it's needed in the collectJobResults() method.
 
         ArrayList<String> nodes = GWorkerNodeRegistry.getInstance().getOnlineWorkerNodes();
         ArrayList<IChessGame> gamesToCompute = this.splitWork(game, nodes.size());
-        ArrayList<TaskDispatcher> dispatchers = new ArrayList<TaskDispatcher>();
+        ArrayList<TaskDispatcher> dispatchers = new ArrayList<>();
 
         // Create a task dispatcher for each game move. If none or not enough nodes available
         // compute move locally.
-        ArrayList<String> gamesAsString = new ArrayList<String>();
+        ArrayList<String> gamesAsString = new ArrayList<>();
         for (int i = 0; i < gamesToCompute.size(); i++) {
             if (i >= nodes.size()) {
                 this.computeLocally(gamesToCompute.get(i));
@@ -79,8 +79,12 @@ public class DistributedSearch {
         this.mNextGame = abs.nextGame;
     }
 
+    /**
+     *
+     * @param dispatchers
+     */
     private void collectJobResults(ArrayList<TaskDispatcher> dispatchers) {
-        ArrayList<TaskReceptor> receptors = new ArrayList<TaskReceptor>();
+        ArrayList<TaskReceptor> receptors = new ArrayList<>();
         CountDownLatch doneSignal = new CountDownLatch(dispatchers.size());
 
         for (TaskDispatcher dispatcher : dispatchers) {
@@ -94,15 +98,15 @@ public class DistributedSearch {
         } catch (InterruptedException e) {
             LOG.error(e.getMessage());
         }
-        
+        //iterate trough TaskReceptors to get results
         for (TaskReceptor receptor : receptors) {
-            Object tmp = receptor.getTaskResult();
+            Object tmp = receptor.getTaskResult();//actual quality
 
             if (tmp == null) {
                 LOG.error("Der Job eines WorkerNodes konnte kein Ergebnis lieferen.");
                 continue;
             }
-
+            //cast to integer
             Integer result = Integer.valueOf((String) tmp);
 
             GTask task = (GTask) receptor.getTask();
@@ -146,10 +150,18 @@ public class DistributedSearch {
         return nextGames;
     }
 
+    /**
+     *
+     * @return
+     */
     public IChessGame getNextGame() {
         return mNextGame;
     }
 
+    /**
+     *
+     * @param game
+     */
     private void computeLocally(IChessGame game) {
         AlphaBetaSearchFixedDepth abs = new AlphaBetaSearchFixedDepth();
         int value;

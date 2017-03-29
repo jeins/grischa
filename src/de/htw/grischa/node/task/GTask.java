@@ -9,7 +9,8 @@ import de.htw.grischa.chess.IterativeAlphaBetaSearch;
 import de.htw.grischa.chess.Player;
 
 /**
- *
+ * GTask is the implementation of the Task interface.
+ * This class
  */
 
 public class GTask implements Task {
@@ -59,30 +60,47 @@ public class GTask implements Task {
                 LOG.error(e.getMessage());
             }
 
-            if (mJobResult == null || ab.getValue() != mJobResult) {
+            if (mJobResult == null || ab.getValue() != mJobResult)
                 mJobResult = ab.getValue();
-            }
         }
-        
         thread.stop();
     }
 
+    /**
+     *
+     */
     public void stop() {
         this.mIsRunning = false;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getResult() {
         return mJobResult;
     }
-    
+
+    /**
+     *
+     * @param result
+     */
     public void setResult(Object result) {
         mJobResult = (Integer) result;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public IChessGame getChessGame() {
         return mChessGame;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         JSONObject json = new JSONObject();
