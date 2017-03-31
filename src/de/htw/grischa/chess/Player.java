@@ -4,7 +4,6 @@ package de.htw.grischa.chess;
  * Enumeration for the chess parties
  */
 
-public enum Player 
-{
+public enum Player {
 	BLACK, WHITE;
 }

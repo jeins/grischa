@@ -8,6 +8,7 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * Class that takes care of communication between redis and GClient
  * TODO: catch block in constructor to alternative redis server/ instance
+ *
  */
 
 public class GClientConnection {

@@ -7,6 +7,8 @@ import de.htw.grischa.xboard.WinboardCommunication;
  * Entry point for communication between Xboard and Comm-Server
  * Class that takes care of bootstrapping worker node registration,
  * connection to the client
+ *
+ * @see java.lang.Runnable
  */
 
 public class GClient implements Runnable {

@@ -2,6 +2,8 @@ package de.htw.grischa.node.task;
 
 /**
  * Interface description for task that a node do
+ *
+ * @see java.lang.Runnable
  */
 
 public interface Task extends Runnable {

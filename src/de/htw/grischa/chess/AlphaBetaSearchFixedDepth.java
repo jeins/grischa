@@ -2,9 +2,10 @@ package de.htw.grischa.chess;
 
 /**
  * Alpha-beta-search implementing the most important methods for searching tree
- * Alpha-Beta pruning a game tree to optimize speed, memory, cpu, network usage
- * Fixed version for problems with depth.
+ * Alpha-Beta pruning is used for game trees to optimize speed, memory, cpu, network usage
+ * This class is the fixed version for problems with depth.
  *
+ * @see de.htw.grischa.chess.AlphaBetaSearch
  */
 
 public class AlphaBetaSearchFixedDepth extends AlphaBetaSearch {

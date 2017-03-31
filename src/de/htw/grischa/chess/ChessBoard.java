@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * <li> 0.0.? - 05/10 - Daniel Heim - ???</li>
  * <li> 0.0.3 - 06/14 - Karsten Kochan - Added toDatabase method, added parent</li>
  * <li> 0.0.3 - 02/17 - Benjamin Troester - Removing toDatabase method and parent,
- * due no longer need</li>
- * * <li> 0.0.3 - 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
+ * because shared memory via database isn`t needed nor really working</li>
+ * * <li> 0.0.4 - 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
  * </ul>
  *
  * @author Heim
@@ -40,8 +40,7 @@ public class ChessBoard implements IChessGame, Serializable {
     public static final byte WHITE_BISHOP = 14;
     public static final byte WHITE_QUEEN = 16;
     public static final byte WHITE_KING = 17;
-    //Logger
-    private final static Logger log = Logger.getLogger(ChessBoard.class);
+    private final static Logger log = Logger.getLogger(ChessBoard.class);//logger
     private static final String[] NAMES = {"x", "", "B", "S", "L", "T", "D", "K", "", "", "", "",
             "b", "s", "l", "t", "d", "k"};
     private static final short[] QUALITIES = {0, 0, -1, -3, -3, -5, -9, -100,
@@ -149,8 +148,8 @@ public class ChessBoard implements IChessGame, Serializable {
         board.fields[96] = BLACK_BISHOP;
         board.fields[95] = BLACK_KING;
         board.fields[94] = BLACK_QUEEN;
-
         board.round_counter = 0;
+
         return board;
     }
 
@@ -158,7 +157,7 @@ public class ChessBoard implements IChessGame, Serializable {
      * Convert String representation of field into int value
      * @param   in      String to convert
      * @return  int     representation
-     * @throws java.lang.IllegalArgumentException if input String is invalid
+     * @throws  java.lang.IllegalArgumentException if input String is invalid
      */
     public static int fieldNameToIndex(String in) throws IllegalArgumentException {
         int fieldColumn;
@@ -236,11 +235,6 @@ public class ChessBoard implements IChessGame, Serializable {
         fields[realPosition] = piece;
     }
 
-
-    /**********************************************************************************/
-    /************************* Method: initializeFields *******************************/
-    /**********************************************************************************/
-
     /**
      *
      * @param position
@@ -262,6 +256,7 @@ public class ChessBoard implements IChessGame, Serializable {
     /************************** Method: getNextTurns **********************************/
     /**********************************************************************************/
 
+
     /**
      * Getter method, that provides a readable version of the current board.
      * White pieces have lower case letters and black pieces have capital letters.
@@ -269,19 +264,19 @@ public class ChessBoard implements IChessGame, Serializable {
      * on the chessboard. In our byte array it means at field[10].
      * This getter is very slow, due the double for loop (quadratic runtime), it has to
      * iterate through the field array and check for the possible piece on each field.
+     * @return String Converted Version of the chessboard that reads easier, especially
+     * in debugging und logging.
      */
     public String getReadableString() {
         //declare variables
         String s = "";
         int i = 0;
-
         //start outer loop
         for (int dy = 10; dy > 1; dy--) {
             if (dy == 10)
                 s += "  ";
             else
                 s += dy - 1 + " ";
-
             //start inner loop
             for (int dx = 1; dx < 9; dx++) {
                 if (dy == 10) s += (char) ('A' + dx - 1) + " ";
@@ -334,27 +329,22 @@ public class ChessBoard implements IChessGame, Serializable {
         return s;
     }
 
-
-    /************************************************************************************/
-    /************************** Method: makeBlackMoves ********************************/
-    /************************************************************************************/
-
     /**
      * Method to initialize the Fields
      */
     private void initializeFields() {
-        //*** Einzelne Felder initializieren *********************************************
-
-        //*** Unterer Rand ***************************************************************
+        // below bottom line - illegal fields
         for (int i = 0; i < 20; i++) {
             fields[i] = ChessBoard.ILLEGAL_FIELD;
         }
-        //*** Mittlerer Teil mit leeren Feldern ******************************************
+        // middle field is empty - starting at bottom line a1 - h8
         for (int i = 20; i < 100; i++) {
-            if (i % 10 == 0 || i % 10 == 9) fields[i] = ChessBoard.ILLEGAL_FIELD;
-            else fields[i] = ChessBoard.EMPTY_FIELD;
+            if (i % 10 == 0 || i % 10 == 9)
+                fields[i] = ChessBoard.ILLEGAL_FIELD;
+            else
+                fields[i] = ChessBoard.EMPTY_FIELD;
         }
-        //*** Oberer Rand ****************************************************************
+        // over top line - illegal fields
         for (int i = 100; i < 120; i++) {
             fields[i] = ChessBoard.ILLEGAL_FIELD;
         }
@@ -362,85 +352,67 @@ public class ChessBoard implements IChessGame, Serializable {
 
 
     /**
-     * Getter method for the next turns
-     * @return
+     * Getter method for the next turns, splits the moves between white and black.
+     * Every layer is dedicated to one colour in the game tree, so they have to be split
+     * up.
+     * @return ArrayList that contains the next possible turn.
      */
     public ArrayList<IChessGame> getNextTurns() {
-        //	if(nextTurns!=null) return nextTurns;
-        if (playerToMakeTurn == Player.WHITE) {
+        if (playerToMakeTurn == Player.WHITE)
             return this.makeWhiteMoves();
-        } else {
+        else
             return this.makeBlackMoves();
-        }
     }
 
     /**
-     *
+     * Method that creates whites next possible moves in an ArrayList.
      * @return
      */
     private ArrayList<IChessGame> makeWhiteMoves() {
-        //*** Variablen-Deklaration ******************************************************
+        // declare vars
         int field;
         byte piece;
-        ArrayList<IChessGame> moves;
+        ArrayList<IChessGame> moves = new ArrayList<>();//init moves
 
-        //*** Liste initialisieren *******************************************************
-        moves = new ArrayList<IChessGame>();
-
-        //*** F�r alle legalen Felder ****************************************************
+        // all legal fields
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                //*** Feldindex bestimmen ****************************************************
-                field = y * 10 + x;
-
-                //*** Figur bestimmen ********************************************************
-                piece = fields[field];
-
-                //*** Auf Fels ist leer undgueltig und von schwarz besetzt ragieren **********
+                field = y * 10 + x;// determine field index
+                piece = fields[field];// determine kind of piece
+                // condition: field empty, illegal or occupied by black
                 if (piece < WHITE_PAWN) continue;
-
-                //*** Bauern Zug machen ******************************************************
+                // condition: pawns move
                 if (piece == WHITE_PAWN) {
                     moves.addAll(this.makeWhitePawnMove(field));
                     continue;
                 }
-
-                //*** Turm Zug machen ********************************************************
+                // condition: rooks move
                 if (piece == WHITE_ROOK) {
                     moves.addAll(this.genericWhiteMoves(field, ROOK_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Laeufer Zug machen *****************************************************
+                // condition: bishops move
                 if (piece == WHITE_BISHOP) {
                     moves.addAll(this.genericWhiteMoves(field, BISHOP_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Springer ziehen ********************************************************
+                // condition: knights move
                 if (piece == WHITE_KNIGHT) {
                     moves.addAll(this.whiteSingleMove(field, KNIGHT_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Koenig ziehen **********************************************************
+                // condition: kings move
                 if (piece == WHITE_KING) {
                     moves.addAll(this.whiteSingleMove(field, QUEEN_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Dame ziehen ************************************************************
+                // condition: queens move
                 if (piece == WHITE_QUEEN) {
                     moves.addAll(this.genericWhiteMoves(field, QUEEN_DIRECTIONS, piece));
                 }
             }
-
         moves.addAll(entPassent);
         moves.addAll(this.getWhiteRochade());
-
-        //** Züge merken *******************************************************
-        //nextTurns=moves;
-        //*** Zuege zurueckgeben *********************************************************
         return moves;
     }
 
@@ -449,58 +421,43 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return  ArrayList<IChessGame>
      */
     private ArrayList<IChessGame> makeBlackMoves() {
-        //*** Variablen-Deklaration ******************************************************
+        // declare vars
         int field;
         byte piece;
-        ArrayList<IChessGame> moves;
-
-        //*** Liste initialisieren *******************************************************
-        moves = new ArrayList<IChessGame>();
-
-
-        //*** F�r alle legalen Felder ****************************************************
+        ArrayList<IChessGame> moves = new ArrayList<>();//init moves
+        // all legal fields
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                //*** Feldindex bestimmen ****************************************************
-                field = y * 10 + x;
-
-                //*** Figur bestimmen ********************************************************
-                piece = fields[field];
-
-                //*** Auf Fels ist leer undgueltig und von wei� besetzt ragieren *************
+                field = y * 10 + x;// determine field index
+                piece = fields[field];// determine kind of piece
+                // condition: field empty, illegal or occupied by white
                 if (piece < BLACK_PAWN && piece >= BLACK_KING) continue;
-
-                //*** Bauern Zug machen ******************************************************
+                // condition: pawns move*
                 if (piece == BLACK_PAWN) {
                     moves.addAll(this.makeBlackPawnMove(field));
                     continue;
                 }
-
-                //*** Turm ziehen ************************************************************
+                // condition: rooks move
                 if (piece == BLACK_ROOK) {
                     moves.addAll(this.genericBlackMoves(field, ROOK_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Laeufer Zug machen *****************************************************
+                // condition: bishops move
                 if (piece == BLACK_BISHOP) {
                     moves.addAll(this.genericBlackMoves(field, BISHOP_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Springer ziehen ********************************************************
+                // condition: knights move
                 if (piece == BLACK_KNIGHT) {
                     moves.addAll(this.blackSingleMove(field, KNIGHT_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Koenig ziehen **********************************************************
+                // condition: kings move
                 if (piece == BLACK_KING) {
                     moves.addAll(this.blackSingleMove(field, QUEEN_DIRECTIONS, piece));
                     continue;
                 }
-
-                //*** Dame ziehen ************************************************************
+                // condition: queens move
                 if (piece == BLACK_QUEEN) {
                     moves.addAll(this.genericBlackMoves(field, QUEEN_DIRECTIONS, piece));
                 }
@@ -508,11 +465,6 @@ public class ChessBoard implements IChessGame, Serializable {
 
         moves.addAll(entPassent);
         moves.addAll(this.getBlackRochade());
-
-        //** Züge merken *******************************************************
-        //	nextTurns=moves;
-
-        //*** Zuege zurueckgeben *********************************************************
         return moves;
     }
 
@@ -522,19 +474,15 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     private ArrayList<ChessBoard> makeBlackPawnMove(int field) {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<ChessBoard> followMoves;
+        //declare vars
         ChessBoard board;
-
-        //*** Liste initialisieren *******************************************************
-        followMoves = new ArrayList<ChessBoard>();
-
-        //*** Bauer in vorletzter Reihe **************************************************
+        ArrayList<ChessBoard> followMoves = new ArrayList<>();
+        // pawns starts in the forelast line -> starts at 40
         if (field < 40) {
-            //*** Wurf �berpr�fen ********************************************************
+            // condition: pawn could attack
             if (fields[field - 9] > ChessBoard.BLACK_KING) {
                 board = this.executeMove(field, field - 9, ChessBoard.BLACK_PAWN);
-                //*** Figurentausch durchf�hren ******************************************
+                // Promotion (transformation from pawn to ...)
                 ChessBoard b;
                 b = board.Clone();
                 b.fields[field - 9] = BLACK_BISHOP;
@@ -560,11 +508,10 @@ public class ChessBoard implements IChessGame, Serializable {
                         ChessBoard.indexToFieldName(field - 9) + "q";
                 followMoves.add(b);
             }
-
-            //*** Wurf in andere Richtung �berpr�fen *************************************
+            // condition: attacking
             if (fields[field - 11] > ChessBoard.BLACK_KING) {
                 board = this.executeMove(field, field - 11, ChessBoard.BLACK_PAWN);
-                //*** Figurentausch durchf�hren ******************************************
+                // promotion
                 ChessBoard b;
 
                 b = board.Clone();
@@ -591,11 +538,10 @@ public class ChessBoard implements IChessGame, Serializable {
                         ChessBoard.indexToFieldName(field - 11) + "q";
                 followMoves.add(b);
             }
-
-            //*** Gerade aus Zug pr�fen **************************************************
+            // straight forward move
             if (fields[field - 10] == ChessBoard.EMPTY_FIELD) {
                 board = this.executeMove(field, field - 10, ChessBoard.BLACK_PAWN);
-                //*** Figurentausch durchf�hren ******************************************
+                //promotion
                 ChessBoard b;
                 b = board.Clone();
                 b.fields[field - 10] = BLACK_BISHOP;
@@ -617,32 +563,32 @@ public class ChessBoard implements IChessGame, Serializable {
                 b.TurnNotation = ChessBoard.indexToFieldName(field) +
                         ChessBoard.indexToFieldName(field - 10) + "q";
                 followMoves.add(b);
-            } else return followMoves;
-        } else {
-            //*** Wurf �berpr�fen ********************************************************
+            }
+            else
+                return followMoves;
+        }
+        else {
+            // condition: check for attack - take
             if (fields[field - 9] > ChessBoard.BLACK_KING) {
                 board = this.executeMove(field, field - 9, ChessBoard.BLACK_PAWN);
                 followMoves.add(board);
             }
-
-            //*** Wurf in andere Richtung �berpr�fen *************************************
+            //check for other take -> direction moves
             if (fields[field - 11] > ChessBoard.BLACK_KING) {
                 board = this.executeMove(field, field - 11, ChessBoard.BLACK_PAWN);
                 followMoves.add(board);
             }
-
-            //*** Gerade aus Zug pr�fen **************************************************
+            // check straight forward move
             if (fields[field - 10] == ChessBoard.EMPTY_FIELD) {
                 board = this.executeMove(field, field - 10, ChessBoard.BLACK_PAWN);
                 followMoves.add(board);
             } else return followMoves;
         }
 
-        //*** Wenn gerade aus Zug moeglich war auch doppelt geradeaus pruefen ************
+        // condition: straight forward move possible - is double forward move available
         if (field / 10 == 8 && fields[field - 20] == ChessBoard.EMPTY_FIELD) {
             board = this.executeMove(field, field - 20, ChessBoard.BLACK_PAWN);
-
-            //*** En Passent schlagen bearbeiten *****************************************
+            // condition: en passant taking
             if (fields[field - 19] == ChessBoard.WHITE_PAWN) {
                 ChessBoard newBoard = new ChessBoard(board);
                 newBoard.fields[field - 20] = ChessBoard.EMPTY_FIELD;
@@ -665,8 +611,7 @@ public class ChessBoard implements IChessGame, Serializable {
             followMoves.add(board);
 
         }
-        //*** Liste zurueckgeben **********************************************************
-        return followMoves;
+        return followMoves;// list of follow movs
     }
 
     /**
@@ -675,19 +620,15 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     private ArrayList<ChessBoard> makeWhitePawnMove(int field) {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<ChessBoard> followMoves;
+        // declare vars
         ChessBoard board;
-
-        //*** Liste initialisieren *******************************************************
-        followMoves = new ArrayList<ChessBoard>();
-
-        //*** Bauer in vorletzter Reihe **************************************************
+        ArrayList<ChessBoard> followMoves = new ArrayList<>();
+        // pawns row start in the forelast top row
         if (field > 79) {
-            //*** Wurf �berpr�fen ********************************************************
+            // condition: check for taking
             if (fields[field + 9] > ChessBoard.EMPTY_FIELD && fields[field + 9] < ChessBoard.WHITE_PAWN) {
                 board = this.executeMove(field, field + 9, ChessBoard.WHITE_PAWN);
-                //*** Figurentausch durchf�hren ******************************************
+                // promotion (transformation from pawn to ...)
                 ChessBoard b;
                 b = board.Clone();
                 b.fields[field + 9] = WHITE_BISHOP;
@@ -710,11 +651,10 @@ public class ChessBoard implements IChessGame, Serializable {
                         ChessBoard.indexToFieldName(field + 9) + "q";
                 followMoves.add(b);
             }
-
-            //*** Wurf in andere Richtung �berpr�fen *************************************
+            // condition: check taking in the other direction
             if (fields[field + 11] > ChessBoard.EMPTY_FIELD && fields[field + 11] < ChessBoard.WHITE_PAWN) {
                 board = this.executeMove(field, field + 11, ChessBoard.WHITE_PAWN);
-                //*** Figurentausch durchf�hren ******************************************
+                // promotion
                 ChessBoard b;
                 b = board.Clone();
                 b.fields[field + 11] = WHITE_BISHOP;
@@ -738,10 +678,10 @@ public class ChessBoard implements IChessGame, Serializable {
                 followMoves.add(b);
             }
 
-            //*** Gerade aus Zug pr�fen **************************************************
+            // condition: check straight forward move
             if (fields[field + 10] == ChessBoard.EMPTY_FIELD) {
                 board = this.executeMove(field, field + 10, ChessBoard.WHITE_PAWN);
-                //*** Figurentausch durchf�hren ******************************************
+                //promotion
                 ChessBoard b;
                 b = board.Clone();
                 b.fields[field + 10] = WHITE_BISHOP;
@@ -763,32 +703,33 @@ public class ChessBoard implements IChessGame, Serializable {
                 b.TurnNotation = ChessBoard.indexToFieldName(field) +
                         ChessBoard.indexToFieldName(field + 10) + "q";
                 followMoves.add(b);
-            } else return followMoves;
-        } else {
-            //*** Wurf �berpr�fen ********************************************************
+            }
+            else
+                return followMoves;
+        }
+        else {
+            // condition: check taking
             if (fields[field + 9] > EMPTY_FIELD && fields[field + 9] < ChessBoard.WHITE_PAWN) {
                 board = this.executeMove(field, field + 9, ChessBoard.WHITE_PAWN);
                 followMoves.add(board);
             }
-
-            //*** Wurf in andere Richtung �berpr�fen *************************************
+            // condition: check other direction for taking
             if (fields[field + 11] > EMPTY_FIELD && fields[field + 11] < ChessBoard.WHITE_PAWN) {
                 board = this.executeMove(field, field + 11, ChessBoard.WHITE_PAWN);
                 followMoves.add(board);
             }
-
-            //*** Gerade aus Zug pr�fen **************************************************
+            // condition: check straight forward taking
             if (fields[field + 10] == ChessBoard.EMPTY_FIELD) {
                 board = this.executeMove(field, field + 10, ChessBoard.WHITE_PAWN);
                 followMoves.add(board);
-            } else return followMoves;
+            }
+            else
+                return followMoves;
         }
-
-        //*** Wenn gerade aus Zug moeglich war auch doppelt geradeaus pruefen ************
+        // condition: straight forward move possible - is double forward move available
         if (field / 10 == 3 && fields[field + 20] == ChessBoard.EMPTY_FIELD) {
             board = this.executeMove(field, field + 20, ChessBoard.WHITE_PAWN);
-
-            //*** En Passent schlagen bearbeiten *****************************************
+            // condition: en passant taking
             if (fields[field + 19] == ChessBoard.BLACK_PAWN) {
                 ChessBoard newBoard = new ChessBoard(board);
                 newBoard.fields[field + 20] = ChessBoard.EMPTY_FIELD;
@@ -807,101 +748,78 @@ public class ChessBoard implements IChessGame, Serializable {
                         ChessBoard.indexToFieldName(field + 10);
                 board.entPassent.add(newBoard);
             }
-
             followMoves.add(board);
         }
-
-        //*** Liste zur�ckgeben **********************************************************
         return followMoves;
     }
 
     /**
-     *
+     * Generic move generator for white:
      * @param field
      * @param directions
      * @param piece
      * @return
      */
     private ArrayList<ChessBoard> genericWhiteMoves(int field, int[] directions, byte piece) {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<ChessBoard> followMoves;
+        // declare vars
         ChessBoard board;
         int i = 0;
         int newField;
+        ArrayList<ChessBoard> followMoves = new ArrayList<ChessBoard>();
 
-        //*** Liste initialisieren *******************************************************
-        followMoves = new ArrayList<ChessBoard>();
-
-        //*** F�r alle Richtungen ********************************************************
+        //double while loop - outer direction, inner empty field
+        // for all directions - if direction index
         while (i < directions.length) {
-            //*** n�chstes Feld bestimmen ************************************************
-            newField = field + directions[i];
-
-            //*** Solange n�chstes Feld frei ist *****************************************
+            newField = field + directions[i];// determine field index
+            // as long as field is empty
             while (fields[newField] == EMPTY_FIELD) {
-                //*** Zug ausf�hren ******************************************************
+                // execute next move - so it can be added to the move list
                 board = this.executeMove(field, newField, piece);
                 followMoves.add(board);
-
-                //*** n�chstes Feld bestimmen ********************************************
-                newField = newField + directions[i];
+                newField = newField + directions[i];// determine next fields
             }
-            //*** Neues Feld ist kein leeres Feld mehr und weder illegal noch wei� *******
+            // condition: new field isn`t empty field anymore nor illegal nor white
             if (fields[newField] != ILLEGAL_FIELD && fields[newField] < WHITE_PAWN) {
                 board = this.executeMove(field, newField, piece);
                 followMoves.add(board);
             }
-
-            //*** Richtungsz�hler erh�hen ************************************************
-            i++;
+            i++;// increment into the direction
         }
-
-        //*** Liste zur�ckgeben **********************************************************
         return followMoves;
     }
 
     /**
-     *
+     * Generic move generator for black!
      * @param field
      * @param directions
      * @param piece
      * @return
      */
     private ArrayList<ChessBoard> genericBlackMoves(int field, int[] directions, byte piece) {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<ChessBoard> followMoves;
+        // declare vars
         ChessBoard board;
         int i = 0;
         int newField;
+        ArrayList<ChessBoard> followMoves = new ArrayList<>();
 
-        //*** Liste initialisieren *******************************************************
-        followMoves = new ArrayList<ChessBoard>();
-
-        //*** F�r alle Richtungen ********************************************************
+        //double while loop - outer direction, inner empty field
+        // for all directions - if direction index
         while (i < directions.length) {
-            //*** n�chstes Feld bestimmen ************************************************
-            newField = field + directions[i];
-
-            //*** Solange n�chstes Feld frei ist *****************************************
+            newField = field + directions[i];// determine field index
+            // as long as field is empty
             while (fields[newField] == EMPTY_FIELD) {
-                //*** Zug ausf�hren ******************************************************
+                // execute next move - so it can be added to the move list
                 board = this.executeMove(field, newField, piece);
                 followMoves.add(board);
-
-                //*** n�chstes Feld bestimmen ********************************************
-                newField = newField + directions[i];
+                newField = newField + directions[i];// determine next fields
             }
-            //*** Neues Feld ist kein leeres Feld mehr und weder illegal noch schwarz ****
+            // condition: new field isn`t empty field anymore nor illegal nor black
             if (fields[newField] > BLACK_KING) {
                 board = this.executeMove(field, newField, piece);
                 followMoves.add(board);
             }
-
-            //*** Richtungsz�hler erh�hen ************************************************
-            i++;
+            i++;// increment into the direction
         }
-
-        //*** Liste zur�ckgeben **********************************************************
         return followMoves;
     }
 
@@ -913,31 +831,23 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     private ArrayList<ChessBoard> whiteSingleMove(int field, int[] directions, byte piece) {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<ChessBoard> followMoves;
+        // declare vars
         ChessBoard board;
         int i = 0;
         int newField;
+        ArrayList<ChessBoard> followMoves = new ArrayList<>();
 
-        //*** Liste initialisieren *******************************************************
-        followMoves = new ArrayList<ChessBoard>();
-
-        //*** F�r alle Richtungen ********************************************************
+        //double while loop - outer direction, inner empty field
+        // for all directions - if direction index
         while (i < directions.length) {
-            //*** n�chstes Feld bestimmen ************************************************
-            newField = field + directions[i];
-
-            //*** Neues Feld ist kein leeres Feld und weder illegal noch wei� ************
+            newField = field + directions[i];// determine field index
+            // condition: new field isn`t empty field anymore nor illegal nor white
             if (fields[newField] != ILLEGAL_FIELD && fields[newField] < WHITE_PAWN) {
                 board = this.executeMove(field, newField, piece);
                 followMoves.add(board);
             }
-
-            //*** Richtungsz�hler erh�hen ************************************************
-            i++;
+            i++;// increment into the direction
         }
-
-        //*** Liste zur�ckgeben **********************************************************
         return followMoves;
     }
 
@@ -949,31 +859,23 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     private ArrayList<ChessBoard> blackSingleMove(int field, int[] directions, byte piece) {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<ChessBoard> followMoves;
+        // declare vars
         ChessBoard board;
         int i = 0;
         int newField;
+        ArrayList<ChessBoard> followMoves = new ArrayList<>();
 
-        //*** Liste initialisieren *******************************************************
-        followMoves = new ArrayList<ChessBoard>();
-
-        //*** F�r alle Richtungen ********************************************************
+        //double while loop - outer direction, inner empty field
+        // for all directions - if direction index
         while (i < directions.length) {
-            //*** n�chstes Feld bestimmen ************************************************
-            newField = field + directions[i];
-
-            //*** Neues Feld ist kein leeres Feld und weder illegal noch schwarz *********
+            newField = field + directions[i];// determine field index
+            // condition: new field isn`t empty field anymore nor illegal nor black
             if (fields[newField] > BLACK_KING || fields[newField] == EMPTY_FIELD) {
                 board = this.executeMove(field, newField, piece);
                 followMoves.add(board);
             }
-
-            //*** Richtungsz�hler erh�hen ************************************************
-            i++;
+            i++;// increment into the direction
         }
-
-        //*** Liste zur�ckgeben **********************************************************
         return followMoves;
     }
 
@@ -985,21 +887,26 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     private ChessBoard executeMove(int oldField, int newField, byte piece) {
-        //*** Variablen-Deklaration ******************************************************
+        // declare vars
         ChessBoard board;
 
-        //*** Zug vornehmen **************************************************************
+        // execute move
         board = new ChessBoard(this);
         board.fields[oldField] = ChessBoard.EMPTY_FIELD;
-        if (board.fields[newField] == BLACK_KING) board.BlackLost = true;
-        if (board.fields[newField] == WHITE_KING) board.WhiteLost = true;
+        // condition: check for check mate
+        if (board.fields[newField] == BLACK_KING)
+            board.BlackLost = true;
+        if (board.fields[newField] == WHITE_KING)
+            board.WhiteLost = true;
         board.fields[newField] = piece;
         board.TurnNotation = ChessBoard.indexToFieldName(oldField) +
                 ChessBoard.indexToFieldName(newField);
-        //*** Rochade m�glickeite testen *************************************************
+        // condition: check for castling & castling options
         if (piece == WHITE_ROOK) {
-            if (oldField == 21) board.WhiteCanLongRochade = false;
-            if (oldField == 28) board.WhiteCanShortRochade = false;
+            if (oldField == 21)
+                board.WhiteCanLongRochade = false;
+            if (oldField == 28)
+                board.WhiteCanShortRochade = false;
         }
         if (piece == WHITE_KING) {
             board.WhiteCanLongRochade = false;
@@ -1007,15 +914,15 @@ public class ChessBoard implements IChessGame, Serializable {
         }
 
         if (piece == BLACK_ROOK) {
-            if (oldField == 91) board.BlackCanLongRochade = false;
-            if (oldField == 98) board.BlackCanShortRochade = false;
+            if (oldField == 91)
+                board.BlackCanLongRochade = false;
+            if (oldField == 98)
+                board.BlackCanShortRochade = false;
         }
         if (piece == BLACK_KING) {
             board.BlackCanLongRochade = false;
             board.BlackCanShortRochade = false;
         }
-
-        //*** Brett zurueckgeben *********************************************************
         return board;
     }
 
@@ -1025,48 +932,63 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     public int getQuality(Player player) {
-        //*** Variablen-Deklaration ******************************************************
+        // declare vars
         int field;
         int quality = 0;
 
-        //*** Fuer alle legalen Felder ****************************************************
+        // for all legal fields
+        // iterate over the board and sum up qualities
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                //*** Feldindex bestimmen ****************************************************
-                field = y * 10 + x;
-
-                //*** Bei leerem oder ungueltigem Feld naechstes Feld ************************
-                if (fields[field] <= EMPTY_FIELD) continue;
-
-                //*** Qualitaet entsprechend der Figuren Qualiteat (Array Index) anpassen *****
+                field = y * 10 + x;// determine field index
+                // if field is empty or illegal -> skip
+                if (fields[field] <= EMPTY_FIELD)
+                    continue;
+                // adjust the piece quality, from the array index, to the board quality
                 quality += QUALITIES[fields[field]];
             }
-
-        //*** Aus Sicht von Schwarz Qualitaets Vorzeichen aendern *************************
-        if (player == Player.BLACK) quality *= -1;
-
-        //*** Wert zurueckgeben **********************************************************
+        // condition for black player - negate the quality
+        if (player == Player.BLACK)
+            quality *= -1;
         return quality;
     }
 
     /**
-     *
-     * @return
+     * Method that iterates over the byte board (byte array) and converts
+     * each piece of the index to it`s string representative. String must
+     * have a length of 64 characters.
+     * <li>w - white</li>
+     * <li>S - black</li>
+     * <li>x - empty legal field</li>
+     * <li>B - black pawn</li>
+     * <li>b - white pawn</li>
+     * <li>l - white bishop</li>
+     * <li>L - black bishop</li>
+     * <li>s - white knight</li>
+     * <li>S - black knight</li>
+     * <li>t - white rook</li>
+     * <li>T - black Tower</li>
+     * <li>d - white queen</li>
+     * <li>D - black queen</li>
+     * <li>k - white king</li>
+     * <li>K - black king</li>
+     * @return String holding the whole chessboard as a string.
      */
     public String getStringRepresentation() {
+        // declare vars
         String game = "";
         int field;
-
+        //iterate over the chessboard
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                //*** Feldindex bestimmen ****************************************************
-                field = y * 10 + x;
-
-                game += NAMES[fields[field]];
+                field = y * 10 + x;// determine the field index
+                game += NAMES[fields[field]];// concat board with pieces of the board
             }
-        if (playerToMakeTurn == Player.WHITE) game += "w";
-        else game += "S";
-
+        // attach players colour
+        if (playerToMakeTurn == Player.WHITE)
+            game += "w";
+        else
+            game += "S";
         return game;
     }
 
@@ -1078,19 +1000,21 @@ public class ChessBoard implements IChessGame, Serializable {
         char[] c = new char[65];
         c = s.toCharArray();
         int j = 0;
-
+        // condition: if player is white
         if (c[64] == 'w') {
             playerToMakeTurn = Player.WHITE;
             c[64] = ' ';
-        } else {
+        }
+        else {
             playerToMakeTurn = Player.BLACK;
             c[64] = ' ';
         }
-
+        // iterate over the field and set illegal fields
         for (int i = 0; i < 120; i++) {
             if (i > 98 || i < 21 || i % 10 == 0 || i % 10 == 9) {
                 fields[i] = ILLEGAL_FIELD;
-            } else
+            }
+            else
                 switch (c[j]) {
                     case ('x'):
                         fields[i] = EMPTY_FIELD;
@@ -1149,32 +1073,30 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
+     * Method that takes the board and generates a hash value out of it
      * @return
      */
     public String getHash() {
-        //*** Variablen-Deklaration ******************************************************
+        // declare vars
         String hash = "";
         int empty = 0;
         int field;
-
-        //*** F�r alle legalen Felder ****************************************************
+        // for all legal fields
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                //*** Feldindex bestimmen ****************************************************
-                field = y * 10 + x;
-
-                //*** Bei leerem oder ungueltigem Feld leere Felder **************************
-                if (fields[field] <= EMPTY_FIELD) empty++;
+                field = y * 10 + x;// determine field index
+                // condition: empty fields
+                if (fields[field] <= EMPTY_FIELD)
+                    empty++;
                 else {
-                    if (empty >= 2) hash += empty + "m";
-                    else if (empty == 1) hash += "l";
+                    if (empty >= 2)
+                        hash += empty + "m";
+                    else if (empty == 1)
+                        hash += "l";
                     empty = 0;
                     hash += fields[field];
                 }
             }
-
-        //*** Wert zurueckgeben **********************************************************
         return hash;
     }
 
@@ -1190,40 +1112,42 @@ public class ChessBoard implements IChessGame, Serializable {
             if (turn.equals(nextTurns.get(i).getTurnNotation()))
                 return nextTurns.get(i);
         }
-        throw new Exception(turn + " :Zug nicht in Liste legaler Z�ge gefunden;");
+        throw new Exception(turn + " :Move not found in the list of legal moves!;");
     }
 
     /**
-     *
-     * @param   board
-     * @return
+     * Method that decides if a move is a legal move, by iterating over
+     * the list of available boards, if a move is enlisted in the ArrayList, then
+     * it is a legal move, otherwise not.
+     * @param   board current board
+     * @return  boolean that holds the value if game is enlisted or not
      */
     public boolean isLegalMove(ChessBoard board) {
-        //*** Variablen Deklaration ******************************************************
+        // declare vars
         ArrayList<IChessGame> nextBoards;
-
-        //*** Folge Zuege berechnen ******************************************************
-        nextBoards = this.getNextTurns();
-
-        //*** Pr�fen ob Brett unter den Folge z�gen **************************************
+        nextBoards = this.getNextTurns();// compute following moves
+        // checking if board is contained in the follow moves list
         for (int i = 0; i < nextBoards.size(); i++) {
-            if (((ChessBoard) nextBoards.get(i)).equals(board)) return true;
+            if (((ChessBoard) nextBoards.get(i)).equals(board))
+                return true;
         }
-
         return false;
     }
 
     /**
-     *
+     * Method that compares a given chessboard
      * @param board
      * @return
      */
     public boolean equals(ChessBoard board) {
+        // iterate over the board and compare each field
         for (int i = 0; i < this.fields.length; i++) {
-            if (board.fields[i] != this.fields[i]) return false;
+            if (board.fields[i] != this.fields[i])
+                return false;
         }
-        if (this.playerToMakeTurn != board.playerToMakeTurn) return false;
-
+        // condition: check if the player has the right colour
+        if (this.playerToMakeTurn != board.playerToMakeTurn)
+            return false;
         return true;
     }
 
@@ -1239,41 +1163,38 @@ public class ChessBoard implements IChessGame, Serializable {
         ChessBoard board = new ChessBoard();
         board.fields = this.fields.clone();
         board.playerToMakeTurn = this.playerToMakeTurn;
-
         board.BlackCanLongRochade = this.BlackCanLongRochade;
         board.BlackCanShortRochade = this.BlackCanShortRochade;
         board.WhiteCanLongRochade = this.WhiteCanLongRochade;
         board.WhiteCanShortRochade = this.WhiteCanShortRochade;
-
-        board.entPassent = new ArrayList<IChessGame>();
+        board.entPassent = new ArrayList<>();
         board.entPassent.addAll(this.entPassent);
         return board;
     }
 
     /**
-     *
-     * @return
+     * Method that checks if a castling is available and if so it
+     * executes the castling in one of both variants.
+     * @return ArrayList containing games
      */
     ArrayList<IChessGame> getWhiteRochade() {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<IChessGame> rochadeList;
+        // declare or init vars
         int field;
+        ArrayList<IChessGame> rochadeList = new ArrayList<IChessGame>();
 
-        //*** Liste initialisieren *******************************************************
-        rochadeList = new ArrayList<IChessGame>();
-
-        //*** Testen ob kurze Rochade m�glich ********************************************
+        // condition: check for short/ king side castling possible
         if (WhiteCanShortRochade) {
-            //*** Wenn Felder zwischen Turm und K�nig leer und Turm da ********************
-            if (fields[26] == EMPTY_FIELD && fields[27] == EMPTY_FIELD && fields[28] == WHITE_ROOK) {
+            // condition: if fields between king and rook are empty
+            if (fields[26] == EMPTY_FIELD && fields[27] == EMPTY_FIELD
+                    && fields[28] == WHITE_ROOK) {
                 field = 25;
-                //*** Testen ob ein Feld angegriffen wird ********************************
+                // condition: check if is field attacked by opponent
                 while (field < 28 && !IsFieldAttackedByBlack(field)) {
                     field++;
                 }
-                //*** Wenn kein Feld angegriffen wurde ***********************************
+                // condition: if no field in between king and rook is attacked by the opponent
                 if (field == 28) {
-                    //*** Rochieren ******************************************************
+                    // execute castling
                     ChessBoard b = this.Clone();
                     b.fields[26] = ChessBoard.WHITE_ROOK;
                     b.fields[27] = ChessBoard.WHITE_KING;
@@ -1288,16 +1209,16 @@ public class ChessBoard implements IChessGame, Serializable {
             }
         }
         if (WhiteCanLongRochade) {
-            //*** Wenn Felder zwischen Turm und K�nig leer und Turm da ************************
+            // condition: check for long/ queen side castling possible
             if (fields[24] == EMPTY_FIELD && fields[23] == EMPTY_FIELD && fields[22] == EMPTY_FIELD && fields[21] == WHITE_ROOK) {
                 field = 25;
-                //*** Testen ob ein Feld angegriffen wird ********************************
+                // condition: check if is field attacked by opponent
                 while (field > 22 && !IsFieldAttackedByBlack(field)) {
                     field--;
                 }
-                //*** Wenn kein Feld angegriffen wurde ***********************************
+                // condition: if no field in between king and rook is attacked by the opponent
                 if (field == 22) {
-                    //*** Rochieren ******************************************************
+                    // execute castling
                     ChessBoard b = this.Clone();
                     b.fields[24] = ChessBoard.WHITE_ROOK;
                     b.fields[23] = ChessBoard.WHITE_KING;
@@ -1311,8 +1232,6 @@ public class ChessBoard implements IChessGame, Serializable {
                 }
             }
         }
-
-        //*** Liste zur�ckgeben **********************************************************
         return rochadeList;
     }
 
@@ -1322,26 +1241,23 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     ArrayList<IChessGame> getBlackRochade() {
-        //*** Variablen-Deklaration ******************************************************
-        ArrayList<IChessGame> rochadeList;
+        // declare or init vars
         ChessBoard b;
         int field;
+        ArrayList<IChessGame> rochadeList = new ArrayList<>();
 
-        //*** Liste initialisieren *******************************************************
-        rochadeList = new ArrayList<IChessGame>();
-
-        //*** Testen ob kurze Rochade m�glich ********************************************
+        // condition: check for short/ king side castling possible
         if (BlackCanShortRochade) {
-            //*** Wenn Felder zwischen Turm und K�nig leer und Turm da **********************
+            // condition: if fields between king and rook are empty
             if (fields[96] == EMPTY_FIELD && fields[97] == EMPTY_FIELD && fields[98] == BLACK_ROOK) {
                 field = 95;
-                //*** Testen ob ein Feld angegriffen wird ********************************
+                // condition: check if is field attacked by opponent
                 while (field < 98 && !IsFieldAttackedByWhite(field)) {
                     field++;
                 }
-                //*** Wenn kein Feld angegriffen wurde ***********************************
+                // condition: if no field in between king and rook is attacked by the opponent
                 if (field == 98) {
-                    //*** Rochieren ******************************************************
+                    // execute castling
                     b = this.Clone();
                     b.fields[96] = ChessBoard.BLACK_ROOK;
                     b.fields[97] = ChessBoard.BLACK_KING;
@@ -1356,16 +1272,16 @@ public class ChessBoard implements IChessGame, Serializable {
             }
         }
         if (BlackCanLongRochade) {
-            //*** Wenn Felder zwischen Turm und K�nig leer und Turm da **********************
+            // condition: check for long/ queen side castling possible
             if (fields[94] == EMPTY_FIELD && fields[93] == EMPTY_FIELD && fields[92] == EMPTY_FIELD && fields[91] == BLACK_ROOK) {
                 field = 95;
-                //*** Testen ob ein Feld angegriffen wird ********************************
+                // condition: check if is field attacked by opponent
                 while (field > 92 && !IsFieldAttackedByWhite(field)) {
                     field--;
                 }
-                //*** Wenn kein Feld angegriffen wurde ***********************************
+                // condition: if no field in between king and rook is attacked by the opponent
                 if (field == 92) {
-                    //*** Rochieren ******************************************************
+                    // execute castling
                     b = this.Clone();
                     b.fields[94] = ChessBoard.BLACK_ROOK;
                     b.fields[93] = ChessBoard.BLACK_KING;
@@ -1379,8 +1295,6 @@ public class ChessBoard implements IChessGame, Serializable {
                 }
             }
         }
-
-        //*** Liste zur�ckgeben **********************************************************
         return rochadeList;
     }
 
@@ -1390,39 +1304,43 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     public boolean IsFieldAttackedByBlack(int field) {
-        //*** Variablen-Deklaration ******************************************************
+        // declare vars
         byte piece;
         int u;
+        // condition: is a pawn able to attack/ take another piece
+        if (fields[field + 9] == BLACK_PAWN || fields[field + 11] == BLACK_PAWN)
+            return true;
 
-        //*** Testen ob Bauer werfen kann ************************************************
-        if (fields[field + 9] == BLACK_PAWN || fields[field + 11] == BLACK_PAWN) return true;
-
-        //*** Testen ob Springer werfen kann *********************************************
+        // condition: is a knight able to attack/ take another piece
         for (int i = 0; i < KNIGHT_DIRECTIONS.length; i++) {
-            if (fields[field + KNIGHT_DIRECTIONS[i]] == BLACK_KNIGHT) return true;
+            if (fields[field + KNIGHT_DIRECTIONS[i]] == BLACK_KNIGHT)
+                return true;
         }
-
-        //*** Turm Richtungen testen *****************************************************
+        // condition: check for directions that a piece could be attacked by rook
         for (int i = 0; i < ROOK_DIRECTIONS.length; i++) {
             u = 1;
-            while ((piece = fields[field + ROOK_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
-            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
-            if (piece == BLACK_QUEEN || piece == BLACK_ROOK) return true;
-            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
-            if (piece == BLACK_KING && u == 1) return true;
+            // as long
+            while ((piece = fields[field + ROOK_DIRECTIONS[i] * u]) == EMPTY_FIELD)
+                u++;
+            // condition: piece is in attack direction of rook or queen
+            if (piece == BLACK_QUEEN || piece == BLACK_ROOK)
+                return true;
+            // condition: if king is only one field away from piece
+            if (piece == BLACK_KING && u == 1)
+                return true;
         }
-
-        //*** Turm Richtungen testen *****************************************************
+        // condition: check for direction of the bishop
         for (int i = 0; i < ChessBoard.BISHOP_DIRECTIONS.length; i++) {
             u = 1;
             while ((piece = fields[field + BISHOP_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
-            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
-            if (piece == BLACK_QUEEN || piece == BLACK_BISHOP) return true;
-            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
-            if (piece == BLACK_KING && u == 1) return true;
+            // condition: is piece in direction of queen or bishop
+            if (piece == BLACK_QUEEN || piece == BLACK_BISHOP)
+                return true;
+            // condition: if king is only one field away from piece
+            if (piece == BLACK_KING && u == 1)
+                return true;
         }
-
-        //*** Default: false *************************************************************
+        // if none of the above cases matches, pieces is not attacked
         return false;
     }
 
@@ -1433,39 +1351,40 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     public boolean IsFieldAttackedByWhite(int field) {
-        //*** Variablen-Deklaration ******************************************************
+        // declare variables
         byte piece;
         int u;
-
-        //*** Testen ob Bauer werfen kann ************************************************
-        if (fields[field - 9] == WHITE_PAWN || fields[field - 11] == WHITE_PAWN) return true;
-
-        //*** Testen ob Springer werfen kann *********************************************
+        // condition: is a pawn able to attack/ take another piece
+        if (fields[field - 9] == WHITE_PAWN || fields[field - 11] == WHITE_PAWN)
+            return true;
+        // condition: is a knight able to attack/ take another piece
         for (int i = 0; i < KNIGHT_DIRECTIONS.length; i++) {
-            if (fields[field + KNIGHT_DIRECTIONS[i]] == WHITE_KNIGHT) return true;
+            if (fields[field + KNIGHT_DIRECTIONS[i]] == WHITE_KNIGHT)
+                return true;
         }
-
-        //*** Turm Richtungen testen *****************************************************
+        // condition: check for directions that a piece could be attacked by rook
         for (int i = 0; i < ROOK_DIRECTIONS.length; i++) {
             u = 1;
             while ((piece = fields[field + ROOK_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
-            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
-            if (piece == WHITE_QUEEN || piece == WHITE_ROOK) return true;
-            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
-            if (piece == WHITE_KING && u == 1) return true;
+            // condition: piece is in attack direction of rook or queen
+            if (piece == WHITE_QUEEN || piece == WHITE_ROOK)
+                return true;
+            // condition: if king is only one field away from piece
+            if (piece == WHITE_KING && u == 1)
+                return true;
         }
-
-        //*** Turm Richtungen testen *****************************************************
+        // condition: check for direction of the bishop
         for (int i = 0; i < ChessBoard.BISHOP_DIRECTIONS.length; i++) {
             u = 1;
             while ((piece = fields[field + BISHOP_DIRECTIONS[i] * u]) == EMPTY_FIELD) u++;
-            //*** Wenn in Sicht von Turm oder Dame - wird angegriffen ********************
-            if (piece == WHITE_QUEEN || piece == WHITE_BISHOP) return true;
-            //*** Wenn K�nig nur eins weit weg ist - wird angegriffen ********************
-            if (piece == WHITE_KING && u == 1) return true;
+            // condition: is piece in direction of queen or bishop
+            if (piece == WHITE_QUEEN || piece == WHITE_BISHOP)
+                return true;
+            // condition: if king is only one field away from piece
+            if (piece == WHITE_KING && u == 1)
+                return true;
         }
-
-        //*** Default: false *************************************************************
+        // if none of the above cases matches, pieces is not attacked
         return false;
     }
 
@@ -1516,15 +1435,20 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
-     * @return
+     * Getter method to calculate the current round in the match.
+     * @return integer with the round number.
      */
     public int getRound() {
         return round_counter;
     }
 
-    //*** Liefert den Index des Feldes mit dem König der Übergebenen Farbe zurück
-    //*** Wenn der König nciht gefunden wurde -1;
+    /**
+     * Method that get you the position/ index of the king. If the
+     * king is not found, it return -1.
+     * @return integer value that contains the position of the king.
+     * @param player
+     * @return
+     */
     private int getKing(Player player) {
         for (int i = 19; i < 100; i++) {
             if (fields[i] == WHITE_KING && player == Player.WHITE)
@@ -1540,87 +1464,98 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return
      */
     public GameState getGameState() {
-        //*** variablen initialisieren *****************************************
+        // declare vars
         int kingsField;
         ChessBoard nextTurn;
-        ArrayList<IChessGame> nextGames = new ArrayList<IChessGame>();
-        boolean isKingAttacked = false;
-        boolean hasEscape = false;
+        ArrayList<IChessGame> nextGames;
+        boolean isKingAttacked = false;//init as false
+        boolean hasEscape = false;//
 
-        //*** Prüfen ob Stellung legal ist ***********************************************
-        if (!this.isLegalBoard()) return GameState.ILLEGAL;
+        // condition: check if board is in legal state
+        if (!this.isLegalBoard())
+            return GameState.ILLEGAL;
 
-        //** Dafür sorgen dass nachfolge stellung bekannt sind *****************
+        // take care, that following moves will be known
         nextGames = this.getNextTurns();
 
-        //*** Wenn keine Nachfolgebretter existieren ist draw ****************************
-        if (nextGames.size() == 0) return GameState.DRAW;
+        // condition: if there are no boards, game is draw
+        if (nextGames.size() == 0)
+            return GameState.DRAW;
 
-        //*** Auf MAtt und Draw weiter prüfen ********************************************
-
-        //*** Prüfen ob der König angegriffen wird ***************************************
+        // Check for other check mate or draws!
+        // condition: check if king is attacked
         if (playerToMakeTurn == Player.WHITE) {
             if (IsFieldAttackedByBlack(this.getKing(Player.WHITE)))
                 isKingAttacked = true;
-        } else {
+        }
+        else {
             if (IsFieldAttackedByWhite(this.getKing(Player.BLACK)))
                 isKingAttacked = true;
         }
 
-        //*** Prüfe alle Felder ************************************************
+        // condition: check all fields to determine current state for the king
         for (int i = 0; i < nextGames.size(); i++) {
-            //*** nachfolger bestimmen *****************************************
-            nextTurn = (ChessBoard) (nextGames.get(i));
-
-            //*** KönigsFeld des Nachfolgers besorgen **************************
+            nextTurn = (ChessBoard) (nextGames.get(i));// determine successors
+            // get the field index of the king
             kingsField = nextTurn.getKing(this.playerToMakeTurn);
-
-            //*** Wenn der König schon weg ist weiter ************************************
-            if (kingsField == -1) continue;
-
-            //*** Wenn das KönigsFeld nicht vom Gegner angegriffen gibts ein escape
+            // if king is not available
+            if (kingsField == -1)
+                continue;
+            // condition: check is there an escape if king is attacked
             if (this.playerToMakeTurn == Player.WHITE) {
-                if (!nextTurn.IsFieldAttackedByBlack(kingsField)) hasEscape = true;
-            } else {
-                if (!nextTurn.IsFieldAttackedByWhite(kingsField)) hasEscape = true;
+                if (!nextTurn.IsFieldAttackedByBlack(kingsField))
+                    hasEscape = true;
+            }
+            else {
+                if (!nextTurn.IsFieldAttackedByWhite(kingsField))
+                    hasEscape = true;
             }
         }
 
-        //*** Auswerten ******************************************************************
-        if (isKingAttacked && !hasEscape) return GameState.MATT;
-        if (!hasEscape) return GameState.DRAW;
-
-        //*** DEfault legal **************************************************************
+        //CHECK MATE EVALUATION!
+        // condition: king is attacked and no escpae -> check mate
+        if (isKingAttacked && !hasEscape)
+            return GameState.MATT;
+        // condition: king is not attacked, but has no escpae -> patt
+        if (!hasEscape)
+            return GameState.DRAW;
+        // if nothing from the above conditions matches, the game goes on
         return GameState.LEGAL;
     }
 
     /**
-     *
-     * @return
+     * isLegalBoard checks if a given board, this board, has a legal
+     * status. So if the board is illegal, the game will end, because some rules
+     * of a chess match are violated
+     * @return boolean that will say whether the board is okay or not.
      */
     public boolean isLegalBoard() {
         int kingsField;
-
-        //*** Wenn weiß dran ist *********************************************************
+        // condition: it`s whites turn
         if (this.playerToMakeTurn == Player.WHITE) {
-            kingsField = this.getKing(Player.BLACK);
-            //*** Wenn kein König vorhanden ist ist das Brett auch nicht legal ***********
-            if (kingsField == -1) return false;
-            //*** Wenn der König angegriffen wird ****************************************
-            if (this.IsFieldAttackedByWhite(kingsField)) return false;
-        } else {
-            kingsField = this.getKing(Player.WHITE);
-            //*** Wenn kein König vorhanden ist ist das Brett auch nicht legal ***********
-            if (kingsField == -1) return false;
-            //*** Wenn der König angegriffen wird auch nicht *****************************
-            if (this.IsFieldAttackedByBlack(kingsField)) return false;
+            kingsField = this.getKing(Player.BLACK);// get kings position
+            // condition: no king no legal game
+            if (kingsField == -1)
+                return false;
+            // condition: king is attacked - its not a legal board, for next games
+            if (this.IsFieldAttackedByWhite(kingsField))
+                return false;
         }
-
+        else {
+            kingsField = this.getKing(Player.WHITE);
+            // condition: no king no legal game
+            if (kingsField == -1)
+                return false;
+            // condition: king is attacked - its not a legal board, for next games
+            if (this.IsFieldAttackedByBlack(kingsField))
+                return false;
+        }
+        // if nothing from above matches, the game board is a legal board
         return true;
     }
 
     /**
-     *
+     * Setter method that just set bool flags for casling options.
      * @param   k_Castling  boolean if white king side castling (short castling) can be done
      * @param   q_Castling  boolean if white queen side castling (long castling) can be done
      * @param   K_Castling  boolean if black king side castling (short castling) can be done
@@ -1641,21 +1576,20 @@ public class ChessBoard implements IChessGame, Serializable {
         int q = 0;
         int field;
 
-        //*** Für alle Spalten
+        // condtion: for all columns
         for (int x = 1; x < 9; x++) {
-            //*** Für alle Reihen
+            // condition: for all rows
             for (int y = 2; y < 10; y++) {
                 field = y * 10 + x;
-                //*** fig quali geht ein
-                q += QUALITIES[this.fields[field]];
+                q += QUALITIES[this.fields[field]];//sums up the quality of each field
             }
         }
         return q;
     }
 
     /**
-     *
-     * @return
+     * Getter the will deliver the integer value that holds the current value of the round.
+     * @return integer
      */
     public int getTurnsMade() {
         return round_counter;
@@ -1664,7 +1598,6 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Getter for hasBlackLost
-     *
      * @return boolean hasBlackLost
      */
     public boolean hasBlackLost() {
@@ -1673,7 +1606,6 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Getter for hasWhiteLost
-     *
      * @return boolean hasWhiteLost
      */
     public boolean hasWhiteLost() {

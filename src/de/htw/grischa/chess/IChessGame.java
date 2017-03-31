@@ -4,26 +4,37 @@ import java.util.ArrayList;
 
 /**
  * Interface for chessboard
- * Provides requirements to the chessboard representation
+ * Provides requirements to the chessboard representation and extends the comparable
+ * interface to compare chessboars
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.0.1 - 12/09 - Heim - Initial Version</li>
+ * <li> 0.0.1 - 12/09 - Daniel Heim - Initial Version</li>
  * <li> 0.0.? - 05/10 - Rossius - ???</li>
- * <li> 0.0.? - 06/10 - Heim - ???</li>
+ * <li> 0.0.? - 06/10 - Daniel Heim - ???</li>
  * <li> 0.0.3 - 06/14 - Karsten Kochan - Added toDatabase method, added getMD5Hash() method,
- * documentation/type,
- * translation, added parent getter and setter</li>
+ * documentation/type, translation, added parent getter and setter</li>
+ * <li> 0.0.3 - 03/17 - Benjamin Troester - Removed toDatabase method, getMD5Hash() method
+ * because shared memory via database isn`t needed nor really working.
  * </ul>
+ *
+ * @author Danie Heim
+ * @see java.lang.Comparable
  */
 
 public interface IChessGame extends Comparable<IChessGame> {
     /*
      * Standard String Representation:
+     * s=black, w=white
 	 * String of 65 chars, one char is one field starting from A1, A2, ... , H8.
 	 * White figures are lower case, black figures upper case:
-	 * Pawn=b/B, Rook=t/T, Knight=s/S, Bishop=l/L, Queen=d/D, King=k/K. empty=x
+	 * Pawn=b/B
+     * Rook=t/T
+	 * Knight=s/S
+	 * Bishop=l/L
+	 * Queen=d/D
+	 * King=k/K
+	 * empty=x
 	 * Last char (65) tells the player who needs to move next:
-	 * s=black, w=white
 	 */
 
     /**
@@ -116,7 +127,7 @@ public interface IChessGame extends Comparable<IChessGame> {
     public GameState getGameState();
 
     /**
-     * Setter for castling
+     * Setter for castling -> name is confusing
      * Set which kind of castling is possible on current board
      * @param   k_Castling  boolean if white king side castling (short castling) can be done
      * @param   q_Castling  boolean if white queen side castling (long castling) can be done

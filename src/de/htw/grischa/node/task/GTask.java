@@ -11,6 +11,9 @@ import de.htw.grischa.chess.Player;
 /**
  * GTask is the implementation of the Task interface.
  * This class
+ *
+ * @see java.lang.Runnable
+ * @see de.htw.grischa.node.task.Task
  */
 
 public class GTask implements Task {
@@ -23,11 +26,20 @@ public class GTask implements Task {
     private Integer mJobResult = null;
     private Player mMaxPlayer = null;
 
+    /**
+     *
+     * @param game
+     * @param maxPlayer
+     */
     public GTask(IChessGame game, Player maxPlayer) {
         this.mChessGame = game;
         this.mMaxPlayer = maxPlayer;
     }
-    
+
+    /**
+     *
+     * @param taskString
+     */
     public GTask(String taskString) {
         JSONTokener t = new JSONTokener(taskString);
         JSONObject o = new JSONObject(t);
@@ -45,6 +57,9 @@ public class GTask implements Task {
         }
     }
 
+    /**
+     *
+     */
     @SuppressWarnings("deprecation")
     @Override
     public void run() {

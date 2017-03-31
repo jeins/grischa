@@ -9,33 +9,32 @@ import org.apache.log4j.Logger;
  * </p>
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.1 - 04/10 - Heim - Initial Version </li>
- * <li> 0.2 - 06/10 - Neumann - ??? </li>
- * <li> 0.3 - 07/11 - Laurence Bortfeld - ??? </li>
- * <li> 0.4 - 04/14 - Karsten Kochan - Integration of database, typo/language, documentation </li>
- * <li> 0.5 - 07/14 - Karsten Kochan - Added properties based variant to use or not use the database</li>
- * <li> 0.6 - 09/14 - Karsten Kochan - Fallback for missing property or missing db file</li>
- * <li> 0.7 - 02/17 - Benjamin Troester - internship -> cleanup & research</li>
- * <li> 0.8 - 02/17 - Benjamin Troester - research & preparation for Monte Carlo implementation</li>
+ * <li> 04-10 - Daniel Heim - Initial Version </li>
+ * <li> 06-10 - Neumann - ??? </li>
+ * <li> 07-11 - Laurence Bortfeld - Optimizing the worker nodes </li>
+ * <li> 04-14 - Karsten Kochan - Integration of database, typo/language, documentation </li>
+ * <li> 07-14 - Karsten Kochan - Added properties based variant to use or not use the database</li>
+ * <li> 09-14 - Karsten Kochan - Fallback for missing property or missing db file</li>
+ * <li> 02-17 - Benjamin Troester - Internship, cleanup & research, removing everything
+ * related to sharede memory, because shared memory via database isn`t needed nor really working, due to
+ * memory problems</li>
+ * <li> 04-17 - Benjamin Troester - research & preparation for Monte Carlo implementation</li>
  * </ul>
- * @version 0.6
+ *
+ * @author Daniel Heim
+ * @version 2-17
+ * @see java.lang.Runnable
  */
 
 public class IterativeAlphaBetaSearch implements Runnable {
-    //looger
-    private final static Logger log = Logger.getLogger(IterativeAlphaBetaSearch.class);
-    // Current game (board) to search the best move for
-    private final IChessGame game;
-    // Player to be maximized
-    private final Player maximizingPlayer;
-    // Best turn calculated by Alpha-Beta-Search
-    public IChessGame bestTurn;
-    //Current value of the board calculated
-    private int value;
+    private final static Logger log = Logger.getLogger(IterativeAlphaBetaSearch.class);//looger
+    private final IChessGame game; // Current game (board) to search the best move for
+    private final Player maximizingPlayer;// Player to be maximized
+    public IChessGame bestTurn;// Best turn calculated by Alpha-Beta-Search
+    private int value;//Current value of the board calculated
 
     /**
      * Constructor extracting player to maximize from game
-     *
      * @param game IChessGame board to calculate the best move
      */
     public IterativeAlphaBetaSearch(IChessGame game) {

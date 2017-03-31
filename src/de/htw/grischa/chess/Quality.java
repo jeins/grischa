@@ -8,14 +8,13 @@ import java.util.ArrayList;
  */
 
 public class Quality {
-
     private static final short[] POS_QUALITIES = {0, 0, -10, -30, -32, -55, -98, -1000, 0, 0, 0,
             0, 10, 30, 32, 55, 98, 1000};
     private static final int[] ROOK_DIRECTIONS = {-10, -1, 1, 10};
     // private static final int[] KNIGHT_DIRECTIONS = { -21, -19, -8, 12, 21, 19, 8, -12 };
     private static final int[] BISHOP_DIRECTIONS = {-11, -9, 9, 11};
     private static final int[] QUEEN_DIRECTIONS = {-11, -10, -9, -1, 1, 9, 10, 11};
-    // *** Konstanten-Definition **********************************************************
+    // defining constants
     private static byte EMPTYFIELD;
     private static byte ILLEGALFIELD;
     private static byte BLACK_PAWN;
@@ -48,6 +47,10 @@ public class Quality {
     private boolean WhiteCanLongRochade;
     private boolean WhiteCanShortRochade;
 
+    /**
+     *
+     * @param board
+     */
     public Quality(ChessBoard board) {
         this.board = board;
         this.fields = board.fields;
@@ -75,20 +78,30 @@ public class Quality {
         WHITE_KING = ChessBoard.WHITE_KING;
     }
 
-    /************************************************************************************/
-    /*************************** Funktion: getPositionQuality ***************************/
     /**
-     * ********************************************************************************
+     * Method to compute the quality of a chessboard. This is done by evaluating
+     * the position and resulting possibilities of threats or being threatened by the
+     * opponent. Checks several indicators for position quality by iterating through the
+     * chess board - the to for loops.
+     * Regards if chess piece is:
+     * <li>threatend by another piece</li>
+     * <li>knight on side (edge of the field)</li>
+     * <li>is there a bishop pair</li>
+     * <li>doubled pawn</li>
+     * <li>isolated pieces</li>
+     * <li>undeveloped pieces</li>
+     * <li>how does the center looks like</li>
+     * <li>center is occupied by rook/Castle, bishop</li>
+     * <li>queen is able to move n fields</li>
+     * <li>castling is still possible</li>
+     *
+     * @param   player          the player who moves
+     * @param   round_counter   the n-th turn
+     * @return  double          value resulting from the calculation
      */
-    /*
-     * Funktionsumfang:
-     * 
-     * Figur wird bedroht Springer am Rand L??uferpaar vorhanden Bauer doppelt, isoliert,
-     * r??ckst??ndig, in der Mitte des Schachbretts Turm, L??ufer, Dame kann n Felder gehen Rochade
-     * m??glich
-     */
+
     public double getPositionQuality(Player player, int round_counter) {
-        // *** Variablen-Deklaration ******************************************************
+        //define vars
         int field;
         double quality = 0;
         double temp_quality = 0;
@@ -98,31 +111,29 @@ public class Quality {
         ArrayList<Point> blackPawns = new ArrayList<Point>();
         ArrayList<Point> whitePawns = new ArrayList<Point>();
 
-        // *** For all legal fields ****************************************************
+        //For all legal fields
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                // *** ascertain field index ****************************************************
-                field = y * 10 + x;
-                temp_quality = 0;
-
-                // *** Bei leerem oder ungueltigem Feld naechstes Feld ************************
+                field = y * 10 + x;//ascertain field index
+                temp_quality = 0;//temporary var to sum up quality
+                //condition: ignores empty/invalid fields, goes to next field
                 if (fields[field] <= EMPTYFIELD)
                     continue;
-
-                // *** Qualitaet anhand Figur und Position verfeinern *************************
-
-                // Figur wird bedroht * 0,91
-                // Weiss an der Reihe
+                // hone quality due to type of piece and position
+                // if piece is threatened: value * 0,91
                 temp_quality = threatenedQuality(field);
-
-                // *** zentrum
+                //white moves
+                //CENTER
                 if (fields[field] >= BLACK_PAWN && fields[field] <= BLACK_KING) {
                     temp_quality += -PointsCenter(field);
-                } else {
+                } else
                     temp_quality += PointsCenter(field);
-                }
 
-                // Laeufer
+                /*
+                BISHOPS
+                 */
+
+                // BISHOP BLACK
                 if (fields[field] == BLACK_BISHOP) {
                     if (black_Bishops == 1)
                         temp_quality += -points_2_bishops;
@@ -132,7 +143,7 @@ public class Quality {
                     quality += temp_quality;
                     continue;
                 }
-
+                // BISHOP WHITE
                 if (fields[field] == WHITE_BISHOP) {
                     if (white_Bishops == 1)
                         temp_quality += points_2_bishops;
@@ -143,16 +154,20 @@ public class Quality {
                     continue;
                 }
 
-                // Springer
+                /*
+                KNIGHTS
+                 */
+
+                // KNIGHT BLACK
                 if (fields[field] == BLACK_KNIGHT) {
-                    if (y == 2 || y == 9 || x == 1 || x == 8) {
+                    if (y == 2 || y == 9 || x == 1 || x == 8)
                         temp_quality += -points_knight_on_edge;
-                    }
+
                     quality += temp_quality;
                     continue;
                 }
 
-                // Springer
+                // KNIGHT WHITE
                 if (fields[field] == WHITE_KNIGHT) {
                     if (y == 2 || y == 9 || x == 1 || x == 8) {
                         temp_quality += points_knight_on_edge;
@@ -161,18 +176,24 @@ public class Quality {
                     continue;
                 }
 
-                // Bauern
+                /*
+                PAWNS
+                 */
+
+                // PAWN
+                //Several attacks
                 if (fields[field] == BLACK_PAWN || fields[field] == WHITE_PAWN) {
-                    // temp_quality += pawn_quality(field, y);
-                    // quality += temp_quality;
-                    if (fields[field] == BLACK_PAWN) {
+                    if (fields[field] == BLACK_PAWN)
                         blackPawns.add(new Point(x, y));
-                    } else {
+                    else
                         whitePawns.add(new Point(x, y));
-                    }
                     quality += temp_quality;
                     continue;
                 }
+
+                /*
+                ROOKS
+                 */
 
                 if (fields[field] == BLACK_ROOK) {
                     if (round_counter >= 10)
@@ -181,6 +202,7 @@ public class Quality {
                     continue;
                 }
 
+                //ROOK WHITE
                 if (fields[field] == WHITE_ROOK) {
                     if (round_counter >= 10)
                         temp_quality += long_move_quality(field, ROOK_DIRECTIONS);
@@ -188,6 +210,11 @@ public class Quality {
                     continue;
                 }
 
+                /*
+                QUEENS
+                 */
+
+                //QUEEN BLACK
                 if (fields[field] == BLACK_QUEEN) {
                     if (round_counter >= 10)
                         temp_quality += -long_move_quality(field, QUEEN_DIRECTIONS);
@@ -197,6 +224,7 @@ public class Quality {
                     continue;
                 }
 
+                //QUEEN WHITE
                 if (fields[field] == WHITE_QUEEN) {
                     if (round_counter >= 10)
                         temp_quality += long_move_quality(field, QUEEN_DIRECTIONS);
@@ -206,223 +234,125 @@ public class Quality {
                     continue;
                 }
 
+                /*
+                KINGS
+                 */
+
+                //KING BLACK
                 if (fields[field] == BLACK_KING) {
                     temp_quality += blackKingSafe(field);
                     quality += temp_quality;
                     continue;
                 }
-
+                //KING WHTEI
                 if (fields[field] == WHITE_KING) {
                     temp_quality += whiteKingSafe(field);
                     quality += temp_quality;
                     continue;
                 }
-
-                // *** Qualitaet entsprechend der ermittelten positionellen Qialitaet anpassen *****
+                //sum up quality arising from position on fields
                 quality += temp_quality;
             }
 
-        // Ausserhalb der for-Schleife Faelle betrachten die nur einmal gerechnet werden duerfen
-
+        //These qualities could be calculated once!, so the have to be out of the for loop
         quality += castle_quality();
         quality += PawnsQualityBlack(blackPawns);
         quality += PawnsQualityWhite(whitePawns);
 
-        // *** Aus Sicht von Schwarz Qualitaets Vorzeichen aendern *************************
+        // condition: for black player - negative sign
         if (this.player == Player.BLACK)
             quality *= -1;
-
-        // System.out.println(board.getReadableString()+" "+quality+"\n\n");
-        // qualtity * 1000 -> Matt wird nicht erkannt!?!?
-        // *** Wert zurueckgeben **********************************************************
+        // originally: qualtity * 1000 -> some check mates are not detected!?
+        // Due the cast to int there could be a loss of precision -> quality * 10k
         return quality * 10000;
     }
 
+    /**
+     * Method that computes the threatening quality of a given field.
+     * This concerns pawns, bishops, rooks, queens
+     * @param   field   The field that has to calculated
+     * @return  double value that holds the quality
+     */
     private double threatenedQuality(int field) {
-        double temp_quality = 0;
-        // *** schwarze B, L, T, D
+        double temp_quality = 0;//init with zero
+        // black pawn, bishop, rooks, queen
         if (fields[field] >= BLACK_PAWN && fields[field] <= BLACK_QUEEN) {
-            // *** Figur wird von Weiss bedroht *******************************************
+            // condition: piece is threatened by white
             if (board.IsFieldAttackedByWhite(field)) {
-                // *** Qualit??t der scharzen figur verringeren ****************************
+                // reduce blacks piece quality
                 temp_quality = (POS_QUALITIES[fields[field]] * THREATENED_FACTOR);
                 return temp_quality;
             }
-            // *** nicht von wei?? bedroht *************************************************
+            // not threatened by white - returns full quality
             else {
-                // *** volle Qualit??t der schwarzen Figur zur??ck **************************
                 temp_quality = POS_QUALITIES[fields[field]];
                 return temp_quality;
             }
         }
-
-        // *** wei??er B, L, T, D
+        // white pawn, bishop, rooks, queen
         if (fields[field] >= WHITE_PAWN && fields[field] <= WHITE_QUEEN) {
-            // *** Figur wird von schwarz bedroht *****************************************
+            // condition: piece is threatened by black
             if (board.IsFieldAttackedByBlack(field)) {
-                // *** Qualit??t der wei??en figur verringeren und addieren *****************
+                // reduce white piece quality
                 temp_quality = (POS_QUALITIES[fields[field]] * THREATENED_FACTOR);
                 return temp_quality;
             }
-            // *** nicht von schwarz bedroht **********************************************
+            // not threatened by black - returns full quality
             else {
-                // *** volle Qualit der wei??en Figur addieren *****************************
                 temp_quality = POS_QUALITIES[fields[field]];
                 return temp_quality;
             }
         }
-
-        // schwarzer K
+        // BLACK KING:
         if (fields[field] == BLACK_KING) {
-            // *** Wenn der K??nig angegriffen wird ****************************************
+            //condition: black king is attacked
             if (board.IsFieldAttackedByWhite(field)) {
                 temp_quality = POS_QUALITIES[BLACK_KING] * KING_THREATENED_FACTOR;
                 return temp_quality;
-            } else {
+            }
+            // not threatened by white - returns full quality
+            else {
                 temp_quality = POS_QUALITIES[BLACK_KING];
                 return temp_quality;
             }
         }
-
-        // wei??er K
+        // WHITE KING:
         if (fields[field] == WHITE_KING) {
-            // *** Wenn der K??nig angegriffen wird ****************************************
+            //condition: white king is attacked
             if (board.IsFieldAttackedByBlack(field)) {
                 temp_quality = POS_QUALITIES[WHITE_KING] * KING_THREATENED_FACTOR;
                 return temp_quality;
-            } else {
+            }
+            // not threatened by black - returns full quality
+            else {
                 temp_quality = POS_QUALITIES[WHITE_KING];
                 return temp_quality;
             }
-
         }
-
+        //if none of the above conditions are fulfilled - nothing to return - no neutral sum
         return 0;
     }
 
-    // private double pawn_quality(int field, int y)
-    // {
-    // double temp_quality=0;
-    //
-    // // Bauer: isoliert, doppelt, rueckstaendig, usw
-    // if (fields[field]==BLACK_PAWN)
-    // {
-    // // Bauer n Reihen gelaufen +points_pawn_rows_moved*n
-    // temp_quality += -(points_pawn_rows_moved*(8-y));
-    //
-    // // Bauer in der Mitte des Spielfeldes 2x2 = +2, Rand darum =+1 points_pawn_in_middle=2
-    // if (field==54 || field==55 || field==64 || field==65)
-    // temp_quality += -points_pawn_in_middle;
-    // else if ((field>42 && field<47) || (field>72 && field<77) || field==53 || field==63 ||
-    // field==56 || field==66)
-    // temp_quality += -(points_pawn_in_middle / 2);
-    //
-    // // Bauer: doppelt
-    // for (int i=1;i<7;i++)
-    // {
-    // // pro Bauer zuviel in einer Reihe points_pawn_in_a_row=-3
-    // if (field-(i*10)>20 && (fields[field-(i*10)]==BLACK_PAWN))
-    // {
-    // temp_quality += -points_pawn_in_a_row;
-    // }
-    // }
-    //
-    // // Bauer isoliert (keine Bauern auf der Nachbarlinie)
-    // boolean isolated_pawn = true;
-    // for (int i=0;i<7;i++)
-    // {
-    // // linke und rechte Reihe auf bauer absuchen points_pawn_isolated=-3
-    // if ((field+(i*10)+1<99 && (fields[field+(i*10+1)]==BLACK_PAWN ||
-    // fields[field+(i*10-1)]==BLACK_PAWN)) || (field-(i*10)-1>20 &&
-    // (fields[field-(i*10+1)]==BLACK_PAWN || fields[field-(i*10-1)]==BLACK_PAWN)))
-    // isolated_pawn = false;
-    //
-    // }
-    // if (isolated_pawn)
-    // temp_quality += -points_pawn_isolated;
-    //
-    // // Bauer rueckstaendig(ein Bauer mind 2 felder hinter allen anderen) points_pawn_backward=-3
-    // boolean backward_pawn = true;
-    // for (int i=1;i<7;i++)
-    // {
-    // // links und rechts auf Nachbarbauer absuchen (2 felder vor ihm)
-    // if ((fields[field-i]==BLACK_PAWN || fields[field+i]==BLACK_PAWN ||
-    // fields[field-i+10]==BLACK_PAWN || fields[field+i+10]==BLACK_PAWN ||
-    // fields[field-i+20]==BLACK_PAWN || fields[field+i+20]==BLACK_PAWN
-    // || fields[field-i-10]==BLACK_PAWN || fields[field+i-10]==BLACK_PAWN ||
-    // fields[field-i-20]==BLACK_PAWN || fields[field+i-20]==BLACK_PAWN))
-    // backward_pawn = false;
-    // }
-    // if (backward_pawn)
-    // temp_quality += -points_pawn_backward;
-    // }
-    // else
-    // {
-    // // Bauer n Reihen gelaufen +points_pawn_rows_moved*n
-    // temp_quality += (points_pawn_rows_moved*(y-3));
-    //
-    // // Bauer in der Mitte des Spielfeldes 2x2 = +2, Rand darum =+1 points_pawn_in_middle=2
-    // if (field==54 || field==55 || field==64 || field==65)
-    // temp_quality += points_pawn_in_middle;
-    // else if ((field>42 && field<47) || (field>72 && field<77) || field==53 || field==63 ||
-    // field==56 || field==66)
-    // temp_quality += points_pawn_in_middle / 2;
-    //
-    // // Bauer: doppelt
-    // for (int i=1;i<7;i++)
-    // {
-    // // pro Bauer zuviel in einer Reihe points_pawn_in_a_row=-3
-    // if (field+(i*10)<99 && (fields[field+(i*10)]==WHITE_PAWN))
-    // {
-    // temp_quality += points_pawn_in_a_row;
-    // }
-    // }
-    //
-    // // Bauer isoliert (keine Bauern auf der Nachbarlinie)
-    // boolean isolated_pawn = true;
-    // for (int i=0;i<7;i++)
-    // {
-    // // linke und rechte Reihe auf bauer absuchen points_pawn_isolated=-3
-    // if ((field+(i*10)+1<99 && (fields[field+(i*10+1)]==WHITE_PAWN ||
-    // fields[field+(i*10-1)]==WHITE_PAWN)) || (field-(i*10)-1>20 &&
-    // (fields[field-(i*10+1)]==WHITE_PAWN || fields[field-(i*10-1)]==WHITE_PAWN)))
-    // isolated_pawn = false;
-    // }
-    // if (isolated_pawn)
-    // temp_quality += points_pawn_isolated;
-    //
-    // // Bauer rueckstaendig(ein Bauer mind 2 felder hinter allen anderen) points_pawn_backward=-3
-    // boolean backward_pawn = true;
-    // for (int i=1;i<7;i++)
-    // {
-    // // links und rechts auf Nachbarbauer absuchen (2 felder vor ihm)
-    // if ((fields[field-i]==WHITE_PAWN || fields[field+i]==WHITE_PAWN ||
-    // fields[field-i+10]==WHITE_PAWN || fields[field+i+10]==WHITE_PAWN ||
-    // fields[field-i+20]==WHITE_PAWN || fields[field+i+20]==WHITE_PAWN
-    // || fields[field-i-10]==WHITE_PAWN || fields[field+i-10]==WHITE_PAWN ||
-    // fields[field-i-20]==WHITE_PAWN || fields[field+i-20]==WHITE_PAWN))
-    // backward_pawn = false;
-    // }
-    // if (backward_pawn)
-    // temp_quality += points_pawn_backward;
-    // }
-    // return temp_quality;
-    // }
-
+    /**
+     * Castling is nearly always a good idea! So this method computes castling
+     * options and takes this into effort to the quality of the match.
+     *
+     * @return double value
+     */
     private double castle_quality() {
         double temp_quality = 0;
         int field;
-
-        // Rochade moeglich (nur wenn die GegnerDame existiert) points_castle=5
         boolean enemy_queen = false;
+        // iterate over the chess board and...
         for (int y = 2; y < 10; y++)
             for (int x = 1; x < 9; x++) {
-                // *** Feldindex bestimmen ************************************************
+                // ... determine the field index of the queen(s)
                 field = y * 10 + x;
                 if ((player == Player.WHITE && fields[field] == BLACK_QUEEN)
                         || (player == Player.BLACK && fields[field] == WHITE_QUEEN))
                     enemy_queen = true;
             }
+        // Conditions: which castling are possible - long/ queenside, short/ kingside
         if (enemy_queen && WhiteCanLongRochade)
             temp_quality += points_castle;
         if (enemy_queen && WhiteCanShortRochade)
@@ -431,16 +361,25 @@ public class Quality {
             temp_quality += -points_castle;
         if (enemy_queen && BlackCanShortRochade)
             temp_quality += -points_castle;
-
         return temp_quality;
     }
 
+    /**
+     * The moves concerns about long moves. It takes a field with a
+     * given piece and direction. It counts the amount of fields, that
+     * the piece could move. Long moves make it possible to attack or defend
+     * fast affects the quality.
+     * @param   field       the given field
+     * @param   directions  direction to move towards
+     * @return  integer that holds the amount of fields that can be occupied
+     */
     private int long_move_quality(int field, int[] directions) {
         int i = 0;
         int counter = 0;
         int newField;
-        while (i < directions.length) {
+        while (i < directions.length) {//in which direction - holds byte values of the index
             newField = field + directions[i];
+            //as long as there is no opponent nor own piece in the way
             while (fields[newField] == EMPTYFIELD) {
                 counter++;
                 newField = newField + directions[i];
@@ -450,9 +389,14 @@ public class Quality {
         return counter;
     }
 
+    /**
+     * PawnsQualityWhite takes care of white pawns.
+     * @param positions
+     * @return
+     */
     private double PawnsQualityWhite(ArrayList<Point> positions) {
         short[] rows = new short[12];
-        double temp_quality = 0;
+        double temp_quality = 0;//init
         int y = 0;
         short[] lanes = new short[10];
 
@@ -460,13 +404,12 @@ public class Quality {
             y = positions.get(i).y;
             rows[positions.get(i).y]++;
             lanes[positions.get(i).x]++;
-
-            // *** vorger??ckte
+            // is already moved forward?
             temp_quality += (points_pawn_rows_moved * (y - 3));
         }
 
         int u = 0;
-        // *** r??ckst??ndig
+        // undeveloped pawns
         for (u = 0; u < 11; u++) {
             if (rows[u] != 0)
                 break;
@@ -474,17 +417,21 @@ public class Quality {
         if (rows[u] == 1 && rows[u + 1] == 0 && rows[u + 2] == 0)
             temp_quality += points_pawn_backward;
 
-        // *** doppelte und isolierte
+        // doubled and isolated pawns - bad protection -> worse transformation possibilities
         for (int i = 1; i < 9; i++) {
             if (lanes[i] != 0 && lanes[i - 1] == 0 && lanes[i + 1] == 0)
                 temp_quality += points_pawn_isolated;
             if (lanes[i] > 1)
                 temp_quality += (lanes[i] - 1) * points_pawn_in_a_row;
         }
-
         return temp_quality;
     }
 
+    /**
+     * PawnsQualityBlack takes care of black pawns.
+     * @param positions
+     * @return
+     */
     private double PawnsQualityBlack(ArrayList<Point> positions) {
         short[] rows = new short[12];
         double temp_quality = 0;
@@ -495,13 +442,11 @@ public class Quality {
             y = positions.get(i).y;
             rows[positions.get(i).y]++;
             lanes[positions.get(i).x]++;
-
-            // *** vorger??ckte
+            // is already moved forward?
             temp_quality += (points_pawn_rows_moved * (8 - y));
         }
-        // *** r??ckst??ndig
+        // undeveloped pawns
         int u = 0;
-        // *** r??ckst??ndig
         for (u = 9; u > 2; u--) {
             if (rows[u] != 0)
                 break;
@@ -509,7 +454,7 @@ public class Quality {
         if (rows[u] == 1 && rows[u - 1] == 0 && rows[u - 2] == 0)
             temp_quality += points_pawn_backward;
 
-        // *** doppelte und isolierte
+        // doubled and isolated pawns - bad protection -> worse transformation possibilities
         for (int i = 1; i < 9; i++) {
             if (lanes[i] != 0 && lanes[i - 1] == 0 && lanes[i + 1] == 0)
                 temp_quality += points_pawn_isolated;
@@ -519,6 +464,11 @@ public class Quality {
         return -temp_quality;
     }
 
+    /**
+     *
+     * @param field
+     * @return
+     */
     private double PointsCenter(int field) {
         double temp_quality = 0;
 
@@ -531,6 +481,11 @@ public class Quality {
         return temp_quality;
     }
 
+    /**
+     *
+     * @param field
+     * @return
+     */
     private double blackKingSafe(int field) {
         int testfield = 0;
         int temp_quality = 0;
@@ -544,6 +499,11 @@ public class Quality {
         return -temp_quality;
     }
 
+    /**
+     *
+     * @param field
+     * @return
+     */
     private double whiteKingSafe(int field) {
         int testfield = 0;
         int temp_quality = 0;
