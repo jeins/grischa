@@ -4,7 +4,19 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Player Quality
+ * The Quality class holds the information about heuristical values of a board.
+ * So every board could be assigned to value. The value in this class is double value.
+ * For communication reasons this double is taken by 10k to get the decimals into a integer,
+ * this is done due easier transferring of integers to string.
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> 03/10 - Benjamin Troester - updating, adding documentation</li>
+ * </ul>
+ *
+ * @author Daniel Heim
+ * @version 03/17
  */
 
 public class Quality {
@@ -176,9 +188,7 @@ public class Quality {
                     continue;
                 }
 
-                /*
-                PAWNS
-                 */
+                // ********PAWNS***********
 
                 // PAWN
                 //Several attacks

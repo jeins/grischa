@@ -1,18 +1,24 @@
 # GriScha short setup!
 GriScha is a realtime grid chess engine. In this version it uses Redis for communication
- between the chess client and the worker nodes to evaluate moves.
+ between chess client and worker nodes to evaluate moves.
+ 
  There are several other protocols used for communication:
  * SIMON
  * P2P
  * XMPP
  * ZMQ
 
-For those repositories have a look at grischa_legacy:
+For SIMON, P2P, XMPP repositories have a look at grischa_legacy:
 ```
 git clone git@grischa.f4.htw−berlin.de:/grischa_legacy.git
 ```
 These repos are not under development anymore, or one could say orphaned after research,
 thesis ending.
+
+For the ZeroMQ version of GriScha have a look at:
+```
+git clone git@gitlab.com:jrosenfeld/ZMQGrischa.git
+```
 
 ### Compiling
 First you have to download all required libraries:

@@ -1,6 +1,11 @@
 package de.htw.grischa.client;
 
 import org.apache.log4j.Logger;
+
+import java.io.IOException;
+import java.util.Properties;
+import java.io.InputStream;
+import java.io.FileInputStream;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -22,18 +27,34 @@ public class GClientConnection {
     private JedisPool pool;
 
     private GClientConnection() {
+        Properties prop = new Properties();
+        InputStream input = null;
         String redisHost;
         int redisPort;
+        try{
+            input = new FileInputStream("grischa.conf");
+            prop.load(input);
+        } catch (IOException ex){
+            ex.printStackTrace();
+        } finally {
+            if (input != null)
+                try {
+                    input.close();
+                } catch (IOException e) {
+                e.printStackTrace();
+                }
+        }
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         poolConfig.setMaxTotal(100);
         poolConfig.setMaxIdle(100);
         try {
-            redisHost = "localhost";
-            redisPort = 6379;
+            redisHost = prop.getProperty("redisHost");
+            redisPort = Integer.valueOf(prop.getProperty("redisPort"));
             pool = new JedisPool(poolConfig,redisHost, redisPort);
         } catch (Exception e) {//setting
+            LOG.error("Local Redis server not found!");
             System.out.println("Local Redis server not found!");
-            pool = new JedisPool(poolConfig,"46.38.241.128", 6379);
+            pool = new JedisPool(poolConfig,"localhost", 6379);
         }
     }
 

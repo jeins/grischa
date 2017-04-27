@@ -7,6 +7,7 @@ import de.htw.grischa.registry.GWorkerNodeRegistry;
 
 /**
  * Class GriScha
+ *
  */
 
 public class GriScha {

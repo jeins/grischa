@@ -1,21 +1,28 @@
 package de.htw.grischa.registry;
 
 import java.util.*;
-
 import de.htw.grischa.client.GClientConnection;
 import org.apache.log4j.Logger;
 import de.htw.grischa.node.GNode;
 import redis.clients.jedis.Jedis;
 
 /**
- * Returns an started instance of the registry
- * @return Running registry or null if can not be started
+ * The GWorkerNodeRegistry is the class that handles the communication between the
+ * worker nodes in the grid and the master node that creates the Object GWorkerNodeRegistry.
+ * If this is called from the master ndoe, it will either return a new GWorkerNodeRegistry or
+ * return a already existing registry. In case that the registry fails it will return null!
+ * This class holds an ArrayList in which the Redis/ Jedis server puts all available worker nodes.
  */
 
 public class GWorkerNodeRegistry {
     private static GWorkerNodeRegistry mInstance = null;
     private final static Logger LOG = Logger.getLogger(GNode.class);
 
+    /**
+     * Getter method to deliver a GWorkerNodeRegistry object.
+     *
+     * @return mInstance the current Object that holds a GWorkerNodeRegistry or null reference
+     */
     public static GWorkerNodeRegistry getInstance() {
         if (mInstance == null) {
             mInstance = new GWorkerNodeRegistry();
@@ -53,20 +60,10 @@ public class GWorkerNodeRegistry {
 
             onlineNodes.add(entry);
         }
-//        Collections.sort(onlineNodes, new CustomComparator());
         return onlineNodes;
     }
 
     public void stopRegistry() {
 
-    }
-
-
-    // TODO Remove this in final version
-    public class CustomComparator implements Comparator<String> {
-        @Override
-        public int compare(String o1, String o2) {
-            return o1.compareTo(o2);
-        }
     }
 }

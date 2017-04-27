@@ -12,18 +12,18 @@ import org.apache.log4j.Logger;
 
 public class AlphaBetaSearchGridResults extends AlphaBetaSearch {
 	private final static Logger _log = Logger.getLogger(AlphaBetaSearch.class);
-	private ArrayList<String> sendedGames;//List of all games
+	private ArrayList<String> sentGames;//List of all games
 	private TreeMap<String, Integer> results;//red-black tree with key value
 
     /**
      * Constructor for generating objects that holds the computed results
      * from the grid nodes.
-     * @param	sendedGames		ArrayList of String, that holds the games
+     * @param	sentGames		ArrayList of String, that holds the games
      * @param   results         Ordered black-red tree, with the result set
      */
-	public AlphaBetaSearchGridResults(ArrayList<String> sendedGames,
+	public AlphaBetaSearchGridResults(ArrayList<String> sentGames,
 									  TreeMap<String, Integer> results) {
-		this.sendedGames=sendedGames;
+		this.sentGames =sentGames;
 		this.results=results;
 	}
 
@@ -61,7 +61,7 @@ public class AlphaBetaSearchGridResults extends AlphaBetaSearch {
      */
 	@Override
 	protected boolean isLeaf(IChessGame game, int depth) {
-		if(sendedGames.contains(game.getStringRepresentation()))
+		if(sentGames.contains(game.getStringRepresentation()))
 			return true;
 		return false;
 	}

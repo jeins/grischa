@@ -13,11 +13,20 @@ import de.htw.grischa.node.task.TaskReceptor;
 import de.htw.grischa.registry.GWorkerNodeRegistry;
 
 /**
- * This class job is the distrubtion of a given game, this means the current chessboard, and
+ * This class job is the distribution of a given game, this means the current chessboard, and
  * the time nodes get to calculate.
  * This class is used by the GridGameManager, which takes care of the games computed in the grid.
  *
  * @see de.htw.grischa.chess.GridGameManager
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> 03/17 - Benjamin Troester - Adding documentation</li>
+ * </ul>
+ *
+ * @author Daniel Heim
+ * @version 03/17
  */
 
 public class DistributedSearch {
@@ -29,7 +38,7 @@ public class DistributedSearch {
     private ExecutorService mExecutorService = null;//threading managing for async tasks
 
     /**
-     * Default contructor for creating a thread pool, so that the computation
+     * Default constructor for creating a thread pool, so that the computation
      * of the game tree could be distributed.
      */
     public DistributedSearch() {
@@ -132,9 +141,13 @@ public class DistributedSearch {
     }
 
     /**
-     * Computes a list of following chess games
-     * 
-     * @param   game      The current game
+     * Method to split up the workload of the game tree.
+     * This is done by taking all available nextTurn from the current game and try to
+     * distribute the next games to the available worker nodes. If there are at least as much
+     * worker nodes online as games in the tree the method returns the ArrayList with the next games.
+     * If there less than that
+     *
+     * @param   game      The current game as IChessGame/Chessboard object
      * @param   nodeCount The number of available worker nodes
      * @return  ArrayList of games base on one game
      */
@@ -172,7 +185,7 @@ public class DistributedSearch {
     /**
      * If there are note enough nodes to distribute the game tree, it hast to be
      * computed locally. So the local nodes will computed a given game, with given depth.
-     * @param   game    holds the gamelist
+     * @param   game    holds the game list
      */
     private void computeLocally(IChessGame game) {
         AlphaBetaSearchFixedDepth abs = new AlphaBetaSearchFixedDepth();

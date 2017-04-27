@@ -5,16 +5,17 @@ import java.util.ArrayList;
 /**
  * Interface for chessboard
  * Provides requirements to the chessboard representation and extends the comparable
- * interface to compare chessboars
+ * interface to compare chessboards.
+ *
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.0.1 - 12/09 - Daniel Heim - Initial Version</li>
- * <li> 0.0.? - 05/10 - Rossius - ???</li>
- * <li> 0.0.? - 06/10 - Daniel Heim - ???</li>
- * <li> 0.0.3 - 06/14 - Karsten Kochan - Added toDatabase method, added getMD5Hash() method,
+ * <li> 12/09 - Daniel Heim - Initial Version</li>
+ * <li> 05/10 - Rossius - ???</li>
+ * <li> 06/10 - Daniel Heim - ???</li>
+ * <li> 06/14 - Karsten Kochan - Added toDatabase method, added getMD5Hash() method,
  * documentation/type, translation, added parent getter and setter</li>
- * <li> 0.0.3 - 03/17 - Benjamin Troester - Removed toDatabase method, getMD5Hash() method
- * because shared memory via database isn`t needed nor really working.
+ * <li> 03/17 - Benjamin Troester - Removed toDatabase method, getMD5Hash() method
+ * because shared memory via database isn`t needed nor really working.</li>
  * </ul>
  *
  * @author Danie Heim
@@ -41,51 +42,51 @@ public interface IChessGame extends Comparable<IChessGame> {
      * Init game from standard string representation
      * @param   board       String to initialize game from
      */
-    public void loadFromString(String board);
+    void loadFromString(String board);
 
     /**
      * Returns standard string representation of the current game
      * @return  String      with standard string representation
      */
-    public String getStringRepresentation();
+    String getStringRepresentation();
 
     /**
      * Returns player who is on the move
      * @return  Player      to make turn
      */
-    public Player getPlayerToMakeTurn();
+    Player getPlayerToMakeTurn();
 
     /**
      * Calculates all valid next turn
      * @return  ArrayList   ArrayList with all valid next turns
      */
-    public ArrayList<IChessGame> getNextTurns();
+    ArrayList<IChessGame> getNextTurns();
 
     /**
      * Getter method for the current game quality with the given player
      * @param   player      to calculated the quality for
      * @return  int         quality of the board
      */
-    public int getQuality(Player player);
+    int getQuality(Player player);
 
     /**
      * Returns a human readable representation of the board
      * @return  String      human readable representation
      */
-    public String getReadableString();
+    String getReadableString();
 
     /**
      * Return the standard hash of the board
      * @return  String  standard hash
      */
-    public String getHash();
+    String getHash();
 
     /**
      * Generates a heuristic quality assumption of the board according to last move.
      * Positive values calculated white as better, negative values black
      * @return  int     heuristic quality assumption
      */
-    public int getHeuristicValue();
+    int getHeuristicValue();
 
     /**
      * Getter
@@ -93,7 +94,7 @@ public interface IChessGame extends Comparable<IChessGame> {
      * Format d2d4 for last move
      * @return  String      with turn notation
      */
-    public String getTurnNotation();
+    String getTurnNotation();
 
     /**
      * Getter
@@ -102,20 +103,20 @@ public interface IChessGame extends Comparable<IChessGame> {
      * @return  IChessGame  resulting board
      * @throws  Exception   if turn is illegal
      */
-    public IChessGame makeTurn(String turn) throws Exception;
+    IChessGame makeTurn(String turn) throws Exception;
 
     /**
      * Getter
      * Returns the number of turns made
      * @return  int     number of turns
      */
-    public int getTurnsMade();
+    int getTurnsMade();
 
     /**
      * Returns if the current player is able to check mate the king
      * @return  true    if possible
      */
-    public boolean isLegalBoard();
+    boolean isLegalBoard();
 
     /**
      * Getter for the game state
@@ -124,7 +125,7 @@ public interface IChessGame extends Comparable<IChessGame> {
      * @see GameState
      * @return  GameState   state
      */
-    public GameState getGameState();
+    GameState getGameState();
 
     /**
      * Setter for castling -> name is confusing
@@ -134,19 +135,19 @@ public interface IChessGame extends Comparable<IChessGame> {
      * @param   K_Castling  boolean if black king side castling (short castling) can be done
      * @param   Q_Castling  boolean if black queen side castling (long castling) can be done
      */
-    public void setRochade(boolean k_Castling, boolean q_Castling, boolean K_Castling, boolean Q_Castling);
+    void setRochade(boolean k_Castling, boolean q_Castling, boolean K_Castling, boolean Q_Castling);
 
     /**
      * Returns if white has lost the game
      * @return  boolean     true if white has lost
      */
-    public boolean hasWhiteLost();
+    boolean hasWhiteLost();
 
     /**
      * Returns if black has lost the game
      * @return  boolean     true if black has lost
      */
-    public boolean hasBlackLost();
+    boolean hasBlackLost();
 
     /**
      * Return the parent off the game
@@ -157,7 +158,7 @@ public interface IChessGame extends Comparable<IChessGame> {
      *
      * @return IChessGame parent of the board
      */
-    public IChessGame getParent();
+    IChessGame getParent();
 
     /**
      * Set the parent board to the IChessGame
@@ -165,5 +166,5 @@ public interface IChessGame extends Comparable<IChessGame> {
 
      * @param parent IChessGame parent
      */
-    public void setParent(IChessGame parent);
+    void setParent(IChessGame parent);
 }

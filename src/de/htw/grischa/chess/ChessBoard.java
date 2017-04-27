@@ -5,29 +5,35 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Chessboard implementation, implements IChessGame
+ * Chessboard implements IChessGame interface
+ * This Class is responsible for the move generation as well as the chessboard description.
+ * So it contains both, important functionalities and the chessboard description, which holds
+ * the internal notation of the boards, this done in a bit wise representation.
+ *
+ *
  * If you have no idea what ent passent, castling and stuff like that is, here
  * you go: <a href="http://www.schach-tipps.de/schachregeln-schach-lernen">Schachregeln</a>
  *
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.0.1 - 12/09 - Daniel Heim - Initial Version</li>
- * <li> 0.0.? - 05/10 - Daniel Heim - ???</li>
- * <li> 0.0.3 - 06/14 - Karsten Kochan - Added toDatabase method, added parent</li>
- * <li> 0.0.3 - 02/17 - Benjamin Troester - Removing toDatabase method and parent,
+ * <li> 12/09 - Daniel Heim - Initial Version</li>
+ * <li> 05/10 - Daniel Heim - ???</li>
+ * <li> 06/14 - Karsten Kochan - Added toDatabase method, added parent</li>
+ * <li> 02/17 - Benjamin Troester - Removing toDatabase method and parent,
  * because shared memory via database isn`t needed nor really working</li>
- * * <li> 0.0.4 - 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
+ * * <li> 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
  * </ul>
  *
  * @author Heim
- * @version 1.3
+ * @version 02/17
  * @see de.htw.grischa.chess.IChessGame
+ * @see java.io.Serializable
  */
 
 public class ChessBoard implements IChessGame, Serializable {
     // values for chess pieces in byte style
     public static final byte EMPTY_FIELD = 0;
-    public static final byte ILLEGAL_FIELD = -1;//means out of chessboard range
+    public static final byte ILLEGAL_FIELD = -1;//means out of -chessboard- range
     public static final byte BLACK_PAWN = 2;
     public static final byte BLACK_ROOK = 5;
     public static final byte BLACK_KNIGHT = 3;
@@ -91,9 +97,9 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Constructor for already existing boards.
-     * Takes a given board and sets it to current board
-     * used.
+     * Takes a given board, in Chessboard notation, and sets it to current board to play.
      * @param   oldBoard    Chessboard to clone
+     * @see de.htw.grischa.chess.ChessBoard
      */
     private ChessBoard(ChessBoard oldBoard) {
         //actual cloning operation
@@ -178,8 +184,8 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Convert field by index to String representation
-     *
+     * Convert field by index to String representation.
+     * This method is used to convert the whole chessboard to a string representation.
      * @param in field index
      * @return String representation
      */
@@ -198,6 +204,11 @@ public class ChessBoard implements IChessGame, Serializable {
         return columnName + rowName;
     }
 
+    /**
+     * Getter method that returns the current Player whose turn it is.
+     * @return current player from enum
+     * @see de.htw.grischa.chess.Player
+     */
     public Player getPlayerToMakeTurn() {
         return playerToMakeTurn;
     }
@@ -212,49 +223,38 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Stellt eine Figur auf das Brett
-     *
-     * @param position Das Feld der Figur zwischen 0-59
-     * @param piece    Die Figur, die auf das Brett gestellt wird -
-     *                 am besten Konstanten dieser Klasse nutzen
+     * This method puts the pieces to the board, by taking a position to get the right index as
+     * well as the piece itself in a byte representation.     *
+     * @param position Field of the piece must be a value between: 0-59
+     * @param piece    Byte value of the piece to placed - should be one of the constant bytes of this class
      */
     public void PutPiece(int position, byte piece) throws Exception {
-        //*** Ungueltiges Feld beruecksichtigen ******************************************
-        if (position < 0 || position >= 64) throw new Exception(position + " nicht im Feld");
-
-        //TODO @Daniel ungueltige Figur abfangen 
-
-        //*** linken und rechten rand beruecksichtigen ***********************************
+        // condition ignore illegal positions
+        if (position < 0 || position >= 64)
+            throw new Exception(position + " Out of chessboard range!");
+        // Observe the left and right border & convert to board position
         int realPosition = position / 8 * 10;
         realPosition += position % 8 + 1;
-
-        //*** unteren Rand ueberspringen *************************************************
+        // Skip the bottom border - first two rows of the board!
         realPosition += 20;
-
-        //*** Figur setzen ***************************************************************
+        // actual positioning
         fields[realPosition] = piece;
     }
 
     /**
-     *
+     * Method to get the the index of a field in the Chessboard class version.
      * @param position
-     * @return
+     * @return the position as specified in the Chessboard class
+     * @see de.htw.grischa.chess.ChessBoard
      */
     public int parseField(int position) {
-        //*** linken und rechten rand beruecksichtigen ***********************************
+        // Observe the left and right border & convert to board position
         int realPosition = position / 8 * 10;
         realPosition += position % 8 + 1;
-
-        //*** unteren Rand ueberspringen *************************************************
+        // Skip the bottom border - first two rows of the board!
         realPosition += 20;
-
         return realPosition;
     }
-
-
-    /**********************************************************************************/
-    /************************** Method: getNextTurns **********************************/
-    /**********************************************************************************/
 
 
     /**
@@ -337,7 +337,7 @@ public class ChessBoard implements IChessGame, Serializable {
         for (int i = 0; i < 20; i++) {
             fields[i] = ChessBoard.ILLEGAL_FIELD;
         }
-        // middle field is empty - starting at bottom line a1 - h8
+        // middle field is empty - starting at bottom line, from a1 to h8
         for (int i = 20; i < 100; i++) {
             if (i % 10 == 0 || i % 10 == 9)
                 fields[i] = ChessBoard.ILLEGAL_FIELD;
@@ -352,10 +352,12 @@ public class ChessBoard implements IChessGame, Serializable {
 
 
     /**
+     * This is the actual move generator!
      * Getter method for the next turns, splits the moves between white and black.
      * Every layer is dedicated to one colour in the game tree, so they have to be split
-     * up.
-     * @return ArrayList that contains the next possible turn.
+     * up. The makeWhiteMoves/ makeBlackMoves method has several other methods to call, which
+     * take care of the different pieces that can make different kind of moves.
+     * @return ArrayList that contains the next possible turns.
      */
     public ArrayList<IChessGame> getNextTurns() {
         if (playerToMakeTurn == Player.WHITE)
@@ -365,8 +367,14 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
+     * Part of the move generator that generates the moves, if the player is white.
      * Method that creates whites next possible moves in an ArrayList.
-     * @return
+     * This method calls other methods for specific pieces, such as pawn, rook etc...
+     * Hence this is split up, pawns have a special method, which considers special first move,
+     * en passant, and normal straight forward moves, as well as captures other pieces diagonally forward.
+     * Furthermore there is a method for all pieces that moves generally diagonally, such as bishop or straight
+     * forward such as rook and last but not least pieces - queen - that can move diagonally as well as straight forward
+     * @return return all available moves for white that are legal
      */
     private ArrayList<IChessGame> makeWhiteMoves() {
         // declare vars
@@ -380,7 +388,8 @@ public class ChessBoard implements IChessGame, Serializable {
                 field = y * 10 + x;// determine field index
                 piece = fields[field];// determine kind of piece
                 // condition: field empty, illegal or occupied by black
-                if (piece < WHITE_PAWN) continue;
+                if (piece < WHITE_PAWN)
+                    continue;
                 // condition: pawns move
                 if (piece == WHITE_PAWN) {
                     moves.addAll(this.makeWhitePawnMove(field));
@@ -417,8 +426,14 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Method
-     * @return  ArrayList<IChessGame>
+     * Part of the move generator that generates the moves, if the player is white.
+     * Method that creates whites next possible moves in an ArrayList.
+     * This method calls other methods for specific pieces, such as pawn, rook etc...
+     * Hence this is split up, pawns have a special method, which considers special first move,
+     * en passant, and normal straight forward moves, as well as captures other pieces diagonally forward.
+     * Furthermore there is a method for all pieces that moves generally diagonally, such as bishop or straight
+     * forward such as rook and last but not least pieces - queen - that can move diagonally as well as straight forward
+     * @return return all available moves for black that are legal
      */
     private ArrayList<IChessGame> makeBlackMoves() {
         // declare vars
@@ -432,32 +447,32 @@ public class ChessBoard implements IChessGame, Serializable {
                 piece = fields[field];// determine kind of piece
                 // condition: field empty, illegal or occupied by white
                 if (piece < BLACK_PAWN && piece >= BLACK_KING) continue;
-                // condition: pawns move*
+                // condition: piece is a pawn - calls method for pawn moves
                 if (piece == BLACK_PAWN) {
                     moves.addAll(this.makeBlackPawnMove(field));
                     continue;
                 }
-                // condition: rooks move
+                // condition: piecge is a rooks - calls method for generic moves
                 if (piece == BLACK_ROOK) {
                     moves.addAll(this.genericBlackMoves(field, ROOK_DIRECTIONS, piece));
                     continue;
                 }
-                // condition: bishops move
+                // condition: piece is a bishop - calls method for generic moves
                 if (piece == BLACK_BISHOP) {
                     moves.addAll(this.genericBlackMoves(field, BISHOP_DIRECTIONS, piece));
                     continue;
                 }
-                // condition: knights move
+                // condition: piece is a knight - calls method for knight (blackSingleMove) moves
                 if (piece == BLACK_KNIGHT) {
                     moves.addAll(this.blackSingleMove(field, KNIGHT_DIRECTIONS, piece));
                     continue;
                 }
-                // condition: kings move
+                // condition: piece is a king - calls method for king (blackSingleMove) moves
                 if (piece == BLACK_KING) {
                     moves.addAll(this.blackSingleMove(field, QUEEN_DIRECTIONS, piece));
                     continue;
                 }
-                // condition: queens move
+                // condition: piece is a queen - calls method for queen (genericBlackMove) moves
                 if (piece == BLACK_QUEEN) {
                     moves.addAll(this.genericBlackMoves(field, QUEEN_DIRECTIONS, piece));
                 }
@@ -469,9 +484,10 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Method that handles the black pawn moves.
-     * @param field
-     * @return
+     * Method that handles the black pawn moves. Considers the special way of pawn capturing.
+     * Considers possible options of the current game.
+     * @param field the field of the current board which holds the pawn
+     * @return ArrayList<ChessBoard> that contains the possible pawn moves
      */
     private ArrayList<ChessBoard> makeBlackPawnMove(int field) {
         //declare vars
@@ -584,11 +600,10 @@ public class ChessBoard implements IChessGame, Serializable {
                 followMoves.add(board);
             } else return followMoves;
         }
-
         // condition: straight forward move possible - is double forward move available
         if (field / 10 == 8 && fields[field - 20] == ChessBoard.EMPTY_FIELD) {
             board = this.executeMove(field, field - 20, ChessBoard.BLACK_PAWN);
-            // condition: en passant taking
+            // condition: en passant capturing
             if (fields[field - 19] == ChessBoard.WHITE_PAWN) {
                 ChessBoard newBoard = new ChessBoard(board);
                 newBoard.fields[field - 20] = ChessBoard.EMPTY_FIELD;
@@ -607,17 +622,16 @@ public class ChessBoard implements IChessGame, Serializable {
                         ChessBoard.indexToFieldName(field - 10);
                 board.entPassent.add(newBoard);
             }
-
             followMoves.add(board);
-
         }
-        return followMoves;// list of follow movs
+        return followMoves;// list of follow moves
     }
 
     /**
-     *
-     * @param field
-     * @return
+     * Method that handles the white pawn moves. Considers the special way of pawn capturing.
+     * Considers possible options of the current game.
+     * @param field the field of the current board which holds the pawn
+     * @return ArrayList<ChessBoard> that contains the possible pawn moves
      */
     private ArrayList<ChessBoard> makeWhitePawnMove(int field) {
         // declare vars
@@ -754,24 +768,24 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Generic move generator for white:
-     * @param field
-     * @param directions
-     * @param piece
-     * @return
+     * Move generator for whites pieces: Bishop, Rook, Queen, that do diagonally (bishop) or straight (rook) or
+     * could do both (queen) and considers the way of capturing - means in the same direction as the pieces move.
+     * @param field current index on the chessboard in int representation
+     * @param directions possible directions that are available for the piece, and the length of that direction
+     * @param piece byte representation of the piece
+     * @return ArrayList that holds the next turns
      */
     private ArrayList<ChessBoard> genericWhiteMoves(int field, int[] directions, byte piece) {
         // declare vars
         ChessBoard board;
         int i = 0;
         int newField;
-        ArrayList<ChessBoard> followMoves = new ArrayList<ChessBoard>();
-
+        ArrayList<ChessBoard> followMoves = new ArrayList<>();
         //double while loop - outer direction, inner empty field
         // for all directions - if direction index
         while (i < directions.length) {
             newField = field + directions[i];// determine field index
-            // as long as field is empty
+            // as long as field is empty - generates moves to empty fields
             while (fields[newField] == EMPTY_FIELD) {
                 // execute next move - so it can be added to the move list
                 board = this.executeMove(field, newField, piece);
@@ -789,11 +803,12 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Generic move generator for black!
-     * @param field
-     * @param directions
-     * @param piece
-     * @return
+     * Move generator for black pieces: Bishop, Rook, Queen, that do diagonally (bishop) or straight (rook) or
+     * could do both (queen) and considers the way of capturing - means in the same direction as the pieces move.
+     * @param field current index on the chessboard in int representation
+     * @param directions possible directions that are available for the piece, and the length of that direction
+     * @param piece byte representation of the piece
+     * @return ArrayList that holds the next turns
      */
     private ArrayList<ChessBoard> genericBlackMoves(int field, int[] directions, byte piece) {
         // declare vars
@@ -824,11 +839,17 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
-     * @param field
-     * @param directions
-     * @param piece
-     * @return
+     * Move generator for whites pieces: King and Knight, that can do a single move. The king is able to make
+     * a move in every direction as long as the field is not attacked by another piece. He is also capable of capturing
+     * every other piece, that is not protected by another piece of the same colour, except the opponent king.
+     * The Knight could move  to a square that is two squares away horizontally and one square vertically,
+     * or two squares vertically and one square horizontally. The complete move therefore looks like the letter L.
+     * Unlike all other standard chess pieces, the knight can "jump over" all other pieces (of either color) to its
+     * destination square.
+     * @param field current index on the chessboard in int representation
+     * @param directions possible directions that are available for the piece, and the length of that direction
+     * @param piece byte representation of the piece
+     * @return ArrayList that holds the next turns
      */
     private ArrayList<ChessBoard> whiteSingleMove(int field, int[] directions, byte piece) {
         // declare vars
@@ -852,11 +873,17 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
-     * @param field
-     * @param directions
-     * @param piece
-     * @return
+     * Move generator for black pieces: King and Knight, that can do a single move. The king is able to make
+     * a move in every direction as long as the field is not attacked by another piece. He is also capable of capturing
+     * every other piece, that is not protected by another piece of the same colour, except the opponent king.
+     * The Knight could move  to a square that is two squares away horizontally and one square vertically,
+     * or two squares vertically and one square horizontally. The complete move therefore looks like the letter L.
+     * Unlike all other standard chess pieces, the knight can "jump over" all other pieces (of either color) to its
+     * destination square.
+     * @param field current index on the chessboard in int representation
+     * @param directions possible directions that are available for the piece, and the length of that direction
+     * @param piece byte representation of the piece
+     * @return ArrayList that holds the next turns
      */
     private ArrayList<ChessBoard> blackSingleMove(int field, int[] directions, byte piece) {
         // declare vars
@@ -864,7 +891,6 @@ public class ChessBoard implements IChessGame, Serializable {
         int i = 0;
         int newField;
         ArrayList<ChessBoard> followMoves = new ArrayList<>();
-
         //double while loop - outer direction, inner empty field
         // for all directions - if direction index
         while (i < directions.length) {
@@ -880,7 +906,10 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
+     * This method is used as a part of the move generator and hence does the execution - generating of the chessboards -
+     * which are the results of the moves. So the executeMove method take the old board, field index and piece to
+     * generate that specific following moves. All moves will be collected to an ArrayList that holds the available
+     * next moves.
      * @param oldField
      * @param newField
      * @param piece
@@ -889,7 +918,6 @@ public class ChessBoard implements IChessGame, Serializable {
     private ChessBoard executeMove(int oldField, int newField, byte piece) {
         // declare vars
         ChessBoard board;
-
         // execute move
         board = new ChessBoard(this);
         board.fields[oldField] = ChessBoard.EMPTY_FIELD;
@@ -927,9 +955,9 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
+     * Method that supplies the current quality of a player (white or black)
      * @param   player      to calculated the quality for
-     * @return
+     * @return integer value that holds the current player quality
      */
     public int getQuality(Player player) {
         // declare vars
@@ -979,7 +1007,7 @@ public class ChessBoard implements IChessGame, Serializable {
         String game = "";
         int field;
         //iterate over the chessboard
-        for (int y = 2; y < 10; y++)
+        for (int y = 2; y < 10; y++)//
             for (int x = 1; x < 9; x++) {
                 field = y * 10 + x;// determine the field index
                 game += NAMES[fields[field]];// concat board with pieces of the board
@@ -993,15 +1021,14 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
+     * Converts a given string to the chessboard notaion
      * @param s
      */
     public void loadFromString(String s) {
-        char[] c = new char[65];
-        c = s.toCharArray();
+        char[] c = s.toCharArray();
         int j = 0;
         // condition: if player is white
-        if (c[64] == 'w') {
+        if (c[64] == 'w') {//last index holds the color
             playerToMakeTurn = Player.WHITE;
             c[64] = ' ';
         }
@@ -1074,7 +1101,7 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Method that takes the board and generates a hash value out of it
-     * @return
+     * @return string as "hashed" version of the chessboard
      */
     public String getHash() {
         // declare vars
@@ -1101,18 +1128,25 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
-     * @param   turn        String as turn to do
-     * @return
+     * Method that takes a turn in string representation and compares it to the list of available next turns, if
+     * it matches the move will be returned in ICessGame notation.
+     * @param   turn        String as turn to search in the nextTurns ArrayList
+     * @return  IChessGame  turn that is
      * @throws Exception
      */
     public IChessGame makeTurn(String turn) throws Exception {
         ArrayList<IChessGame> nextTurns = this.getNextTurns();
+        for (IChessGame trn : nextTurns){
+            if (turn.equals(trn.getTurnNotation()))
+                return trn;
+        }
+        /*
         for (int i = 0; i < nextTurns.size(); i++) {
             if (turn.equals(nextTurns.get(i).getTurnNotation()))
                 return nextTurns.get(i);
         }
-        throw new Exception(turn + " :Move not found in the list of legal moves!;");
+        */
+        throw new Exception("The move: " + turn + " could not found in the list of legal moves!");
     }
 
     /**
@@ -1127,17 +1161,23 @@ public class ChessBoard implements IChessGame, Serializable {
         ArrayList<IChessGame> nextBoards;
         nextBoards = this.getNextTurns();// compute following moves
         // checking if board is contained in the follow moves list
+        for (IChessGame nxb : nextBoards){
+            if(nxb.equals(board))
+                return true;
+        }
+        /*
         for (int i = 0; i < nextBoards.size(); i++) {
             if (((ChessBoard) nextBoards.get(i)).equals(board))
                 return true;
-        }
+        }*/
         return false;
     }
 
     /**
-     * Method that compares a given chessboard
-     * @param board
-     * @return
+     * Equals method to compares a given chessboard to it`s current chessboard.
+     * This is done making a one to one filed comparison and checking the players color.
+     * @param board the board to compare
+     * @return boolean if the board is the same as the current one.
      */
     public boolean equals(ChessBoard board) {
         // iterate over the board and compare each field
@@ -1173,9 +1213,9 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Method that checks if a castling is available and if so it
-     * executes the castling in one of both variants.
-     * @return ArrayList containing games
+     * Getter that arrange the castling for white. First checks the castling options by checking for king side castling
+     * afterwards the queen side castling and the determines if one options is fulfilled.
+     * @return ArrayList containing the castling moves in IChessGame format.
      */
     ArrayList<IChessGame> getWhiteRochade() {
         // declare or init vars
@@ -1237,15 +1277,15 @@ public class ChessBoard implements IChessGame, Serializable {
 
 
     /**
-     * Getter
-     * @return
+     * Getter that arrange the castling for black. First checks the castling options by checking for king side castling
+     * afterwards the queen side castling and the determines if one options is fulfilled.
+     * @return ArrayList containing the castling moves in IChessGame format.
      */
     ArrayList<IChessGame> getBlackRochade() {
         // declare or init vars
         ChessBoard b;
         int field;
         ArrayList<IChessGame> rochadeList = new ArrayList<>();
-
         // condition: check for short/ king side castling possible
         if (BlackCanShortRochade) {
             // condition: if fields between king and rook are empty
@@ -1271,8 +1311,8 @@ public class ChessBoard implements IChessGame, Serializable {
                 }
             }
         }
+        // condition: check for long/ queen side castling possible
         if (BlackCanLongRochade) {
-            // condition: check for long/ queen side castling possible
             if (fields[94] == EMPTY_FIELD && fields[93] == EMPTY_FIELD && fields[92] == EMPTY_FIELD && fields[91] == BLACK_ROOK) {
                 field = 95;
                 // condition: check if is field attacked by opponent
@@ -1346,7 +1386,7 @@ public class ChessBoard implements IChessGame, Serializable {
 
 
     /**
-     * Method that checks if a certain field is attacked by the white opponent.
+     * Method that checks if a certain field is attacked by the black opponent.
      * @param field
      * @return
      */
@@ -1389,46 +1429,48 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
-     * @return
+     * More or less a toString method that will return the board in String representation.
+     * @return String containing the board with its integer values from the board index.
      */
     public String toDebug() {
         String s = "";
-
         for (int y = 0; y < 10; y++) {
             for (int x = 0; x < 10; x++) {
                 s += fields[y * 10 + x] + " ";
             }
             s += "\n";
         }
-
         return s;
     }
 
     /**
-     *
-     * @param o
-     * @return
+     * Compares method that will simply take the heuristical value of the board and subtract the heuristical
+     * value from a given IChessGame chessboard
+     * @param o the chessboard object which should be subtracted
+     * @return integer as the difference between the current heuristic value and the given heuristic value from o
      */
     public int compareTo(IChessGame o) {
         return this.heuristicValue - o.getHeuristicValue();
     }
 
     /**
-     *
-     * @return
+     * Getter method that supplies the heuristic value of the current chessboard.
+     * @return integer that holds the heuristic value
      */
     public int getHeuristicValue() {
         return heuristicValue;
     }
 
-
+    /**
+     * Getter method that supplies the current move as a string.
+     * @return string representation of the move.
+     */
     public String getTurnNotation() {
         return this.TurnNotation;
     }
 
     /**
-     *
+     * Mehtod that simply increments the counter variable of the game.
      */
     public void addRound() {
         this.round_counter++;
@@ -1460,8 +1502,10 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
-     * @return
+     * Method that evaluates the current game state. This is done by considering the all possible kind of situations,
+     * such as whose turn it is, if the king is attacked (and could/ could not escape) or the king is mated.
+     * @return one of the following game stated: legal, illegal, draw or matt (mated)
+     * @see de.htw.grischa.chess.GameState
      */
     public GameState getGameState() {
         // declare vars
@@ -1555,7 +1599,7 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Setter method that just set bool flags for casling options.
+     * Setter method that just set bool flags for castling options.
      * @param   k_Castling  boolean if white king side castling (short castling) can be done
      * @param   q_Castling  boolean if white queen side castling (long castling) can be done
      * @param   K_Castling  boolean if black king side castling (short castling) can be done
@@ -1569,13 +1613,12 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     *
-     * @return
+     * Method that get the quality of the current chessboard.
+     * @return integer that holds the value of the current chessboard.
      */
     public int getQ() {
         int q = 0;
         int field;
-
         // condtion: for all columns
         for (int x = 1; x < 9; x++) {
             // condition: for all rows

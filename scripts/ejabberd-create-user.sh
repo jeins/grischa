@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 EJABBERD_COMMAND=/usr/sbin/ejabberdctl;
 EJABBERD_NODE="grischa.htw-berlin.de";

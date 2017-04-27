@@ -4,22 +4,30 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 
 /**
- * Abstract alpha-beta-search implementing the most important methods for searching tree
- * Alpha-Beta pruning a game tree to optimize speed, memory, cpu, network usage
+ * Abstract AlphaBetaSearch implementing the most important methods for searching tree.
+ * Alpha-Beta pruning is a search algorithm that seeks to optimize the number of node in
+ * a game tree that were evaluated mini-max like search algorithm.
+ * The Mini-Max algorithm takes a tree beginning with the root node and calculates
+ * for every branch in the tree a value (In a complete Tree the leafs have the options of
+ * win, lose or stale mate, in incomplete trees you have some heuristics calculated by a
+ * evaluation/ quality function). From the bottom of the tree, the leafs, will be given to
+ * the parent of that node. In each depth of the tree the nodes will alternate, if they are minimizing
+ * or maximizing the underlying nodes.
+ *
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.0.1 - 05/10 - Daniel Heim - Initial Version </li>
- * <li> 0.0.? - 12/10 - Rossius - ??? </li>
- * <li> 0.0.2 - 04/14 - Karsten Kochan - First database implementation</li>
- * <li> 0.0.3 - 07/14 - Karsten Kochan - Cleanup, check for db usage via properties file, documentation</li>
- * <li> 0.0.3 - 02/17 - Benjamin Troester - Remove shared memory related stuff,
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> 12/10 - Rossius - ??? </li>
+ * <li> 04/14 - Karsten Kochan - First database implementation</li>
+ * <li> 07/14 - Karsten Kochan - Cleanup, check for db usage via properties file, documentation</li>
+ * <li> 02/17 - Benjamin Troester - Remove shared memory related stuff,
  * shared memory via database isn`t needed nor really working</li>
- * <li> 0.0.3 - 03/17 - Benjamin Troester - Cleanup, research chess algorithm</li>
- * <li> 0.0.3 - 05/17 - Benjamin Troester - Monte Carlo methods</li>
+ * <li> 03/17 - Benjamin Troester - Cleanup, research chess algorithm</li>
+ * <li> 05/17 - Benjamin Troester - Monte Carlo methods</li>
  * </ul>
  *
  * @author Daniel Heim
- * @version 0.0.3
+ * @version 03/17
  */
 
 public abstract class AlphaBetaSearch {
@@ -55,7 +63,6 @@ public abstract class AlphaBetaSearch {
 
     /**
      * First check if game is already in list, provide quality from list if positive
-     * <p>
      * Game list filled by client until size is not a predefined value, send to server if size reached value
      * </p>
      *
@@ -66,7 +73,7 @@ public abstract class AlphaBetaSearch {
     private void saveGameToList(IChessGame game, int depth, double quality) {
         if (depth > 2) {
             clientGameList.setGame(game, depth, quality);
-            log.debug("Saving  " + depth + " " + game.getStringRepresentation() + " Quality= " + quality + " count=" + count++);
+            log.debug("Saving to GameList with depth: " + depth + " move: " + game.getStringRepresentation() + " Quality= " + quality + " count=" + count++);
         }
     }
 
@@ -134,8 +141,9 @@ public abstract class AlphaBetaSearch {
     }
 
     /**
-     * Mehtod part of Alpha-Beta
-     * This part calculates the minimizing part in a given tree with given depth
+     * Method part of Alpha-Beta-Algorithm.
+     * This part calculates the minimizing part in a given tree with given depth.
+     *
      * @param   game    chessboard/check position
      * @param   depth   depth in the tree
      * @param   alpha   upper bound

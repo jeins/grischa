@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 # Define varibales
 JOBS_TXT=jobIDs$(date +"%H%M%S").txt

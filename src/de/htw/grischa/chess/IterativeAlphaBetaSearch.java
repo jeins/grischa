@@ -78,20 +78,19 @@ public class IterativeAlphaBetaSearch implements Runnable {
         }
         while (true) {
             abp = new AlphaBetaSearchFixedDepth();
+            // measuring time consumption in alpha beta algorithm
             long startTime = System.nanoTime();
             value = abp.getAlphaBetaTurn(depth, game);
             long endTime = System.nanoTime();
             //Mark best move
             bestTurn = abp.nextGame;
             long duration = ((endTime - startTime) / 1000000 );
-            //Search two plies deeper
-            //depth += 2;
-            log.debug("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
             log.info("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
-            if (depth > 8) {// original value 40
-                log.debug("Breadth-first search terminated due to maximum depth of 8");
+            if (depth > 10) {// original value 40
+                log.debug("Breadth-first search terminated due to maximum depth of 10");
                 break;
             }
+            //Search two plies deeper -- due to alternating in game tree
             depth += 2;
         }
     }

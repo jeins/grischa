@@ -13,7 +13,7 @@ public class AlphaBetaSearchFixedDepth extends AlphaBetaSearch {
     /**
      * Getter method for quality of given chessboard
      * @param   game    current chessboard to calculate
-     * @return  int     a integer value casted from double value in
+     * @return  int     integer value casted from double value in
      * the Quality class
      * @see Quality
      */

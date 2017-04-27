@@ -1,8 +1,8 @@
 package de.htw.grischa.xboard;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Properties;
+
 import org.apache.log4j.Logger;
 import de.htw.grischa.GriScha;
 import de.htw.grischa.chess.GameState;
@@ -12,7 +12,7 @@ import de.htw.grischa.chess.Player;
 /**
  * This class provides the communication interface to Xboard
  *
- * * <h3>Version History</h3>
+ * <h3>Version History</h3>
  * <ul>
  * <li> 0.1
  * </ul>
@@ -24,6 +24,33 @@ public class WinboardCommunication {
     // time how long GriScha has time to calculate it's move
     private static int time = 15000;
 
+    /**
+     * Sets the counter to a specific time in milliseconds. The value of time is stored in grischa.conf file
+     * and loaded via java.properties.
+     */
+    public static void setTime(){
+        Properties prop = new Properties();
+        InputStream input = null;
+        try{
+            input = new FileInputStream("grischa.conf");
+            prop.load(input);
+            time = Integer.valueOf(prop.getProperty("time"));
+            LOG.info("Round counter is set to: " + time/1000 + "s");
+        } catch (IOException ex){
+            ex.printStackTrace();
+        } finally {
+            if (input != null)
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
+
+    /**
+     *
+     */
     public void run() {
         GridGameManager game;
         try {
@@ -371,8 +398,7 @@ public class WinboardCommunication {
                 }
             }
         } catch (Exception e1) {
-            String message = "unknown ERROR occurred!";
-            LOG.error(message);
+            LOG.error("unknown ERROR occurred!");
         }
     }
 }
