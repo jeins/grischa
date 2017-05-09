@@ -23,6 +23,7 @@ import de.htw.grischa.registry.GWorkerNodeRegistry;
  * <ul>
  * <li> 05/10 - Daniel Heim - Initial Version </li>
  * <li> 03/17 - Benjamin Troester - Adding documentation</li>
+ * <li> 04/17 - Benjamin Troester - Adding </li>
  * </ul>
  *
  * @author Daniel Heim
@@ -46,7 +47,10 @@ public class DistributedSearch {
     }
 
     /**
-     * Getter method
+     * Getter Method that gets all available worker nodes from GWorkerNodeRegistry instance puts it
+     * in an ArrayList of strings called nodes. Creates a ArrayList of IChessGame that contains all game the
+     * has to be computed by the splitWork method called games to compute and last but not least creates a list
+     * of dispatchers.
      * @param game
      * @param wait
      */
@@ -55,26 +59,24 @@ public class DistributedSearch {
         mMaxPlayer = game.getPlayerToMakeTurn();
         mGame = game; // Assign the game it's needed in the collectJobResults() method.
 
-        ArrayList<String> nodes = GWorkerNodeRegistry.getInstance().getOnlineWorkerNodes();
-        ArrayList<IChessGame> gamesToCompute = this.splitWork(game, nodes.size());
-        ArrayList<TaskDispatcher> dispatchers = new ArrayList<>();
+        ArrayList<String> nodes = GWorkerNodeRegistry.getInstance().getOnlineWorkerNodes();//available nodes
+        ArrayList<IChessGame> gamesToCompute = this.splitWork(game, nodes.size());  //game tree
+        ArrayList<TaskDispatcher> dispatchers = new ArrayList<>(); // list of nodes to dispatch the workload
 
         // Create a task dispatcher for each game move. If none or not enough nodes available
         // compute move locally.
         ArrayList<String> gamesAsString = new ArrayList<>();
         for (int i = 0; i < gamesToCompute.size(); i++) {
-            if (i >= nodes.size()) {
-                this.computeLocally(gamesToCompute.get(i));
+            if (i >= nodes.size()) { //condition: not enough worker nodes available
+                this.computeLocally(gamesToCompute.get(i));//do it locally
                 continue;
             }
-
-            Task newTask = new GTask(gamesToCompute.get(i), mMaxPlayer);
-            dispatchers.add(new TaskDispatcher(newTask, nodes.get(i)));
+            Task newTask = new GTask(gamesToCompute.get(i), mMaxPlayer); // if there are enough nodes sent task
+            dispatchers.add(new TaskDispatcher(newTask, nodes.get(i))); // adding them to the dispatchers
         }
-
         // Dispatch each task to a node.
         for (TaskDispatcher d : dispatchers) {
-            mExecutorService.submit(d);
+            mExecutorService.submit(d); // concurrency safe for dispatchers
         }
 
         // TODO - laurence: maybe it is a better idea to put this into AlphaBetaSearchGridResults?
@@ -90,7 +92,6 @@ public class DistributedSearch {
         } catch (InterruptedException e) {
             LOG.error(e.getMessage());
         }
-
         // Get back the results from the nodes
         this.collectJobResults(dispatchers);
 
@@ -103,6 +104,10 @@ public class DistributedSearch {
 
     /**
      * Method to collect the calculated boards that are computed in the grid.
+     * It creates a list of receptors, the grid nodes, and will fill this list with
+     * the alls task receptors. <p>
+     * After all receptors are enlisted then the games will be stored to the
+     * mResultset by casting the boards to string and the quality to integers.
      * @param   dispatchers     The dispatcher
      * @see de.htw.grischa.node.task.TaskDispatcher
      */
@@ -132,6 +137,7 @@ public class DistributedSearch {
             Integer result = Integer.valueOf((String) tmp);
             GTask task = (GTask) receptor.getTask();
             String currentGame = task.getChessGame().getStringRepresentation();
+            // condition for wich player the value has to be stored concerns only the result value due minimax
             if ((currentGame.getBytes())[64] == mGame.getStringRepresentation().getBytes()[64]) {
                 mResultset.put(currentGame, result);
             } else {
@@ -175,8 +181,9 @@ public class DistributedSearch {
     }
 
     /**
-     *
-     * @return
+     * Getter method that return the next game from mNextGame variable
+     * which is set in the getAlphaBetaTurn method
+     * @return the next move in IChessGame format
      */
     public IChessGame getNextGame() {
         return mNextGame;

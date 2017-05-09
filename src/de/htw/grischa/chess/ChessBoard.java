@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * <li> 06/14 - Karsten Kochan - Added toDatabase method, added parent</li>
  * <li> 02/17 - Benjamin Troester - Removing toDatabase method and parent,
  * because shared memory via database isn`t needed nor really working</li>
- * * <li> 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
+ * <li> 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
  * </ul>
  *
  * @author Heim
@@ -214,7 +214,7 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Setter playerToMakeTurn
+     * Setter playerToMakeTurn sets the given Player to the class player.
      *
      * @param playerToMakeTurn player to set to
      */
@@ -227,6 +227,7 @@ public class ChessBoard implements IChessGame, Serializable {
      * well as the piece itself in a byte representation.     *
      * @param position Field of the piece must be a value between: 0-59
      * @param piece    Byte value of the piece to placed - should be one of the constant bytes of this class
+     * @throws Exception if the position is out of range
      */
     public void PutPiece(int position, byte piece) throws Exception {
         // condition ignore illegal positions
@@ -243,7 +244,7 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Method to get the the index of a field in the Chessboard class version.
-     * @param position
+     * @param position in integer representation for field index
      * @return the position as specified in the Chessboard class
      * @see de.htw.grischa.chess.ChessBoard
      */
@@ -910,10 +911,10 @@ public class ChessBoard implements IChessGame, Serializable {
      * which are the results of the moves. So the executeMove method take the old board, field index and piece to
      * generate that specific following moves. All moves will be collected to an ArrayList that holds the available
      * next moves.
-     * @param oldField
-     * @param newField
-     * @param piece
-     * @return
+     * @param oldField field index as integer of the current position for the piece
+     * @param newField where the piece should move to
+     * @param piece the actual piece in byte representation
+     * @return the chessboard after the move is done.
      */
     private ChessBoard executeMove(int oldField, int newField, byte piece) {
         // declare vars
@@ -985,6 +986,7 @@ public class ChessBoard implements IChessGame, Serializable {
      * Method that iterates over the byte board (byte array) and converts
      * each piece of the index to it`s string representative. String must
      * have a length of 64 characters.
+     * <p><ul>
      * <li>w - white</li>
      * <li>S - black</li>
      * <li>x - empty legal field</li>
@@ -1000,6 +1002,7 @@ public class ChessBoard implements IChessGame, Serializable {
      * <li>D - black queen</li>
      * <li>k - white king</li>
      * <li>K - black king</li>
+     * </ul><p>
      * @return String holding the whole chessboard as a string.
      */
     public String getStringRepresentation() {
@@ -1021,8 +1024,8 @@ public class ChessBoard implements IChessGame, Serializable {
     }
 
     /**
-     * Converts a given string to the chessboard notaion
-     * @param s
+     * Converts a given string to the chessboard notation
+     * @param s string version of a given game that has to be converted.
      */
     public void loadFromString(String s) {
         char[] c = s.toCharArray();
@@ -1132,7 +1135,7 @@ public class ChessBoard implements IChessGame, Serializable {
      * it matches the move will be returned in ICessGame notation.
      * @param   turn        String as turn to search in the nextTurns ArrayList
      * @return  IChessGame  turn that is
-     * @throws Exception
+     * @throws Exception    if the turn is a non valid turn!
      */
     public IChessGame makeTurn(String turn) throws Exception {
         ArrayList<IChessGame> nextTurns = this.getNextTurns();
@@ -1218,7 +1221,7 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return ArrayList containing the castling moves in IChessGame format.
      */
     ArrayList<IChessGame> getWhiteRochade() {
-        // declare or init vars
+        // declare and init vars
         int field;
         ArrayList<IChessGame> rochadeList = new ArrayList<IChessGame>();
 
@@ -1282,7 +1285,7 @@ public class ChessBoard implements IChessGame, Serializable {
      * @return ArrayList containing the castling moves in IChessGame format.
      */
     ArrayList<IChessGame> getBlackRochade() {
-        // declare or init vars
+        // declare and init vars
         ChessBoard b;
         int field;
         ArrayList<IChessGame> rochadeList = new ArrayList<>();
@@ -1340,8 +1343,8 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Method that checks if a certain field is attacked by the black opponent.
-     * @param field
-     * @return
+     * @param field the index on the chessboard
+     * @return true if the given field is attacked or else false.
      */
     public boolean IsFieldAttackedByBlack(int field) {
         // declare vars
@@ -1387,8 +1390,8 @@ public class ChessBoard implements IChessGame, Serializable {
 
     /**
      * Method that checks if a certain field is attacked by the black opponent.
-     * @param field
-     * @return
+     * @param field the index on the chessboard
+     * @return true if the given field is attacked or else false.
      */
     public boolean IsFieldAttackedByWhite(int field) {
         // declare variables
@@ -1488,8 +1491,8 @@ public class ChessBoard implements IChessGame, Serializable {
      * Method that get you the position/ index of the king. If the
      * king is not found, it return -1.
      * @return integer value that contains the position of the king.
-     * @param player
-     * @return
+     * @param player either black or white
+     * @return the integer value of the kings position or if there is no king -1
      */
     private int getKing(Player player) {
         for (int i = 19; i < 100; i++) {
@@ -1560,7 +1563,7 @@ public class ChessBoard implements IChessGame, Serializable {
         // condition: king is attacked and no escpae -> check mate
         if (isKingAttacked && !hasEscape)
             return GameState.MATT;
-        // condition: king is not attacked, but has no escpae -> patt
+        // condition: king is not attacked, but has no escape -> patt
         if (!hasEscape)
             return GameState.DRAW;
         // if nothing from the above conditions matches, the game goes on

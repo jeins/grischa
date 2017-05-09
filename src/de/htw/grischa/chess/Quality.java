@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * <h3>Version History</h3>
  * <ul>
  * <li> 05/10 - Daniel Heim - Initial Version </li>
- * <li> 03/10 - Benjamin Troester - updating, adding documentation</li>
+ * <li> 03/17 - Benjamin Troester - updating, adding documentation</li>
  * </ul>
  *
  * @author Daniel Heim
@@ -96,7 +96,8 @@ public class Quality {
      * opponent. Checks several indicators for position quality by iterating through the
      * chess board - the to for loops.
      * Regards if chess piece is:
-     * <li>threatend by another piece</li>
+     * <p><ul>
+     * <li>threatened by another piece</li>
      * <li>knight on side (edge of the field)</li>
      * <li>is there a bishop pair</li>
      * <li>doubled pawn</li>
@@ -106,7 +107,7 @@ public class Quality {
      * <li>center is occupied by rook/Castle, bishop</li>
      * <li>queen is able to move n fields</li>
      * <li>castling is still possible</li>
-     *
+     *</ul><p>
      * @param   player          the player who moves
      * @param   round_counter   the n-th turn
      * @return  double          value resulting from the calculation

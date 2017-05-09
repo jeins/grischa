@@ -52,8 +52,10 @@ public class WinboardCommunication {
      *
      */
     public void run() {
+        System.out.println("start WinboardCommunicaiton thread!");
         GridGameManager game;
         try {
+            System.out.println("start GridGameManager & cmd, out, bin, protocol");
             game = new GridGameManager();//get instance of GridGameManager
             String cmd = "";//command string
             String out = "";// output string
@@ -64,13 +66,15 @@ public class WinboardCommunication {
 
             //game loop
             while (true) {
+                System.out.println("start game loop!");
                 try {
+                    System.out.println("Check for stale mate");
                     // check if match is drawn - no winner
                     if (game.getCurrentGame() != null && isGo
                             && game.getCurrentGame().getGameState() == GameState.DRAW) {
                         // out = "offer draw";
                         out = "result 1/2-1/2 {Stalemate}";
-                        // okDialog("Patt! " + out);
+                        System.out.println("Stale Mate: " + out);
                     }
                     // check if mate is given - who check mates
                     else if (game.getCurrentGame() != null && isGo &&
@@ -80,12 +84,14 @@ public class WinboardCommunication {
                         else
                             out = "result 1-0 {White mates}";
                         isGo = false;
+                        System.out.println("check for white or black mate");
                         System.out.println(out);
                         LOG.info("Check Mate" + out);
                     }
                     // read input from cmd
                     cmd = bin.readLine();
                     LOG.debug("Input: " + cmd);
+                    System.out.println("read cmd: " + cmd);
                 } catch (IOException e) {
                     String message = "Error while reading from STDIN";
                     LOG.error(message);
@@ -103,6 +109,7 @@ public class WinboardCommunication {
                 }
                 // Xboard is the used protocol
                 else if (cmd.equalsIgnoreCase("xboard")) {
+                    System.out.println("check for xboard protocol!");
                     protocol = "xboard";
                 }
                 // UCI is the used protocol
@@ -115,7 +122,9 @@ public class WinboardCommunication {
                 // process XBoard instructions
                 else if (protocol.equalsIgnoreCase("xboard")) {
                     //new game - initial std board
+                    System.out.println("board is set to xboard");
                     if (cmd.equalsIgnoreCase("new")) {
+                        System.out.println("new std board");
                         game.init();
                         isGo = false;
                         LOG.info("generate new chessboard");
@@ -131,6 +140,7 @@ public class WinboardCommunication {
                     // result 0-1 {White resigns}
                     // TODO: output with game of chess
                     else if (cmd.startsWith("result")) {
+                        System.out.println("getting cmd result and reading content of cmd result");
                         String[] fen = new String[7];
                         fen = cmd.split("[ -]");
                         String message = "";
@@ -170,6 +180,7 @@ public class WinboardCommunication {
 
                     // Setup of non standard board
                     else if (cmd.startsWith("setboard")) {
+                        System.out.println("setting xboard with non std board");
                         // TODO: getting 0 1 from FEN notation
                         String[] fen = new String[7];
                         fen = cmd.split(" ");
@@ -178,7 +189,6 @@ public class WinboardCommunication {
                         String invert_y_pos = "";
                         boolean k_Castling = false, q_Castling = false, K_Castling = false, Q_Castling = false;
                         int rows = 0;
-
                         for (int i = 0; i < fen[1].length(); i++) {
                             switch (fen[1].charAt(i)) {
                             case ('/'):
@@ -288,13 +298,14 @@ public class WinboardCommunication {
                             isGo = false;
                             LOG.info("The chessboard " + invert_y_pos + " was generated!");
                         }
+                    }
                     /*
                     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
                     * Whose turn is it?
                     * Computer vs. Human
                     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
                     */
-                    } else if (cmd.equalsIgnoreCase("computer")) // opponent machine should start
+                    else if (cmd.equalsIgnoreCase("computer")) // opponent machine should start
                         isGo = false;
                     else if (cmd.equalsIgnoreCase("easy")) // game vs human: easy =
                         isGo = true;
@@ -333,6 +344,7 @@ public class WinboardCommunication {
                                 LOG.info("Check Mate\n" + out);
                             }
                         } catch (Exception e) {
+                            System.out.println("Error during invoke of getTurn() method!");
                             String message = "Error during invoke of getTurn() method!";
                             LOG.error(message);
                         }
@@ -398,6 +410,7 @@ public class WinboardCommunication {
                 }
             }
         } catch (Exception e1) {
+            System.out.println("unknown error occurred!");
             LOG.error("unknown ERROR occurred!");
         }
     }

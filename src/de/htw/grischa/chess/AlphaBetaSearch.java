@@ -71,6 +71,7 @@ public abstract class AlphaBetaSearch {
      * @param quality double, game quality
      */
     private void saveGameToList(IChessGame game, int depth, double quality) {
+        //original value depth > 5
         if (depth > 2) {
             clientGameList.setGame(game, depth, quality);
             log.debug("Saving to GameList with depth: " + depth + " move: " + game.getStringRepresentation() + " Quality= " + quality + " count=" + count++);
@@ -130,12 +131,12 @@ public abstract class AlphaBetaSearch {
                         this.nextGame = successor;
                 }
                 if (v >= beta) {
-                    //					saveGameToList(successor, depth, v);
+                    //saveGameToList(successor, depth, v);
                     return v;
                 }
                 alpha = Math.max(v, alpha);
             }
-            //			saveGameToList(game, depth, v);
+            //saveGameToList(game, depth, v);
             return v;
         }
     }

@@ -39,7 +39,7 @@ public class AlphaBetaSearchFixedDepth extends AlphaBetaSearch {
      * Checks if the given board with given depth is a leaf in game tree
      * @param   game    current chessboard with
      * @param   depth   the depth in the game tree
-     * @return
+     * @return  true if the node is a leaf or else false
      */
     @Override
     protected boolean isLeaf(IChessGame game, int depth) {

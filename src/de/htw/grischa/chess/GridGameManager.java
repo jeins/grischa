@@ -1,7 +1,10 @@
 package de.htw.grischa.chess;
 
 /**
- * GridGameManager takes care of games to distribute it to nodes
+ * GridGameManager takes care of games to distribute it to nodes by
+ * creating a DistributedSearch object. This class could then get
+ * the current game, initialize a new game or set a game from a given
+ * string.
  */
 
 public class GridGameManager {
@@ -64,10 +67,11 @@ public class GridGameManager {
     }
 
     /**
-     *
+     * Sets the engine to make a turn from a given string by calling
+     * the boards makeTurn method!
      * @param turn
-     * @return
-     * @throws Exception
+     * @return turn in string representation
+     * @throws Exception if anything goes wrong
      */
     public boolean opponentTurn(String turn) throws Exception {
         try {

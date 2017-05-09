@@ -1,0 +1,2272 @@
+
+Crafty v25.2
+
+machine has 4 processors
+
+White(1): xboard
+
+tellicsnoalias set 1 Crafty v25.2 (1 cpus)
+tellicsnoalias kibitz Hello from Crafty v25.2! (1 cpus)
+White(1): protover 2
+feature ping=1 setboard=1 san=1 time=1 draw=1
+feature sigint=0 sigterm=0 reuse=0 analyze=1
+feature myname="Crafty-25.2" name=1
+feature playother=1 colors=0 memory=1
+feature smp=1
+feature variants="normal,nocastle"
+feature done=1
+White(1): accepted ping
+White(1): accepted setboard
+White(1): accepted san
+White(1): accepted time
+White(1): accepted draw
+White(1): accepted sigint
+White(1): accepted sigterm
+White(1): accepted reuse
+White(1): accepted analyze
+White(1): accepted myname
+White(1): accepted name
+White(1): accepted playother
+White(1): accepted colors
+White(1): accepted memory
+White(1): accepted smp
+White(1): accepted variants
+White(1): accepted done
+White(1): memory 68
+Warning--  xboard 'memory' option disabled
+hash table memory = 64M bytes (4M entries).
+Warning--  xboard 'memory' option disabled
+pawn hash table memory = 3M bytes (128K entries).
+White(1): cores 1
+Warning--  xboard 'cores' option disabled
+ERROR - max threads can be set to zero (0) to disable parallel search, otherwise it must be > 1.
+parallel threads disabled.
+White(1): new
+NOTICE:  new command not implemented, please exit and
+restart crafty to re-initialize everything for a new game
+White(1): random
+White(1): level 40 15 0
+40 moves/900 seconds primary time control
+40 moves/900 seconds secondary time control
+White(1): post
+White(1): hard
+pondering enabled.
+White(1): ping 1
+pong 1
+White(1): force
+White(1): computer
+playing a computer!
+White(1): name GriSchaRedis.0.0.1
+Crafty 25.2 vs GriSchaRedis.0.0.1
+White(1): time 90000
+time remaining:  15:00 (Crafty).
+White(1): otim 88464
+time remaining:  14:44 (opponent).
+White(1): d4
+Black(1): go
+               book moves {Nf6, d5}
+               book   0.0s     59%    Nf6 c4
+Black(1): Nf6
+              time used:   0.00
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>|<Q>|<K>|<B>|   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>|<P>|<P>|<P>|<P>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |   |<N>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |-P-|   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |-P-|-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|-N-|-B-|-Q-|-K-|-B-|-N-|-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......   0.05  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.08  |   -0.58   -0.58    0.39  |    0.66    0.66   -0.42  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........  -0.48  |   -0.58   -0.58   -0.58  |    0.10    0.10    0.10  |
+bishops........   0.14  |    0.02    0.02    0.20  |    0.12    0.12   -0.06  |
+rooks..........  -0.10  |   -0.38   -0.38   -0.38  |    0.28    0.28    0.28  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........   0.00  |   -0.45   -0.45   -0.40  |    0.45    0.45    0.40  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -0.31
+White(2): c4 [pondering]
+               book moves {e6, g6}
+               book   0.0s     60%    e6 Nf3
+White(2): time 89991
+time remaining:  14:59 (Crafty).
+White(2): otim 86943
+time remaining:  14:29 (opponent).
+White(2): Nc3
+              time used:  15.28
+               book moves {d5, d6, g6}
+               book   0.0s     70%    d5 Bg5
+Black(2): d5
+              time used:   0.01
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>|<Q>|<K>|<B>|   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>|<P>|   |<P>|<P>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |   |<N>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |   | . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |-P-|   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |-P-|-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|-Q-|-K-|-B-|-N-|-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......   0.05  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.00  |   -0.58   -0.58    0.39  |    0.58    0.58   -0.39  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.00  |   -0.10   -0.10   -0.10  |    0.10    0.10    0.10  |
+bishops........   0.00  |    0.02    0.02    0.20  |   -0.02   -0.02   -0.20  |
+rooks..........   0.00  |   -0.28   -0.28   -0.28  |    0.28    0.28    0.28  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........   0.00  |   -0.45   -0.45   -0.40  |    0.45    0.45    0.40  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........   0.05
+White(3): Bg5 [pondering]
+               book moves {Nbd7, c5, h6, c6, Bf5}
+               book   0.0s     33%    Nbd7 Nf3
+White(3): time 89979
+time remaining:  14:59 (Crafty).
+White(3): otim 85423
+time remaining:  14:14 (opponent).
+White(3): Nf3
+              time used:  15.28
+               book moves {g6, e6, c5, Nc6}
+               book   0.0s     21%    e6 Bg5
+Black(3): e6
+              time used:   0.00
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>|<Q>|<K>|<B>|   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>|<P>|   | . |<P>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<N>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |   | . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |-P-|   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |-N-| . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |-P-|-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|-Q-|-K-|-B-| . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......   0.05  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.32  |   -0.58   -0.58    0.39  |    0.26    0.26   -0.60  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.48  |    0.38    0.38    0.38  |    0.10    0.10    0.10  |
+bishops........  -0.06  |    0.02    0.02    0.20  |   -0.08   -0.08   -0.26  |
+rooks..........   0.10  |   -0.18   -0.18   -0.18  |    0.28    0.28    0.28  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........   0.00  |   -0.45   -0.45   -0.40  |    0.45    0.45    0.40  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........   0.25
+White(4): Bg5 [pondering]
+               book moves {Be7, Bb4}
+               book   0.0s     55%    Be7 e3
+White(4): time 89967
+time remaining:  14:59 (Crafty).
+White(4): otim 83909
+time remaining:  13:59 (opponent).
+White(4): Ne5
+              time used:  15.26
+        time surplus   1:29  time limit 24.99 (2:04)
+        depth     time       score   variation (1)
+         16->   1.05/35.23   -0.10   4. ... Nbd7 5. e3 Bd6 6. f4 O-O 7. Bd3 c5
+                                     8. O-O c4 9. Be2 Qb6 10. Bd2 Kh8 11. b3
+                                     Nxe5 12. fxe5
+         17     1.75/35.23   -0.04   4. ... Nbd7 5. e3 Bd6 6. f4 O-O 7. Bd3 c5
+                                     8. O-O c4 9. Be2 a6 10. Bd2 b5 11. a4 b4
+                                     12. Nc6 Qb6
+         17     2.01/40.23      --   4. ... Nc6! (<-0.26)                   
+         17     2.30/40.23   -0.07   4. ... Nc6 5. Bg5 Be7 6. Nxc6 bxc6 7. e3
+                                     Rb8 8. Rb1 O-O 9. Be2 c5 10. O-O Bd7
+                                     11. Bxf6 gxf6 12. Qd2 f5
+         17->   2.53/40.23   -0.07   4. ... Nc6 5. Bg5 Be7 6. Nxc6 bxc6 7. e3
+                                     Rb8 8. Rb1 O-O 9. Be2 c5 10. O-O Bd7
+                                     11. Bxf6 gxf6 12. Qd2 f5
+         18     2.75/40.23   -0.08   4. ... Nc6 5. Bg5 Be7 6. Nxc6 bxc6 7. e3
+                                     Rb8 8. Rb1 O-O 9. Be2 c5 10. O-O Bd7
+                                     11. b3 Bd6 12. dxc5 Bxc5 13. Bd3
+         18->   3.10/35.98   -0.08   4. ... Nc6 5. Bg5 Be7 6. Nxc6 bxc6 7. e3
+                                     Rb8 8. Rb1 O-O 9. Be2 c5 10. O-O Bd7
+                                     11. b3 Bd6 12. dxc5 Bxc5 13. Bd3
+         19     4.38/35.98   -0.17   4. ... Nc6 5. Nxc6 bxc6 6. e3 Bd6 7. Bd3
+                                     O-O 8. O-O c5 9. dxc5 Bxc5 10. Bd2 Bd7
+                                     11. b3 Rb8 12. Qf3 Bd6 13. a4 Qe7
+         19     4.70/40.98      --   4. ... Nbd7! (<-0.24)                   
+         19     5.17/40.98   -0.19   4. ... Nbd7 5. e3 Bb4 6. Bd3 c5 7. O-O c4
+                                     8. Be2 Bxc3 9. bxc3 Ne4 10. Nxd7 Nxc3
+                                     11. Qd2 Nxe2+ 12. Qxe2 Bxd7 13. Rb1 Rb8
+                                     14. Ba3
+         19->   5.41/40.98   -0.19   4. ... Nbd7 5. e3 Bb4 6. Bd3 c5 7. O-O c4
+                                     8. Be2 Bxc3 9. bxc3 Ne4 10. Nxd7 Nxc3
+                                     11. Qd2 Nxe2+ 12. Qxe2 Bxd7 13. Rb1 Rb8
+                                     14. Ba3
+         20     6.77/40.98   -0.13   4. ... Nbd7 5. e3 Bd6 6. f4 O-O 7. Be2 b6
+                                     8. O-O Bb7 9. Bd3 c5 10. Bd2 cxd4 11. exd4
+                                     Ne4 12. Qe2 Ndf6 13. Nxe4 Nxe4 14. c3
+         20     6.94/45.98      --   4. ... Nc6! (<-0.35)                   
+         20     8.57/45.98   -0.14   4. ... Nc6 5. Bg5 Bb4 6. e3 Qd6 7. Bxf6
+                                     gxf6 8. Nxc6 Qxc6 9. Qd3 Bd7 10. Be2 f5
+                                     11. a3 Bxc3+ 12. Qxc3 Qxc3+ 13. bxc3 Rg8
+                                     14. Rb1 Rxg2 15. Rxb7
+         20->   9.61/45.98   -0.14   4. ... Nc6 5. Bg5 Bb4 6. e3 Qd6 7. Bxf6
+                                     gxf6 8. Nxc6 Qxc6 9. Qd3 Bd7 10. Be2 f5
+                                     11. a3 Bxc3+ 12. Qxc3 Qxc3+ 13. bxc3 Rg8
+                                     14. Rb1 Rxg2 15. Rxb7
+         21    10.84/45.98   -0.17   4. ... Nc6 5. Bg5 Bb4 6. e3 Qd6 7. Bxf6
+                                     gxf6 8. Nxc6 Qxc6 9. Qd3 Bd7 10. Be2 O-O-O
+                                     11. O-O f5 12. a3 Ba5 13. Bh5 Rhf8 14. b4
+                                     Bb6
+         21->  11.46/41.23   -0.17   4. ... Nc6 5. Bg5 Bb4 6. e3 Qd6 7. Bxf6
+                                     gxf6 8. Nxc6 Qxc6 9. Qd3 Bd7 10. Be2 O-O-O
+                                     11. O-O f5 12. a3 Ba5 13. Bh5 Rhf8 14. b4
+                                     Bb6
+         22    13.66/41.23   -0.09   4. ... Nc6 5. Bg5 Bb4 6. e3 Qd6 7. Bxf6
+                                     gxf6 8. Nxc6 Qxc6 9. Qd2 Bd7 10. Bd3 O-O-O
+                                     11. a3 Ba5 12. b4 Bb6 13. O-O f5 14. Bb5
+                                     Qd6 15. Bxd7+ Rxd7
+         22->  15.94/36.98   -0.09   4. ... Nc6 5. Bg5 Bb4 6. e3 Qd6 7. Bxf6
+                                     gxf6 8. Nxc6 Qxc6 9. Qd2 Bd7 10. Bd3 O-O-O
+                                     11. a3 Ba5 12. b4 Bb6 13. O-O f5 14. Bb5
+                                     Qd6 15. Bxd7+ Rxd7
+         23    27.54/36.98   -0.05   4. ... Nc6 5. e3 Bb4 6. Nxc6 bxc6 7. Bd3
+                                     O-O 8. O-O Bd7 9. Bd2 Bd6 10. b3 Rb8
+                                     11. a4 e5 12. f3 exd4 13. exd4 c5 14. Nb5
+                                     Re8 15. Re1 Rxe1+ 16. Qxe1
+         23    28.75/41.98      --   4. ... Nbd7! (<-0.25)                   
+         23    32.09/41.98   -0.05   4. ... Nc6 5. e3 Bb4 6. Nxc6 bxc6 7. Bd3
+                                     O-O 8. O-O Bd7 9. Bd2 Bd6 10. b3 Rb8
+                                     11. a4 e5 12. f3 exd4 13. exd4 c5 14. Nb5
+                                     Re8 15. Re1 Rxe1+ 16. Qxe1
+         23    35.13/46.98      --   4. ... Bd6! (<-0.41)                   
+         23     1:01/46.98   -0.06   4. ... Bd6 5. Bf4 Bb4 6. f3 Bxc3+ 7. bxc3
+                                     Nbd7 8. Qd2 O-O 9. g4 Nxe5 10. Bxe5 Nd7
+                                     11. Bg3 a5 12. Rb1 b6 13. Bg2 Ba6 14. O-O
+                                     Bc4 15. a4 Nf6 16. Be5
+         23     1:03/49.98      --   4. ... Bb4! (<-0.57)                   
+         23     1:13/49.98   -0.14   4. ... Bb4 5. e3 O-O 6. Bd3 Nbd7 7. O-O
+                                     Nxe5 8. dxe5 Nd7 9. f4 Nc5 10. Bd2 b6
+                                     11. Nb5 Nxd3 12. cxd3 Bc5 13. Qe2 Ba6
+                                     14. a4 Qd7 15. b4 Bxb5 16. axb5
+         23->   1:13/49.98   -0.14   4. ... Bb4 5. e3 O-O 6. Bd3 Nbd7 7. O-O
+                                     Nxe5 8. dxe5 Nd7 9. f4 Nc5 10. Bd2 b6
+                                     11. Nb5 Nxd3 12. cxd3 Bc5 13. Qe2 Ba6
+                                     14. a4 Qd7 15. b4 Bxb5 16. axb5
+        time=1:13(100%)  nodes=288612801(288.6M)  fh1=91%  pred=3  nps=3.9M
+        chk=2.4M  qchk=3.0M  fp=105.6M  mcp=50.7M  50move=2
+        LMReductions:  1/7.9M  2/5.3M  3/4.3M  4/1.8M  5/152.4K  6/2.5K
+        null-move (R):  3/11.5M  4/930.4K  5/25.7K  6/360
+Black(4): Bb4
+              time used:   1:13
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>|<Q>|<K>| . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>|<P>|   | . |<P>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<N>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |   | . |<P>|-N-|   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |-P-|-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|-Q-|-K-|-B-| . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......   0.05  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.32  |   -0.58   -0.58    0.39  |    0.26    0.26   -0.60  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.61  |    0.51    0.51    0.51  |    0.10    0.10    0.10  |
+bishops........  -0.27  |    0.02    0.02    0.20  |   -0.29   -0.29   -0.47  |
+rooks..........   0.06  |   -0.18   -0.18   -0.18  |    0.24    0.24    0.24  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........   0.13  |   -0.48   -0.48   -0.40  |    0.61    0.61    0.40  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........   0.26
+White(5): e3 [pondering]
+        time surplus  38.21  time limit 23.59 (1:57)
+        depth     time       score   variation (22)
+         22     1.57/47.18   -0.12   5. (e3) O-O 6. Bd3 Nbd7 7. O-O Nxe5
+                                     8. dxe5 Nd7 9. f4 Nc5 10. Bd2 b6 11. Nb5
+                                     Nxd3 12. cxd3 Bc5 13. Qe2 Ba6 14. a4 c6
+                                     15. Nd4 Bxd4 16. exd4
+         22->   3.01/42.46   -0.12   5. (e3) O-O 6. Bd3 Nbd7 7. O-O Nxe5
+                                     8. dxe5 Nd7 9. f4 Nc5 10. Bd2 b6 11. Nb5
+                                     Nxd3 12. cxd3 Bc5 13. Qe2 Ba6 14. a4 c6
+                                     15. Nd4 Bxd4 16. exd4
+         23     6.67/42.46   -0.15   5. (e3) O-O 6. Bd3 Nbd7 7. O-O Nxe5
+                                     8. dxe5 Nd7 9. f4 Nc5 10. Bd2 b6 11. Qe2
+                                     Nxd3 12. cxd3 Ba6 13. Rf3 Qd7 14. b3 Be7
+                                     15. Raf1 c5 16. Rg3 g6
+         23->   8.27/38.21   -0.15   5. (e3) O-O 6. Bd3 Nbd7 7. O-O Nxe5
+                                     8. dxe5 Nd7 9. f4 Nc5 10. Bd2 b6 11. Qe2
+                                     Nxd3 12. cxd3 Ba6 13. Rf3 Qd7 14. b3 Be7
+                                     15. Raf1 c5 16. Rg3 g6
+White(5): time 82571
+time remaining:  13:45 (Crafty).
+White(5): otim 82376
+time remaining:  13:43 (opponent).
+White(5): e4
+              time used:  15.54
+        time surplus  38.21  time limit 23.59 (1:57)
+        depth     time       score   variation (1)
+         17     1.19/14.15   -0.94   5. ... Nxe4 6. Bd2 Bxc3 7. bxc3 Nd7 8. Nf3
+                                     O-O 9. Bd3 Ndf6 10. O-O Bd7 11. Rb1 b6
+                                     12. c4 Qe7 13. Re1 Bc6
+         17->   1.38/14.15   -0.94   5. ... Nxe4 6. Bd2 Bxc3 7. bxc3 Nd7 8. Nf3
+                                     O-O 9. Bd3 Ndf6 10. O-O Bd7 11. Rb1 b6
+                                     12. c4 Qe7 13. Re1 Bc6
+         18     1.72/14.15   -0.97   5. ... Nxe4 6. Bd2 Bxc3 7. bxc3 Nd7 8. Nf3
+                                     O-O 9. Bd3 Ndf6 10. O-O Bd7 11. Rb1 b6
+                                     12. c4 dxc4 13. Bxc4 Ng4 14. Qe2
+         18->   1.98/14.15   -0.97   5. ... Nxe4 6. Bd2 Bxc3 7. bxc3 Nd7 8. Nf3
+                                     O-O 9. Bd3 Ndf6 10. O-O Bd7 11. Rb1 b6
+                                     12. c4 dxc4 13. Bxc4 Ng4 14. Qe2
+         19     2.65/14.15   -1.03   5. ... Nxe4 6. Bd2 Bxc3 7. bxc3 Nd7
+                                     8. Nxd7 Bxd7 9. Bd3 O-O 10. O-O Qh4 11. f3
+                                     Nxd2 12. Qxd2 b6 13. Rfe1 c5 14. Qf2 Qe7
+         19->   3.02/14.15   -1.03   5. ... Nxe4 6. Bd2 Bxc3 7. bxc3 Nd7
+                                     8. Nxd7 Bxd7 9. Bd3 O-O 10. O-O Qh4 11. f3
+                                     Nxd2 12. Qxd2 b6 13. Rfe1 c5 14. Qf2 Qe7
+         20     4.24/14.15   -1.17   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O
+                                     8. O-O-O c5 9. dxc5 Bxc5 10. Bd3 Nc6
+                                     11. f4 Nxe5 12. fxe5 Kh8 13. Qf4 Bd7
+                                     14. g3 Qb6 15. Rhe1
+         20->   4.60/14.15   -1.17   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O
+                                     8. O-O-O c5 9. dxc5 Bxc5 10. Bd3 Nc6
+                                     11. f4 Nxe5 12. fxe5 Kh8 13. Qf4 Bd7
+                                     14. g3 Qb6 15. Rhe1
+         21     5.76/14.15   -1.12   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O 8. a3
+                                     Bd6 9. f4 c5 10. dxc5 Bxc5 11. O-O-O Nc6
+                                     12. Nf3 Bd7 13. Bd3 a5 14. g3 Rc8 15. Rhe1
+                                     Nd4 16. Nxd4 Bxd4
+         21->   6.40/14.15   -1.12   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O 8. a3
+                                     Bd6 9. f4 c5 10. dxc5 Bxc5 11. O-O-O Nc6
+                                     12. Nf3 Bd7 13. Bd3 a5 14. g3 Rc8 15. Rhe1
+                                     Nd4 16. Nxd4 Bxd4
+         22     7.10/14.15   -1.12   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O 8. a3
+                                     Bd6 9. f4 c5 10. dxc5 Bxc5 11. O-O-O Nc6
+                                     12. Nf3 Bd7 13. Bd3 Qa5 14. g3 g6 15. Rhe1
+                                     Nd4 16. Nxd4 Bxd4
+         22->   7.63/14.15   -1.12   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O 8. a3
+                                     Bd6 9. f4 c5 10. dxc5 Bxc5 11. O-O-O Nc6
+                                     12. Nf3 Bd7 13. Bd3 Qa5 14. g3 g6 15. Rhe1
+                                     Nd4 16. Nxd4 Bxd4
+         23     9.96/14.15   -1.14   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O 8. a3
+                                     Bd6 9. f4 Nd7 10. O-O-O c5 11. Nb5 Be7
+                                     12. Be2 cxd4 13. Ng4 Nc5 14. Qxd4 Bd7
+                                     15. Ne5 f6 16. Nxd7 Qxd7
+         23->  10.85/14.15   -1.14   5. ... Nxe4 6. Bd2 Nxd2 7. Qxd2 O-O 8. a3
+                                     Bd6 9. f4 Nd7 10. O-O-O c5 11. Nb5 Be7
+                                     12. Be2 cxd4 13. Ng4 Nc5 14. Qxd4 Bd7
+                                     15. Ne5 f6 16. Nxd7 Qxd7
+        time=14.27(100%)  nodes=49922688(49.9M)  fh1=91%  pred=3  nps=3.5M
+        chk=492.0K  qchk=621.1K  fp=20.1M  mcp=7.9M  50move=1
+        LMReductions:  1/1.3M  2/880.0K  3/781.4K  4/416.2K  5/56.6K  6/1.7K
+        null-move (R):  3/2.0M  4/204.5K  5/8.8K  6/187
+Black(5): Nxe4
+              time used:  14.27
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>|<Q>|<K>| . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>|<P>|   | . |<P>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |   | . |<P>|-N-|   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|<N>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|-Q-|-K-|-B-| . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -0.95  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.26  |   -0.52   -0.52    0.40  |    0.26    0.26   -0.60  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.48  |    0.51    0.51    0.51  |   -0.03   -0.03   -0.03  |
+bishops........  -0.13  |    0.16    0.16    0.34  |   -0.29   -0.29   -0.47  |
+rooks..........   0.06  |   -0.18   -0.18   -0.18  |    0.24    0.24    0.24  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.20  |   -0.81   -0.81   -0.40  |    0.61    0.61    0.40  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -1.00
+White(6): Bd2 [pondering]
+        time surplus  46.44  time limit 23.86 (1:59)
+        depth     time       score   variation (22)
+         22     1.89/28.63      --   6. (Bd2) Bxc3! (<-1.30)                   
+         22     6.16/28.63   -1.21   6. (Bd2) Bxc3 7. bxc3 O-O 8. Bd3 f6
+                                     9. Bxe4 fxe5 10. Bd3 e4 11. Be2 Nc6
+                                     12. O-O e5 13. Be3 Qd6 14. Qd2 Bf5 15. f4
+                                     exd4 16. cxd4 b6 17. Rab1
+         22->   6.37/28.63   -1.21   6. (Bd2) Bxc3 7. bxc3 O-O 8. Bd3 f6
+                                     9. Bxe4 fxe5 10. Bd3 e4 11. Be2 Nc6
+                                     12. O-O e5 13. Be3 Qd6 14. Qd2 Bf5 15. f4
+                                     exd4 16. cxd4 b6 17. Rab1
+         23     8.45/28.63   -1.22   6. (Bd2) Bxc3 7. bxc3 O-O 8. Bd3 f6
+                                     9. Bxe4 fxe5 10. Bd3 e4 11. Be2 Nc6
+                                     12. O-O e5 13. Be3 Qd6 14. Qd2 Be6
+                                     15. Rab1 b6 16. f3 Bf5 17. Kh1 Kh8
+         23->   9.75/25.76   -1.22   6. (Bd2) Bxc3 7. bxc3 O-O 8. Bd3 f6
+                                     9. Bxe4 fxe5 10. Bd3 e4 11. Be2 Nc6
+                                     12. O-O e5 13. Be3 Qd6 14. Qd2 Be6
+                                     15. Rab1 b6 16. f3 Bf5 17. Kh1 Kh8
+White(6): time 81121
+time remaining:  13:31 (Crafty).
+White(6): otim 80842
+time remaining:  13:28 (opponent).
+White(6): Bb5+
+              time used:  15.37
+        time surplus  46.21  time limit 23.85 (1:59)
+        depth     time       score   variation (1)
+         17     1.18/23.85      ++   6. ... c6? (>-2.13)                   
+         17     1.38/23.85      ++   6. ... c6? (>-1.97)                   
+         17     1.64/23.85   -1.94   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2 f6
+                                     10. Qh3 Ne4 11. Bxb4 fxe5 12. Bxf8 Qxf8
+                                     13. Bxe4 dxe4 14. dxe5 Na6
+         17->   1.76/21.46   -1.94   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2 f6
+                                     10. Qh3 Ne4 11. Bxb4 fxe5 12. Bxf8 Qxf8
+                                     13. Bxe4 dxe4 14. dxe5 Na6
+         18     2.08/21.46   -1.89   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2 f6
+                                     10. Qh3 Ne4 11. Bxb4 fxe5 12. Bxf8 Qxf8
+                                     13. Bxe4 dxe4 14. dxe5 Qb4+ 15. Qc3 Qxc3+
+                                     16. bxc3
+         18->   2.37/19.31   -1.89   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2 f6
+                                     10. Qh3 Ne4 11. Bxb4 fxe5 12. Bxf8 Qxf8
+                                     13. Bxe4 dxe4 14. dxe5 Qb4+ 15. Qc3 Qxc3+
+                                     16. bxc3
+         19     2.58/19.31      --   6. ... c6! (<-2.05)                   
+         19     2.99/19.31   -2.08   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2 f6
+                                     10. Qh3 Ne4 11. Bxb4 fxe5 12. Bxf8 Qxf8
+                                     13. Bxe4 dxe4 14. dxe5 Qb4+ 15. Qc3 Qxc3+
+                                     16. bxc3 Nd7
+         19->   3.21/17.17   -2.08   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2 f6
+                                     10. Qh3 Ne4 11. Bxb4 fxe5 12. Bxf8 Qxf8
+                                     13. Bxe4 dxe4 14. dxe5 Qb4+ 15. Qc3 Qxc3+
+                                     16. bxc3 Nd7
+         20     3.73/23.85      ++   6. ... c6? (>-1.92)                   
+         20     4.44/23.85      --   6. ... c6! (<-2.24)                   
+         20     4.58/23.85   -2.15   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Ba5 12. Rb1 Nd7
+                                     13. Nxd7 Qxd7 14. O-O g6 15. g3 Bc7
+                                     16. Qf6
+         20->   4.82/21.46   -2.15   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Ba5 12. Rb1 Nd7
+                                     13. Nxd7 Qxd7 14. O-O g6 15. g3 Bc7
+                                     16. Qf6
+         21     5.89/21.46   -2.11   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Be7 12. Qh3 f5
+                                     13. O-O Nd7 14. Bf4 Nxe5 15. Bxe5 Bf6
+                                     16. Rfe1 Bd7
+         21->   6.51/19.31   -2.11   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Be7 12. Qh3 f5
+                                     13. O-O Nd7 14. Bf4 Nxe5 15. Bxe5 Bf6
+                                     16. Rfe1 Bd7
+         22     8.48/19.31   -2.07   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Be7 12. Qh3 f5
+                                     13. O-O Nd7 14. Bf4 Nxe5 15. Bxe5 Bh4
+                                     16. Rfe1 Bd7 17. g3
+         22->   9.14/17.17   -2.07   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Be7 12. Qh3 f5
+                                     13. O-O Nd7 14. Bf4 Nxe5 15. Bxe5 Bh4
+                                     16. Rfe1 Bd7 17. g3
+         23    11.39/17.17   -2.13   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Be7 12. Qh3 f5
+                                     13. O-O Nd7 14. Bf4 Nxe5 15. Bxe5 Bd6
+                                     16. Rfe1 Bxe5 17. Rxe5 Bd7
+         23->  12.14/15.26   -2.13   6. ... c6 7. Bd3 Nxc3 8. Qf3 O-O 9. Bd2
+                                     Nxa2 10. c3 Nxc3 11. bxc3 Be7 12. Qh3 f5
+                                     13. O-O Nd7 14. Bf4 Nxe5 15. Bxe5 Bd6
+                                     16. Rfe1 Bxe5 17. Rxe5 Bd7
+        time=15.46(100%)  nodes=58603877(58.6M)  fh1=92%  pred=3  nps=3.8M
+        chk=754.6K  qchk=1.0M  fp=27.0M  mcp=5.7M  50move=2
+        LMReductions:  1/1.2M  2/803.3K  3/771.8K  4/542.5K  5/91.7K  6/3.6K
+              7/5
+        null-move (R):  3/2.2M  4/274.3K  5/13.0K  6/303
+Black(6): c6
+              time used:  15.46
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>|<Q>|<K>| . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<P>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |<P>| . |<P>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |-B-| . |<P>|-N-|   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|<N>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|-Q-|-K-|   | . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -0.95  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.38  |   -0.52   -0.52    0.40  |    0.14    0.14   -0.67  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.48  |    0.51    0.51    0.51  |   -0.03   -0.03   -0.03  |
+bishops........   0.08  |    0.37    0.37    0.55  |   -0.29   -0.29   -0.47  |
+rooks..........   0.10  |   -0.14   -0.14   -0.14  |    0.24    0.24    0.24  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........   0.00  |   -0.81   -0.81   -0.40  |    0.81    0.81    0.40  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -0.67
+White(7): Bd3 [pondering]
+        time surplus  53.25  time limit 24.11 (2:00)
+        depth     time       score   variation (22)
+         23     1.82/14.46      --   7. (Bd3) Nxc3! (<-2.40)                   
+         23     3.50/14.46   -2.30   7. (Bd3) Nxc3 8. Qf3 O-O 9. Bd2 Nxa2
+                                     10. c3 Nxc3 11. bxc3 Bd6 12. Qh3 f5
+                                     13. Bf4 Qc7 14. O-O Nd7 15. Rfe1 Nxe5
+                                     16. Bxe5 Bd7 17. Qh5 a5 18. Qg5 Bxe5
+                                     19. Rxe5
+         23->   3.85/14.46   -2.30   7. (Bd3) Nxc3 8. Qf3 O-O 9. Bd2 Nxa2
+                                     10. c3 Nxc3 11. bxc3 Bd6 12. Qh3 f5
+                                     13. Bf4 Qc7 14. O-O Nd7 15. Rfe1 Nxe5
+                                     16. Bxe5 Bd7 17. Qh5 a5 18. Qg5 Bxe5
+                                     19. Rxe5
+         24     6.12/14.46   -2.30   7. (Bd3) Nxc3 8. Qf3 O-O 9. Bd2 Nxa2
+                                     10. c3 Nxc3 11. bxc3 Bd6 12. Qh3 f5
+                                     13. Bf4 Qc7 14. O-O Nd7 15. Rfe1 Nxe5
+                                     16. Bxe5 Bd7 17. Qh5 a5 18. Qg5 Bxe5
+                                     19. Rxe5
+         24->   6.51/14.46   -2.30   7. (Bd3) Nxc3 8. Qf3 O-O 9. Bd2 Nxa2
+                                     10. c3 Nxc3 11. bxc3 Bd6 12. Qh3 f5
+                                     13. Bf4 Qc7 14. O-O Nd7 15. Rfe1 Nxe5
+                                     16. Bxe5 Bd7 17. Qh5 a5 18. Qg5 Bxe5
+                                     19. Rxe5
+         25    11.48/14.46   -2.28   7. (Bd3) Nxc3 8. Qf3 O-O 9. Bd2 Nxa2
+                                     10. c3 Nxc3 11. bxc3 Bd6 12. Qh3 f5
+                                     13. Bf4 Qc7 14. O-O Nd7 15. Rfe1 Nxe5
+                                     16. Bxe5 Bd7 17. Qg3 Bxe5 18. Rxe5 c5
+                                     19. Rxf5 Qxg3 20. Rxf8+ Rxf8 21. hxg3 cxd4
+                                     22. cxd4
+         25->  12.58/14.46   -2.28   7. (Bd3) Nxc3 8. Qf3 O-O 9. Bd2 Nxa2
+                                     10. c3 Nxc3 11. bxc3 Bd6 12. Qh3 f5
+                                     13. Bf4 Qc7 14. O-O Nd7 15. Rfe1 Nxe5
+                                     16. Bxe5 Bd7 17. Qg3 Bxe5 18. Rxe5 c5
+                                     19. Rxf5 Qxg3 20. Rxf8+ Rxf8 21. hxg3 cxd4
+                                     22. cxd4
+White(7): time 79570
+time remaining:  13:15 (Crafty).
+White(7): otim 79233
+time remaining:  13:12 (opponent).
+White(7): Nxf7
+              time used:  16.33
+        time surplus  53.20  time limit 24.11 (2:00)
+        depth     time       score   variation (1)
+         17     1.05/14.46   -4.45   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 b6 15. Bc3 Nc4
+                                     16. O-O Nd7
+         17->   1.14/14.46   -4.45   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 b6 15. Bc3 Nc4
+                                     16. O-O Nd7
+         18     1.34/14.46      --   7. ... Kxf7! (<-4.61)                   
+         18     1.42/14.46   -4.49   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Na6 15. O-O Nc4
+                                     16. Bxc4 dxc4 17. Rfe1
+         18->   1.50/14.46   -4.49   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Na6 15. O-O Nc4
+                                     16. Bxc4 dxc4 17. Rfe1
+         19     2.12/14.46      --   7. ... Kxf7! (<-4.65)                   
+         19     2.27/14.46   -4.65   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Na6 15. O-O Nc4
+                                     16. Bc3 Bd7 17. Rab1 b6
+         19->   2.42/14.46   -4.65   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Na6 15. O-O Nc4
+                                     16. Bc3 Bd7 17. Rab1 b6
+         20     2.67/24.11      ++   7. ... Kxf7? (>-4.49)                   
+         20     2.90/24.11   -4.52   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Nd7 15. O-O e5
+                                     16. Rab1 Nc4 17. Bxc4 dxc4 18. Bc3
+         20->   3.13/21.69   -4.52   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Nd7 15. O-O e5
+                                     16. Rab1 Nc4 17. Bxc4 dxc4 18. Bc3
+         21     3.92/21.69      --   7. ... Kxf7! (<-4.68)                   
+         21     4.18/21.69   -4.56   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Nd7 15. O-O Nc4
+                                     16. Bc3 Ndb6 17. Bd3 Na4 18. Bb4 Bd7
+         21->   4.43/19.52   -4.56   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Nd7 15. O-O Nc4
+                                     16. Bc3 Ndb6 17. Bd3 Na4 18. Bb4 Bd7
+         22     6.91/19.52   -4.54   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Nd7 15. O-O Nc4
+                                     16. Bc3 Ndb6 17. Rfe1 Na4 18. Bb4 a5
+                                     19. Bxc4 axb4
+         22->   7.33/17.35   -4.54   7. ... Kxf7 8. Qf3+ Qf6 9. Qxf6+ Kxf6
+                                     10. Bd3 Nxc3 11. a3 Ba5 12. Bd2 Na4
+                                     13. Bxa5 Nxb2 14. Be2 Nd7 15. O-O Nc4
+                                     16. Bc3 Ndb6 17. Rfe1 Na4 18. Bb4 a5
+                                     19. Bxc4 axb4
+         23    11.24/17.35   -4.57   7. ... Kxf7 8. Bd3 Nxc3 9. Qh5+ g6
+                                     10. Qf3+ Qf6 11. Qxf6+ Kxf6 12. a3 Ba5
+                                     13. Bd2 Na4 14. Bxa5 Nxb2 15. Be2 Nc4
+                                     16. Bc3 Nd7 17. O-O Ndb6 18. Rfe1 Na4
+                                     19. Bb4 a5 20. Bxc4 axb4
+         23->  11.68/15.43   -4.57   7. ... Kxf7 8. Bd3 Nxc3 9. Qh5+ g6
+                                     10. Qf3+ Qf6 11. Qxf6+ Kxf6 12. a3 Ba5
+                                     13. Bd2 Na4 14. Bxa5 Nxb2 15. Be2 Nc4
+                                     16. Bc3 Nd7 17. O-O Ndb6 18. Rfe1 Na4
+                                     19. Bb4 a5 20. Bxc4 axb4
+         24    13.69/15.43   -4.57   7. ... Kxf7 8. Bd3 Nxc3 9. Qh5+ g6
+                                     10. Qf3+ Qf6 11. Qxf6+ Kxf6 12. a3 Ba5
+                                     13. Bd2 Na4 14. Bxa5 Nxb2 15. Be2 Nc4
+                                     16. Bc3 Nd7 17. O-O Ndb6 18. Rfe1 Na4
+                                     19. Bb4 a5 20. Bxc4 axb4
+         24->  14.17/14.46   -4.57   7. ... Kxf7 8. Bd3 Nxc3 9. Qh5+ g6
+                                     10. Qf3+ Qf6 11. Qxf6+ Kxf6 12. a3 Ba5
+                                     13. Bd2 Na4 14. Bxa5 Nxb2 15. Be2 Nc4
+                                     16. Bc3 Nd7 17. O-O Ndb6 18. Rfe1 Na4
+                                     19. Bb4 a5 20. Bxc4 axb4
+        time=14.59(100%)  nodes=56756626(56.8M)  fh1=92%  pred=3  nps=3.9M
+        chk=872.3K  qchk=1.2M  fp=24.8M  mcp=5.7M  50move=1
+        LMReductions:  1/1.3M  2/958.5K  3/921.7K  4/555.9K  5/82.7K  6/3.7K
+              7/8
+        null-move (R):  3/2.3M  4/329.5K  5/21.5K  6/602
+Black(7): Kxf7
+              time used:  14.59
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>|<Q>|   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |<P>| . |<P>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |-B-| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|<N>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|-Q-|-K-|   | . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -3.90  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.20  |   -0.47   -0.52    0.40  |    0.27    0.32   -0.55  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.16  |    0.19    0.19    0.19  |   -0.03   -0.03   -0.03  |
+bishops........   0.08  |    0.37    0.37    0.55  |   -0.29   -0.29   -0.47  |
+rooks..........   0.06  |   -0.14   -0.14   -0.14  |    0.20    0.20    0.20  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.33  |   -0.79   -0.81   -0.40  |    0.46    0.48    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -4.69
+White(8): Bd3 [pondering]
+        time surplus   1:01  time limit 24.40 (2:02)
+        depth     time       score   variation (23)
+         23     3.34/14.64   -4.60   8. (Bd3) Nxc3 9. Qh5+ g6 10. Qf3+ Qf6
+                                     11. Qxf6+ Kxf6 12. a3 Bd6 13. bxc3 e5
+                                     14. dxe5+ Bxe5 15. Bb2 Bf5 16. O-O Bxd3
+                                     17. cxd3 Re8 18. f4 Bc7 19. c4+ Kf5
+                                     20. Be5 Na6 21. Rae1 dxc4 22. dxc4 Bb6+
+                                     23. Kh1
+         23->   5.22/14.64   -4.60   8. (Bd3) Nxc3 9. Qh5+ g6 10. Qf3+ Qf6
+                                     11. Qxf6+ Kxf6 12. a3 Bd6 13. bxc3 e5
+                                     14. dxe5+ Bxe5 15. Bb2 Bf5 16. O-O Bxd3
+                                     17. cxd3 Re8 18. f4 Bc7 19. c4+ Kf5
+                                     20. Be5 Na6 21. Rae1 dxc4 22. dxc4 Bb6+
+                                     23. Kh1
+         24     8.94/14.64      --   8. (Bd3) Nxc3! (<-4.76)                   
+         24    12.62/14.64   -4.69   8. (Bd3) Nxc3 9. Qh5+ g6 10. Qf3+ Qf6
+                                     11. Qxf6+ Kxf6 12. a3 Bd6 13. bxc3 e5
+                                     14. dxe5+ Bxe5 15. Bb2 Bf5 16. O-O Bxd3
+                                     17. cxd3 Re8 18. Rab1 Na6 19. f4 Bd6
+                                     20. c4+ Kf5 21. cxd5 cxd5 22. Be5 Bc5+
+                                     23. Kh1
+         24->  13.56/14.64   -4.69   8. (Bd3) Nxc3 9. Qh5+ g6 10. Qf3+ Qf6
+                                     11. Qxf6+ Kxf6 12. a3 Bd6 13. bxc3 e5
+                                     14. dxe5+ Bxe5 15. Bb2 Bf5 16. O-O Bxd3
+                                     17. cxd3 Re8 18. Rab1 Na6 19. f4 Bd6
+                                     20. c4+ Kf5 21. cxd5 cxd5 22. Be5 Bc5+
+                                     23. Kh1
+White(8): time 78085
+time remaining:  13:00 (Crafty).
+White(8): otim 77720
+time remaining:  12:57 (opponent).
+White(8): Qf3+
+              time used:  15.41
+        time surplus   1:00  time limit 24.40 (2:02)
+        depth     time       score   variation (1)
+         19     1.10/14.64   -4.75   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. bxa3 Nd7 13. Bd2 Ne4
+                                     14. Be3 Nb6 15. f3 Nd6 16. O-O Nbc4
+                                     17. Bf4 e5 18. dxe5 fxe5
+         19->   1.32/14.64   -4.75   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. bxa3 Nd7 13. Bd2 Ne4
+                                     14. Be3 Nb6 15. f3 Nd6 16. O-O Nbc4
+                                     17. Bf4 e5 18. dxe5 fxe5
+         20     1.44/14.64   -4.75   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. bxa3 Nd7 13. Bd2 Ne4
+                                     14. Be3 Nb6 15. f3 Nd6 16. O-O Nbc4
+                                     17. Bf4 e5 18. dxe5 fxe5
+         20->   2.47/14.64   -4.75   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. bxa3 Nd7 13. Bd2 Ne4
+                                     14. Be3 Nb6 15. f3 Nd6 16. O-O Nbc4
+                                     17. Bf4 e5 18. dxe5 fxe5
+         21     2.85/14.64      --   8. ... Qf6! (<-4.91)                   
+         21     2.96/14.64   -4.83   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. bxa3 Nd7 13. Bd2 Ne4
+                                     14. Be3 Nb6 15. f3 Nd6 16. O-O Nbc4
+                                     17. Bf4 e5 18. dxe5 fxe5 19. Bg5
+         21->   3.54/14.64   -4.83   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. bxa3 Nd7 13. Bd2 Ne4
+                                     14. Be3 Nb6 15. f3 Nd6 16. O-O Nbc4
+                                     17. Bf4 e5 18. dxe5 fxe5 19. Bg5
+         22     4.74/14.64   -4.92   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. Rxa3 Nb5 13. Ra4 Nd7
+                                     14. c3 e5 15. O-O Nb6 16. Rb4 a5 17. Rb3
+                                     Bd7 18. dxe5 a4 19. e6+ Bxe6
+         22->   5.49/14.64   -4.92   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. Rxa3 Nb5 13. Ra4 Nd7
+                                     14. c3 e5 15. O-O Nb6 16. Rb4 a5 17. Rb3
+                                     Bd7 18. dxe5 a4 19. e6+ Bxe6
+         23     5.99/14.64   -4.88   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. Rxa3 Nb5 13. Ra4 Nd7
+                                     14. c3 e5 15. O-O Nb6 16. Rb4 a5 17. Rb3
+                                     Bd7 18. dxe5 fxe5 19. Be3 Nc4 20. Bc5
+         23->   7.24/14.64   -4.88   8. ... Qf6 9. Qxf6+ gxf6 10. Bd3 Nxc3
+                                     11. a3 Bxa3 12. Rxa3 Nb5 13. Ra4 Nd7
+                                     14. c3 e5 15. O-O Nb6 16. Rb4 a5 17. Rb3
+                                     Bd7 18. dxe5 fxe5 19. Be3 Nc4 20. Bc5
+         24    10.04/14.64   -4.91   8. ... Qf6 9. Qxf6+ gxf6 10. Be2 Nxc3
+                                     11. Bh5+ Kg7 12. a3 Nb5+ 13. axb4 Nxd4
+                                     14. Bd1 e5 15. c3 Nb5 16. O-O Na6 17. Ba4
+                                     Nd6 18. Re1 Bd7 19. f3 Nc7 20. Kf2 a5
+                                     21. bxa5 Rxa5
+         24->  11.71/14.64   -4.91   8. ... Qf6 9. Qxf6+ gxf6 10. Be2 Nxc3
+                                     11. Bh5+ Kg7 12. a3 Nb5+ 13. axb4 Nxd4
+                                     14. Bd1 e5 15. c3 Nb5 16. O-O Na6 17. Ba4
+                                     Nd6 18. Re1 Bd7 19. f3 Nc7 20. Kf2 a5
+                                     21. bxa5 Rxa5
+         25    14.04/14.64   -4.93   8. ... Qf6 9. Qxf6+ gxf6 10. Be2 Nxc3
+                                     11. Bh5+ Kg7 12. a3 Nb5+ 13. axb4 Nxd4
+                                     14. Bd1 e5 15. c3 Nb5 16. O-O Na6 17. Ba4
+                                     Nd6 18. Re1 Bd7 19. h3 Nc4 20. Bc2 c5
+                                     21. b3 Nd6 22. Rd1
+         25->  16.31/14.64   -4.93   8. ... Qf6 9. Qxf6+ gxf6 10. Be2 Nxc3
+                                     11. Bh5+ Kg7 12. a3 Nb5+ 13. axb4 Nxd4
+                                     14. Bd1 e5 15. c3 Nb5 16. O-O Na6 17. Ba4
+                                     Nd6 18. Re1 Bd7 19. h3 Nc4 20. Bc2 c5
+                                     21. b3 Nd6 22. Rd1
+        time=16.31(100%)  nodes=61395162(61.4M)  fh1=91%  pred=3  nps=3.8M
+        chk=935.0K  qchk=1.3M  fp=24.9M  mcp=7.2M  50move=2
+        LMReductions:  1/1.6M  2/1.1M  3/1.0M  4/532.6K  5/72.0K  6/2.8K
+              7/22
+        null-move (R):  3/2.5M  4/325.1K  5/20.8K  6/793  7/5
+Black(8): Qf6
+              time used:  16.31
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>|<P>|<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |<P>| . |<P>|<Q>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |-B-| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|<N>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |-Q-| . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|   |-K-|   | . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -3.90  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.20  |   -0.47   -0.52    0.40  |    0.27    0.32   -0.55  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.16  |    0.19    0.19    0.19  |   -0.03   -0.03   -0.03  |
+bishops........   0.08  |    0.37    0.37    0.55  |   -0.29   -0.29   -0.47  |
+rooks..........   0.03  |   -0.14   -0.14   -0.14  |    0.17    0.17    0.17  |
+queens.........   0.02  |    0.08    0.08    0.08  |   -0.06   -0.06   -0.06  |
+kings..........  -0.21  |   -0.79   -0.81   -0.40  |    0.58    0.61    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -4.58
+White(9): Qxf6+ [pondering]
+        time surplus   1:07  time limit 24.66 (2:03)
+        depth     time       score   variation (24)
+         25     4.45/14.79   -4.95   9. (Qxf6+) gxf6 10. Be2 Nxc3 11. Bh5+ Kg7
+                                     12. a3 Nb5+ 13. axb4 Nxd4 14. Bd1 e5
+                                     15. c3 Nb5 16. O-O Na6 17. Bd2 Bf5 18. f4
+                                     e4 19. g4 Bd7 20. f5 Nd6 21. Be2 Nc4
+                                     22. Bxc4 dxc4
+         25->   4.75/14.79   -4.95   9. (Qxf6+) gxf6 10. Be2 Nxc3 11. Bh5+ Kg7
+                                     12. a3 Nb5+ 13. axb4 Nxd4 14. Bd1 e5
+                                     15. c3 Nb5 16. O-O Na6 17. Bd2 Bf5 18. f4
+                                     e4 19. g4 Bd7 20. f5 Nd6 21. Be2 Nc4
+                                     22. Bxc4 dxc4
+         26    13.34/14.79   -4.94   9. (Qxf6+) gxf6 10. Bd3 Nxc3 11. a3 Bxa3
+                                     12. Rxa3 Nb5 13. Ra4 Nd7 14. c3 e5 15. O-O
+                                     Nb6 16. Rb4 exd4 17. Bxb5 cxb5 18. Rxd4
+                                     Re8 19. Be3 Be6 20. Re1 Nc4 21. Re2 Rac8
+                                     22. Bf4
+         26->  13.89/14.79   -4.94   9. (Qxf6+) gxf6 10. Bd3 Nxc3 11. a3 Bxa3
+                                     12. Rxa3 Nb5 13. Ra4 Nd7 14. c3 e5 15. O-O
+                                     Nb6 16. Rb4 exd4 17. Bxb5 cxb5 18. Rxd4
+                                     Re8 19. Be3 Be6 20. Re1 Nc4 21. Re2 Rac8
+                                     22. Bf4
+White(9): time 76426
+time remaining:  12:44 (Crafty).
+White(9): otim 76202
+time remaining:  12:42 (opponent).
+White(9): Qxf6+
+predicted move made.
+        time=15.44(100%)  nodes=59027880(59.0M)  fh1=92%  pred=4  nps=3.8M
+        chk=663.8K  qchk=809.4K  fp=21.4M  mcp=10.3M  50move=0
+        LMReductions:  1/2.0M  2/1.4M  3/1.2M  4/441.2K  5/39.8K  6/845
+        null-move (R):  3/2.8M  4/307.5K  5/18.3K  6/1.1K  7/10
+              time used:  15.19
+Black(9): gxf6
+              time used:   0.26
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |<P>| . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |-B-| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|<N>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   |-B-|   |-K-|   | . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -3.90  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.28  |   -0.17   -0.50    0.45  |   -0.11    0.17   -0.67  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.16  |    0.19    0.19    0.19  |   -0.03   -0.03   -0.03  |
+bishops........   0.08  |    0.43    0.37    0.55  |   -0.35   -0.29   -0.47  |
+rooks..........   0.03  |   -0.14   -0.14   -0.14  |    0.17    0.17    0.17  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........   0.04  |   -0.45   -0.48   -0.40  |    0.49    0.70    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -4.00
+White(10): Bd3 [pondering]
+        time surplus   1:29  time limit 25.46 (2:07)
+        depth     time       score   variation (25)
+         26     4.85/15.27   -4.99   10. (Bd3) Nxc3 11. a3 Bxa3 12. Rxa3 Nb5
+                                     13. Ra4 Nd7 14. c3 e5 15. O-O Nb6 16. Rb4
+                                     exd4 17. Bxb5 cxb5 18. Rxd4 Re8 19. Be3
+                                     Be6 20. Rb4 Nc4 21. Rd1 Nxe3 22. fxe3 a6
+                                     23. Rf4
+         26->   5.25/15.27   -4.99   10. (Bd3) Nxc3 11. a3 Bxa3 12. Rxa3 Nb5
+                                     13. Ra4 Nd7 14. c3 e5 15. O-O Nb6 16. Rb4
+                                     exd4 17. Bxb5 cxb5 18. Rxd4 Re8 19. Be3
+                                     Be6 20. Rb4 Nc4 21. Rd1 Nxe3 22. fxe3 a6
+                                     23. Rf4
+White(10): time 76397
+time remaining:  12:43 (Crafty).
+White(10): otim 74693
+time remaining:  12:26 (opponent).
+White(10): Bf4
+              time used:  15.11
+        time surplus   1:28  time limit 25.46 (2:07)
+        depth     time       score   variation (1)
+         19     1.08/15.27   -7.94   10. ... Bxc3+ 11. bxc3 cxb5 12. Bd2 Nc6
+                                     13. f3 Nxd2 14. Kxd2 e5 15. Rhb1 b4
+                                     16. dxe5 Rg8 17. Rg1 fxe5 18. cxb4 Nxb4
+                                     19. a3 Nc6 20. Kc3
+         19     1.20/30.55      --   10. ... cxb5! (<-8.22)                   
+         19     2.04/30.55   -8.15   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 e5 17. Rab1 a6 18. dxe5 Nxe5
+                                     19. Ke1 Ke6 20. Kf1
+         19->   2.11/30.55   -8.15   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 e5 17. Rab1 a6 18. dxe5 Nxe5
+                                     19. Ke1 Ke6 20. Kf1
+         20     2.47/30.55   -8.16   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 e5 17. Rab1 a6 18. a4 bxa4 19. Rxb7
+                                     Ra7 20. Rxa7 Nxa7
+         20->   2.56/27.49   -8.16   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 e5 17. Rab1 a6 18. a4 bxa4 19. Rxb7
+                                     Ra7 20. Rxa7 Nxa7
+         21     3.54/27.49      --   10. ... cxb5! (<-8.32)                   
+         21     4.04/27.49   -8.32   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. Kxc3 Rg8 15. g3 e5
+                                     16. dxe5 d4+ 17. Kd2 fxe5 18. f3 Bf5
+                                     19. Rae1 Rac8 20. g4 Be6 21. Kc1 Kf6
+         21->   4.18/24.69   -8.32   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. Kxc3 Rg8 15. g3 e5
+                                     16. dxe5 d4+ 17. Kd2 fxe5 18. f3 Bf5
+                                     19. Rae1 Rac8 20. g4 Be6 21. Kc1 Kf6
+         22     5.16/24.69   -8.34   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. Kxc3 Rg8 15. g3 e5
+                                     16. dxe5 fxe5 17. b3 Bf5 18. Kb2 d4 19. f3
+                                     b4 20. g4 bxa3+ 21. Rxa3 Be6 22. Re1
+         22->   5.28/22.15   -8.34   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. Kxc3 Rg8 15. g3 e5
+                                     16. dxe5 fxe5 17. b3 Bf5 18. Kb2 d4 19. f3
+                                     b4 20. g4 bxa3+ 21. Rxa3 Be6 22. Re1
+         23     6.79/22.15   -8.34   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 Na5 17. f3 Nc4+ 18. Ke2 Bc6 19. Rd3
+                                     e5 20. g4 Rac8 21. Rdd1 exd4 22. cxd4
+                                     Rce8+ 23. Kf2
+         23->   7.08/19.85   -8.34   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 Na5 17. f3 Nc4+ 18. Ke2 Bc6 19. Rd3
+                                     e5 20. g4 Rac8 21. Rdd1 exd4 22. cxd4
+                                     Rce8+ 23. Kf2
+         24     9.53/19.85   -8.33   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 Na5 17. f3 Nc4+ 18. Ke2 Bc6 19. Re1
+                                     a6 20. Kf2 Rac8 21. f4 h5 22. Re2 Rc7
+                                     23. Kg2
+         24->  10.04/17.82   -8.33   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. bxc3 Bd7 15. Rhd1 Rhg8
+                                     16. g3 Na5 17. f3 Nc4+ 18. Ke2 Bc6 19. Re1
+                                     a6 20. Kf2 Rac8 21. f4 h5 22. Re2 Rc7
+                                     23. Kg2
+         25    14.13/17.82   -8.34   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. Kxc3 Rg8 15. g3 e5
+                                     16. dxe5 fxe5 17. b3 Bf5 18. Kb2 d4 19. f3
+                                     b4 20. Rhd1 Rac8 21. Rd2 a6 22. a4 Na5
+                                     23. Re1
+         25->  14.81/16.03   -8.34   10. ... cxb5 11. Bd2 Nxd2 12. Kxd2 Nc6
+                                     13. a3 Bxc3+ 14. Kxc3 Rg8 15. g3 e5
+                                     16. dxe5 fxe5 17. b3 Bf5 18. Kb2 d4 19. f3
+                                     b4 20. Rhd1 Rac8 21. Rd2 a6 22. a4 Na5
+                                     23. Re1
+        time=16.11(100%)  nodes=65799109(65.8M)  fh1=91%  pred=4  nps=4.1M
+        chk=1.2M  qchk=1.5M  fp=26.3M  mcp=8.9M  50move=2
+        LMReductions:  1/1.9M  2/1.2M  3/982.5K  4/358.6K  5/30.6K  6/592
+        null-move (R):  3/2.7M  4/257.7K  5/13.6K  6/582
+Black(10): cxb5
+              time used:  16.11
+
+       +---+---+---+---+---+---+---+---+
+    8  |<R>|<N>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|<N>|-B-|   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   |-K-|   | . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -6.95  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.11  |   -0.13   -0.50    0.45  |    0.02    0.34   -0.48  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.16  |    0.19    0.19    0.19  |   -0.03   -0.03   -0.03  |
+bishops........  -0.07  |    0.28    0.25    0.35  |   -0.35   -0.29   -0.47  |
+rooks..........   0.11  |   -0.06   -0.06   -0.06  |    0.17    0.17    0.17  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........   0.04  |   -0.44   -0.48   -0.40  |    0.48    0.72    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -6.94
+White(11): Bd2 [pondering]
+        time surplus   1:35  time limit 25.78 (2:08)
+        depth     time       score   variation (24)
+         24     4.61/15.46      --   11. (Bd2) Nxd2! (<-8.50)                   
+         24    11.67/15.46      --   11. (Bd2) Nxd2! (<-8.66)                   
+White(11): time 74783
+time remaining:  12:27 (Crafty).
+White(11): otim 73108
+time remaining:  12:11 (opponent).
+White(11): Bxb8
+              time used:  15.95
+        time surplus   1:35  time limit 25.78 (2:08)
+        depth     time       score   variation (1)
+         20     1.06/15.46   -9.20   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 f5 19. Re1 Rc4 20. Rd3
+                                     Kf6 21. Rde3 h5
+         20->   1.09/15.46   -9.20   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 f5 19. Re1 Rc4 20. Rd3
+                                     Kf6 21. Rde3 h5
+         21     1.27/15.46   -9.23   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 h5 19. Re1 h4 20. Re3
+                                     f5 21. Rdd3 f4 22. Re1
+         21->   1.29/15.46   -9.23   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 h5 19. Re1 h4 20. Re3
+                                     f5 21. Rdd3 f4 22. Re1
+         22     2.30/15.46   -9.27   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 h5 19. Re1 h4 20. Re3
+                                     f5 21. Rdd3 f4 22. Re1 Kf6
+         22->   2.32/15.46   -9.27   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 h5 19. Re1 h4 20. Re3
+                                     f5 21. Rdd3 f4 22. Re1 Kf6
+         23     3.29/15.46   -9.31   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 h5 19. Rf1 h4 20. Rd3
+                                     f5 21. Re1 Rc4 22. Ree3 f4 23. Re1
+         23->   3.34/15.46   -9.31   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 a6 18. Kf2 h5 19. Rf1 h4 20. Rd3
+                                     f5 21. Re1 Rc4 22. Ree3 f4 23. Re1
+         24     5.63/15.46   -9.45   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 Rc4 18. Kf2 e5 19. Re1 exd4 20. g4
+                                     f5 21. h3 Kf6 22. Kg2 fxg4 23. hxg4 Be6
+         24->   5.69/15.46   -9.45   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 Rc4 18. Kf2 e5 19. Re1 exd4 20. g4
+                                     f5 21. h3 Kf6 22. Kg2 fxg4 23. hxg4 Be6
+         25     7.79/15.46   -9.46   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 Rc4 18. Kf2 e5 19. Re1 exd4
+                                     20. Kf1 f5 21. Kf2 Kf6 22. g3 Be6 23. Rd3
+                                     a6 24. Kg2
+         25->   7.86/15.46   -9.46   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 Rhg8
+                                     17. Rd2 Rc4 18. Kf2 e5 19. Re1 exd4
+                                     20. Kf1 f5 21. Kf2 Kf6 22. g3 Be6 23. Rd3
+                                     a6 24. Kg2
+         26    10.90/15.46   -9.49   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 e5
+                                     17. dxe5 fxe5 18. Rd2 Rhg8 19. Kf2 Ke6
+                                     20. Re1 Rc4 21. Rd3 d4 22. g3 Nd5 23. Rd2
+                                     Kd6 24. Kf1 a6
+         26->  10.98/15.46   -9.49   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 e5
+                                     17. dxe5 fxe5 18. Rd2 Rhg8 19. Kf2 Ke6
+                                     20. Re1 Rc4 21. Rd3 d4 22. g3 Nd5 23. Rd2
+                                     Kd6 24. Kf1 a6
+         27    15.19/15.46   -9.53   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 e5
+                                     17. dxe5 fxe5 18. Kf1 Kf6 19. Re1 Rhg8
+                                     20. Kg1 Rc4 21. Kh1 a5 22. g3 Bh3 23. Rd2
+                                     Rg7 24. g4 b4 25. axb4 Rxb4
+         27->  15.33/15.46   -9.53   11. ... Rxb8 12. a3 Bxc3+ 13. bxc3 Bd7
+                                     14. f3 Nxc3 15. Rf1 Rbc8 16. Rf2 e5
+                                     17. dxe5 fxe5 18. Kf1 Kf6 19. Re1 Rhg8
+                                     20. Kg1 Rc4 21. Kh1 a5 22. g3 Bh3 23. Rd2
+                                     Rg7 24. g4 b4 25. axb4 Rxb4
+        time=15.57(100%)  nodes=63804144(63.8M)  fh1=93%  pred=4  nps=4.1M
+        chk=964.3K  qchk=948.9K  fp=26.6M  mcp=8.6M  50move=1
+        LMReductions:  1/2.4M  2/1.6M  3/1.2M  4/346.2K  5/30.5K  6/473
+        null-move (R):  3/3.2M  4/387.4K  5/24.6K  6/1.5K  7/15
+Black(11): Rxb8
+              time used:  15.57
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|<N>| . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |-N-|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   |-K-|   | . |-R-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -6.95  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.09  |   -0.04   -0.50    0.45  |   -0.05    0.34   -0.48  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........  -0.13  |    0.19    0.19    0.19  |   -0.32   -0.32   -0.32  |
+bishops........  -0.11  |    0.26    0.18    0.36  |   -0.37   -0.29   -0.47  |
+rooks..........   0.00  |   -0.06   -0.06   -0.06  |    0.06    0.06    0.06  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.40  |   -0.44   -0.48   -0.40  |    0.04    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -8.03
+White(12): a3 [pondering]
+        time surplus   1:42  time limit 26.15 (2:10)
+        depth     time       score   variation (26)
+         26    12.39/15.69   -9.51   12. (a3) Bxc3+ 13. bxc3 Bd7 14. c4 bxc4
+                                     15. g3 Nc3 16. Kd2 Nb5 17. c3 e5 18. dxe5
+                                     fxe5 19. Rhe1 e4 20. Kc2 Nd6 21. Re2 Rhg8
+                                     22. Kb2 Nf5 23. Rd2 Be6 24. Rad1 Rbd8
+                                     25. Re2 Kf6
+         26->  13.60/15.69   -9.51   12. (a3) Bxc3+ 13. bxc3 Bd7 14. c4 bxc4
+                                     15. g3 Nc3 16. Kd2 Nb5 17. c3 e5 18. dxe5
+                                     fxe5 19. Rhe1 e4 20. Kc2 Nd6 21. Re2 Rhg8
+                                     22. Kb2 Nf5 23. Rd2 Be6 24. Rad1 Rbd8
+                                     25. Re2 Kf6
+White(12): time 73213
+time remaining:  12:12 (Crafty).
+White(12): otim 71583
+time remaining:  11:55 (opponent).
+White(12): O-O
+              time used:  15.37
+        time surplus   1:42  time limit 26.14 (2:10)
+        depth     time       score   variation (1)
+         19     1.06/15.68  -10.14   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rfd1 Rbc8 16. Rb3 Rc4 17. Kf1 Rxd4
+                                     18. Rxd4 Bxd4 19. c3 Bc5 20. Ke2 Rg8
+                                     21. Kf3 a6
+         19->   1.06/15.68  -10.14   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rfd1 Rbc8 16. Rb3 Rc4 17. Kf1 Rxd4
+                                     18. Rxd4 Bxd4 19. c3 Bc5 20. Ke2 Rg8
+                                     21. Kf3 a6
+         20     2.30/15.68      --   12. ... Nxc3! (<-10.30)                   
+         20     3.21/15.68  -10.33   12. ... Nxc3 13. bxc3 Bxc3 14. Rad1 Bd7
+                                     15. f4 Rbc8 16. Rd3 Rc4 17. Rfd1 Ba5
+                                     18. Rc1 Bb6 19. Rcd1 Rhc8 20. c3 Rxc3
+                                     21. Rxc3 Rxc3 22. g4
+         20->   3.21/15.68  -10.33   12. ... Nxc3 13. bxc3 Bxc3 14. Rad1 Bd7
+                                     15. f4 Rbc8 16. Rd3 Rc4 17. Rfd1 Ba5
+                                     18. Rc1 Bb6 19. Rcd1 Rhc8 20. c3 Rxc3
+                                     21. Rxc3 Rxc3 22. g4
+         21     4.60/15.68  -10.46   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rb3 Rbc8 16. g3 Bxd4 17. Rd1 Bb6
+                                     18. Rd2 h5 19. a3 a6 20. Kg2 h4 21. g4 Rc4
+                                     22. h3 Rhc8
+         21->   4.61/15.68  -10.46   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rb3 Rbc8 16. g3 Bxd4 17. Rd1 Bb6
+                                     18. Rd2 h5 19. a3 a6 20. Kg2 h4 21. g4 Rc4
+                                     22. h3 Rhc8
+         22     5.08/15.68  -10.47   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rb3 Rbc8 16. Kh1 Bxd4 17. Rd3 Bb2
+                                     18. Rd2 Bc3 19. Re2 Rhg8 20. Rd1 Kg6
+                                     21. Rd3 Be5 22. g3 Kf5 23. Rf3+ Kg4
+         22->   5.09/15.68  -10.47   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rb3 Rbc8 16. Kh1 Bxd4 17. Rd3 Bb2
+                                     18. Rd2 Bc3 19. Re2 Rhg8 20. Rd1 Kg6
+                                     21. Rd3 Be5 22. g3 Kf5 23. Rf3+ Kg4
+         23     5.85/15.68  -10.48   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rb3 Rbc8 16. g3 Bxd4 17. Rd1 Bb6
+                                     18. c3 f5 19. Kg2 Kf6 20. Rd3 Rhg8 21. Rb1
+                                     Rc4 22. Rb4 Bc6 23. f4 d4+
+         23->   5.87/15.68  -10.48   12. ... Nxc3 13. bxc3 Bxc3 14. Rab1 Bd7
+                                     15. Rb3 Rbc8 16. g3 Bxd4 17. Rd1 Bb6
+                                     18. c3 f5 19. Kg2 Kf6 20. Rd3 Rhg8 21. Rb1
+                                     Rc4 22. Rb4 Bc6 23. f4 d4+
+         24    10.11/15.68  -10.60   12. ... Nxc3 13. bxc3 Bxc3 14. Rad1 Bd7
+                                     15. f4 Rbc8 16. Rf3 Rc4 17. Kf1 Bxd4
+                                     18. Rd2 Bb2 19. f5 exf5 20. Re2 Re8
+                                     21. Rxe8 Kxe8 22. Rf2 Be5 23. Re2 Kf7
+                                     24. g3
+         24->  10.13/15.68  -10.60   12. ... Nxc3 13. bxc3 Bxc3 14. Rad1 Bd7
+                                     15. f4 Rbc8 16. Rf3 Rc4 17. Kf1 Bxd4
+                                     18. Rd2 Bb2 19. f5 exf5 20. Re2 Re8
+                                     21. Rxe8 Kxe8 22. Rf2 Be5 23. Re2 Kf7
+                                     24. g3
+        time=15.77(100%)  nodes=65535875(65.5M)  fh1=94%  pred=4  nps=4.2M
+        chk=605.9K  qchk=540.4K  fp=29.2M  mcp=9.5M  50move=2
+        LMReductions:  1/2.8M  2/1.7M  3/1.1M  4/303.5K  5/24.8K  6/259
+        null-move (R):  3/3.4M  4/314.9K  5/11.8K  6/406
+Black(12): Nxc3
+              time used:  15.77
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   |<B>|   |-P-|   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |<N>|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-|-P-|-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   | . |-R-|-K-|   |
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -10.00  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.09  |    0.00   -0.50    0.45  |   -0.09    0.34   -0.48  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........  -0.23  |    0.00    0.00    0.00  |   -0.23   -0.23   -0.23  |
+bishops........  -0.11  |    0.27    0.18    0.36  |   -0.38   -0.29   -0.47  |
+rooks..........   0.14  |    0.08    0.08    0.08  |    0.06    0.06    0.06  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.30  |   -0.35   -0.30   -0.40  |    0.05    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -10.85
+White(13): bxc3 [pondering]
+        time surplus   1:48  time limit 26.53 (2:12)
+        depth     time       score   variation (23)
+         24     2.13/15.91  -10.71   13. (bxc3) Bxc3 14. Rab1 Bd7 15. a3 Bxd4
+                                     16. Rfd1 Be5 17. g3 Rbc8 18. Rd2 Rhg8
+                                     19. Kh1 a6 20. f4 Bc3 21. Rf2 d4 22. Kg2
+                                     Bc6+ 23. Kg1 Rce8 24. Rbf1 Bd5 25. Re2 Rc8
+         24->   2.13/15.91  -10.71   13. (bxc3) Bxc3 14. Rab1 Bd7 15. a3 Bxd4
+                                     16. Rfd1 Be5 17. g3 Rbc8 18. Rd2 Rhg8
+                                     19. Kh1 a6 20. f4 Bc3 21. Rf2 d4 22. Kg2
+                                     Bc6+ 23. Kg1 Rce8 24. Rbf1 Bd5 25. Re2 Rc8
+         25    15.50/15.91      --   13. (bxc3) Bxc3! (<-10.87)                   
+White(13): time 71624
+time remaining:  11:56 (Crafty).
+White(13): otim 69980
+time remaining:  11:39 (opponent).
+White(13): bxc3
+predicted move made.
+        time=16.48(100%)  nodes=66404161(66.4M)  fh1=93%  pred=5  nps=4.0M
+        chk=791.8K  qchk=803.8K  fp=28.9M  mcp=8.5M  50move=0
+        LMReductions:  1/2.6M  2/1.8M  3/1.2M  4/350.3K  5/29.0K  6/491
+        null-move (R):  3/3.4M  4/369.9K  5/14.5K  6/383
+              time used:  16.18
+Black(13): Bxc3
+              time used:   0.30
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |-P-|   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   |<B>|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |-P-| . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   | . |-R-|-K-|   |
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -7.95  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.11  |    0.02   -0.50    0.41  |   -0.13    0.34   -0.48  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........  -0.18  |    0.28    0.18    0.36  |   -0.46   -0.36   -0.54  |
+rooks..........   0.14  |    0.08    0.08    0.08  |    0.06    0.06    0.06  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.29  |   -0.34   -0.28   -0.40  |    0.05    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total..........  -8.65
+White(14): Rab1 [pondering]
+        time surplus   2:10  time limit 27.53 (2:17)
+        depth     time       score   variation (23)
+         23     7.09/16.51  -10.98   14. (Rab1) Bd7 15. Rb3 Rbc8 16. Rd1 Rc4
+                                     17. a3 Bxd4 18. Rb4 e5 19. Rxc4 bxc4
+                                     20. Kf1 Bc6 21. h3 Rg8 22. g4 Bb2 23. a4
+                                     Bxa4 24. Rxd5 Bxc2 25. Rd7+ Ke6 26. Rxb7
+                                     Bd3+ 27. Kg2
+         23->   7.09/16.51  -10.98   14. (Rab1) Bd7 15. Rb3 Rbc8 16. Rd1 Rc4
+                                     17. a3 Bxd4 18. Rb4 e5 19. Rxc4 bxc4
+                                     20. Kf1 Bc6 21. h3 Rg8 22. g4 Bb2 23. a4
+                                     Bxa4 24. Rxd5 Bxc2 25. Rd7+ Ke6 26. Rxb7
+                                     Bd3+ 27. Kg2
+White(14): time 71578
+time remaining:  11:55 (Crafty).
+White(14): otim 68471
+time remaining:  11:24 (opponent).
+White(14): f4
+              time used:  15.33
+        time surplus   2:10  time limit 27.53 (2:17)
+        depth     time       score   variation (1)
+         20     1.45/16.51  -13.62   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. Rd1 Rbc8 18. Rc1 Rc4 19. f5 Rhc8
+                                     20. fxe6+ Kxe6 21. a3 Rxc2 22. Re1+ Kd6
+                                     23. h3 R2c3 24. Rf1 Rf8 25. Re1 Rxa3
+         20->   1.46/16.51  -13.62   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. Rd1 Rbc8 18. Rc1 Rc4 19. f5 Rhc8
+                                     20. fxe6+ Kxe6 21. a3 Rxc2 22. Re1+ Kd6
+                                     23. h3 R2c3 24. Rf1 Rf8 25. Re1 Rxa3
+         21     2.21/16.51      --   14. ... Bxd4+! (<-13.78)                   
+         21     2.99/16.51  -13.87   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. Kg1 Rbc8 18. Rc1 Rc4 19. c3 Rhc8
+                                     20. f5 exf5 21. Rd1 Ke6 22. Kf2 Rxc3
+                                     23. Rd2 Rc2 24. Ke3 f4+ 25. Kd3 R8c3+
+                                     26. Ke2
+         21->   2.99/16.51  -13.87   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. Kg1 Rbc8 18. Rc1 Rc4 19. c3 Rhc8
+                                     20. f5 exf5 21. Rd1 Ke6 22. Kf2 Rxc3
+                                     23. Rd2 Rc2 24. Ke3 f4+ 25. Kd3 R8c3+
+                                     26. Ke2
+         22     4.65/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c3 Rbc8 18. Rc1 b4 19. h4 bxc3 20. Rc2
+                                     a5 21. Rc1 d4 22. Kg1 c2 23. Kf2 d3
+                                     24. Ke3 Bb5 25. Kd2 Rhg8
+         22->   4.65/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c3 Rbc8 18. Rc1 b4 19. h4 bxc3 20. Rc2
+                                     a5 21. Rc1 d4 22. Kg1 c2 23. Kf2 d3
+                                     24. Ke3 Bb5 25. Kd2 Rhg8
+         23     4.72/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c3 Rbc8 18. Rc1 b4 19. h4 bxc3 20. Rc2
+                                     a5 21. Rc1 d4 22. Kg1 c2 23. Kf2 Ke7
+                                     24. Ke2 Rhg8 25. Kd3 Rxg2 26. Kxd4
+         23->   4.73/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c3 Rbc8 18. Rc1 b4 19. h4 bxc3 20. Rc2
+                                     a5 21. Rc1 d4 22. Kg1 c2 23. Kf2 Ke7
+                                     24. Ke2 Rhg8 25. Kd3 Rxg2 26. Kxd4
+         24     7.41/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c4 bxc4 18. Kg1 Rbc8 19. Kf2 d4
+                                     20. Ke2 e5 21. fxe5 fxe5 22. Rb1 c3
+                                     23. Ra1 c2 24. Kd2 Bb5 25. h3 d3 26. g4
+                                     Bc4
+         24->   7.41/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c4 bxc4 18. Kg1 Rbc8 19. Kf2 d4
+                                     20. Ke2 e5 21. fxe5 fxe5 22. Rb1 c3
+                                     23. Ra1 c2 24. Kd2 Bb5 25. h3 d3 26. g4
+                                     Bc4
+         25     7.65/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c4 bxc4 18. Kg1 Rbc8 19. Kf2 d4
+                                     20. Ke2 e5 21. fxe5 fxe5 22. Rb1 c3 23. h3
+                                     c2 24. Rf1+ Bf5 25. Rc1 d3+ 26. Ke3 Rc6
+                                     27. g4 Bg6 28. Kd2
+         25->   7.66/16.51  -14.01   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c4 bxc4 18. Kg1 Rbc8 19. Kf2 d4
+                                     20. Ke2 e5 21. fxe5 fxe5 22. Rb1 c3 23. h3
+                                     c2 24. Rf1+ Bf5 25. Rc1 d3+ 26. Ke3 Rc6
+                                     27. g4 Bg6 28. Kd2
+         26     8.94/16.51  -14.05   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c4 bxc4 18. Kg1 Rbc8 19. Kf2 d4 20. a4
+                                     c3 21. a5 c2 22. Rc1 d3 23. Ke3 Bb5 24. g3
+                                     e5 25. f5 Bc4 26. Kd2 Rce8 27. h4 Bb5
+         26->   8.95/16.51  -14.05   14. ... Bxd4+ 15. Kh1 Bxa1 16. Rxa1 Bd7
+                                     17. c4 bxc4 18. Kg1 Rbc8 19. Kf2 d4 20. a4
+                                     c3 21. a5 c2 22. Rc1 d3 23. Ke3 Bb5 24. g3
+                                     e5 25. f5 Bc4 26. Kd2 Rce8 27. h4 Bb5
+         27    13.02/16.51      --   14. ... Bxd4+! (<-14.21)                   
+         27    16.38/16.51      --   14. ... Bxd4+! (<-14.37)                   
+        time=16.58(100%)  nodes=63556420(63.6M)  fh1=92%  pred=5  nps=3.8M
+        chk=1.6M  qchk=1.5M  fp=24.8M  mcp=5.8M  50move=1
+        LMReductions:  1/3.1M  2/1.8M  3/914.8K  4/257.7K  5/20.5K  6/129
+        null-move (R):  3/3.4M  4/456.3K  5/21.2K  6/962  7/16
+Black(14): Bxd4+
+              time used:  16.58
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |<B>|   |-P-|   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |-P-| . |   | . |-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   | . |-R-|-K-|   |
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material.......  -8.95  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.34  |   -0.08   -0.65    0.33  |   -0.26    0.26   -0.64  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........  -0.32  |    0.28    0.18    0.36  |   -0.60   -0.50   -0.68  |
+rooks..........   0.20  |    0.14    0.14    0.14  |    0.06    0.06    0.06  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.42  |   -0.47   -0.59   -0.40  |    0.05    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -10.10
+White(15): Kh1 [pondering]
+        time surplus   2:16  time limit 27.96 (2:19)
+        depth     time       score   variation (25)
+         25     6.40/16.77  -14.64   15. (Kh1) Bxa1 16. Rxa1 Bd7 17. Kg1 Rbc8
+                                     18. Rc1 Rc4 19. f5 exf5 20. g3 Rhc8
+                                     21. Rd1 Ke6 22. Re1+ Kd6 23. c3 Rxc3
+                                     24. Rf1 Rc2 25. a3 b6 26. Rf2 Rxf2
+                                     27. Kxf2 Rc3 28. Ke2 Rxa3
+         25->   6.41/16.77  -14.64   15. (Kh1) Bxa1 16. Rxa1 Bd7 17. Kg1 Rbc8
+                                     18. Rc1 Rc4 19. f5 exf5 20. g3 Rhc8
+                                     21. Rd1 Ke6 22. Re1+ Kd6 23. c3 Rxc3
+                                     24. Rf1 Rc2 25. a3 b6 26. Rf2 Rxf2
+                                     27. Kxf2 Rc3 28. Ke2 Rxa3
+         26    10.04/27.96      ++   15. (Kh1) Bxa1? (>-14.48)                   
+         26    12.77/27.96      --   15. (Kh1) Bxa1! (<-14.80)                   
+White(15): time 69894
+time remaining:  11:38 (Crafty).
+White(15): otim 66874
+time remaining:  11:08 (opponent).
+White(15): Kh1
+predicted move made.
+         26    22.62/27.96      --   15. ... Bxa1! (<-14.96)                   
+         26    35.81/27.96  -14.99   15. ... Bxa1 16. Rxa1 Bd7 17. f5 e5
+                                     18. Rf1 Rbc8 19. Rf2 Rc4 20. h4 Rxh4+
+                                     21. Kg1 Ra4 22. Rd2 Bxf5 23. Rxd5 Rxa2
+                                     24. Rxb5 b6 25. g3 Rxc2 26. Rb3 Rg8
+                                     27. Ra3 Ke6 28. Rxa7 Rxg3+ 29. Kf1
+         26->  35.82/25.16  -14.99   15. ... Bxa1 16. Rxa1 Bd7 17. f5 e5
+                                     18. Rf1 Rbc8 19. Rf2 Rc4 20. h4 Rxh4+
+                                     21. Kg1 Ra4 22. Rd2 Bxf5 23. Rxd5 Rxa2
+                                     24. Rxb5 b6 25. g3 Rxc2 26. Rb3 Rg8
+                                     27. Ra3 Ke6 28. Rxa7 Rxg3+ 29. Kf1
+        time=35.82(100%)  nodes=139883441(139.9M)  fh1=90%  pred=6  nps=3.9M
+        chk=3.8M  qchk=4.1M  fp=60.2M  mcp=9.4M  50move=0
+        LMReductions:  1/5.6M  2/3.2M  3/1.7M  4/578.9K  5/59.1K  6/1.2K
+        null-move (R):  3/6.8M  4/923.5K  5/45.7K  6/1.3K  7/7
+              time used:  16.20
+Black(15): Bxa1
+              time used:  19.62
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|<B>| . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   | . |   |-P-|   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |-P-| . |   | . |-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |<B>|   | . |   | . |-R-| . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -13.85  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.33  |    0.00   -0.65    0.33  |   -0.33    0.26   -0.64  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........  -0.08  |    0.29    0.18    0.36  |   -0.37   -0.26   -0.44  |
+rooks..........   0.19  |    0.13    0.13    0.13  |    0.06    0.06    0.06  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.38  |   -0.44   -0.54   -0.40  |    0.06    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -14.73
+White(16): Rxa1 [pondering]
+        time surplus   2:19  time limit 28.30 (2:21)
+        depth     time       score   variation (25)
+         25     2.49/28.30      ++   16. (Rxa1) Bd7? (>-14.83)                   
+         25    13.66/28.30      ++   16. (Rxa1) Bd7? (>-14.67)                   
+         25    13.74/28.30      ++   16. (Rxa1) Bd7? (>-14.35)                   
+White(16): time 67908
+time remaining:  11:19 (Crafty).
+White(16): otim 65364
+time remaining:  10:53 (opponent).
+White(16): Rxa1
+predicted move made.
+         25    28.41/28.30  -15.01   16. ... Bd7 17. Rd1 Rbc8 18. Rd2 Rc3
+                                     19. a3 Rxa3 20. Kg1 Rc8 21. c3 Raxc3
+                                     22. h3 b4 23. Kh2 a5 24. f5 Ra3 25. Kg1
+                                     exf5 26. Rxd5 Ke6 27. Rd1 Re3 28. Ra1 Ra3
+                                     29. Re1+ Kd5
+         25->  28.41/25.47  -15.01   16. ... Bd7 17. Rd1 Rbc8 18. Rd2 Rc3
+                                     19. a3 Rxa3 20. Kg1 Rc8 21. c3 Raxc3
+                                     22. h3 b4 23. Kh2 a5 24. f5 Ra3 25. Kg1
+                                     exf5 26. Rxd5 Ke6 27. Rd1 Re3 28. Ra1 Ra3
+                                     29. Re1+ Kd5
+        time=28.41(100%)  nodes=132919154(132.9M)  fh1=88%  pred=7  nps=4.7M
+        chk=3.5M  qchk=4.1M  fp=66.6M  mcp=6.1M  50move=1
+        LMReductions:  1/4.0M  2/2.2M  3/1.3M  4/605.0K  5/61.7K  6/1.0K
+        null-move (R):  3/5.5M  4/699.3K  5/29.9K  6/864  7/1
+              time used:  15.25
+Black(16): Bd7
+              time used:  13.17
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|   | . |   | . |   |<R>|
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |<B>| . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   | . |   |-P-|   | . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |-P-| . |   | . |-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -10.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.33  |    0.04   -0.65    0.33  |   -0.37    0.26   -0.64  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........   0.21  |    0.30    0.18    0.36  |   -0.09   -0.04   -0.12  |
+rooks..........  -0.05  |    0.05    0.05    0.05  |   -0.10   -0.10   -0.10  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -11.47
+White(17): Rd1 [pondering]
+        time surplus   2:28  time limit 28.95 (2:24)
+        depth     time       score   variation (24)
+         25     4.09/23.44      --   17. (Rd1) Rbc8! (<-15.17)                   
+         25     4.40/23.44  -15.17   17. (Rd1) Rbc8 18. Rd2 Rc3 19. a3 Rxa3
+                                     20. h4 Rc8 21. c3 Rcxc3 22. Kh2 a5 23. Rf2
+                                     b4 24. Rd2 Ra1 25. f5 exf5 26. Rxd5 Ke6
+                                     27. Rd2 Bc6 28. h5 Be4 29. h6 b3
+         25->   4.41/20.84  -15.17   17. (Rd1) Rbc8 18. Rd2 Rc3 19. a3 Rxa3
+                                     20. h4 Rc8 21. c3 Rcxc3 22. Kh2 a5 23. Rf2
+                                     b4 24. Rd2 Ra1 25. f5 exf5 26. Rxd5 Ke6
+                                     27. Rd2 Bc6 28. h5 Be4 29. h6 b3
+         26     6.17/20.84  -15.23   17. (Rd1) Rbc8 18. Rd2 Rc3 19. a3 Rxa3
+                                     20. h4 Rc8 21. c3 Rcxc3 22. Kh2 a5 23. Kg1
+                                     Ra1+ 24. Kh2 b4 25. f5 exf5 26. Rxd5 Ke6
+                                     27. Rd2 Bc6 28. h5 Rc4 29. Re2+ Re4
+                                     30. Rb2 Rh4+ 31. Kg3 Rxh5
+         26->   6.17/18.52  -15.23   17. (Rd1) Rbc8 18. Rd2 Rc3 19. a3 Rxa3
+                                     20. h4 Rc8 21. c3 Rcxc3 22. Kh2 a5 23. Kg1
+                                     Ra1+ 24. Kh2 b4 25. f5 exf5 26. Rxd5 Ke6
+                                     27. Rd2 Bc6 28. h5 Rc4 29. Re2+ Re4
+                                     30. Rb2 Rh4+ 31. Kg3 Rxh5
+         27     8.37/18.52      --   17. (Rd1) Rbc8! (<-15.39)                   
+         27    10.25/18.52      --   17. (Rd1) Rbc8! (<-15.55)                   
+         27    13.37/18.52      --   17. (Rd1) Rbc8! (<-15.87)                   
+White(17): time 66577
+time remaining:  11:05 (Crafty).
+White(17): otim 63855
+time remaining:  10:38 (opponent).
+White(17): g4
+              time used:  15.10
+        time surplus   2:28  time limit 28.94 (2:24)
+        depth     time       score   variation (1)
+         19     1.11/17.36      --   17. ... Rhc8! (<-14.24)                   
+         19     1.40/17.36      --   17. ... Rhc8! (<-14.40)                   
+         19     1.98/17.36      --   17. ... Rhc8! (<-14.72)                   
+         19     3.29/17.36  -15.01   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg1 Rxf4 23. Ra1 Bc6
+                                     24. a3 bxa3 25. Ra2 c2 26. Rxc2 Rd8
+         19->   3.29/17.36  -15.01   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg1 Rxf4 23. Ra1 Bc6
+                                     24. a3 bxa3 25. Ra2 c2 26. Rxc2 Rd8
+         20     3.36/17.36  -15.01   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg1 Rxf4 23. Kg2 Bc6+
+                                     24. Kg3 Rf3+ 25. Kh2 Rf2+ 26. Kg3 Rxa2
+                                     27. Rxb4 c2 28. Rc4 Kg6
+         20->   3.36/17.36  -15.01   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg1 Rxf4 23. Kg2 Bc6+
+                                     24. Kg3 Rf3+ 25. Kh2 Rf2+ 26. Kg3 Rxa2
+                                     27. Rxb4 c2 28. Rc4 Kg6
+         21     3.48/17.36  -15.01   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg2 Rxf4 23. Kg3 Rc4
+                                     24. Kf2 Bc6 25. Ra1 c2 26. Rc1 Rd8 27. h4
+                                     Rxg4 28. Rxc2 Rxh4
+         21->   3.48/17.36  -15.01   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg2 Rxf4 23. Kg3 Rc4
+                                     24. Kf2 Bc6 25. Ra1 c2 26. Rc1 Rd8 27. h4
+                                     Rxg4 28. Rxc2 Rxh4
+         22     6.15/17.36  -15.04   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. Kg1
+                                     Rbc8 21. h3 bxc3 22. Kg2 Rxf4 23. Rc2 Ba4
+                                     24. Rc1 c2 25. Kh2 e5 26. Kg2 Re4 27. Kg3
+                                     Kg6 28. Kf3
+         22->   6.16/17.36  -15.04   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. Kg1
+                                     Rbc8 21. h3 bxc3 22. Kg2 Rxf4 23. Rc2 Ba4
+                                     24. Rc1 c2 25. Kh2 e5 26. Kg2 Re4 27. Kg3
+                                     Kg6 28. Kf3
+         23     8.05/17.36  -15.05   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg2 Rxf4 23. Kg3 Rc4
+                                     24. Kf2 Bc6 25. Ra1 c2 26. Rc1 Rd8 27. Ke2
+                                     Re4+ 28. Kf2 Rf4+ 29. Ke3 Rf3+ 30. Ke2
+         23->   8.06/17.36  -15.05   17. ... Rhc8 18. Rc1 Rc4 19. c3 b4 20. h3
+                                     d4 21. Rb1 dxc3 22. Kg2 Rxf4 23. Kg3 Rc4
+                                     24. Kf2 Bc6 25. Ra1 c2 26. Rc1 Rd8 27. Ke2
+                                     Re4+ 28. Kf2 Rf4+ 29. Ke3 Rf3+ 30. Ke2
+         24    10.81/17.36      --   17. ... Rhc8! (<-15.21)                   
+         24    13.07/17.36      --   17. ... Rhc8! (<-15.37)                   
+         24    16.94/17.36      --   17. ... Rhc8! (<-15.69)                   
+        time=17.51(100%)  nodes=78360302(78.4M)  fh1=89%  pred=7  nps=4.5M
+        chk=2.5M  qchk=2.8M  fp=31.8M  mcp=4.7M  50move=1
+        LMReductions:  1/2.7M  2/1.5M  3/753.4K  4/274.0K  5/30.1K  6/642
+        null-move (R):  3/3.4M  4/441.8K  5/19.6K  6/426
+Black(17): Rhc8
+              time used:  17.51
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |<B>| . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   | . |   |-P-|-P-| . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |-P-| . |   | . |   |-P-|
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -10.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........  -0.08  |    0.29   -0.49    0.62  |   -0.37    0.26   -0.64  |
+passed pawns...   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........   0.21  |    0.30    0.18    0.36  |   -0.09   -0.04   -0.12  |
+rooks..........  -0.18  |    0.05    0.05    0.05  |   -0.23   -0.23   -0.23  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -11.34
+White(18): Rc1 [pondering]
+        time surplus   2:33  time limit 29.46 (2:27)
+        depth     time       score   variation (22)
+         22     5.06/17.67  -16.01   18. (Rc1) Rc4 19. c3 b4 20. h3 d4 21. Rb1
+                                     dxc3 22. Kh2 Rxf4 23. Kg3 Rc4 24. Kh2 c2
+                                     25. Rc1 Bc6 26. g5 fxg5 27. Rf1+ Rf4
+                                     28. Rc1 Ba4 29. Kg2 Rd4 30. Rf1+ Kg6
+         22->   5.06/17.67  -16.01   18. (Rc1) Rc4 19. c3 b4 20. h3 d4 21. Rb1
+                                     dxc3 22. Kh2 Rxf4 23. Kg3 Rc4 24. Kh2 c2
+                                     25. Rc1 Bc6 26. g5 fxg5 27. Rf1+ Rf4
+                                     28. Rc1 Ba4 29. Kg2 Rd4 30. Rf1+ Kg6
+         23    12.20/17.67      --   18. (Rc1) Rc4! (<-16.17)                   
+         23    15.14/17.67      --   18. (Rc1) Rc4! (<-16.33)                   
+White(18): time 64824
+time remaining:  10:48 (Crafty).
+White(18): otim 62345
+time remaining:  10:23 (opponent).
+White(18): Rb1
+              time used:  15.32
+        time surplus   2:33  time limit 29.46 (2:27)
+        depth     time       score   variation (1)
+         20     1.30/17.67  -16.53   18. ... Rxc2 19. a3 Rbc8 20. Kg1 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Kf2 Rc3 23. Ke1 Rxa3
+                                     24. Kd2 Ra2+ 25. Kc3 Rxh2 26. g5 fxg5
+                                     27. fxg5 e5 28. Kb4 d4 29. Kb3 Be6+
+                                     30. Ka3
+         20->   1.30/17.67  -16.53   18. ... Rxc2 19. a3 Rbc8 20. Kg1 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Kf2 Rc3 23. Ke1 Rxa3
+                                     24. Kd2 Ra2+ 25. Kc3 Rxh2 26. g5 fxg5
+                                     27. fxg5 e5 28. Kb4 d4 29. Kb3 Be6+
+                                     30. Ka3
+         21     1.91/17.67      --   18. ... Rxc2! (<-16.69)                   
+         21     2.34/17.67      --   18. ... Rxc2! (<-16.85)                   
+         21     3.92/17.67      --   18. ... Rxc2! (<-17.17)                   
+         21     4.94/17.67      --   18. ... Rxc2! (<-17.81)                   
+         21     8.10/17.67  -17.90   18. ... Rxc2 19. Kg1 Rbc8 20. g5 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Kf2 fxg5 23. fxg5 Rc2+
+                                     24. Ke3 Rxa2 25. h4 b4 26. Kd3 Bb5+
+                                     27. Kd4 Rc2 28. h5 b3 29. g6+ hxg6 30. Ke3
+                                     gxh5
+         21->   8.10/17.67  -17.90   18. ... Rxc2 19. Kg1 Rbc8 20. g5 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Kf2 fxg5 23. fxg5 Rc2+
+                                     24. Ke3 Rxa2 25. h4 b4 26. Kd3 Bb5+
+                                     27. Kd4 Rc2 28. h5 b3 29. g6+ hxg6 30. Ke3
+                                     gxh5
+         22     9.46/17.67      --   18. ... Rxc2! (<-18.06)                   
+         22    10.40/17.67      --   18. ... Rxc2! (<-18.22)                   
+         22    11.29/17.67  -18.50   18. ... Rxc2 19. Kg1 Rbc8 20. Kf1 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Ke2 Rc2+ 23. Kd3 Rxa2
+                                     24. Kc3 Rxh2 25. g5 fxg5 26. fxg5 e5
+                                     27. Kb4 d4 28. Kb3 d3 29. g6+ Kxg6 30. Kc3
+                                     d2
+         22->  11.29/17.67  -18.50   18. ... Rxc2 19. Kg1 Rbc8 20. Kf1 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Ke2 Rc2+ 23. Kd3 Rxa2
+                                     24. Kc3 Rxh2 25. g5 fxg5 26. fxg5 e5
+                                     27. Kb4 d4 28. Kb3 d3 29. g6+ Kxg6 30. Kc3
+                                     d2
+         23    12.22/29.46      ++   18. ... Rxc2? (>-18.34)                   
+         23    12.42/29.46      ++   18. ... Rxc2? (>-18.18)                   
+         23    13.21/29.46      --   18. ... Rxc2! (<-18.66)                   
+         23    14.27/29.46      --   18. ... Rxc2! (<-18.82)                   
+         23    16.17/29.46  -18.94   18. ... Rxc2 19. Kg1 Rbc8 20. Kf1 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Ke2 Rc2+ 23. Kd3 Rxa2
+                                     24. Kc3 Rxh2 25. g5 fxg5 26. fxg5 e5
+                                     27. Kb4 d4 28. Kb3 d3 29. Kc3 Bf5 30. Kb3
+                                     d2 31. g6+ hxg6
+         23->  16.17/26.51  -18.94   18. ... Rxc2 19. Kg1 Rbc8 20. Kf1 Rc1+
+                                     21. Rxc1 Rxc1+ 22. Ke2 Rc2+ 23. Kd3 Rxa2
+                                     24. Kc3 Rxh2 25. g5 fxg5 26. fxg5 e5
+                                     27. Kb4 d4 28. Kb3 d3 29. Kc3 Bf5 30. Kb3
+                                     d2 31. g6+ hxg6
+         24    18.71/26.51      --   18. ... Rxc2! (<-19.10)                   
+         24    20.34/26.51      --   18. ... Rxc2! (<-19.26)                   
+         24    22.22/26.51      --   18. ... Rxc2! (<-19.58)                   
+         24    25.05/26.51      --   18. ... Rxc2! (<-20.22)                   
+        time=26.58(100%)  nodes=168171239(168.2M)  fh1=88%  pred=7  nps=6.3M
+        chk=6.1M  qchk=7.8M  fp=90.1M  mcp=2.0M  50move=3
+        LMReductions:  1/2.8M  2/1.3M  3/725.6K  4/490.9K  5/55.7K  6/3.3K
+        null-move (R):  3/3.5M  4/530.3K  5/40.6K  6/1.0K
+Black(18): Rxc2
+              time used:  26.58
+
+       +---+---+---+---+---+---+---+---+
+    8  |   |<R>|   | . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |<B>| . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   | . |   |-P-|-P-| . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |<R>| . |   | . |   |-P-|
+       +---+---+---+---+---+---+---+---+
+    1  | . |-R-| . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -11.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.00  |    0.42   -0.26    0.70  |   -0.42    0.24   -0.69  |
+passed pawns...  -0.27  |    0.00    0.00    0.00  |   -0.27   -0.18   -0.32  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........   0.21  |    0.30    0.18    0.36  |   -0.09   -0.04   -0.12  |
+rooks..........  -0.65  |    0.22    0.22    0.22  |   -0.87   -0.91   -0.86  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -13.02
+White(19): Kg1 [pondering]
+        time surplus   2:29  time limit 29.60 (2:28)
+        depth     time       score   variation (22)
+         22     3.00/23.97      --   19. (Kg1) Rbc8! (<-21.50)                   
+         22    16.22/23.97  -23.71   19. (Kg1) Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kf2 fxg5 23. fxg5 Rc2+ 24. Ke3 Rxa2
+                                     25. Kd4 b4 26. h4 Rc2 27. h5 b3 28. Kd3
+                                     Rh2 29. Ke3 b2 30. g6+ hxg6 31. h6 b1=Q
+         22->  16.24/21.31  -23.71   19. (Kg1) Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kf2 fxg5 23. fxg5 Rc2+ 24. Ke3 Rxa2
+                                     25. Kd4 b4 26. h4 Rc2 27. h5 b3 28. Kd3
+                                     Rh2 29. Ke3 b2 30. g6+ hxg6 31. h6 b1=Q
+White(19): time 62143
+time remaining:  10:21 (Crafty).
+White(19): otim 60720
+time remaining:  10:07 (opponent).
+White(19): h4
+              time used:  16.61
+        time surplus   2:28  time limit 29.59 (2:27)
+        depth     time       score   variation (1)
+         18     1.02/28.70      --   19. ... Rbc8! (<-20.40)                   
+         18     1.27/28.70  -21.04   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 Rxa2 24. h5 fxg5
+                                     25. fxg5 b4 26. g6+ Kg8 27. Kf4 b3 28. h6
+                                     b2 29. g7 Ra4+ 30. Ke5 b1=Q
+         18->   1.27/25.74  -21.04   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 Rxa2 24. h5 fxg5
+                                     25. fxg5 b4 26. g6+ Kg8 27. Kf4 b3 28. h6
+                                     b2 29. g7 Ra4+ 30. Ke5 b1=Q
+         19     1.43/25.74      --   19. ... Rbc8! (<-21.20)                   
+         19     1.48/25.74      --   19. ... Rbc8! (<-21.36)                   
+         19     1.53/25.74      --   19. ... Rbc8! (<-21.68)                   
+         19     1.87/25.74  -22.06   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 Rxa2 24. h5 fxg5
+                                     25. fxg5 b4 26. g6+ Kg8 27. Kf4 b3 28. h6
+                                     b2 29. Ke5 b1=Q 30. gxh7+ Kxh7
+         19->   1.88/23.08  -22.06   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 Rxa2 24. h5 fxg5
+                                     25. fxg5 b4 26. g6+ Kg8 27. Kf4 b3 28. h6
+                                     b2 29. Ke5 b1=Q 30. gxh7+ Kxh7
+         20     1.98/23.08      --   19. ... Rbc8! (<-22.22)                   
+         20     2.04/23.08      --   19. ... Rbc8! (<-22.38)                   
+         20     2.09/23.08      --   19. ... Rbc8! (<-22.70)                   
+         20     2.85/23.08  -23.29   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 Rxa2 24. h5 fxg5
+                                     25. fxg5 b4 26. g6+ Kg8 27. Kf4 b3 28. Ke5
+                                     b2 29. Kd6 b1=Q 30. Kxd7 hxg6 31. Kxe6
+         20->   2.85/20.71  -23.29   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 Rxa2 24. h5 fxg5
+                                     25. fxg5 b4 26. g6+ Kg8 27. Kf4 b3 28. Ke5
+                                     b2 29. Kd6 b1=Q 30. Kxd7 hxg6 31. Kxe6
+         21     3.53/20.71      --   19. ... Rbc8! (<-23.45)                   
+         21     3.66/20.71      --   19. ... Rbc8! (<-23.61)                   
+         21     3.94/20.71      --   19. ... Rbc8! (<-23.93)                   
+         21     5.27/29.59      ++   19. ... Rbc8? (>-23.13)                   
+         21     5.51/29.59  -24.04   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 b4 24. Ke3 Rxa2
+                                     25. Kd4 b3 26. Kc3 b2 27. Kc2 Bb5 28. gxf6
+                                     Kxf6 29. h5 Bd3+ 30. Kc3 b1=Q 31. Kd4 Ra4+
+                                     32. Ke3
+         21->   5.52/26.63  -24.04   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 b4 24. Ke3 Rxa2
+                                     25. Kd4 b3 26. Kc3 b2 27. Kc2 Bb5 28. gxf6
+                                     Kxf6 29. h5 Bd3+ 30. Kc3 b1=Q 31. Kd4 Ra4+
+                                     32. Ke3
+         22     6.99/26.63      --   19. ... Rbc8! (<-24.20)                   
+         22     8.35/26.63      --   19. ... Rbc8! (<-24.36)                   
+         22     9.05/26.63      --   19. ... Rbc8! (<-24.68)                   
+         22    12.26/26.63      --   19. ... Rbc8! (<-25.32)                   
+         22    17.53/26.63  -25.73   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 b4 24. Ke3 Rxa2
+                                     25. Kd4 b3 26. Kc3 b2 27. Kc2 Bb5 28. g6+
+                                     hxg6 29. h5 gxh5 30. Kb1 Bd3+ 31. Kxa2
+                                     b1=Q+ 32. Ka3 Qc1+ 33. Kb4 Qxf4+ 34. Kc5
+         22->  17.53/23.96  -25.73   19. ... Rbc8 20. g5 Rc1+ 21. Rxc1 Rxc1+
+                                     22. Kg2 Rc2+ 23. Kf3 b4 24. Ke3 Rxa2
+                                     25. Kd4 b3 26. Kc3 b2 27. Kc2 Bb5 28. g6+
+                                     hxg6 29. h5 gxh5 30. Kb1 Bd3+ 31. Kxa2
+                                     b1=Q+ 32. Ka3 Qc1+ 33. Kb4 Qxf4+ 34. Kc5
+         23    19.10/23.96      --   19. ... Rbc8! (<-25.89)                   
+         23    19.87/23.96      --   19. ... Rbc8! (<-26.05)                   
+         23    21.35/23.96      --   19. ... Rbc8! (<-26.37)                   
+        time=24.00(100%)  nodes=172180323(172.2M)  fh1=90%  pred=7  nps=7.2M
+        chk=6.7M  qchk=11.2M  fp=90.3M  mcp=445.4K  50move=1
+        LMReductions:  1/1.4M  2/677.2K  3/491.9K  4/324.8K  5/18.2K  6/478
+        null-move (R):  3/2.1M  4/176.7K  5/13.0K  6/369
+Black(19): Rbc8
+              time used:  24.00
+
+       +---+---+---+---+---+---+---+---+
+    8  |   | . |<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |<B>| . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |<P>| . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   | . |   |-P-|-P-|-P-|
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    1  | . |-R-| . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -11.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.03  |    0.45   -0.23    0.73  |   -0.42    0.24   -0.69  |
+passed pawns...  -0.27  |    0.00    0.00    0.00  |   -0.27   -0.18   -0.32  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........   0.21  |    0.30    0.18    0.36  |   -0.09   -0.04   -0.12  |
+rooks..........  -1.05  |    0.22    0.22    0.22  |   -1.27   -1.42   -1.22  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -13.39
+White(20): g5 [pondering]
+        time surplus   2:27  time limit 29.87 (2:29)
+        depth     time       score   variation (21)
+         21     1.28/21.50  -26.58   20. (g5) Rc1+ 21. Rxc1 Rxc1+ 22. Kg2 Rc2+
+                                     23. Kf3 b4 24. Ke3 Rxa2 25. Kd4 b3 26. Kc3
+                                     b2 27. Kc2 Bb5 28. g6+ hxg6 29. h5 gxh5
+                                     30. f5 Bd3+ 31. Kc3 Bxf5 32. Kd4 b1=Q
+         21->   1.32/19.11  -26.58   20. (g5) Rc1+ 21. Rxc1 Rxc1+ 22. Kg2 Rc2+
+                                     23. Kf3 b4 24. Ke3 Rxa2 25. Kd4 b3 26. Kc3
+                                     b2 27. Kc2 Bb5 28. g6+ hxg6 29. h5 gxh5
+                                     30. f5 Bd3+ 31. Kc3 Bxf5 32. Kd4 b1=Q
+         22     2.52/19.11      --   20. (g5) Rc1+! (<-26.74)                   
+         22     3.79/19.11      --   20. (g5) Rc1+! (<-26.90)                   
+         22     4.05/19.11      --   20. (g5) Rc1+! (<-27.22)                   
+         22     4.22/19.11      --   20. (g5) Rc1+! (<-27.86)                   
+         22     4.84/19.11      --   20. (g5) Rc1+! (<-29.14)                   
+         22     5.30/19.11      --   20. (g5) Rc1+! (<-31.70)                   
+         22     5.50/19.11      --   20. (g5) Rc1+! (<-36.82)                   
+White(20): time 59706
+time remaining:   9:57 (Crafty).
+White(20): otim 59084
+time remaining:   9:50 (opponent).
+White(20): h5
+              time used:  16.54
+        time surplus   2:27  time limit 29.85 (2:29)
+        depth     time       score   variation (1)
+         16     1.03/32.23  -22.08   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. h6 Rxa2 26. f5 Re2+
+                                     27. Kd4 d2 28. Kd3 Rc1
+         16->   1.11/28.95  -22.08   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. h6 Rxa2 26. f5 Re2+
+                                     27. Kd4 d2 28. Kd3 Rc1
+         17     1.17/28.95      --   20. ... d4! (<-22.24)                   
+         17     1.23/28.95      --   20. ... d4! (<-22.40)                   
+         17     1.43/29.85      ++   20. ... d4? (>-21.92)                   
+         17     1.52/29.85      --   20. ... d4! (<-22.72)                   
+         17     1.64/29.85  -23.00   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. a4 bxa4 26. g5 a3
+                                     27. g6+ hxg6 28. hxg6+ Kxg6 29. Kd4 Rg2
+         17->   1.72/26.86  -23.00   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. a4 bxa4 26. g5 a3
+                                     27. g6+ hxg6 28. hxg6+ Kxg6 29. Kd4 Rg2
+         18     1.85/26.86      --   20. ... d4! (<-23.16)                   
+         18     2.03/26.86      --   20. ... d4! (<-23.32)                   
+         18     2.19/26.86      --   20. ... d4! (<-23.64)                   
+         18     2.35/26.86      --   20. ... d4! (<-24.28)                   
+         18     2.80/26.86      --   20. ... d4! (<-25.56)                   
+         18     3.33/26.86      --   20. ... d4! (<-28.12)                   
+         18     3.97/26.86      --   20. ... d4! (<-33.24)                   
+         18     4.60/26.86  -Mat12   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. g5 e5 26. g6+ Ke6
+                                     27. fxe5 fxe5 28. g7 Re2+ 29. Kf3 Bc6+
+                                     30. Kg4 Rg2+ 31. Kh4 Rh1#
+         18->   4.74/24.17  -Mat12   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. g5 e5 26. g6+ Ke6
+                                     27. fxe5 fxe5 28. g7 Re2+ 29. Kf3 Bc6+
+                                     30. Kg4 Rg2+ 31. Kh4 Rh1#
+         19     5.12/24.17  -Mat12   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. g5 e5 26. g6+ Ke6
+                                     27. fxe5 fxe5 28. g7 Re2+ 29. Kf3 Bc6+
+                                     30. Kg4 Rg2+ 31. Kh4 Rh1#
+         19->   5.38/21.49  -Mat12   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. g5 e5 26. g6+ Ke6
+                                     27. fxe5 fxe5 28. g7 Re2+ 29. Kf3 Bc6+
+                                     30. Kg4 Rg2+ 31. Kh4 Rh1#
+         20     6.23/21.49  -Mat12   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. g5 e5 26. g6+ Ke6
+                                     27. fxe5 fxe5 28. g7 Re2+ 29. Kf3 Bc6+
+                                     30. Kg4 Rg2+ 31. Kh4 Rh1#
+         20->   6.68/19.10  -Mat12   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     R8c2+ 24. Ke3 Rxd1 25. g5 e5 26. g6+ Ke6
+                                     27. fxe5 fxe5 28. g7 Re2+ 29. Kf3 Bc6+
+                                     30. Kg4 Rg2+ 31. Kh4 Rh1#
+         21    10.19/19.10  -Mat11   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1
+                                     27. g6+ Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+
+                                     30. Ke3 Re2#
+         21->  10.83/17.91  -Mat11   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1
+                                     27. g6+ Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+
+                                     30. Ke3 Re2#
+         22    12.69/17.91  -Mat11   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1
+                                     27. g6+ Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+
+                                     30. Ke3 Re2#
+         22->  13.84/17.91  -Mat11   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1
+                                     27. g6+ Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+
+                                     30. Ke3 Re2#
+         23    17.88/17.91  -Mat11   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1
+                                     27. g6+ Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+
+                                     30. Ke3 Re2#
+         23->  20.11/17.91  -Mat11   20. ... d4 21. Kg1 d3 22. Rd1 Rc1 23. Kf2
+                                     Rxd1 24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1
+                                     27. g6+ Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+
+                                     30. Ke3 Re2#
+        time=20.12(100%)  nodes=139847280(139.8M)  fh1=92%  pred=7  nps=7.0M
+        chk=5.4M  qchk=10.1M  fp=69.9M  mcp=166.6K  50move=1
+        LMReductions:  1/1.0M  2/538.2K  3/475.1K  4/270.8K  5/13.4K  6/79
+        null-move (R):  3/2.0M  4/182.0K  5/6.1K  6/166
+
+mate in 11 moves.
+
+Black(20): d4
+              time used:  20.12
+
+       +---+---+---+---+---+---+---+---+
+    8  |   | . |<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |<B>| . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |   | . |   | . |-P-|
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |<P>|   |-P-|-P-| . |
+       +---+---+---+---+---+---+---+---+
+    3  | . |   | . |   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |-P-| . |<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    1  | . |-R-| . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -11.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.25  |    0.50   -0.12    0.76  |   -0.25    0.47   -0.55  |
+passed pawns...  -0.77  |    0.00    0.00    0.00  |   -0.77   -0.54   -0.87  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........   0.15  |    0.30    0.18    0.36  |   -0.15   -0.08   -0.18  |
+rooks..........  -1.05  |    0.22    0.22    0.22  |   -1.27   -1.42   -1.22  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -13.72
+White(21): Kg1 [pondering]
+        time surplus   2:29  time limit 30.36 (2:31)
+        depth     time       score   variation (21)
+         22     4.17/18.21  -Mat10   21. (Kg1) d3 22. Rd1 Rc1 23. Kf2 Rxd1
+                                     24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1 27. g6+
+                                     Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+ 30. Ke3
+                                     Re2#
+         22->   8.97/18.21  -Mat10   21. (Kg1) d3 22. Rd1 Rc1 23. Kf2 Rxd1
+                                     24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1 27. g6+
+                                     Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+ 30. Ke3
+                                     Re2#
+         23    15.31/18.21  -Mat10   21. (Kg1) d3 22. Rd1 Rc1 23. Kf2 Rxd1
+                                     24. Ke3 Rc2 25. g5 d2 26. Kd3 Rdc1 27. g6+
+                                     Ke7 28. Ke4 d1=Q 29. gxh7 Bc6+ 30. Ke3
+                                     Re2#
+White(21): time 57675
+time remaining:   9:36 (Crafty).
+White(21): otim 57518
+time remaining:   9:35 (opponent).
+White(21): a3
+              time used:  15.80
+        time surplus   2:29  time limit 30.35 (2:31)
+        depth     time       score   variation (1)
+         17     1.00/36.42      --   21. ... R8c3! (<-Mat02)                   
+         17     1.05/36.42  -Mat05   21. ... R8c3 22. g5 Rg3 23. g6+ Ke7
+                                     24. Rb3 Rxb3 25. gxh7 Rb1#
+         17->   1.05/36.42  -Mat05   21. ... R8c3 22. g5 Rg3 23. g6+ Ke7
+                                     24. Rb3 Rxb3 25. gxh7 Rb1#
+        time=1.05(100%)  nodes=7918202(7.9M)  fh1=95%  pred=7  nps=7.5M
+        chk=292.6K  qchk=578.2K  fp=3.9M  mcp=2.0K  50move=1
+        LMReductions:  1/43.4K  2/23.7K  3/23.8K  4/17.7K  5/2.1K  6/16
+        null-move (R):  3/105.8K  4/13.2K  5/438
+
+mate in 5 moves.
+
+Black(21): R8c3
+              time used:   1.05
+
+       +---+---+---+---+---+---+---+---+
+    8  |   | . |   | . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |<B>| . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |   | . |   | . |-P-|
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |<P>|   |-P-|-P-| . |
+       +---+---+---+---+---+---+---+---+
+    3  |-P-|   |<R>|   | . |   | . |   |
+       +---+---+---+---+---+---+---+---+
+    2  |   | . |<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    1  | . |-R-| . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -11.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.25  |    0.50   -0.12    0.76  |   -0.25    0.47   -0.55  |
+passed pawns...  -0.89  |    0.00    0.00    0.00  |   -0.89   -0.66   -0.99  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........   0.15  |    0.30    0.18    0.36  |   -0.15   -0.08   -0.18  |
+rooks..........  -0.90  |    0.22    0.22    0.22  |   -1.12   -1.27   -1.07  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -13.69
+White(22): g5 [pondering]
+        time surplus   2:50  time limit 31.98 (2:39)
+        depth     time       score   variation (9)
+         11->   0.00/27.82  -Mat04   22. (g5) Rg3 23. g6+ Ke7 24. Rb3 Rxb3
+                                     25. gxh7 Rb1#
+        time=0.00(100%)  nodes=274(274)  fh1=100%  pred=7  nps=27.4K
+        chk=9  qchk=0  fp=0  mcp=0  50move=2
+        LMReductions:  1/7  2/24  3/43  4/16
+
+White(22): time 57553
+time remaining:   9:35 (Crafty).
+White(22): otim 56013
+time remaining:   9:20 (opponent).
+White(22): Ra1
+              time used:  15.05
+        time surplus   2:50  time limit 31.97 (2:39)
+        depth     time       score   variation (1)
+          9->   0.00/20.46  -Mat03   22. ... Rg3 23. Rf1 Bc6+ 24. Rf3 Bxf3#
+        time=0.00(100%)  nodes=14591(14.6K)  fh1=93%  pred=7  nps=1.5M
+        chk=419  qchk=1.6K  fp=5.2K  mcp=0  50move=3
+        LMReductions:  1/280  2/245  3/183  4/127
+        null-move (R):  3/665  4/62
+
+mate in 3 moves.
+
+Black(22): Rg3
+              time used:   0.00
+
+       +---+---+---+---+---+---+---+---+
+    8  |   | . |   | . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |<B>| . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |   | . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |   | . |   | . |-P-|
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |<P>|   |-P-|-P-| . |
+       +---+---+---+---+---+---+---+---+
+    3  |-P-|   | . |   | . |   |<R>|   |
+       +---+---+---+---+---+---+---+---+
+    2  |   | . |<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -11.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.25  |    0.50   -0.12    0.76  |   -0.25    0.47   -0.55  |
+passed pawns...  -0.89  |    0.00    0.00    0.00  |   -0.89   -0.66   -0.99  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........   0.15  |    0.30    0.18    0.36  |   -0.15   -0.08   -0.18  |
+rooks..........  -0.95  |    0.06    0.06    0.06  |   -1.01   -1.05   -1.00  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -13.74
+White(23): Rf1 [pondering]
+        time surplus   3:13  time limit 33.85 (2:49)
+        depth     time       score   variation (5)
+          7->   0.00/20.31  -Mat02   23. (Rf1) Bc6+ 24. Rf3 Bxf3#  
+        time=0.00(100%)  nodes=551(551)  fh1=100%  pred=7  nps=55.1K
+        chk=15  qchk=30  fp=167  mcp=0  50move=4
+        LMReductions:  1/22  2/51  3/29
+        null-move (R):  3/13
+White(23): time 57545
+time remaining:   9:35 (Crafty).
+White(23): otim 54384
+time remaining:   9:03 (opponent).
+White(23): f5
+              time used:  16.36
+        time surplus   3:12  time limit 33.85 (2:49)
+        depth     time       score   variation (1)
+          5->   0.01/26.40   -Mate   23. ... Bc6#                  
+        time=0.01(100%)  nodes=888(888)  fh1=95%  pred=7  nps=88.8K
+        chk=37  qchk=127  fp=0  mcp=0  50move=1
+        LMReductions:  1/41  2/24
+        null-move (R):  3/54
+Black(23): Bc6#
+0-1 {Black mates}
+              time used:   0.01
+
+       +---+---+---+---+---+---+---+---+
+    8  |   | . |   | . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    7  |<P>|<P>| . |   | . |<K>| . |<P>|
+       +---+---+---+---+---+---+---+---+
+    6  |   | . |<B>| . |<P>|<P>|   | . |
+       +---+---+---+---+---+---+---+---+
+    5  | . |<P>| . |   | . |-P-| . |-P-|
+       +---+---+---+---+---+---+---+---+
+    4  |   | . |   |<P>|   | . |-P-| . |
+       +---+---+---+---+---+---+---+---+
+    3  |-P-|   | . |   | . |   |<R>|   |
+       +---+---+---+---+---+---+---+---+
+    2  |   | . |<R>| . |   | . |   | . |
+       +---+---+---+---+---+---+---+---+
+    1  |-R-|   | . |   | . |   | . |-K-|
+       +---+---+---+---+---+---+---+---+
+         a   b   c   d   e   f   g   h
+
+note: scores are for the white side
+                        +-----------white----------+-----------black----------+
+material....... -11.80  |    comp     mg      eg   |    comp     mg      eg   |
+pawns..........   0.24  |    0.49   -0.12    0.74  |   -0.25    0.47   -0.55  |
+passed pawns...  -0.89  |    0.00    0.00    0.00  |   -0.89   -0.66   -0.99  |
+knights........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+bishops........  -0.03  |    0.30    0.18    0.36  |   -0.33   -0.26   -0.36  |
+rooks..........  -0.89  |    0.06    0.06    0.06  |   -0.95   -0.99   -0.94  |
+queens.........   0.00  |    0.00    0.00    0.00  |    0.00    0.00    0.00  |
+kings..........  -0.21  |   -0.28    0.00   -0.40  |    0.07    0.00    0.10  |
+pawn races.....   0.00  +--------------------------+--------------------------+
+total.......... -13.87
+              puzzling over a move to ponder.
+        depth     time       score   variation
+                             Mated   (no moves)
+White(24): result 0-1 {Xboard adjudication: Checkmate}
+LearnBook() updating book database
+White(24): quit
