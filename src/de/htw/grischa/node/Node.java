@@ -100,9 +100,9 @@ public abstract class Node implements Runnable {
      */
     public synchronized void sendResultsBack() {
         String result = getResult().toString();
-        LOG.debug("i send results back hostname" + getHostName() + " - " + result);
+        LOG.debug("i send results back");
         RedisPublisher = GClientConnection.getInstance().getRedis();
-        RedisPublisher.publish("result:" + mUser, result);
+        RedisPublisher.publish("result:" + mUser, getHostName()+';'+result);
         GClientConnection.getInstance().releaseRedis(RedisPublisher);
     }
 

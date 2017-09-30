@@ -31,6 +31,7 @@ public class TaskReceptor implements Runnable {
     private Jedis RedisSubscriber;
     private Jedis RedisPublisher;
     private JedisPubSub jedisPubSub;
+    private String mHostName = null;
 
     /**
      * Constructor
@@ -47,7 +48,11 @@ public class TaskReceptor implements Runnable {
             @Override
             public void onMessage(String s, String s2) {
                 LOG.debug("task receptor subscriber i get message");
-                mTaskResult = s2;
+
+                String[] hostNameWithResult = s2.split(";");
+                mHostName = hostNameWithResult[0];
+                mTaskResult = hostNameWithResult[1];
+
                 setDone();
             }
 
@@ -148,5 +153,9 @@ public class TaskReceptor implements Runnable {
      */
     public Task getTask() {
         return mDispatcher.getTask();
+    }
+
+    public String getHostName(){
+        return mHostName;
     }
 }

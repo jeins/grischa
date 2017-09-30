@@ -64,6 +64,6 @@ public class GNode extends Node {
     }
 
     protected String getHostName() {
-        return this.mTask.getHostName();
+        return mTask.getHostName();
     }
 }

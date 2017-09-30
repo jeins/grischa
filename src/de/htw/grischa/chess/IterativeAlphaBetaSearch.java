@@ -106,7 +106,7 @@ public class IterativeAlphaBetaSearch implements Runnable {
             //Mark best move
             bestTurn = abp.nextGame;
             long duration = ((endTime - startTime) / 1000000 );
-            log.info("Breadth-first depth: " + depth + " Hostname: " + hostname + " Value: " + value + " calculation duration: " + duration + " ms");
+            log.info("Breadth-first depth: " + depth + " Hostname: " + getHostName() + " Value: " + value + " calculation duration: " + duration + " ms");
             if (depth > 10) {// original value 40
                 log.debug("Breadth-first search terminated due to maximum depth of 10");
                 break;

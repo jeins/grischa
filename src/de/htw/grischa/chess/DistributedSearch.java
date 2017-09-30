@@ -6,6 +6,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.apache.log4j.Logger;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 import de.htw.grischa.node.task.GTask;
 import de.htw.grischa.node.task.Task;
 import de.htw.grischa.node.task.TaskDispatcher;
@@ -38,6 +40,7 @@ public class DistributedSearch {
     private Player mMaxPlayer;
     private IChessGame mGame;//current game
     private ExecutorService mExecutorService = null;//threading managing for async tasks
+    private BufferedWriter write;
 
     /**
      * Default constructor for creating a thread pool, so that the computation
@@ -138,6 +141,21 @@ public class DistributedSearch {
             Integer result = Integer.valueOf((String) tmp);
             GTask task = (GTask) receptor.getTask();
             String currentGame = task.getChessGame().getStringRepresentation();
+            
+            try {
+                write = new BufferedWriter(new FileWriter("out.txt", true));
+                write.write(receptor.getHostName() + ';' + (result / 10000) + "\n");
+                write.newLine();
+	            write.flush();
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            } finally {                       // always close the file
+                if (write != null) try {
+                    write.close();
+                } catch (Exception ioe2) {
+                    // just ignore it
+                }
+            } 
             // condition for wich player the value has to be stored concerns only the result value due minimax
             if ((currentGame.getBytes())[64] == mGame.getStringRepresentation().getBytes()[64]) {
                 mResultset.put(currentGame, result);
