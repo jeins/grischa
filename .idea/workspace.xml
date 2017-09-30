@@ -5,17 +5,199 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c93c6b2b-43ce-4e2a-89d1-1ce042bdd070" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/handbook/doku/.#doku.tex" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.009" afterPath="$PROJECT_DIR$/game.009" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.aux" afterPath="$PROJECT_DIR$/handbook/doku/doku.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.pdf" afterPath="$PROJECT_DIR$/handbook/doku/doku.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.synctex.gz" afterPath="$PROJECT_DIR$/handbook/doku/doku.synctex.gz" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.tex" afterPath="$PROJECT_DIR$/handbook/doku/doku.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.tex.bak" afterPath="$PROJECT_DIR$/handbook/doku/doku.tex.bak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/GriScha_nutshell.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/GriScha_nutshell.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/chess2.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/chess2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/comm.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/comm.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/comm_seq.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/comm_seq.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/gclient1.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/gclient1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/gclient2.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/gclient2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/gclient_uml.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/gclient_uml.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/gclient_uml2.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/gclient_uml2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/grid.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/grid.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/gworkernoderegistery1.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/gworkernoderegistery1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/gworkernoderegistery2.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/gworkernoderegistery2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/logo.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/simon_arch.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/simon_arch.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/pictures/zuggenerator.png" afterPath="$PROJECT_DIR$/handbook/doku/pictures/zuggenerator.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/sources.bbl" afterPath="$PROJECT_DIR$/handbook/doku/sources.bbl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/yed/GriScha_nutshell.png" afterPath="$PROJECT_DIR$/handbook/doku/yed/GriScha_nutshell.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/alphabetafixeddepth.png" afterPath="$PROJECT_DIR$/handbook/uml/alphabetafixeddepth.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/alphabetasearch1.png" afterPath="$PROJECT_DIR$/handbook/uml/alphabetasearch1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/alphabetasearch2.png" afterPath="$PROJECT_DIR$/handbook/uml/alphabetasearch2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/alphabetasearchgridresults2.png" afterPath="$PROJECT_DIR$/handbook/uml/alphabetasearchgridresults2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/alphabetfixeddepth2.png" afterPath="$PROJECT_DIR$/handbook/uml/alphabetfixeddepth2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/alphabetsearchgridresults1.png" afterPath="$PROJECT_DIR$/handbook/uml/alphabetsearchgridresults1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/boardcalculator1.png" afterPath="$PROJECT_DIR$/handbook/uml/boardcalculator1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/boardcalculator2.png" afterPath="$PROJECT_DIR$/handbook/uml/boardcalculator2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/chessboard1.png" afterPath="$PROJECT_DIR$/handbook/uml/chessboard1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/chessboard2.png" afterPath="$PROJECT_DIR$/handbook/uml/chessboard2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/chessboard3.png" afterPath="$PROJECT_DIR$/handbook/uml/chessboard3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/clientlistener1.png" afterPath="$PROJECT_DIR$/handbook/uml/clientlistener1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/clientlistener2.png" afterPath="$PROJECT_DIR$/handbook/uml/clientlistener2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/committhread.png" afterPath="$PROJECT_DIR$/handbook/uml/committhread.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/committhread2.png" afterPath="$PROJECT_DIR$/handbook/uml/committhread2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/computedgame1.png" afterPath="$PROJECT_DIR$/handbook/uml/computedgame1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/computedgame2.png" afterPath="$PROJECT_DIR$/handbook/uml/computedgame2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/customcomparator1.png" afterPath="$PROJECT_DIR$/handbook/uml/customcomparator1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/customcomparator2.png" afterPath="$PROJECT_DIR$/handbook/uml/customcomparator2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/databaseentry.png" afterPath="$PROJECT_DIR$/handbook/uml/databaseentry.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/databaseentry2.png" afterPath="$PROJECT_DIR$/handbook/uml/databaseentry2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/databasemode1.png" afterPath="$PROJECT_DIR$/handbook/uml/databasemode1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/databasemode2.png" afterPath="$PROJECT_DIR$/handbook/uml/databasemode2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/distributedsearch1.png" afterPath="$PROJECT_DIR$/handbook/uml/distributedsearch1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/distributedsearch2.png" afterPath="$PROJECT_DIR$/handbook/uml/distributedsearch2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/filesearch1.png" afterPath="$PROJECT_DIR$/handbook/uml/filesearch1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/filesearch2.png" afterPath="$PROJECT_DIR$/handbook/uml/filesearch2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gameslist.png" afterPath="$PROJECT_DIR$/handbook/uml/gameslist.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gameslist1.png" afterPath="$PROJECT_DIR$/handbook/uml/gameslist1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gamestate1.png" afterPath="$PROJECT_DIR$/handbook/uml/gamestate1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gamestate2.png" afterPath="$PROJECT_DIR$/handbook/uml/gamestate2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gclient1.png" afterPath="$PROJECT_DIR$/handbook/uml/gclient1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gclient2.png" afterPath="$PROJECT_DIR$/handbook/uml/gclient2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gclientconnection1.png" afterPath="$PROJECT_DIR$/handbook/uml/gclientconnection1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gclientconnection2.png" afterPath="$PROJECT_DIR$/handbook/uml/gclientconnection2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gdbrunner1.png" afterPath="$PROJECT_DIR$/handbook/uml/gdbrunner1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gdbrunner2.png" afterPath="$PROJECT_DIR$/handbook/uml/gdbrunner2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gnode1.png" afterPath="$PROJECT_DIR$/handbook/uml/gnode1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gnode2.png" afterPath="$PROJECT_DIR$/handbook/uml/gnode2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gridgamemanager1.png" afterPath="$PROJECT_DIR$/handbook/uml/gridgamemanager1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gridgamemanager2.png" afterPath="$PROJECT_DIR$/handbook/uml/gridgamemanager2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/grischa1.png" afterPath="$PROJECT_DIR$/handbook/uml/grischa1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/grischa2.png" afterPath="$PROJECT_DIR$/handbook/uml/grischa2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gtask1.png" afterPath="$PROJECT_DIR$/handbook/uml/gtask1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gtask2.png" afterPath="$PROJECT_DIR$/handbook/uml/gtask2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gworkernoderegistery1.png" afterPath="$PROJECT_DIR$/handbook/uml/gworkernoderegistery1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/gworkernoderegistery2.png" afterPath="$PROJECT_DIR$/handbook/uml/gworkernoderegistery2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ichessgame1.png" afterPath="$PROJECT_DIR$/handbook/uml/ichessgame1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ichessgame2.png" afterPath="$PROJECT_DIR$/handbook/uml/ichessgame2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/iterativealphabetaserch1.png" afterPath="$PROJECT_DIR$/handbook/uml/iterativealphabetaserch1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/iterativealphabetaserch2.png" afterPath="$PROJECT_DIR$/handbook/uml/iterativealphabetaserch2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/node1.png" afterPath="$PROJECT_DIR$/handbook/uml/node1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/node2.png" afterPath="$PROJECT_DIR$/handbook/uml/node2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/player1.png" afterPath="$PROJECT_DIR$/handbook/uml/player1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/player2.png" afterPath="$PROJECT_DIR$/handbook/uml/player2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/quality.png" afterPath="$PROJECT_DIR$/handbook/uml/quality.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/quality1.png" afterPath="$PROJECT_DIR$/handbook/uml/quality1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/quality2.png" afterPath="$PROJECT_DIR$/handbook/uml/quality2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/quality3.png" afterPath="$PROJECT_DIR$/handbook/uml/quality3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramfile.png" afterPath="$PROJECT_DIR$/handbook/uml/ramfile.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramfile2.png" afterPath="$PROJECT_DIR$/handbook/uml/ramfile2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramfilelock1.png" afterPath="$PROJECT_DIR$/handbook/uml/ramfilelock1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramfilelock2.png" afterPath="$PROJECT_DIR$/handbook/uml/ramfilelock2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramqueue1.png" afterPath="$PROJECT_DIR$/handbook/uml/ramqueue1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramqueue2.png" afterPath="$PROJECT_DIR$/handbook/uml/ramqueue2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramqueueworker1.png" afterPath="$PROJECT_DIR$/handbook/uml/ramqueueworker1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/ramqueueworker2.png" afterPath="$PROJECT_DIR$/handbook/uml/ramqueueworker2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/shutdownhook1.png" afterPath="$PROJECT_DIR$/handbook/uml/shutdownhook1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/shutdownhook2.png" afterPath="$PROJECT_DIR$/handbook/uml/shutdownhook2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/task1.png" afterPath="$PROJECT_DIR$/handbook/uml/task1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/task2.png" afterPath="$PROJECT_DIR$/handbook/uml/task2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/taskdispatcher1.png" afterPath="$PROJECT_DIR$/handbook/uml/taskdispatcher1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/taskdispatcher2.png" afterPath="$PROJECT_DIR$/handbook/uml/taskdispatcher2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/taskreceptor1.png" afterPath="$PROJECT_DIR$/handbook/uml/taskreceptor1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/taskreceptor2.png" afterPath="$PROJECT_DIR$/handbook/uml/taskreceptor2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/winboardcommunication1.png" afterPath="$PROJECT_DIR$/handbook/uml/winboardcommunication1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/winboardcommunication2.png" afterPath="$PROJECT_DIR$/handbook/uml/winboardcommunication2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/writemanager1.png" afterPath="$PROJECT_DIR$/handbook/uml/writemanager1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml/writemanager2.png" afterPath="$PROJECT_DIR$/handbook/uml/writemanager2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml2/GClientConnection.png" afterPath="$PROJECT_DIR$/handbook/uml2/GClientConnection.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml2/Gnode.png" afterPath="$PROJECT_DIR$/handbook/uml2/Gnode.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.fuse_hidden0000026500000001" afterPath="$PROJECT_DIR$/.fuse_hidden0000026500000001" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitmodules" afterPath="$PROJECT_DIR$/.gitmodules" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/backup.xml" afterPath="$PROJECT_DIR$/.idea/libraries/backup.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/grischa.xml" afterPath="$PROJECT_DIR$/.idea/libraries/grischa.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/libs.xml" afterPath="$PROJECT_DIR$/.idea/libraries/libs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JUnit-DB.db" afterPath="$PROJECT_DIR$/JUnit-DB.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database.properties" afterPath="$PROJECT_DIR$/database.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.001" afterPath="$PROJECT_DIR$/game.001" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.002" afterPath="$PROJECT_DIR$/game.002" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.003" afterPath="$PROJECT_DIR$/game.003" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.004" afterPath="$PROJECT_DIR$/game.004" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.005" afterPath="$PROJECT_DIR$/game.005" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.006" afterPath="$PROJECT_DIR$/game.006" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.007" afterPath="$PROJECT_DIR$/game.007" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.008" afterPath="$PROJECT_DIR$/game.008" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.010" afterPath="$PROJECT_DIR$/game.010" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid_howto/htw-grid-test.md" afterPath="$PROJECT_DIR$/grid_howto/htw-grid-test.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grischa.conf" afterPath="$PROJECT_DIR$/grischa.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.bbl" afterPath="$PROJECT_DIR$/handbook/doku/doku.bbl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.blg" afterPath="$PROJECT_DIR$/handbook/doku/doku.blg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.out" afterPath="$PROJECT_DIR$/handbook/doku/doku.out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/doku.toc" afterPath="$PROJECT_DIR$/handbook/doku/doku.toc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/sources.aux" afterPath="$PROJECT_DIR$/handbook/doku/sources.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/sources.bib" afterPath="$PROJECT_DIR$/handbook/doku/sources.bib" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/sources.blg" afterPath="$PROJECT_DIR$/handbook/doku/sources.blg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/doku/yed/GriScha_nutshell.graphml" afterPath="$PROJECT_DIR$/handbook/doku/yed/GriScha_nutshell.graphml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml2/GClientConnection.graphml" afterPath="$PROJECT_DIR$/handbook/uml2/GClientConnection.graphml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handbook/uml2/Gnode.graphml" afterPath="$PROJECT_DIR$/handbook/uml2/Gnode.graphml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.000" afterPath="$PROJECT_DIR$/log.000" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.001" afterPath="$PROJECT_DIR$/log.001" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.002" afterPath="$PROJECT_DIR$/log.002" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.003" afterPath="$PROJECT_DIR$/log.003" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.004" afterPath="$PROJECT_DIR$/log.004" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.005" afterPath="$PROJECT_DIR$/log.005" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.006" afterPath="$PROJECT_DIR$/log.006" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.007" afterPath="$PROJECT_DIR$/log.007" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.008" afterPath="$PROJECT_DIR$/log.008" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.009" afterPath="$PROJECT_DIR$/log.009" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.010" afterPath="$PROJECT_DIR$/log.010" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grischa/de/htw/grischa/client/grischa.conf" afterPath="$PROJECT_DIR$/out/production/grischa/de/htw/grischa/client/grischa.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grischa/log4j.properties" afterPath="$PROJECT_DIR$/out/production/grischa/log4j.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grischa/log4j.properties.backup" afterPath="$PROJECT_DIR$/out/production/grischa/log4j.properties.backup" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pawn_quality.java" afterPath="$PROJECT_DIR$/pawn_quality.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/players.dat" afterPath="$PROJECT_DIR$/players.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/reset_redis.sh" afterPath="$PROJECT_DIR$/scripts/reset_redis.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/BoardCalculator.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/BoardCalculator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/GriScha.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/GriScha.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearch.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearch.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchFixedDepth.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchFixedDepth.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchGridResults.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchGridResults.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/ComputedGame.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/ComputedGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/DistributedSearch.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/DistributedSearch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/GameList.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/GameList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/GameState.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/GameState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/GridGameManager.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/GridGameManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/IChessGame.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/IChessGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/Player.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/chess/Quality.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/chess/Quality.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/client/GClient.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/client/GClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/client/GClientConnection.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/client/GClientConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/client/grischa.conf" afterPath="$PROJECT_DIR$/src/de/htw/grischa/client/grischa.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/node/GNode.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/node/GNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/node/Node.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/node/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/node/task/GTask.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/node/task/GTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/node/task/Task.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/node/task/Task.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskDispatcher.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskDispatcher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskReceptor.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskReceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/registry/GWorkerNodeRegistry.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/registry/GWorkerNodeRegistry.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/htw/grischa/xboard/WinboardCommunication.java" afterPath="$PROJECT_DIR$/src/de/htw/grischa/xboard/WinboardCommunication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log4j.properties" afterPath="$PROJECT_DIR$/src/log4j.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/log4j.properties.backup" afterPath="$PROJECT_DIR$/src/log4j.properties.backup" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/json/JSONArray.java" afterPath="$PROJECT_DIR$/src/org/json/JSONArray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/json/JSONTokener.java" afterPath="$PROJECT_DIR$/src/org/json/JSONTokener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/json/None.java" afterPath="$PROJECT_DIR$/src/org/json/None.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/de/htw/grischa/chess/AlphaBetaSearchFixedDepthTest.java" afterPath="$PROJECT_DIR$/test/de/htw/grischa/chess/AlphaBetaSearchFixedDepthTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/de/htw/grischa/chess/AlphaBetaSearchGridResultsTest.java" afterPath="$PROJECT_DIR$/test/de/htw/grischa/chess/AlphaBetaSearchGridResultsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/de/htw/grischa/chess/AlphaBetaSearchTest.java" afterPath="$PROJECT_DIR$/test/de/htw/grischa/chess/AlphaBetaSearchTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/de/htw/grischa/chess/ChessBoardTest.java" afterPath="$PROJECT_DIR$/test/de/htw/grischa/chess/ChessBoardTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/de/htw/grischa/chess/ComputedGameTest.java" afterPath="$PROJECT_DIR$/test/de/htw/grischa/chess/ComputedGameTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.settings/" />
@@ -34,71 +216,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GridGameManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/GridGameManager.java">
+      <file leaf-file-name="IterativeAlphaBetaSearch.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1050">
-              <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+            <state relative-caret-position="229">
+              <caret line="74" column="66" lean-forward="false" selection-start-line="74" selection-start-column="66" selection-end-line="74" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComputedGame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ComputedGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/ComputedGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlphaBetaSearch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearch.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2618">
-              <caret line="75" column="26" lean-forward="false" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/GameList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-672">
-              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlphaBetaSearchFixedDepth.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchFixedDepth.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="41" column="56" lean-forward="false" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlphaBetaSearchGridResults.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchGridResults.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="28" column="1" lean-forward="false" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChessBoard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="245" column="78" lean-forward="false" selection-start-line="245" selection-start-column="78" selection-end-line="245" selection-end-column="78" />
+            <state relative-caret-position="420">
+              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -107,31 +239,80 @@
       <file leaf-file-name="DistributedSearch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/DistributedSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#1626#1627#0" expanded="true" />
-                <element signature="e#1697#1698#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IterativeAlphaBetaSearch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Quality.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/Quality.java">
+      <file leaf-file-name="ChessBoard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="504">
+              <caret line="26" column="18" lean-forward="false" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/GNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-42">
+              <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/task/GTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1260">
+              <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskDispatcher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskDispatcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskReceptor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskReceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="609">
+              <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="37" column="40" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+              <folding>
+                <element signature="e#3444#3478#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GWorkerNodeRegistry.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/registry/GWorkerNodeRegistry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="62" column="48" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -167,23 +348,32 @@
         <option value="$PROJECT_DIR$/scripts/gatekeeper.sh" />
         <option value="$PROJECT_DIR$/scripts/ejabberd-create-user.sh" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/GriScha.java" />
         <option value="$PROJECT_DIR$/src/de/htw/grischa/client/grischa.conf" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/client/GClientConnection.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/client/GClient.java" />
         <option value="$PROJECT_DIR$/scripts/tmux_gatekeeper.sh" />
         <option value="$PROJECT_DIR$/src/de/htw/cpu/SigarLoadMonitor.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/IChessGame.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/registry/GWorkerNodeRegistry.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/xboard/WinboardCommunication.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/Quality.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearch.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/GameList.java" />
         <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchFixedDepth.java" />
         <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchGridResults.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java" />
-        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/GridGameManager.java" />
         <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/DistributedSearch.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/GameState.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/GridGameManager.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/IChessGame.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/Player.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/Quality.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/client/GClient.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/client/GClientConnection.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/node/task/GTask.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskDispatcher.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskReceptor.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/node/GNode.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/node/Node.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/registry/GWorkerNodeRegistry.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/xboard/WinboardCommunication.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/GriScha.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearch.java" />
+        <option value="$PROJECT_DIR$/src/de/htw/grischa/chess/ComputedGame.java" />
       </list>
     </option>
   </component>
@@ -207,6 +397,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -248,28 +440,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="grischa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grischa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grischa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grischa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -389,17 +559,16 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="grischa" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -613,24 +782,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="grischa" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -701,18 +852,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="grischa" />
-      <method />
-    </configuration>
     <configuration default="true" type="executeSpecs" factoryName="Gauge Execution">
       <setting name="environment" value="" />
       <setting name="specsToExecute" value="" />
@@ -724,40 +863,6 @@
       <setting name="moduleName" value="" />
       <envMap />
       <setting name="rowsRange" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="grischa" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="grischa" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
     <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
@@ -825,14 +930,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.181439" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -847,6 +951,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="360" y="152" width="1200" height="800" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -861,49 +966,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/client/GClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/client/GClientConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/DistributedSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/desy_gatekeeper.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis_sub/sub.py" />
-    <entry file="file://$PROJECT_DIR$/scripts/gnode_uuid.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/GriScha.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/BoardCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1013,11 +1075,6 @@
     <entry file="file://$PROJECT_DIR$/redis_sub/sub.py" />
     <entry file="file://$PROJECT_DIR$/redis_sub/mate.txt" />
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="72">
@@ -1026,18 +1083,9 @@
           <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/GriScha.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="2" lean-forward="false" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/BoardCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1077,141 +1125,207 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/htw/cpu/SigarLoadMonitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/IChessGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="75" lean-forward="false" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/Player.java">
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/util/concurrent/Executors.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/registry/GWorkerNodeRegistry.java">
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/GameState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="252">
+          <caret line="12" column="2" lean-forward="false" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/Quality.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="18" column="2" lean-forward="false" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/client/GClientConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="67" lean-forward="false" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+        <state relative-caret-position="315">
+          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/task/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/BoardCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/GriScha.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1302">
+          <caret line="65" column="35" lean-forward="false" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/client/GClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" column="50" lean-forward="false" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/util/concurrent/Executors.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="336">
+          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/xboard/WinboardCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1029">
-          <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="807">
-          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/Quality.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/GameList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2618">
-          <caret line="75" column="26" lean-forward="false" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchFixedDepth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="41" column="56" lean-forward="false" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchGridResults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="28" column="1" lean-forward="false" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="245" column="78" lean-forward="false" selection-start-line="245" selection-start-column="78" selection-end-line="245" selection-end-column="78" />
+        <state relative-caret-position="1050">
+          <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/GridGameManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1050">
-          <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        <state relative-caret-position="336">
+          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchFixedDepth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearchGridResults.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/GameList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/AlphaBetaSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1323">
+          <caret line="64" column="69" lean-forward="false" selection-start-line="64" selection-start-column="69" selection-end-line="64" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/IChessGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2354">
+          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/ChessBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="26" column="18" lean-forward="false" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/ComputedGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/DistributedSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="180" column="25" lean-forward="true" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/IterativeAlphaBetaSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="74" column="66" lean-forward="false" selection-start-line="74" selection-start-column="66" selection-end-line="74" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/task/GTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1260">
+          <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/task/TaskReceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/GNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/node/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="37" column="40" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
           <folding>
-            <element signature="e#1626#1627#0" expanded="true" />
-            <element signature="e#1697#1698#0" expanded="true" />
+            <element signature="e#3444#3478#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/chess/ComputedGame.java">
+    <entry file="file://$PROJECT_DIR$/src/de/htw/grischa/registry/GWorkerNodeRegistry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="418">
+          <caret line="62" column="48" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="48" />
           <folding />
         </state>
       </provider>

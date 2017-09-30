@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * <li> 03/17 - Benjamin Troester - Research and changes in the chess engine</li>
  * </ul>
  *
- * @author Heim
+ * @author Daniel Heim
  * @version 02/17
  * @see de.htw.grischa.chess.IChessGame
  * @see java.io.Serializable

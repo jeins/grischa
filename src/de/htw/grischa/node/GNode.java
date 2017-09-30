@@ -6,6 +6,16 @@ import org.apache.log4j.Logger;
 /**
  * GNode extends the abstract Node class and
  * specifies how to run certain Nodes.
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> xx/11 - Laurence Bortfeld - Revise and optimize code, adding xmpp protocol</li>
+ * <li> 12/14 - Philip Stewart - Adding communication via Redis</li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @version 02/17
  */
 
 public class GNode extends Node {
@@ -51,5 +61,9 @@ public class GNode extends Node {
 
     protected Object getResult() {
         return this.mTask.getResult();
+    }
+
+    protected String getHostName() {
+        return this.mTask.getHostName();
     }
 }

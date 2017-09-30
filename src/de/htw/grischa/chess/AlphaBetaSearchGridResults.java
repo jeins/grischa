@@ -12,6 +12,17 @@ import org.apache.log4j.Logger;
  * the grid and a TreeMap that contains both, games as string and integers
  * for the quality values. Last but not least it contains a logging object
  * to make debugging easier.
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @author Daniel Heim
+ *
+ * @version 02/17
+ *
  * @see de.htw.grischa.chess.AlphaBetaSearch
  */
 

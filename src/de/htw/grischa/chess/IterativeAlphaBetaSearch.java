@@ -1,6 +1,8 @@
 package de.htw.grischa.chess;
 
 import org.apache.log4j.Logger;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * Iterative Alpha-Beta-search for moving down inside breadth-first search
@@ -22,7 +24,9 @@ import org.apache.log4j.Logger;
  * </ul>
  *
  * @author Daniel Heim
- * @version 2-17
+ *
+ * @version 2/17
+ *
  * @see java.lang.Runnable
  */
 
@@ -62,6 +66,23 @@ public class IterativeAlphaBetaSearch implements Runnable {
         return value;
     }
 
+    public String getHostName(){
+        String hostname = "unknown";
+
+        try
+        {
+            InetAddress addr;
+            addr = InetAddress.getLocalHost();
+            hostname = addr.getHostName();
+        }
+        catch (UnknownHostException ex)
+        {
+            log.info("Hostname can not be resolved");
+        }
+
+        return hostname;
+    }
+
     /**
      * threading through runnable interface
      * run method containing breadth-first-search
@@ -85,7 +106,7 @@ public class IterativeAlphaBetaSearch implements Runnable {
             //Mark best move
             bestTurn = abp.nextGame;
             long duration = ((endTime - startTime) / 1000000 );
-            log.info("Breadth-first depth: " + depth + " Value: " + value + " calculation duration: " + duration + " ms");
+            log.info("Breadth-first depth: " + depth + " Hostname: " + hostname + " Value: " + value + " calculation duration: " + duration + " ms");
             if (depth > 10) {// original value 40
                 log.debug("Breadth-first search terminated due to maximum depth of 10");
                 break;

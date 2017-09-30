@@ -5,6 +5,16 @@ package de.htw.grischa.chess;
  * Alpha-Beta pruning is used for game trees to optimize speed, memory, cpu, network usage
  * This class is the fixed version for problems with depth.
  *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @author Daniel Heim
+ *
+ * @version 02/17
+ *
  * @see de.htw.grischa.chess.AlphaBetaSearch
  */
 

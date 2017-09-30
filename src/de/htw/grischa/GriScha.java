@@ -8,6 +8,15 @@ import de.htw.grischa.registry.GWorkerNodeRegistry;
 /**
  * Class GriScha
  *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> xx/11 - Laurence Bortfeld - Revise and optimize code, adding xmpp protocol</li>
+ * <li> 12/14 - Philip Stewart - Adding communication via Redis</li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @version 02/17
  */
 
 public class GriScha {
@@ -17,7 +26,10 @@ public class GriScha {
     public GriScha() {
     }
 
-
+    /**
+     * Main Method with entry point
+     * @param args
+     */
     public static void main(String[] args) {
         GWorkerNodeRegistry.getInstance();
         GClientConnection.getInstance();
@@ -27,12 +39,14 @@ public class GriScha {
         
         GWorkerNodeRegistry.getInstance().stopRegistry();
     }
-    
+
+    /**
+     *
+     */
     public void makeTurn() {
         try {
             Thread.sleep(500);
         } catch (InterruptedException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
         
@@ -50,7 +64,6 @@ public class GriScha {
             try {
                 System.out.println(gm.getTurn(5000));
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

@@ -12,6 +12,16 @@ import redis.clients.jedis.Jedis;
  * If this is called from the master ndoe, it will either return a new GWorkerNodeRegistry or
  * return a already existing registry. In case that the registry fails it will return null!
  * This class holds an ArrayList in which the Redis/ Jedis server puts all available worker nodes.
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> xx/11 - Laurence Bortfeld - Revise and optimize code, adding xmpp protocol</li>
+ * <li> 12/14 - Philip Stewart - Adding communication via Redis</li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @version 02/17
  */
 
 public class GWorkerNodeRegistry {

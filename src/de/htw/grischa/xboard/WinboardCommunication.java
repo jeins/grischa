@@ -14,8 +14,13 @@ import de.htw.grischa.chess.Player;
  *
  * <h3>Version History</h3>
  * <ul>
- * <li> 0.1
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> xx/11 - Laurence Bortfeld - Revise and optimize code, adding xmpp protocol</li>
+ * <li> 12/14 - Philip Stewart - Adding communication via Redis</li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
  * </ul>
+ *
+ * @version 02/17
  */
 
 public class WinboardCommunication {
@@ -49,7 +54,8 @@ public class WinboardCommunication {
     }
 
     /**
-     *
+     * Entry point for the thread! Contains the game loop that cares for communication
+     * with xboard/winboard
      */
     public void run() {
         System.out.println("start WinboardCommunicaiton thread!");

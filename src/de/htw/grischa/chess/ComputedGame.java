@@ -5,6 +5,16 @@ package de.htw.grischa.chess;
  * In the tree alpha-beta is calculating the certain check positions,
  * this class stores the chessboard representation, depth and quality given
  *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @author Daniel Heim
+ *
+ * @version 02/17
+ *
  * TODO: same game + depth with different qualities are not allowed to be contained
  */
 

@@ -27,6 +27,7 @@ import de.htw.grischa.registry.GWorkerNodeRegistry;
  * </ul>
  *
  * @author Daniel Heim
+ *
  * @version 03/17
  */
 

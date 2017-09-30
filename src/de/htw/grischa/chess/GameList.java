@@ -8,6 +8,16 @@ import java.util.ArrayList;
  * Boards are stored with possible castling, which colours move/turn it is.
  * If there is positive request, the calculated value will be returned,
  * so that the node don`t have to calculated this chessboard in the game tree.
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @author Daniel Heim
+ *
+ * @version 02/17
  */
 
 public class GameList {

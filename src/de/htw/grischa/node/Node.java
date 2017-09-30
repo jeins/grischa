@@ -10,10 +10,22 @@ import redis.clients.jedis.JedisPubSub;
  * Abstract node class, implementing basic features of a node.
  * Contains everything that is needed for communication with Redis server,
  * push and pull messages, starting tasks for calculation
- * abstract methods:
- *  runTask(String taskString);
- *  stopTask();
- *  getResult();
+ * <h3>Abstract Methods</h3>
+ * <ul>
+ *  <li>runTask(String taskString)</li>
+ *  <li>stopTask()</li>
+ *  <li>getResult();</li>
+ * </ul>
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> xx/11 - Laurence Bortfeld - Revise and optimize code, adding xmpp protocol</li>
+ * <li> 12/14 - Philip Stewart - Adding communication via Redis</li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @version 02/17
  */
 
 public abstract class Node implements Runnable {
@@ -87,8 +99,8 @@ public abstract class Node implements Runnable {
      * Method for messaging results to redis via result channel
      */
     public synchronized void sendResultsBack() {
-        LOG.debug("i send results back");
         String result = getResult().toString();
+        LOG.debug("i send results back hostname" + getHostName() + " - " + result);
         RedisPublisher = GClientConnection.getInstance().getRedis();
         RedisPublisher.publish("result:" + mUser, result);
         GClientConnection.getInstance().releaseRedis(RedisPublisher);
@@ -167,6 +179,8 @@ public abstract class Node implements Runnable {
     protected abstract void stopTask();
 
     protected abstract Object getResult();
+
+    protected abstract String getHostName();
 
     private class ShutdownHook extends Thread {
         public void run() {

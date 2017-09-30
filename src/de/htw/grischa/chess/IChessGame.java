@@ -19,6 +19,8 @@ import java.util.ArrayList;
  * </ul>
  *
  * @author Danie Heim
+ *
+ * @version 02/17
  * @see java.lang.Comparable
  */
 

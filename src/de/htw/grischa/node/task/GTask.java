@@ -10,7 +10,16 @@ import de.htw.grischa.chess.Player;
 
 /**
  * GTask is the implementation of the Task interface.
- * This class
+ *
+ * <h3>Version History</h3>
+ * <ul>
+ * <li> 05/10 - Daniel Heim - Initial Version </li>
+ * <li> xx/11 - Laurence Bortfeld - Revise and optimize code, adding xmpp protocol</li>
+ * <li> 12/14 - Philip Stewart - Adding communication via Redis</li>
+ * <li> 02/17 - Benjamin Troester - adding documentation and revise code </li>
+ * </ul>
+ *
+ * @version 02/17
  *
  * @see java.lang.Runnable
  * @see de.htw.grischa.node.task.Task
@@ -25,6 +34,7 @@ public class GTask implements Task {
     private IChessGame mChessGame = null;
     private Integer mJobResult = null;
     private Player mMaxPlayer = null;
+    private String mJobHostname = null;
 
     /**
      *
@@ -75,8 +85,10 @@ public class GTask implements Task {
                 LOG.error(e.getMessage());
             }
 
-            if (mJobResult == null || ab.getValue() != mJobResult)
+            if (mJobResult == null || ab.getValue() != mJobResult){
                 mJobResult = ab.getValue();
+                mJobHostname = ab.getHostName();
+            }
         }
         thread.stop();
     }
@@ -94,6 +106,13 @@ public class GTask implements Task {
      */
     public Integer getResult() {
         return mJobResult;
+    }
+
+    /**
+     * @return
+     */
+    public String getHostName(){
+        return mJobHostname;
     }
 
     /**
