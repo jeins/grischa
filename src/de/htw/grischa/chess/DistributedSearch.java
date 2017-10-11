@@ -5,6 +5,8 @@ import java.util.TreeMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import org.apache.log4j.Logger;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -142,20 +144,8 @@ public class DistributedSearch {
             GTask task = (GTask) receptor.getTask();
             String currentGame = task.getChessGame().getStringRepresentation();
             
-            try {
-                write = new BufferedWriter(new FileWriter("out.txt", true));
-                write.write(receptor.getHostName() + ';' + (result / 10000) + "\n");
-                write.newLine();
-	            write.flush();
-            } catch (Exception e) {
-                LOG.error(e.getMessage());
-            } finally {                       // always close the file
-                if (write != null) try {
-                    write.close();
-                } catch (Exception ioe2) {
-                    // just ignore it
-                }
-            } 
+            writeInfoToTextFile(receptor.getHostName(), result);
+            
             // condition for wich player the value has to be stored concerns only the result value due minimax
             if ((currentGame.getBytes())[64] == mGame.getStringRepresentation().getBytes()[64]) {
                 mResultset.put(currentGame, result);
@@ -163,6 +153,26 @@ public class DistributedSearch {
                 mResultset.put(currentGame, result * (-1));
             }
         }
+    }
+
+    // write node info (hostname, value and datetime) to text file
+    private void writeInfoToTextFile(String hostName, int value) {
+        try {
+            String currentDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            String nodeInfo = hostName + ';' + (value / 10000) + ';' + currentDateTime;
+            write = new BufferedWriter(new FileWriter("worker.txt", true));
+            write.write(nodeInfo);
+            write.newLine();
+            write.flush();
+        } catch (Exception e) {
+            LOG.error(e.getMessage());
+        } finally {                       
+            if (write != null) try {
+                write.close();
+            } catch (Exception ioe2) {
+                LOG.error(ioe2.getMessage());
+            }
+        } 
     }
 
     /**
