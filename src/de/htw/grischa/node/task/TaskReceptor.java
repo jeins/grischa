@@ -3,8 +3,11 @@ package de.htw.grischa.node.task;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import de.htw.grischa.client.GClientConnection;
+import de.htw.grischa.node.Node;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
@@ -49,9 +52,11 @@ public class TaskReceptor implements Runnable {
             public void onMessage(String s, String s2) {
                 LOG.debug("task receptor subscriber i get message");
 
-                String[] hostNameWithResult = s2.split(";");
-                mHostName = hostNameWithResult[0];
-                mTaskResult = hostNameWithResult[1];
+                JSONTokener t = new JSONTokener(s2);
+                JSONObject o = new JSONObject(t);
+
+                mHostName = o.getString(Node.JSON_WORKER_HOSTNAME);
+                mTaskResult = o.getString(Node.JSON_WORKER_RESULT);
 
                 setDone();
             }

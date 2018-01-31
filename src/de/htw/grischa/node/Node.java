@@ -6,6 +6,12 @@ import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
+
 /**
  * Abstract node class, implementing basic features of a node.
  * Contains everything that is needed for communication with Redis server,
@@ -39,6 +45,10 @@ public abstract class Node implements Runnable {
     private String mPassword = "node-001";
     private Jedis RedisSubscriber;
     private Jedis RedisPublisher;
+
+    public final static String JSON_WORKER_RESULT = "result";
+    public final static String JSON_WORKER_HOSTNAME = "hostName";
+    public final static String JSON_WORKER_SEND_DATE = "sendDate";
 
     // default constructor
     Node() {}
@@ -102,7 +112,21 @@ public abstract class Node implements Runnable {
         String result = getResult().toString();
         LOG.debug("i send results back");
         RedisPublisher = GClientConnection.getInstance().getRedis();
-        RedisPublisher.publish("result:" + mUser, getHostName()+';'+result);
+
+        String hostName = getHostName();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        JSONObject json = new JSONObject();
+        json.put(JSON_WORKER_RESULT, result);
+        json.put(JSON_WORKER_HOSTNAME, hostName);
+        json.put(JSON_WORKER_SEND_DATE, localDateTime.format(formatter));
+
+        RedisPublisher.publish("result:" + mUser, json.toString());
+
+        RedisPublisher.lpush("log:"+hostName, json.toString());
+
         GClientConnection.getInstance().releaseRedis(RedisPublisher);
     }
 

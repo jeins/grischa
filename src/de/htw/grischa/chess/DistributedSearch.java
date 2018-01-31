@@ -120,13 +120,13 @@ public class DistributedSearch {
     private void collectJobResults(ArrayList<TaskDispatcher> dispatchers) {
         ArrayList<TaskReceptor> receptors = new ArrayList<>();
         CountDownLatch doneSignal = new CountDownLatch(dispatchers.size());
-
+        LOG.info("jumlah dispatchers: " + dispatchers.size());
         for (TaskDispatcher dispatcher : dispatchers) {
             TaskReceptor tr = new TaskReceptor(dispatcher, doneSignal);
             mExecutorService.submit(tr);
             receptors.add(tr);
         }
-        
+        LOG.info("jumlah receptor: " + receptors.size());
         try {
             doneSignal.await();
         } catch (InterruptedException e) {
